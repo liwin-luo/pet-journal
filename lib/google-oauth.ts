@@ -12,8 +12,17 @@ export function publicOrigin(req: Request): string {
   return `${proto}://${host}`;
 }
 
+function isLoopback(origin: string): boolean {
+  const host = new URL(origin).hostname;
+  return host === "127.0.0.1" || host === "localhost";
+}
+
 export function googleRedirectUri(req?: Request): string {
-  if (process.env.VERCEL && req) return `${publicOrigin(req)}/api/auth/google/callback`;
+  // ponytail: 请求主机不是本机就用它当回调，避免 Vercel 里残留 GOOGLE_REDIRECT_URI=127.0.0.1
+  if (req) {
+    const origin = publicOrigin(req);
+    if (!isLoopback(origin)) return `${origin}/api/auth/google/callback`;
+  }
   return (
     process.env.GOOGLE_REDIRECT_URI?.trim() ||
     "http://127.0.0.1:3000/api/auth/google/callback"

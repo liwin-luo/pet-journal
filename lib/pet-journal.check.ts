@@ -45,9 +45,7 @@ assert.equal(googleRedirectUri(localReq), "http://127.0.0.1:3000/api/auth/google
 const vercelReq = new Request("https://www.petsdaily.live/api/auth/google", {
   headers: { "x-forwarded-proto": "https", "x-forwarded-host": "www.petsdaily.live" },
 });
-process.env.VERCEL = "1";
 assert.equal(googleRedirectUri(vercelReq), "https://www.petsdaily.live/api/auth/google/callback");
-delete process.env.VERCEL;
 
 assert.equal(authStatus(undefined), 401);
 assert.equal(authStatus(""), 401);
