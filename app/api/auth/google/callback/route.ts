@@ -33,7 +33,7 @@ export async function GET(req: Request) {
     const message = cause instanceof Error ? cause.message : "";
     const kind = /DATABASE|ECONN|ENOTFOUND|ssl|certificate|password|timeout|先设 DATABASE/i.test(message)
       ? "db"
-      : /token|invalid_client|redirect_uri/i.test(message)
+      : /token|invalid_client|redirect_uri|没返回邮箱/i.test(message)
         ? "google"
         : "callback";
     return Response.redirect(new URL(`/login?error=${kind}`, origin));

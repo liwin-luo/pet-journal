@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   agentRules: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "petsdaily.live" }],
+        destination: "https://www.petsdaily.live/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
