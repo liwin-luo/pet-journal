@@ -20,7 +20,7 @@ export function poolConfig(connectionString: string): PoolConfig {
 
 export function db(): Pool {
   if (!pool) {
-    const connectionString = process.env.DATABASE_URL;
+    const connectionString = process.env.DATABASE_URL?.trim().replace(/^['"]|['"]$/g, "");
     if (!connectionString) throw new Error("先设 DATABASE_URL");
     pool = new Pool(poolConfig(connectionString));
   }

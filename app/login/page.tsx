@@ -1,8 +1,9 @@
 const HINTS: Record<string, string> = {
   config: "Vercel 还没配 AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET。",
-  google: "Google 拒绝了这次登录。",
+  google: "Google 换 token 失败。核对 Vercel 里的 AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET 是否是同一对。",
   state: "登录状态过期，再点一次。",
-  callback: "登录回调失败。多半是 DATABASE_URL 连不上，或 Google 回调地址还没登记线上域名。",
+  db: "Vercel 的 DATABASE_URL 连不上 Supabase。要用事务池 6543 那条，并 Redeploy。",
+  callback: "登录回调失败。打开 /api/ready 看 db 是 ok 还是 missing。",
 };
 
 export default async function LoginPage({
