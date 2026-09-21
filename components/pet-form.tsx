@@ -113,11 +113,11 @@ export function PetForm({ petId }: { petId?: string }) {
     router.push(petId ? "/pets" : "/");
   }
 
-  if (!ready) return <p className="text-sm text-[#6b5a4a]">翻开册子…</p>;
-  if (!pet) return <p className="text-sm text-[#6b5a4a]">这只不在册子里了。</p>;
+  if (!ready) return <p className="text-sm text-mute">翻开册子…</p>;
+  if (!pet) return <p className="text-sm text-mute">这只不在册子里了。</p>;
 
   return (
-    <div className="space-y-5">
+    <div className="card space-y-5 p-5 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-5 md:space-y-0">
       <Field label="名字 *">
         <input className="field" value={pet.name} onChange={(e) => patch({ name: e.target.value })} placeholder="豆豆" />
       </Field>
@@ -182,27 +182,27 @@ export function PetForm({ petId }: { petId?: string }) {
       <Field label="口头禅 · 表情包会画进图">
         <input className="field" value={pet.catchphrase ?? ""} onChange={(e) => patch({ catchphrase: e.target.value })} placeholder="想吃" />
       </Field>
-      <Field label={`参考图 * · ${pet.photos.length}/4`}>
+      <Field label={`参考图 * · ${pet.photos.length}/4`} wide>
         <div className="grid grid-cols-4 gap-2">
           {pet.photos.map((src, index) => (
             <button
               key={`${src.slice(0, 24)}-${index}`}
               type="button"
-              className="polaroid relative p-1"
+              className="overflow-hidden rounded-xl"
               onClick={() => patch({ photos: pet.photos.filter((_, i) => i !== index) })}
             >
               <img src={src} alt="" className="aspect-square w-full object-cover" />
             </button>
           ))}
           {pet.photos.length < 4 ? (
-            <label className="flex aspect-square cursor-pointer items-center justify-center border border-dashed border-[#d8c4a8] bg-[#fff8ee] text-xs text-[#6b5a4a]">
+            <label className="flex aspect-square cursor-pointer items-center justify-center rounded-xl border border-dashed border-line bg-canvas text-xs text-mute">
               + 照片
               <input type="file" accept="image/*" hidden multiple onChange={(e) => void onPhotos(e.target.files)} />
             </label>
           ) : null}
         </div>
       </Field>
-      <Field label="好朋友">
+      <Field label="好朋友" wide>
         {others.length ? (
           <select className="field mb-2" defaultValue="" onChange={(e) => { if (e.target.value) addPetFriend(e.target.value); e.target.value = ""; }}>
             <option value="">从宠物册里选</option>
@@ -211,15 +211,15 @@ export function PetForm({ petId }: { petId?: string }) {
             ))}
           </select>
         ) : (
-          <p className="mb-2 text-xs text-[#6b5a4a]">册子里还没有第二只，也可以先上传一张朋友的照片。</p>
+          <p className="mb-2 text-xs text-mute">册子里还没有第二只，也可以先上传一张朋友的照片。</p>
         )}
-        <label className="btn btn-ghost mb-3 w-full text-sm">
+        <label className="btn btn-ghost mb-3 w-full text-sm sm:w-auto">
           上传朋友照片
           <input type="file" accept="image/*" hidden onChange={(e) => void onFriendPhoto(e.target.files?.[0])} />
         </label>
         <div className="space-y-2">
           {pet.friends.map((friend) => (
-            <div key={friend.id} className="flex items-center gap-2 border border-[#d8c4a8] bg-[#fff8ee] p-2">
+            <div key={friend.id} className="flex items-center gap-2 rounded-xl border border-line bg-canvas p-2">
               {friend.kind === "photo" && friend.photo ? (
                 <img src={friend.photo} alt="" className="h-12 w-12 object-cover" />
               ) : (
@@ -249,25 +249,27 @@ export function PetForm({ petId }: { petId?: string }) {
                   <option key={value} value={value}>{RELATION_LABEL[value]}</option>
                 ))}
               </select>
-              <button type="button" className="text-xs text-[#c23b22]" onClick={() => patch({ friends: pet.friends.filter((item) => item.id !== friend.id) })}>
+              <button type="button" className="text-xs text-stamp" onClick={() => patch({ friends: pet.friends.filter((item) => item.id !== friend.id) })}>
                 删
               </button>
             </div>
           ))}
         </div>
       </Field>
-      {error ? <p className="text-sm text-[#c23b22]">{error}</p> : null}
-      <button type="button" className="btn w-full" disabled={saving} onClick={() => void save()}>
-        {saving ? "收入册子…" : "收入宠物册"}
-      </button>
+      {error ? <p className="text-sm text-stamp md:col-span-2">{error}</p> : null}
+      <div className="md:col-span-2">
+        <button type="button" className="btn w-full sm:w-auto" disabled={saving} onClick={() => void save()}>
+          {saving ? "收入册子…" : "收入宠物册"}
+        </button>
+      </div>
     </div>
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children, wide }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
-    <div className="space-y-2">
-      <p className="text-xs tracking-wide text-[#6b5a4a]">{label}</p>
+    <div className={`space-y-2${wide ? " md:col-span-2" : ""}`}>
+      <p className="text-xs tracking-wide text-mute">{label}</p>
       {children}
     </div>
   );

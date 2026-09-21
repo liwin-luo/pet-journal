@@ -7,9 +7,9 @@ export default async function DiaryPage() {
   const session = await requireUserId();
   if (!session.ok) {
     return (
-      <section className="mt-8 text-center">
+      <section className="card mx-auto mt-8 max-w-md p-8 text-center">
         <p className="display text-3xl">先登录</p>
-        <Link href="/login" className="btn mt-6 w-full">用 Google 继续</Link>
+        <Link href="/login" className="btn mt-6 w-full sm:w-auto">用 Google 继续</Link>
       </section>
     );
   }
@@ -19,18 +19,18 @@ export default async function DiaryPage() {
   } catch (cause) {
     console.error("listPets failed", cause);
     return (
-      <section className="mt-8 text-center">
+      <section className="card mx-auto mt-8 max-w-md p-8 text-center">
         <p className="display text-3xl">库连不上</p>
-        <p className="mt-2 text-sm text-[#6b5a4a]">Vercel 的 DATABASE_URL 要指向线上 Postgres，不能是 localhost。</p>
+        <p className="mt-2 text-sm text-mute">Vercel 的 DATABASE_URL 要指向线上 Postgres，不能是 localhost。</p>
       </section>
     );
   }
   if (!pets.length) {
     return (
-      <section className="mt-8 text-center">
+      <section className="card mx-auto mt-8 max-w-md p-8 text-center">
         <p className="display text-3xl">还没人可写</p>
-        <p className="mt-2 text-sm text-[#6b5a4a]">先收一只宠物，打开今天会自动起草。</p>
-        <Link href="/pets/new" className="btn mt-6 w-full">去建档</Link>
+        <p className="mt-2 text-sm text-mute">先收一只宠物，打开今天会自动起草。</p>
+        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">去建档</Link>
       </section>
     );
   }

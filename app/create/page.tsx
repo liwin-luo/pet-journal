@@ -76,76 +76,80 @@ function CreateInner() {
     }
   }
 
-  if (!ready) return <p className="text-sm text-[#6b5a4a]">铺开相纸…</p>;
+  if (!ready) return <p className="text-sm text-mute">铺开相纸…</p>;
 
   if (!pets.length) {
     return (
-      <section className="mt-8 text-center">
+      <section className="card mx-auto max-w-md p-8 text-center">
         <p className="display text-3xl">册子是空的</p>
-        <p className="mt-2 text-sm text-[#6b5a4a]">先收一只宠物再来选模板。</p>
-        <Link href="/pets/new" className="btn mt-6 w-full">去建档</Link>
+        <p className="mt-2 text-sm text-mute">先收一只宠物再来选模板。</p>
+        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">去建档</Link>
       </section>
     );
   }
 
   return (
-    <section className="space-y-5">
-      <label className="block space-y-2">
-        <span className="text-xs text-[#6b5a4a]">出镜的是</span>
-        <select className="field" value={petId} onChange={(e) => { setPetId(e.target.value); setFriendId(""); setPreview(null); }}>
-          {pets.map((item) => (
-            <option key={item.id} value={item.id}>{item.name}</option>
-          ))}
-        </select>
-      </label>
-      <label className="block space-y-2">
-        <span className="text-xs text-[#6b5a4a]">带上朋友（可选，合影必选）</span>
-        <select className="field" value={friendId} onChange={(e) => setFriendId(e.target.value)}>
-          <option value="">这次不带</option>
-          {(pet?.friends ?? []).map((friend) => (
-            <option key={friend.id} value={friend.id}>
-              {friend.name} · {RELATION_LABEL[friend.relation]}
-            </option>
-          ))}
-        </select>
-      </label>
-      <div className="grid grid-cols-2 gap-3">
-        {TEMPLATES.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => { setTemplateId(item.id); setPreview(null); }}
-            className="polaroid relative text-left"
-            style={{ outline: templateId === item.id ? "2px solid #2a2118" : undefined }}
-          >
-            <p className="display text-xl leading-none">{item.title}</p>
-            <p className="mt-2 text-xs text-[#6b5a4a]">{item.blurb}</p>
-          </button>
-        ))}
+    <section className="grid gap-6 lg:grid-cols-[minmax(0,320px)_1fr] lg:items-start">
+      <div className="card space-y-4 p-5 lg:sticky lg:top-6">
+        <label className="block space-y-2">
+          <span className="text-xs text-mute">出镜的是</span>
+          <select className="field" value={petId} onChange={(e) => { setPetId(e.target.value); setFriendId(""); setPreview(null); }}>
+            {pets.map((item) => (
+              <option key={item.id} value={item.id}>{item.name}</option>
+            ))}
+          </select>
+        </label>
+        <label className="block space-y-2">
+          <span className="text-xs text-mute">带上朋友（可选，合影必选）</span>
+          <select className="field" value={friendId} onChange={(e) => setFriendId(e.target.value)}>
+            <option value="">这次不带</option>
+            {(pet?.friends ?? []).map((friend) => (
+              <option key={friend.id} value={friend.id}>
+                {friend.name} · {RELATION_LABEL[friend.relation]}
+              </option>
+            ))}
+          </select>
+        </label>
+        {blocked ? <p className="text-sm text-stamp">合影要先选一位朋友</p> : null}
+        {error ? <p className="text-sm text-stamp">{error}</p> : null}
+        <button type="button" className="btn w-full" disabled={!template || busy || blocked} onClick={() => void generate()}>
+          {busy ? "在暗房里…大约半分钟" : template ? `生成「${template.title}」` : "先点一个模板"}
+        </button>
       </div>
-      {blocked ? <p className="text-sm text-[#c23b22]">合影要先选一位朋友</p> : null}
-      {error ? <p className="text-sm text-[#c23b22]">{error}</p> : null}
-      <button type="button" className="btn w-full" disabled={!template || busy || blocked} onClick={() => void generate()}>
-        {busy ? "在暗房里…大约半分钟" : template ? `生成「${template.title}」` : "先点一个模板"}
-      </button>
-      {preview ? (
-        <div id="result" className="polaroid relative">
-          <span className="tape" />
-          <img src={preview.url} alt="" className="aspect-[3/4] w-full object-cover" />
-          {preview.mock ? <p className="stamp mt-3">未接模型</p> : null}
-          <div className="mt-3 flex gap-3">
-            <button type="button" className="btn flex-1" disabled={busy} onClick={() => void generate()}>再来一张</button>
-            <Link href="/album" className="btn btn-ghost flex-1">去相册</Link>
-          </div>
+
+      <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-3">
+          {TEMPLATES.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => { setTemplateId(item.id); setPreview(null); }}
+              className="card p-4 text-left"
+              style={{ outline: templateId === item.id ? "2px solid #3a2c22" : undefined }}
+            >
+              <p className="display text-xl leading-none">{item.title}</p>
+              <p className="mt-2 text-xs text-mute">{item.blurb}</p>
+            </button>
+          ))}
         </div>
-      ) : null}
+        {preview ? (
+          <div id="result" className="card mx-auto max-w-md overflow-hidden p-4">
+            <img src={preview.url} alt="" className="aspect-[3/4] w-full rounded-xl object-cover" />
+            {preview.mock ? <p className="stamp mt-3">未接模型</p> : null}
+            <div className="mt-3 flex gap-3">
+              <button type="button" className="btn flex-1" disabled={busy} onClick={() => void generate()}>再来一张</button>
+              <Link href="/album" className="btn btn-ghost flex-1">去相册</Link>
+            </div>
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }
 
 export default function CreatePage() {
   return (
-    <Suspense fallback={<p className="text-sm text-[#6b5a4a]">铺开相纸…</p>}>
+    <Suspense fallback={<p className="text-sm text-mute">铺开相纸…</p>}>
       <CreateInner />
     </Suspense>
   );

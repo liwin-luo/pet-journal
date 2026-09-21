@@ -14,13 +14,29 @@ export default async function LoginPage({
   const { error } = await searchParams;
   const hint = error ? HINTS[error] ?? "登录没成功，再试一次。" : "";
   return (
-    <section className="mt-10 text-center">
-      <p className="display text-3xl">先用 Google 进来</p>
-      <p className="mt-2 text-sm text-[#6b5a4a]">一个账号一份手账，看不到别人的宠和日记。</p>
-      {hint ? <p className="mt-4 text-sm text-[#b42318]">{hint}</p> : null}
-      <a href="/api/auth/google" className="btn mt-8 w-full">
-        用 Google 继续
-      </a>
-    </section>
+    <div className="login-split">
+      <aside className="login-hero">
+        <div>
+          <p className="stamp">PET JOURNAL</p>
+          <h1 className="display mt-8 text-5xl leading-none">给家里那只<br />留一篇今天</h1>
+          <p className="mt-5 max-w-sm text-sm leading-7 text-[#5a4030]">
+            日记是首页。档案、物品和喜好会变成更像它的图。各看各的，互不可见。
+          </p>
+        </div>
+        <p className="text-sm text-[#5a4030]/80">Petsdaily · 宠物手账工坊</p>
+      </aside>
+      <section className="flex items-center justify-center px-6 py-16">
+        <div className="card w-full max-w-md p-8">
+          <p className="stamp mb-5 lg:hidden">PET JOURNAL</p>
+          <p className="text-[11px] tracking-[0.16em] text-mute uppercase">Welcome</p>
+          <h2 className="display mt-3 text-3xl leading-none">先用 Google 进来</h2>
+          <p className="mt-3 text-sm leading-6 text-mute">一个账号一份手账。登录后从今天的日记开始。</p>
+          {hint ? <p className="mt-4 text-sm text-stamp">{hint}</p> : null}
+          <a href="/api/auth/google" className="btn mt-8 w-full">
+            用 Google 继续
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }

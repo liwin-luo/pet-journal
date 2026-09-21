@@ -26,14 +26,14 @@ export default function AlbumPage() {
     return [...map.entries()];
   }, [shots]);
 
-  if (shots === null) return <p className="text-sm text-[#6b5a4a]">翻相册…</p>;
+  if (shots === null) return <p className="text-sm text-mute">翻相册…</p>;
 
   if (!shots.length) {
     return (
-      <section className="mt-8 text-center">
+      <section className="card mx-auto max-w-md p-8 text-center">
         <p className="display text-3xl">相册还没第一张</p>
-        <p className="mt-2 text-sm text-[#6b5a4a]">写完日记配图，或去出一张模板图。</p>
-        <Link href="/" className="btn mt-6 w-full">回今天</Link>
+        <p className="mt-2 text-sm text-mute">写完日记配图，或去出一张模板图。</p>
+        <Link href="/" className="btn mt-6 w-full sm:w-auto">回今天</Link>
       </section>
     );
   }
@@ -43,14 +43,14 @@ export default function AlbumPage() {
       {groups.map(([petId, list]) => (
         <div key={petId}>
           <h2 className="display text-2xl">{list[0]?.petName}</h2>
-          <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
             {list.map((shot) => {
               const template = findTemplate(shot.templateId);
               const label = shot.source === "diary" ? "日记" : (template?.title ?? shot.templateId);
               return (
-                <article key={shot.id} className="polaroid relative">
-                  <img src={shot.imageUrl} alt="" className="aspect-[3/4] w-full object-cover" />
-                  <p className="mt-2 text-xs text-[#6b5a4a]">
+                <article key={shot.id} className="card overflow-hidden p-3">
+                  <img src={shot.imageUrl} alt="" className="aspect-[3/4] w-full rounded-xl object-cover" />
+                  <p className="mt-2 text-xs text-mute">
                     {label}
                     {shot.friendName ? ` · ${shot.friendName}` : ""}
                     {shot.mock ? " · 占位" : ""}
