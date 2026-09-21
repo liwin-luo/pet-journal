@@ -31,11 +31,13 @@ export async function GET(req: Request) {
   } catch (cause) {
     console.error("google callback failed", cause);
     const message = cause instanceof Error ? cause.message : "";
-    const kind = /DATABASE|ECONN|ENOTFOUND|ssl|certificate|password|timeout|先设 DATABASE/i.test(message)
-      ? "db"
-      : /token|invalid_client|redirect_uri|没返回邮箱/i.test(message)
-        ? "google"
-        : "callback";
+    const kind = /AUTH_SECRET|先设 AUTH/i.test(message)
+      ? "config"
+      : /DATABASE|ECONN|ENOTFOUND|ssl|certificate|password|timeout|先设 DATABASE/i.test(message)
+        ? "db"
+        : /token|invalid_grant|invalid_client|redirect_uri|没返回邮箱/i.test(message)
+          ? "google"
+          : "callback";
     return Response.redirect(new URL(`/login?error=${kind}`, origin));
   }
 }

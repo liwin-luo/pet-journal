@@ -19,7 +19,14 @@ export async function GET(req: Request) {
   try {
     const pool = await readyDb();
     await pool.query("select 1 as ok");
-    return Response.json({ sha, origin, auth, google, db: "ok" });
+    return Response.json({
+      sha,
+      origin,
+      auth,
+      google,
+      db: "ok",
+      hint: auth ? undefined : "Vercel 加 AUTH_SECRET 再 Redeploy",
+    });
   } catch (cause) {
     const message = cause instanceof Error ? cause.message.slice(0, 80) : "fail";
     return Response.json({ sha, origin, auth, google, db: "fail", message }, { status: 503 });

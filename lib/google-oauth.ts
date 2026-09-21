@@ -37,7 +37,9 @@ export function googleClient(): { id: string; secret: string } {
 }
 
 function stateSecret(): string {
-  return process.env.AUTH_SECRET?.trim() || googleClient().secret;
+  const value = process.env.AUTH_SECRET?.trim();
+  if (!value) throw new Error("先设 AUTH_SECRET");
+  return value;
 }
 
 export function signOauthState(now = Date.now()): string {
