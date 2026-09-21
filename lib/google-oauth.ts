@@ -5,7 +5,15 @@ const TOKEN = "https://oauth2.googleapis.com/token";
 const USERINFO = "https://openidconnect.googleapis.com/v1/userinfo";
 const STATE_TTL_MS = 10 * 60 * 1000;
 
-export function googleRedirectUri(): string {
+export function publicOrigin(req: Request): string {
+  const url = new URL(req.url);
+  const proto = req.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() || url.protocol.replace(":", "");
+  const host = req.headers.get("x-forwarded-host")?.split(",")[0]?.trim() || req.headers.get("host") || url.host;
+  return `${proto}://${host}`;
+}
+
+export function googleRedirectUri(req?: Request): string {
+  if (process.env.VERCEL && req) return `${publicOrigin(req)}/api/auth/google/callback`;
   return (
     process.env.GOOGLE_REDIRECT_URI?.trim() ||
     "http://127.0.0.1:3000/api/auth/google/callback"
@@ -46,11 +54,11 @@ export function verifyOauthState(state: string, now = Date.now()): boolean {
   }
 }
 
-export function googleAuthorizeUrl(state: string): string {
+export function googleAuthorizeUrl(state: string, req?: Request): string {
   const client = googleClient();
   const url = new URL(AUTHORIZE);
   url.searchParams.set("client_id", client.id);
-  url.searchParams.set("redirect_uri", googleRedirectUri());
+  url.searchParams.set("redirect_uri", googleRedirectUri(req));
   url.searchParams.set("response_type", "code");
   url.searchParams.set("scope", "openid email profile");
   url.searchParams.set("state", state);
@@ -58,13 +66,13 @@ export function googleAuthorizeUrl(state: string): string {
   return url.toString();
 }
 
-export async function googleProfile(code: string): Promise<{ sub: string; email: string; name?: string }> {
+export async function googleProfile(code: string, req?: Request): Promise<{ sub: string; email: string; name?: string }> {
   const client = googleClient();
   const body = new URLSearchParams({
     code,
     client_id: client.id,
     client_secret: client.secret,
-    redirect_uri: googleRedirectUri(),
+    redirect_uri: googleRedirectUri(req),
     grant_type: "authorization_code",
   });
   const tokenRes = await fetch(TOKEN, {

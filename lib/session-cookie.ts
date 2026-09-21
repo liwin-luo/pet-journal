@@ -35,10 +35,16 @@ export function readSession(raw: string | undefined, now = Date.now()): string |
   }
 }
 
+function cookieFlags(): string {
+  // ponytail: Vercel 才 Secure；本地 http://127.0.0.1 加 Secure 浏览器会丢 cookie
+  const secure = Boolean(process.env.VERCEL);
+  return `Path=/; HttpOnly; SameSite=Lax${secure ? "; Secure" : ""}`;
+}
+
 export function sessionCookie(value: string): string {
-  return `${SESSION_COOKIE}=${value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${Math.floor(WEEK_MS / 1000)}`;
+  return `${SESSION_COOKIE}=${value}; ${cookieFlags()}; Max-Age=${Math.floor(WEEK_MS / 1000)}`;
 }
 
 export function clearSessionCookie(): string {
-  return `${SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+  return `${SESSION_COOKIE}=; ${cookieFlags()}; Max-Age=0`;
 }

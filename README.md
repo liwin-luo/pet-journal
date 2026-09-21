@@ -20,3 +20,5 @@ pnpm dev
 打开 http://127.0.0.1:3000
 
 没配文案 Key 时用本地模板起草，打开今天不空。没配出图 Key 时图为「未接模型」。
+
+线上（Vercel）必填：`AUTH_SECRET`、`AUTH_GOOGLE_ID`、`AUTH_GOOGLE_SECRET`、可从外网连的 `DATABASE_URL`。Google 控制台再加一条回调 `https://你的域名/api/auth/google/callback`。`GOOGLE_REDIRECT_URI` 若仍是 127.0.0.1，线上会按请求域名覆盖。

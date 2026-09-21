@@ -13,7 +13,18 @@ export default async function DiaryPage() {
       </section>
     );
   }
-  const pets = await listPets(session.userId);
+  let pets;
+  try {
+    pets = await listPets(session.userId);
+  } catch (cause) {
+    console.error("listPets failed", cause);
+    return (
+      <section className="mt-8 text-center">
+        <p className="display text-3xl">库连不上</p>
+        <p className="mt-2 text-sm text-[#6b5a4a]">Vercel 的 DATABASE_URL 要指向线上 Postgres，不能是 localhost。</p>
+      </section>
+    );
+  }
   if (!pets.length) {
     return (
       <section className="mt-8 text-center">

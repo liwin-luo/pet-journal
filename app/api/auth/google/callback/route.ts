@@ -1,20 +1,21 @@
 import { upsertGoogleUser } from "@/lib/db/users.ts";
-import { googleProfile, verifyOauthState } from "@/lib/google-oauth.ts";
+import { googleProfile, publicOrigin, verifyOauthState } from "@/lib/google-oauth.ts";
 import { sessionCookie, signSession } from "@/lib/session-cookie.ts";
 
 export const runtime = "nodejs";
 
 export async function GET(req: Request) {
+  const origin = publicOrigin(req);
   const url = new URL(req.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
   const error = url.searchParams.get("error");
-  if (error) return Response.redirect(new URL("/login?error=google", url.origin));
+  if (error) return Response.redirect(new URL("/login?error=google", origin));
   if (!code || !state || !verifyOauthState(state)) {
-    return Response.redirect(new URL("/login?error=state", url.origin));
+    return Response.redirect(new URL("/login?error=state", origin));
   }
   try {
-    const profile = await googleProfile(code);
+    const profile = await googleProfile(code, req);
     const user = await upsertGoogleUser({
       googleSub: profile.sub,
       email: profile.email,
@@ -23,12 +24,12 @@ export async function GET(req: Request) {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: "http://127.0.0.1:3000/",
+        Location: `${origin}/`,
         "Set-Cookie": sessionCookie(signSession(user.id)),
       },
     });
   } catch (cause) {
     console.error("google callback failed", cause);
-    return Response.redirect(new URL("/login?error=callback", url.origin));
+    return Response.redirect(new URL("/login?error=callback", origin));
   }
 }

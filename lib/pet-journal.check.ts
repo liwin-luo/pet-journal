@@ -9,6 +9,7 @@ import {
   draftDiaryBody,
   validateDiaryWrite,
 } from "./diary-copy.ts";
+import { googleRedirectUri, publicOrigin } from "./google-oauth.ts";
 import { readSession, signSession } from "./session-cookie.ts";
 import { authStatus, scopeByUser, shouldBlockAuto } from "./scope.ts";
 import {
@@ -37,6 +38,16 @@ process.env.AUTH_SECRET ??= "check-secret";
 const cookie = signSession("user-a", 1_000);
 assert.equal(readSession(cookie, 1_001), "user-a");
 assert.equal(readSession(cookie, 1_000 + 8 * 24 * 60 * 60 * 1000), undefined);
+
+const localReq = new Request("http://127.0.0.1:3000/api/auth/google");
+assert.equal(publicOrigin(localReq), "http://127.0.0.1:3000");
+assert.equal(googleRedirectUri(localReq), "http://127.0.0.1:3000/api/auth/google/callback");
+const vercelReq = new Request("https://www.petsdaily.live/api/auth/google", {
+  headers: { "x-forwarded-proto": "https", "x-forwarded-host": "www.petsdaily.live" },
+});
+process.env.VERCEL = "1";
+assert.equal(googleRedirectUri(vercelReq), "https://www.petsdaily.live/api/auth/google/callback");
+delete process.env.VERCEL;
 
 assert.equal(authStatus(undefined), 401);
 assert.equal(authStatus(""), 401);
