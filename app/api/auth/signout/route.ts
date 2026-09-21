@@ -6,7 +6,7 @@ export function POST(req: Request) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/login",
+      Location: "/",
       "Set-Cookie": clearSessionCookie(),
     },
   });

@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { useI18n } from "@/components/locale-provider";
+import { fill } from "@/lib/i18n.ts";
 import { resolveFriend } from "@/lib/pets";
 import { TEMPLATES, findTemplate } from "@/lib/templates";
-import { RELATION_LABEL, type Pet } from "@/lib/types";
+import type { Pet } from "@/lib/types";
 
 function CreateInner() {
+  const { m } = useI18n();
   const search = useSearchParams();
   const [ready, setReady] = useState(false);
   const [pets, setPets] = useState<Pet[]>([]);
@@ -76,14 +79,14 @@ function CreateInner() {
     }
   }
 
-  if (!ready) return <p className="text-sm text-mute">铺开相纸…</p>;
+  if (!ready) return <p className="text-sm text-mute">{m.create.opening}</p>;
 
   if (!pets.length) {
     return (
       <section className="card mx-auto max-w-md p-8 text-center">
-        <p className="display text-3xl">册子是空的</p>
-        <p className="mt-2 text-sm text-mute">先收一只宠物再来选模板。</p>
-        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">去建档</Link>
+        <p className="display text-3xl">{m.create.emptyTitle}</p>
+        <p className="mt-2 text-sm text-mute">{m.create.emptyBody}</p>
+        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">{m.common.goNewPet}</Link>
       </section>
     );
   }
@@ -92,7 +95,7 @@ function CreateInner() {
     <section className="grid gap-6 lg:grid-cols-[minmax(0,320px)_1fr] lg:items-start">
       <div className="card space-y-4 p-5 lg:sticky lg:top-6">
         <label className="block space-y-2">
-          <span className="text-xs text-mute">出镜的是</span>
+          <span className="text-xs text-mute">{m.create.who}</span>
           <select className="field" value={petId} onChange={(e) => { setPetId(e.target.value); setFriendId(""); setPreview(null); }}>
             {pets.map((item) => (
               <option key={item.id} value={item.id}>{item.name}</option>
@@ -100,20 +103,20 @@ function CreateInner() {
           </select>
         </label>
         <label className="block space-y-2">
-          <span className="text-xs text-mute">带上朋友（可选，合影必选）</span>
+          <span className="text-xs text-mute">{m.create.friend}</span>
           <select className="field" value={friendId} onChange={(e) => setFriendId(e.target.value)}>
-            <option value="">这次不带</option>
+            <option value="">{m.create.noFriend}</option>
             {(pet?.friends ?? []).map((friend) => (
               <option key={friend.id} value={friend.id}>
-                {friend.name} · {RELATION_LABEL[friend.relation]}
+                {friend.name} · {m.labels.relation[friend.relation]}
               </option>
             ))}
           </select>
         </label>
-        {blocked ? <p className="text-sm text-stamp">合影要先选一位朋友</p> : null}
+        {blocked ? <p className="text-sm text-stamp">{m.create.needFriend}</p> : null}
         {error ? <p className="text-sm text-stamp">{error}</p> : null}
         <button type="button" className="btn w-full" disabled={!template || busy || blocked} onClick={() => void generate()}>
-          {busy ? "在暗房里…大约半分钟" : template ? `生成「${template.title}」` : "先点一个模板"}
+          {busy ? m.create.busy : template ? fill(m.create.go, { title: m.templates[template.id].title }) : m.create.pick}
         </button>
       </div>
 
@@ -127,18 +130,18 @@ function CreateInner() {
               className="card p-4 text-left"
               style={{ outline: templateId === item.id ? "2px solid #3a2c22" : undefined }}
             >
-              <p className="display text-xl leading-none">{item.title}</p>
-              <p className="mt-2 text-xs text-mute">{item.blurb}</p>
+              <p className="display text-xl leading-none">{m.templates[item.id].title}</p>
+              <p className="mt-2 text-xs text-mute">{m.templates[item.id].blurb}</p>
             </button>
           ))}
         </div>
         {preview ? (
           <div id="result" className="card mx-auto max-w-md overflow-hidden p-4">
             <img src={preview.url} alt="" className="aspect-[3/4] w-full rounded-xl object-cover" />
-            {preview.mock ? <p className="stamp mt-3">未接模型</p> : null}
+            {preview.mock ? <p className="stamp mt-3">{m.mock}</p> : null}
             <div className="mt-3 flex gap-3">
-              <button type="button" className="btn flex-1" disabled={busy} onClick={() => void generate()}>再来一张</button>
-              <Link href="/album" className="btn btn-ghost flex-1">去相册</Link>
+              <button type="button" className="btn flex-1" disabled={busy} onClick={() => void generate()}>{m.create.again}</button>
+              <Link href="/album" className="btn btn-ghost flex-1">{m.create.album}</Link>
             </div>
           </div>
         ) : null}
@@ -149,7 +152,7 @@ function CreateInner() {
 
 export default function CreatePage() {
   return (
-    <Suspense fallback={<p className="text-sm text-mute">铺开相纸…</p>}>
+    <Suspense fallback={<p className="text-sm text-mute">…</p>}>
       <CreateInner />
     </Suspense>
   );

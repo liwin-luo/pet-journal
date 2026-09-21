@@ -24,7 +24,7 @@ export async function GET(req: Request) {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: `${origin}/`,
+        Location: `${origin}/today`,
         "Set-Cookie": sessionCookie(signSession(user.id)),
       },
     });

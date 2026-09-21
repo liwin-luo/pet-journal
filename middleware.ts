@@ -1,9 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname === "/login") return NextResponse.next();
+  const path = req.nextUrl.pathname;
+  if (path === "/" || path === "/login") return NextResponse.next();
   if (req.cookies.get("pj_user")?.value) return NextResponse.next();
-  return NextResponse.redirect(new URL("/login", req.url));
+  return NextResponse.redirect(new URL("/", req.url));
 }
 
 export const config = {

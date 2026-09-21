@@ -1,25 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
+import { LocaleProvider } from "@/components/locale-provider";
 import { Shell } from "@/components/shell";
+import { htmlLang } from "@/lib/i18n.ts";
+import { readLocale } from "@/lib/locale.ts";
 import "./globals.css";
 
-const display = Noto_Serif_SC({
-  weight: "700",
-  subsets: ["latin"],
-  variable: "--font-display",
-  preload: false,
-});
-
-const body = Noto_Sans_SC({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-body",
-  preload: false,
-});
-
 export const metadata: Metadata = {
-  title: "宠物手账",
-  description: "给家里那只写今天，再配一张手账图",
+  title: "Petsdaily",
+  description: "A journal for the one at home",
 };
 
 export const viewport: Viewport = {
@@ -27,11 +15,22 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await readLocale();
   return (
-    <html lang="zh-CN" className={`${display.variable} ${body.variable}`}>
+    <html lang={htmlLang(locale)}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        <Shell>{children}</Shell>
+        <LocaleProvider locale={locale}>
+          <Shell>{children}</Shell>
+        </LocaleProvider>
       </body>
     </html>
   );

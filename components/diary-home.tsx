@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { useI18n } from "@/components/locale-provider";
 import { todayISO } from "@/lib/dates";
 import { readImageAsDataUrl } from "@/lib/image";
 import { petSnapshot } from "@/lib/pets";
@@ -11,6 +12,7 @@ import type { DiaryEntry, Pet } from "@/lib/types";
 const autoOnce = new Set<string>();
 
 function DiaryInner() {
+  const { m } = useI18n();
   const search = useSearchParams();
   const [ready, setReady] = useState(false);
   const [pets, setPets] = useState<Pet[]>([]);
@@ -149,14 +151,14 @@ function DiaryInner() {
     if (pet) await loadEntries(pet.id);
   }
 
-  if (!ready) return <p className="text-sm text-mute">翻开今天…</p>;
+  if (!ready) return <p className="text-sm text-mute">{m.diary.opening}</p>;
 
   if (!pets.length) {
     return (
       <section className="card mx-auto mt-4 max-w-md p-8 text-center">
-        <p className="display text-3xl">还没人可写</p>
-        <p className="mt-2 text-sm text-mute">先收一只宠物，打开今天会自动起草。</p>
-        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">去建档</Link>
+        <p className="display text-3xl">{m.diary.emptyTitle}</p>
+        <p className="mt-2 text-sm text-mute">{m.diary.emptyBody}</p>
+        <Link href="/pets/new" className="btn mt-6 w-full sm:w-auto">{m.common.goNewPet}</Link>
       </section>
     );
   }
@@ -167,7 +169,7 @@ function DiaryInner() {
     <section className="grid gap-6 xl:grid-cols-[minmax(0,360px)_1fr] xl:items-start">
       <div className="card space-y-4 p-5 xl:sticky xl:top-6">
         <label className="block space-y-2">
-          <span className="text-xs text-mute">这本日记是</span>
+          <span className="text-xs text-mute">{m.diary.whose}</span>
           <select
             className="field"
             value={petId}
@@ -184,16 +186,16 @@ function DiaryInner() {
           </select>
         </label>
         <div className="space-y-2">
-          <p className="text-xs text-mute">按我说的写</p>
+          <p className="text-xs text-mute">{m.diary.promptLabel}</p>
           <textarea
             className="field min-h-24"
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            placeholder="下雨没出门，拆了沙发…"
+            placeholder={m.diary.promptPh}
           />
           <div className="flex gap-2">
             <label className="btn btn-ghost flex-1 text-sm">
-              {photo ? "已附今日照" : "附一张今日照"}
+              {photo ? m.diary.attached : m.diary.attach}
               <input
                 type="file"
                 accept="image/*"
@@ -206,12 +208,12 @@ function DiaryInner() {
             </label>
             {photo ? (
               <button type="button" className="btn btn-ghost" onClick={() => setPhoto("")}>
-                去掉
+                {m.diary.remove}
               </button>
             ) : null}
           </div>
           <button type="button" className="btn w-full" disabled={busy} onClick={() => void requestBody("prompt")}>
-            {busy ? "正在写…" : "按这句写一篇"}
+            {busy ? m.diary.writing : m.diary.write}
           </button>
         </div>
         {error ? <p className="text-sm text-stamp">{error}</p> : null}
@@ -220,16 +222,16 @@ function DiaryInner() {
       <div className="space-y-6">
         {groups.map(([date, list]) => (
           <div key={date}>
-            <h2 className="display text-2xl">{date === today ? "今天" : date}</h2>
+            <h2 className="display text-2xl">{date === today ? m.diary.today : date}</h2>
             <div className="mt-3 grid gap-4 md:grid-cols-2">
               {list.map((entry) => (
                 <article key={entry.id} className="polaroid relative">
-                  <p className="stamp">{entry.source === "auto" ? "自动" : "按你说的"}</p>
+                  <p className="stamp">{entry.source === "auto" ? m.diary.auto : m.diary.prompted}</p>
                   {editingId === entry.id ? (
                     <div className="mt-3 space-y-2">
                       <textarea className="field min-h-28" value={draft} onChange={(e) => setDraft(e.target.value)} />
                       <button type="button" className="btn w-full" onClick={() => void saveEdit(entry.id)}>
-                        保存
+                        {m.diary.save}
                       </button>
                     </div>
                   ) : (
@@ -239,7 +241,7 @@ function DiaryInner() {
                       onClick={() => { setEditingId(entry.id); setDraft(entry.body); }}
                     >
                       {entry.body}
-                      {entry.edited ? <span className="mt-2 block text-xs text-mute">改过</span> : null}
+                      {entry.edited ? <span className="mt-2 block text-xs text-mute">{m.diary.edited}</span> : null}
                     </button>
                   )}
                   {entry.photo ? <img src={entry.photo} alt="" className="mt-3 aspect-[4/3] w-full rounded-lg object-cover" /> : null}
@@ -255,14 +257,14 @@ function DiaryInner() {
                     disabled={Boolean(imageBusy) || !pet?.photos.length}
                     onClick={() => void illustrate(entry)}
                   >
-                    {imageBusy === entry.id ? "在画手账…" : entry.imageUrl ? "重试配图" : "配一张图"}
+                    {imageBusy === entry.id ? m.diary.drawing : entry.imageUrl ? m.diary.redraw : m.diary.draw}
                   </button>
                 </article>
               ))}
             </div>
           </div>
         ))}
-        {!entries.length && busy ? <p className="text-sm text-mute">正在起草今天…</p> : null}
+        {!entries.length && busy ? <p className="text-sm text-mute">{m.diary.drafting}</p> : null}
       </div>
     </section>
   );
@@ -280,7 +282,7 @@ function groupByDate(entries: DiaryEntry[]): Array<[string, DiaryEntry[]]> {
 
 export function DiaryHome() {
   return (
-    <Suspense fallback={<p className="text-sm text-mute">翻开今天…</p>}>
+    <Suspense fallback={<p className="text-sm text-mute">…</p>}>
       <DiaryInner />
     </Suspense>
   );

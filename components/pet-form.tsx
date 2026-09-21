@@ -2,13 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useI18n } from "@/components/locale-provider";
+import { fill } from "@/lib/i18n.ts";
 import { readImageAsDataUrl } from "@/lib/image";
 import { emptyPet } from "@/lib/pets";
 import {
-  AGE_LABEL,
-  RELATION_LABEL,
-  SEX_LABEL,
-  SPECIES_LABEL,
   TRAIT_OPTIONS,
   type Age,
   type Friend,
@@ -19,6 +17,7 @@ import {
 } from "@/lib/types";
 
 export function PetForm({ petId }: { petId?: string }) {
+  const { m } = useI18n();
   const router = useRouter();
   const [pet, setPet] = useState<Pet | null>(null);
   const [ready, setReady] = useState(false);
@@ -110,48 +109,48 @@ export function PetForm({ petId }: { petId?: string }) {
       setError(data.error || "没存上");
       return;
     }
-    router.push(petId ? "/pets" : "/");
+    router.push(petId ? "/pets" : "/today");
   }
 
-  if (!ready) return <p className="text-sm text-mute">翻开册子…</p>;
-  if (!pet) return <p className="text-sm text-mute">这只不在册子里了。</p>;
+  if (!ready) return <p className="text-sm text-mute">{m.pets.opening}</p>;
+  if (!pet) return <p className="text-sm text-mute">{m.form.missing}</p>;
 
   return (
     <div className="card space-y-5 p-5 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-5 md:space-y-0">
-      <Field label="名字 *">
+      <Field label={m.form.name}>
         <input className="field" value={pet.name} onChange={(e) => patch({ name: e.target.value })} placeholder="豆豆" />
       </Field>
-      <Field label="物种 *">
+      <Field label={m.form.species}>
         <Row>
           {(Object.keys(SPECIES_LABEL) as Species[]).map((value) => (
             <Chip key={value} on={pet.species === value} onClick={() => patch({ species: value })}>
-              {SPECIES_LABEL[value]}
+              {m.labels.species[value]}
             </Chip>
           ))}
         </Row>
       </Field>
-      <Field label="品种">
-        <input className="field" value={pet.breed ?? ""} onChange={(e) => patch({ breed: e.target.value })} placeholder="橘猫 / 柯基" />
+      <Field label={m.form.breed}>
+        <input className="field" value={pet.breed ?? ""} onChange={(e) => patch({ breed: e.target.value })} placeholder={m.form.breedPh} />
       </Field>
-      <Field label="性别">
+      <Field label={m.form.sex}>
         <Row>
           {(Object.keys(SEX_LABEL) as Sex[]).map((value) => (
             <Chip key={value} on={pet.sex === value} onClick={() => patch({ sex: pet.sex === value ? undefined : value })}>
-              {SEX_LABEL[value]}
+              {m.labels.sex[value]}
             </Chip>
           ))}
         </Row>
       </Field>
-      <Field label="年龄">
+      <Field label={m.form.age}>
         <Row>
           {(Object.keys(AGE_LABEL) as Age[]).map((value) => (
             <Chip key={value} on={pet.age === value} onClick={() => patch({ age: pet.age === value ? undefined : value })}>
-              {AGE_LABEL[value]}
+              {m.labels.age[value]}
             </Chip>
           ))}
         </Row>
       </Field>
-      <Field label="性格 · 最多 3 个">
+      <Field label={m.form.traits}>
         <Row>
           {TRAIT_OPTIONS.map((trait) => {
             const on = pet.traits.includes(trait);
@@ -170,19 +169,19 @@ export function PetForm({ petId }: { petId?: string }) {
           })}
         </Row>
       </Field>
-      <Field label="爱好">
-        <input className="field" value={pet.hobbies ?? ""} onChange={(e) => patch({ hobbies: e.target.value })} placeholder="晒太阳、拆家" />
+      <Field label={m.form.hobbies}>
+        <input className="field" value={pet.hobbies ?? ""} onChange={(e) => patch({ hobbies: e.target.value })} placeholder={m.form.hobbiesPh} />
       </Field>
-      <Field label="玩具">
-        <input className="field" value={pet.toys ?? ""} onChange={(e) => patch({ toys: e.target.value })} placeholder="逗猫棒" />
+      <Field label={m.form.toys}>
+        <input className="field" value={pet.toys ?? ""} onChange={(e) => patch({ toys: e.target.value })} placeholder={m.form.toysPh} />
       </Field>
-      <Field label="食物">
-        <input className="field" value={pet.food ?? ""} onChange={(e) => patch({ food: e.target.value })} placeholder="冻干" />
+      <Field label={m.form.food}>
+        <input className="field" value={pet.food ?? ""} onChange={(e) => patch({ food: e.target.value })} placeholder={m.form.foodPh} />
       </Field>
-      <Field label="口头禅 · 表情包会画进图">
-        <input className="field" value={pet.catchphrase ?? ""} onChange={(e) => patch({ catchphrase: e.target.value })} placeholder="想吃" />
+      <Field label={m.form.catchphrase}>
+        <input className="field" value={pet.catchphrase ?? ""} onChange={(e) => patch({ catchphrase: e.target.value })} placeholder={m.form.catchphrasePh} />
       </Field>
-      <Field label={`参考图 * · ${pet.photos.length}/4`} wide>
+      <Field label={fill(m.form.photos, { n: pet.photos.length })} wide>
         <div className="grid grid-cols-4 gap-2">
           {pet.photos.map((src, index) => (
             <button
@@ -196,25 +195,25 @@ export function PetForm({ petId }: { petId?: string }) {
           ))}
           {pet.photos.length < 4 ? (
             <label className="flex aspect-square cursor-pointer items-center justify-center rounded-xl border border-dashed border-line bg-canvas text-xs text-mute">
-              + 照片
+              {m.form.addPhoto}
               <input type="file" accept="image/*" hidden multiple onChange={(e) => void onPhotos(e.target.files)} />
             </label>
           ) : null}
         </div>
       </Field>
-      <Field label="好朋友" wide>
+      <Field label={m.form.friends} wide>
         {others.length ? (
           <select className="field mb-2" defaultValue="" onChange={(e) => { if (e.target.value) addPetFriend(e.target.value); e.target.value = ""; }}>
-            <option value="">从宠物册里选</option>
+            <option value="">{m.form.pickFriend}</option>
             {others.map((item) => (
               <option key={item.id} value={item.id}>{item.name}</option>
             ))}
           </select>
         ) : (
-          <p className="mb-2 text-xs text-mute">册子里还没有第二只，也可以先上传一张朋友的照片。</p>
+          <p className="mb-2 text-xs text-mute">{m.form.noSecond}</p>
         )}
         <label className="btn btn-ghost mb-3 w-full text-sm sm:w-auto">
-          上传朋友照片
+          {m.form.uploadFriend}
           <input type="file" accept="image/*" hidden onChange={(e) => void onFriendPhoto(e.target.files?.[0])} />
         </label>
         <div className="space-y-2">
@@ -246,11 +245,11 @@ export function PetForm({ petId }: { petId?: string }) {
                 }
               >
                 {(Object.keys(RELATION_LABEL) as Relation[]).map((value) => (
-                  <option key={value} value={value}>{RELATION_LABEL[value]}</option>
+                  <option key={value} value={value}>{m.labels.relation[value]}</option>
                 ))}
               </select>
               <button type="button" className="text-xs text-stamp" onClick={() => patch({ friends: pet.friends.filter((item) => item.id !== friend.id) })}>
-                删
+                {m.form.del}
               </button>
             </div>
           ))}
@@ -259,7 +258,7 @@ export function PetForm({ petId }: { petId?: string }) {
       {error ? <p className="text-sm text-stamp md:col-span-2">{error}</p> : null}
       <div className="md:col-span-2">
         <button type="button" className="btn w-full sm:w-auto" disabled={saving} onClick={() => void save()}>
-          {saving ? "收入册子…" : "收入宠物册"}
+          {saving ? m.form.saving : m.form.save}
         </button>
       </div>
     </div>

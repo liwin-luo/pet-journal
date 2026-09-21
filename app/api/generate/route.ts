@@ -1,5 +1,5 @@
 import { insertImage } from "@/lib/db/images.ts";
-import { generatePetStill } from "@/lib/generate-image.ts";
+import { generatePetStill, publicImageError } from "@/lib/generate-image.ts";
 import { requireUserId, unauthorized } from "@/lib/session.ts";
 import {
   buildPrompt,
@@ -76,6 +76,6 @@ export async function POST(req: Request) {
   } catch (error) {
     const message = error instanceof Error ? error.message : "模型失败";
     console.error("generate failed", message);
-    return Response.json({ error: "出图失败，换模板或重试" }, { status: 502 });
+    return Response.json({ error: publicImageError(message) }, { status: 502 });
   }
 }

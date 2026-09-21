@@ -1,3 +1,4 @@
+import { publicImageError } from "@/lib/generate-image.ts";
 import { updateDiary } from "@/lib/db/diaries.ts";
 import { insertImage } from "@/lib/db/images.ts";
 import { validateDiaryImage } from "@/lib/diary-copy.ts";
@@ -70,6 +71,6 @@ export async function POST(req: Request) {
   } catch (error) {
     const message = error instanceof Error ? error.message : "模型失败";
     console.error("diary image failed", message);
-    return Response.json({ error: "配图失败，字还在，可以重试" }, { status: 502 });
+    return Response.json({ error: publicImageError(message) }, { status: 502 });
   }
 }

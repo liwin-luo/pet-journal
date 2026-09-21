@@ -61,6 +61,12 @@ const STATEMENTS = [
       seed INT NOT NULL DEFAULT 0,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )`,
+  `CREATE TABLE IF NOT EXISTS media (
+      id TEXT PRIMARY KEY,
+      mime TEXT NOT NULL,
+      bytes BYTEA NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )`,
 ];
 
 export async function migrate(pool: Pool): Promise<void> {

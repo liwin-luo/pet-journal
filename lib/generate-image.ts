@@ -1,9 +1,6 @@
-/**
- * Seedream 出图；没配 ARK 就画一张 SVG 占位。
- * 所属模块：labs/pet-journal
- */
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { putMedia } from "./db/media.ts";
 import { RATIO, SEEDREAM_SIZE } from "./templates.ts";
 
 const SEEDREAM_TIMEOUT_MS = 240_000;
@@ -35,23 +32,18 @@ export async function generatePetStill(
   const modelId = process.env.SEEDREAM_MODEL_ID?.trim() || "seedream-5-0-260128";
 
   if (arkKey) {
-    try {
-      return await generateSeedream({
-        apiKey: arkKey,
-        baseUrl: arkBase,
-        modelId,
-        prompt: input.prompt,
-        refs: input.refs,
-        seed: input.seed,
-      });
-    } catch (error) {
-      console.error("Seedream failed", error);
-      throw error;
-    }
+    return await generateSeedream({
+      apiKey: arkKey,
+      baseUrl: arkBase,
+      modelId,
+      prompt: input.prompt,
+      refs: input.refs,
+      seed: input.seed,
+    });
   }
 
   const svg = mockStillSvg(input.petName, input.template.title);
-  const imageUrl = await savePublicFile("svg", Buffer.from(svg, "utf8"));
+  const imageUrl = await saveImage("svg", Buffer.from(svg, "utf8"), "image/svg+xml");
   return {
     imageUrl,
     mimeType: "image/svg+xml",
@@ -70,6 +62,7 @@ async function generateSeedream(opts: {
   seed: number;
 }): Promise<GeneratePetStillResult> {
   const refs = opts.refs.filter(isImageRef).slice(0, 4);
+  const jpeg = Boolean(process.env.VERCEL);
   const res = await fetch(`${opts.baseUrl}/api/v3/images/generations`, {
     method: "POST",
     headers: {
@@ -83,7 +76,7 @@ async function generateSeedream(opts: {
       ...(refs.length ? { image: refs } : {}),
       size: SEEDREAM_SIZE,
       seed: opts.seed,
-      ...( /seedream-5/i.test(opts.modelId) ? { output_format: "png" } : {}),
+      ...(/seedream-5/i.test(opts.modelId) ? { output_format: jpeg ? "jpeg" : "png" } : {}),
       response_format: "b64_json",
       watermark: false,
     }),
@@ -97,10 +90,11 @@ async function generateSeedream(opts: {
   if (!b64) throw new Error("Seedream response missing b64_json");
   const bytes = Buffer.from(b64, "base64");
   const png = bytes[0] === 0x89;
-  const imageUrl = await savePublicFile(png ? "png" : "jpg", bytes);
+  const mime = png ? "image/png" : "image/jpeg";
+  const imageUrl = await saveImage(png ? "png" : "jpg", bytes, mime);
   return {
     imageUrl,
-    mimeType: png ? "image/png" : "image/jpeg",
+    mimeType: mime,
     mock: false,
     prompt: opts.prompt,
     seed: opts.seed,
@@ -113,6 +107,19 @@ function isImageRef(url: string): boolean {
     url.startsWith("http://") ||
     url.startsWith("data:image/")
   );
+}
+
+export async function saveImage(ext: "png" | "jpg" | "svg", bytes: Buffer, mime: string): Promise<string> {
+  if (!process.env.VERCEL) {
+    try {
+      return await savePublicFile(ext, bytes);
+    } catch (cause) {
+      console.error("public write failed, store in db", cause);
+    }
+  }
+  const id = crypto.randomUUID();
+  await putMedia(id, mime, bytes);
+  return `/api/media/${id}`;
 }
 
 async function savePublicFile(ext: "png" | "jpg" | "svg", bytes: Buffer): Promise<string> {
@@ -145,4 +152,12 @@ function escapeXml(value: string): string {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+export function publicImageError(message: string): string {
+  if (/timeout|aborted|ABORT/i.test(message)) return "出图超时，等一会儿再试";
+  if (/ARK|401|403|invalid.+key/i.test(message)) return "出图 Key 无效，检查 Vercel 的 ARK_API_KEY";
+  if (/EROFS|EACCES|ENOENT|public write/i.test(message)) return "线上不能写本地磁盘";
+  if (/Seedream HTTP/i.test(message)) return "出图模型拒绝了这次请求，换模板或重试";
+  return "配图失败，字还在，可以重试";
 }

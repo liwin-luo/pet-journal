@@ -1,11 +1,13 @@
 "use client";
 
 import { PetForm } from "@/components/pet-form";
+import { useI18n } from "@/components/locale-provider";
 
 export default function NewPetPage() {
+  const { m } = useI18n();
   return (
     <section>
-      <p className="mb-4 text-sm text-mute">必填只有名字、物种和一张正面照。其余都是给生图用的。</p>
+      <p className="mb-4 text-sm text-mute">{m.pets.newHint}</p>
       <PetForm />
     </section>
   );

@@ -9,6 +9,8 @@ import {
   draftDiaryBody,
   validateDiaryWrite,
 } from "./diary-copy.ts";
+import { publicImageError } from "./generate-image.ts";
+import { fill, messages, parseLocale } from "./i18n.ts";
 import { poolConfig } from "./db/client.ts";
 import { googleRedirectUri, publicOrigin } from "./google-oauth.ts";
 import { readSession, signSession } from "./session-cookie.ts";
@@ -104,5 +106,15 @@ assert.match(prompted, /豆豆/);
 assert.match(prompted, /下雨没出门/);
 assert.match(buildDiaryImagePrompt(pet, prompted), /下雨没出门/);
 assert.doesNotMatch(buildPrompt(pet, undefined, "home"), /下雨没出门/);
+assert.match(publicImageError("timeout of 240000ms"), /超时/);
+assert.match(publicImageError("EROFS"), /磁盘/);
+assert.equal(parseLocale("en-US"), "en");
+assert.equal(parseLocale("ko-KR"), "ko");
+assert.equal(parseLocale("ja"), "ja");
+assert.equal(fill("{n} 只", { n: 3 }), "3 只");
+assert.equal(messages.zh.landing.plans.length, 3);
+assert.equal(messages.en.landing.features.length, 4);
+assert.equal(messages.ko.templates.home.title.length > 0, true);
+assert.equal(messages.ja.labels.species.cat, "猫");
 
 console.log("pet-journal.check ok");

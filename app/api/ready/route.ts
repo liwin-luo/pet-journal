@@ -25,6 +25,7 @@ export async function GET(req: Request) {
       auth,
       google,
       db: "ok",
+      ark: Boolean(process.env.ARK_API_KEY?.trim()),
       hint: auth ? undefined : "Vercel 加 AUTH_SECRET 再 Redeploy",
     });
   } catch (cause) {

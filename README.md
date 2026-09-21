@@ -21,4 +21,4 @@ pnpm dev
 
 没配文案 Key 时用本地模板起草，打开今天不空。没配出图 Key 时图为「未接模型」。
 
-线上（Vercel）必填：`AUTH_SECRET`、`AUTH_GOOGLE_ID`、`AUTH_GOOGLE_SECRET`、`DATABASE_URL`（Supabase 事务池 6543 + `sslmode=require`）。Google 控制台再加一条回调 `https://你的域名/api/auth/google/callback`。`GOOGLE_REDIRECT_URI` 若仍是 127.0.0.1，线上会按请求域名覆盖。
+线上（Vercel）必填：`AUTH_SECRET`、`AUTH_GOOGLE_ID`、`AUTH_GOOGLE_SECRET`、`DATABASE_URL`、出图还要 `ARK_API_KEY`。图不写本地磁盘，存在库里走 `/api/media/...`。
