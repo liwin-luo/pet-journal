@@ -9,6 +9,7 @@ import {
   draftDiaryBody,
   validateDiaryWrite,
 } from "./diary-copy.ts";
+import { poolConfig } from "./db/client.ts";
 import { googleRedirectUri, publicOrigin } from "./google-oauth.ts";
 import { readSession, signSession } from "./session-cookie.ts";
 import { authStatus, scopeByUser, shouldBlockAuto } from "./scope.ts";
@@ -46,6 +47,15 @@ const vercelReq = new Request("https://www.petsdaily.live/api/auth/google", {
   headers: { "x-forwarded-proto": "https", "x-forwarded-host": "www.petsdaily.live" },
 });
 assert.equal(googleRedirectUri(vercelReq), "https://www.petsdaily.live/api/auth/google/callback");
+
+assert.equal(poolConfig("postgres://postgres:postgres@localhost:5432/pet_journal").max, 5);
+assert.equal(poolConfig("postgres://postgres:postgres@localhost:5432/pet_journal").ssl, undefined);
+const supabase = poolConfig(
+  "postgres://postgres.ref:x@aws-0-us-west-2.pooler.supabase.com:6543/postgres?sslmode=require",
+);
+assert.equal(supabase.max, 1);
+assert.deepEqual(supabase.ssl, { rejectUnauthorized: false });
+assert.equal(new URL(supabase.connectionString ?? "").searchParams.get("sslmode"), null);
 
 assert.equal(authStatus(undefined), 401);
 assert.equal(authStatus(""), 401);

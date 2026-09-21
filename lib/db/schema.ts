@@ -1,8 +1,7 @@
 import type { Pool } from "pg";
 
-export async function migrate(pool: Pool): Promise<void> {
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS users (
+const STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
       google_sub TEXT UNIQUE NOT NULL,
       email TEXT NOT NULL,
@@ -10,9 +9,8 @@ export async function migrate(pool: Pool): Promise<void> {
       phone TEXT,
       last_pet_id TEXT,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-    );
-
-    CREATE TABLE IF NOT EXISTS pets (
+    )`,
+  `CREATE TABLE IF NOT EXISTS pets (
       id TEXT PRIMARY KEY,
       user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       name TEXT NOT NULL,
@@ -28,9 +26,8 @@ export async function migrate(pool: Pool): Promise<void> {
       photos TEXT[] NOT NULL DEFAULT '{}',
       friends JSONB NOT NULL DEFAULT '[]',
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-    );
-
-    CREATE TABLE IF NOT EXISTS diaries (
+    )`,
+  `CREATE TABLE IF NOT EXISTS diaries (
       id TEXT PRIMARY KEY,
       user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       pet_id TEXT NOT NULL REFERENCES pets(id) ON DELETE CASCADE,
@@ -45,13 +42,11 @@ export async function migrate(pool: Pool): Promise<void> {
       mock BOOLEAN,
       edited BOOLEAN NOT NULL DEFAULT false,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-    );
-
-    CREATE UNIQUE INDEX IF NOT EXISTS diaries_auto_once
+    )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS diaries_auto_once
       ON diaries (user_id, pet_id, date)
-      WHERE source = 'auto';
-
-    CREATE TABLE IF NOT EXISTS images (
+      WHERE source = 'auto'`,
+  `CREATE TABLE IF NOT EXISTS images (
       id TEXT PRIMARY KEY,
       user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       pet_id TEXT NOT NULL,
@@ -65,6 +60,9 @@ export async function migrate(pool: Pool): Promise<void> {
       mock BOOLEAN NOT NULL DEFAULT false,
       seed INT NOT NULL DEFAULT 0,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-    );
-  `);
+    )`,
+];
+
+export async function migrate(pool: Pool): Promise<void> {
+  for (const sql of STATEMENTS) await pool.query(sql);
 }
