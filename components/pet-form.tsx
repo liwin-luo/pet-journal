@@ -122,7 +122,7 @@ export function PetForm({ petId }: { petId?: string }) {
       </Field>
       <Field label={m.form.species}>
         <Row>
-          {(Object.keys(SPECIES_LABEL) as Species[]).map((value) => (
+          {(Object.keys(m.labels.species) as Species[]).map((value) => (
             <Chip key={value} on={pet.species === value} onClick={() => patch({ species: value })}>
               {m.labels.species[value]}
             </Chip>
@@ -134,7 +134,7 @@ export function PetForm({ petId }: { petId?: string }) {
       </Field>
       <Field label={m.form.sex}>
         <Row>
-          {(Object.keys(SEX_LABEL) as Sex[]).map((value) => (
+          {(Object.keys(m.labels.sex) as Sex[]).map((value) => (
             <Chip key={value} on={pet.sex === value} onClick={() => patch({ sex: pet.sex === value ? undefined : value })}>
               {m.labels.sex[value]}
             </Chip>
@@ -143,7 +143,7 @@ export function PetForm({ petId }: { petId?: string }) {
       </Field>
       <Field label={m.form.age}>
         <Row>
-          {(Object.keys(AGE_LABEL) as Age[]).map((value) => (
+          {(Object.keys(m.labels.age) as Age[]).map((value) => (
             <Chip key={value} on={pet.age === value} onClick={() => patch({ age: pet.age === value ? undefined : value })}>
               {m.labels.age[value]}
             </Chip>
@@ -244,7 +244,7 @@ export function PetForm({ petId }: { petId?: string }) {
                   })
                 }
               >
-                {(Object.keys(RELATION_LABEL) as Relation[]).map((value) => (
+                {(Object.keys(m.labels.relation) as Relation[]).map((value) => (
                   <option key={value} value={value}>{m.labels.relation[value]}</option>
                 ))}
               </select>
