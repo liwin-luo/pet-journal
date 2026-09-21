@@ -1,0 +1,89 @@
+/**
+ * 拼装、隔离、自动稿自检。失败即非 0。
+ * 所属模块：labs/pet-journal
+ */
+import assert from "node:assert/strict";
+import {
+  buildDiaryImagePrompt,
+  canAutoDraft,
+  draftDiaryBody,
+  validateDiaryWrite,
+} from "./diary-copy.ts";
+import { readSession, signSession } from "./session-cookie.ts";
+import { authStatus, scopeByUser, shouldBlockAuto } from "./scope.ts";
+import {
+  buildPrompt,
+  findTemplate,
+  letteringText,
+  TEMPLATES,
+  validateGenerate,
+} from "./templates.ts";
+import type { PromptPet } from "./types.ts";
+
+const pet: PromptPet = {
+  name: "豆豆",
+  species: "cat",
+  breed: "橘猫",
+  sex: "male",
+  age: "adult",
+  traits: ["二货"],
+  hobbies: "晒太阳",
+  toys: "逗猫棒",
+  food: "冻干",
+  catchphrase: "",
+};
+
+process.env.AUTH_SECRET ??= "check-secret";
+const cookie = signSession("user-a", 1_000);
+assert.equal(readSession(cookie, 1_001), "user-a");
+assert.equal(readSession(cookie, 1_000 + 8 * 24 * 60 * 60 * 1000), undefined);
+
+assert.equal(authStatus(undefined), 401);
+assert.equal(authStatus(""), 401);
+assert.equal(authStatus("user-a"), 200);
+
+const rows = [
+  { userId: "a", name: "豆豆" },
+  { userId: "b", name: "球球" },
+];
+assert.deepEqual(scopeByUser(rows, "a").map((row) => row.name), ["豆豆"]);
+assert.deepEqual(scopeByUser(rows, "b").map((row) => row.name), ["球球"]);
+assert.deepEqual(scopeByUser(rows, "c"), []);
+
+assert.equal(shouldBlockAuto(true, "auto"), true);
+assert.equal(shouldBlockAuto(false, "auto"), false);
+assert.equal(shouldBlockAuto(true, "prompt"), false);
+
+assert.equal(letteringText(pet), "豆豆");
+assert.equal(validateGenerate({ name: "豆豆", photos: [] }, undefined, "home").ok, false);
+assert.equal(validateGenerate({ name: "豆豆", photos: ["x"] }, undefined, "home").ok, true);
+assert.equal(findTemplate("nope"), undefined);
+
+for (const template of TEMPLATES) {
+  const friend = template.needsFriend
+    ? { name: "球球", species: "dog" as const, relation: "playmate" as const }
+    : undefined;
+  const prompt = buildPrompt(pet, friend, template.id);
+  assert.match(prompt, /豆豆/);
+  if (template.id === "duo") assert.match(prompt, /球球/);
+}
+
+assert.equal(canAutoDraft(false), true);
+assert.equal(canAutoDraft(true), false);
+assert.equal(validateDiaryWrite({ name: "豆豆", source: "prompt" }).ok, false);
+assert.equal(validateDiaryWrite({ name: "豆豆", source: "auto" }).ok, true);
+
+const autoBody = draftDiaryBody({ pet, date: "2026-09-20", source: "auto" });
+assert.match(autoBody, /豆豆/);
+const prompted = draftDiaryBody({
+  pet,
+  date: "2026-09-20",
+  source: "prompt",
+  userNote: "下雨没出门",
+});
+assert.match(prompted, /豆豆/);
+assert.match(prompted, /下雨没出门/);
+assert.match(buildDiaryImagePrompt(pet, prompted), /下雨没出门/);
+assert.doesNotMatch(buildPrompt(pet, undefined, "home"), /下雨没出门/);
+
+console.log("pet-journal.check ok");
