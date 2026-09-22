@@ -78,7 +78,7 @@ const en = {
           "Free is $0: 1 pet, a diary page each day, 8 generated images a month, and album download. Sign-in uses Free until a paid subscription is active.",
           "Plus is $6 per month: 5 pets, diary images with no monthly cap, template stills, and toys and habits used as picture references.",
           "Family is $12 per month: 15 pets and everything in Plus.",
-          "The live prices are on the homepage and at /pricing.",
+          "The live prices are only at /pricing.",
         ],
       },
       {
@@ -170,7 +170,7 @@ const zh: typeof en = {
           "免费 $0：1 只宠物，每天一篇日记，每月 8 张生成图，相册可下载。在付费订阅生效前，登录使用的是免费档。",
           "Plus 每月 $6：5 只宠物，日记配图不设月上限，模板出图，玩具和喜好作为图片参考。",
           "家庭档每月 $12：15 只宠物，并包含 Plus 的全部。",
-          "当前价格在首页和 /pricing。",
+          "当前价格仅在 /pricing。",
         ],
       },
       {
@@ -258,7 +258,7 @@ const ko: typeof en = {
           "무료 $0: 반려동물 1마리, 매일 일기, 월 8장의 생성 이미지, 앨범 다운로드. 유료 구독이 켜지기 전에는 로그인이 무료 플랜입니다.",
           "Plus 월 $6: 5마리, 일기 그림은 월 상한 없음, 템플릿 컷, 장난감과 취향을 그림 참고로 사용.",
           "패밀리 월 $12: 15마리와 Plus의 전부.",
-          "현재 가격은 홈과 /pricing 에 있습니다.",
+          "현재 가격은 /pricing 에만 있습니다.",
         ],
       },
       {
@@ -346,7 +346,7 @@ const ja: typeof en = {
           "無料 $0：ペット 1、毎日の日記、生成画像 月 8 枚、アルバム保存。有料購読が有効になるまで、ログインは無料プランです。",
           "Plus は月 $6：ペット 5、日記の挿絵は月の上限なし、テンプレ作画、おもちゃと好みを絵の参考にする。",
           "ファミリーは月 $12：ペット 15 と Plus のすべて。",
-          "現行の価格はホームと /pricing にあります。",
+          "現行の価格は /pricing のみにあります。",
         ],
       },
       {

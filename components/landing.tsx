@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CONTACT_EMAIL, checkoutHref } from "@/lib/legal.ts";
+import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { LocaleSwitch } from "./locale-switch";
 import { useI18n } from "./locale-provider";
 
@@ -37,7 +37,7 @@ export function Landing({ inApp }: { inApp: boolean }) {
             <Link href={inApp ? "/today" : "/login"} className="btn">
               {inApp ? m.landing.ctaApp : m.landing.cta}
             </Link>
-            <a href="#price" className="btn btn-ghost">{m.landing.priceTitle}</a>
+            <Link href="/pricing" className="btn btn-ghost">{m.landing.priceTitle}</Link>
           </div>
         </div>
         <div className="card overflow-hidden p-6">
@@ -77,40 +77,6 @@ export function Landing({ inApp }: { inApp: boolean }) {
               <p className="mt-3 text-sm leading-7 text-mute">{item.body}</p>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section id="price" className="mx-auto max-w-6xl px-5 pb-20">
-        <h2 className="display text-3xl">{m.landing.priceTitle}</h2>
-        <p className="mt-2 max-w-2xl text-sm leading-7 text-mute">{m.landing.priceNote}</p>
-        <p className="mt-2 max-w-2xl text-sm leading-7 text-mute">{m.landing.priceCancel}</p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {m.landing.plans.map((plan) => {
-            const href = checkoutHref(plan.checkout);
-            const className = `mt-6 ${"featured" in plan && plan.featured ? "btn" : "btn btn-ghost"} w-full`;
-            return (
-              <article
-                key={plan.name}
-                className={`card flex flex-col p-6 ${"featured" in plan && plan.featured ? "outline outline-2 outline-ink" : ""}`}
-              >
-                <p className="text-xs tracking-[0.14em] text-mute uppercase">{plan.name}</p>
-                <p className="display mt-3 text-4xl leading-none">
-                  {plan.price}
-                  <span className="ml-1 text-base text-mute">{plan.period}</span>
-                </p>
-                <ul className="mt-5 flex-1 space-y-2 text-sm text-mute">
-                  {plan.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                {href.startsWith("http") ? (
-                  <a href={href} className={className}>{plan.cta}</a>
-                ) : (
-                  <Link href={href} className={className}>{plan.cta}</Link>
-                )}
-              </article>
-            );
-          })}
         </div>
       </section>
 

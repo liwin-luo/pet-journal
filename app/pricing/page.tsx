@@ -1,7 +1,5 @@
-import { Landing } from "@/components/landing.tsx";
-import { requireUserId } from "@/lib/session.ts";
+import { PricingPage } from "@/components/pricing-page.tsx";
 
-export default async function PricingPage() {
-  const session = await requireUserId();
-  return <Landing inApp={session.ok} />;
+export default function Page() {
+  return <PricingPage />;
 }
