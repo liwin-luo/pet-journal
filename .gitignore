@@ -5,3 +5,4 @@ node_modules
 *.tsbuildinfo
 public/generated/*
 !public/generated/.gitkeep
+.vercel

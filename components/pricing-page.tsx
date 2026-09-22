@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { CONTACT_EMAIL, checkoutHref } from "@/lib/legal.ts";
+import { openPaddleCheckout, paddlePriceId } from "@/lib/paddle.ts";
 import { LocaleSwitch } from "./locale-switch";
 import { useI18n } from "./locale-provider";
 
@@ -32,6 +33,7 @@ export function PricingPage() {
         <p className="mt-2 max-w-2xl text-sm leading-7 text-mute">{m.landing.priceCancel}</p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {m.landing.plans.map((plan) => {
+            const priceId = paddlePriceId(plan.checkout);
             const href = checkoutHref(plan.checkout);
             const className = `mt-6 ${"featured" in plan && plan.featured ? "btn" : "btn btn-ghost"} w-full`;
             return (
@@ -49,7 +51,11 @@ export function PricingPage() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                {href.startsWith("http") ? (
+                {priceId ? (
+                  <button type="button" className={className} onClick={() => void openPaddleCheckout(priceId)}>
+                    {plan.cta}
+                  </button>
+                ) : href.startsWith("http") ? (
                   <a href={href} className={className}>{plan.cta}</a>
                 ) : (
                   <Link href={href} className={className}>{plan.cta}</Link>
