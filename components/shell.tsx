@@ -8,7 +8,7 @@ import { useI18n } from "./locale-provider";
 export function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   const { m } = useI18n();
-  if (path === "/login" || path === "/") return children;
+  if (path === "/login" || path === "/" || path === "/pricing" || path === "/privacy" || path === "/terms") return children;
 
   const tabs = [
     { href: "/today", label: m.nav.today, match: path === "/today" },

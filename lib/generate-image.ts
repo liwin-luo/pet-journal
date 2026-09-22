@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { putMedia } from "./db/media.ts";
+import { putR2Object, readR2Env } from "./r2.ts";
 import { RATIO, SEEDREAM_SIZE } from "./templates.ts";
 
 const SEEDREAM_TIMEOUT_MS = 240_000;
@@ -110,6 +111,10 @@ function isImageRef(url: string): boolean {
 }
 
 export async function saveImage(ext: "png" | "jpg" | "svg", bytes: Buffer, mime: string): Promise<string> {
+  if (readR2Env()) {
+    const key = `generated/${crypto.randomUUID()}.${ext}`;
+    return await putR2Object(key, bytes, mime);
+  }
   if (!process.env.VERCEL) {
     try {
       return await savePublicFile(ext, bytes);

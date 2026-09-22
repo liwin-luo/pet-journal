@@ -1,5 +1,6 @@
 import { readyDb } from "@/lib/db/client.ts";
 import { googleClient, publicOrigin } from "@/lib/google-oauth.ts";
+import { readR2Env } from "@/lib/r2.ts";
 
 export const runtime = "nodejs";
 
@@ -26,6 +27,7 @@ export async function GET(req: Request) {
       google,
       db: "ok",
       ark: Boolean(process.env.ARK_API_KEY?.trim()),
+      r2: Boolean(readR2Env()),
       hint: auth ? undefined : "Vercel 加 AUTH_SECRET 再 Redeploy",
     });
   } catch (cause) {
