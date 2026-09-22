@@ -1,6 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC = new Set(["/", "/login", "/pricing", "/privacy", "/terms"]);
+const PUBLIC = new Set([
+  "/",
+  "/login",
+  "/pricing",
+  "/privacy",
+  "/terms",
+  "/google824e0769c16d7fbd.html",
+]);
 
 export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
