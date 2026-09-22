@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LocaleSwitch } from "./locale-switch";
+import { Logo, Mark } from "./logo";
 import { useI18n } from "./locale-provider";
 
 export function Shell({ children }: { children: React.ReactNode }) {
@@ -34,11 +35,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="app">
       <aside className="rail">
-        <Link href="/today" className="px-2">
-          <p className="stamp">{m.stamp}</p>
-          <p className="display mt-3 text-2xl leading-none">{m.brand}</p>
+        <div className="px-2">
+          <Logo href="/today" stamp={m.stamp} brand={m.brand} />
           <p className="mt-2 text-xs text-mute">{m.tagline}</p>
-        </Link>
+        </div>
         <nav className="mt-8 flex flex-1 flex-col gap-1">
           {tabs.map((tab) => (
             <Link key={tab.href} href={tab.href} className="nav-item" data-on={tab.match}>
@@ -60,7 +60,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <div className="stage">
         <header className="topbar">
           <div className="min-w-0">
-            <p className="text-[11px] tracking-[0.16em] text-mute uppercase">Petsdaily</p>
+            <p className="flex items-center gap-2 text-[11px] tracking-[0.16em] text-mute uppercase">
+              <Mark size={22} />
+              Petsdaily
+            </p>
             <div className="page-head mb-0 mt-1 lg:hidden">
               <h1 className="display text-2xl leading-none">{page.title}</h1>
             </div>

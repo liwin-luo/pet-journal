@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { LocaleSwitch } from "./locale-switch";
+import { Mark } from "./logo";
 import { useI18n } from "./locale-provider";
 
 export function LoginCard() {
@@ -15,7 +16,8 @@ export function LoginCard() {
     <div className="login-split">
       <aside className="login-hero">
         <div>
-          <p className="stamp">{m.stamp}</p>
+          <Mark size={56} />
+          <p className="stamp mt-5">{m.stamp}</p>
           <h1 className="display mt-8 whitespace-pre-line text-5xl leading-none">{m.login.heroTitle}</h1>
           <p className="mt-5 max-w-sm text-sm leading-7 text-[#5a4030]">{m.login.heroBody}</p>
         </div>
@@ -27,7 +29,10 @@ export function LoginCard() {
       <section className="flex items-center justify-center px-6 py-16">
         <div className="card w-full max-w-md p-8">
           <div className="mb-5 flex items-center justify-between lg:hidden">
-            <p className="stamp">{m.stamp}</p>
+            <span className="flex items-center gap-2">
+              <Mark size={28} />
+              <span className="stamp">{m.stamp}</span>
+            </span>
             <LocaleSwitch />
           </div>
           <p className="text-[11px] tracking-[0.16em] text-mute uppercase">{m.login.welcome}</p>

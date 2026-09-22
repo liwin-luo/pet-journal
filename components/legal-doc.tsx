@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { CONTACT_EMAIL, legal } from "@/lib/legal.ts";
 import { LocaleSwitch } from "./locale-switch";
+import { Logo } from "./logo";
 import { useI18n } from "./locale-provider";
 
 export function LegalDoc({ kind }: { kind: "privacy" | "terms" }) {
@@ -17,10 +18,7 @@ export function LegalDoc({ kind }: { kind: "privacy" | "terms" }) {
   return (
     <div className="relative z-1 min-h-dvh">
       <header className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-5">
-        <Link href="/">
-          <p className="stamp">{m.stamp}</p>
-          <p className="display mt-2 text-xl leading-none">{m.brand}</p>
-        </Link>
+        <Logo href="/" stamp={m.stamp} brand={m.brand} />
         <div className="flex items-center gap-3">
           <LocaleSwitch />
           <Link href="/login" className="btn">{m.landing.cta}</Link>

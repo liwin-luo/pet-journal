@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CONTACT_EMAIL } from "@/lib/legal.ts";
 import { LocaleSwitch } from "./locale-switch";
+import { Logo } from "./logo";
 import { useI18n } from "./locale-provider";
 
 export function Landing({ inApp }: { inApp: boolean }) {
@@ -11,10 +12,7 @@ export function Landing({ inApp }: { inApp: boolean }) {
   return (
     <div className="relative z-1 min-h-dvh">
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-5">
-        <div>
-          <p className="stamp">{m.stamp}</p>
-          <p className="display mt-2 text-xl leading-none">{m.brand}</p>
-        </div>
+        <Logo href="/" stamp={m.stamp} brand={m.brand} />
         <div className="flex items-center gap-3">
           <LocaleSwitch />
           {inApp ? (
