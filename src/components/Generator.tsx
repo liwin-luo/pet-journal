@@ -340,46 +340,6 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
             </span>
           </div>
         )}
-        {/* 功能图标行 */}
-        <div className="mb-2 flex flex-wrap items-center gap-1.5">
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            multiple
-            className="sr-only"
-            onChange={(e) => pickFiles(e.target.files)}
-          />
-          <button type="button" className={iconBtn} onClick={() => fileRef.current?.click()} disabled={files.length >= 4 || busyFiles} title={labels.uploadTitle} aria-label={labels.uploadTitle}>
-            <PaperclipIcon className="h-4 w-4" /> {gen.photo}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setIdeasOpen(!ideasOpen);
-              setTplOpen(false);
-            }}
-            aria-expanded={ideasOpen}
-            title={labels.ideasLabel}
-            aria-label={labels.ideasLabel}
-            className={`${iconBtn} ${ideasOpen ? "!border-coral !text-coral" : ""}`}
-          >
-            <LightbulbIcon className="h-4 w-4" /> {gen.ideas}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setTplOpen(!tplOpen);
-              setIdeasOpen(false);
-            }}
-            aria-expanded={tplOpen}
-            title={labels.tplLabel}
-            aria-label={labels.tplLabel}
-            className={`${iconBtn} ${tplOpen ? "!border-coral !text-coral" : ""}`}
-          >
-            <PaletteIcon className="h-4 w-4" /> {gen.styles}
-          </button>
-        </div>
         {/* 灵感面板 */}
         {ideasOpen && (
           <div className="mb-2 rounded-xl border border-sand bg-cream px-3 py-2.5">
@@ -424,7 +384,8 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
             </Link>
           </div>
         )}
-        <div className="flex items-end gap-2">
+        {/* 输入容器：工具图标在容器内底行左侧，Generate 在右下（ChatGPT 式） */}
+        <div className="rounded-2xl border border-sand bg-cream transition-colors focus-within:border-coral">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -437,16 +398,33 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
             rows={2}
             maxLength={800}
             placeholder={hasHistory ? gen.placeholders[0] : labels.placeholder}
-            className="min-h-[52px] flex-1 resize-none rounded-2xl border border-sand bg-cream px-4 py-3 text-sm outline-none transition-colors placeholder:text-fog focus:border-coral"
+            className="w-full resize-none bg-transparent px-4 pt-3 text-sm outline-none placeholder:text-fog"
           />
-          <button
-            className="btn-primary !px-5"
-            disabled={loading || busyFiles || (!input.trim() && !files.length && !tpl)}
-            onClick={() => generate(input.trim(), files.map((f) => f.url), tpl?.id)}
-          >
-            <SparkIcon className="h-4 w-4" />
-            {loading ? gen.painting : gen.generate}
-          </button>
+          <div className="flex items-center justify-between gap-2 px-2 pb-2.5">
+            <div className="flex items-center gap-0.5">
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                multiple
+                className="sr-only"
+                onChange={(e) => pickFiles(e.target.files)}
+              />
+              <button type="button" onClick={() => fileRef.current?.click()} disabled={files.length >= 4 || busyFiles} title={labels.uploadTitle} aria-label={labels.uploadTitle} className="flex h-8 w-8 items-center justify-center rounded-full text-coffee transition-colors hover:bg-parchment disabled:cursor-not-allowed disabled:opacity-40">
+                <PaperclipIcon className="h-4 w-4" />
+              </button>
+              <button type="button" onClick={() => { setIdeasOpen(!ideasOpen); setTplOpen(false); }} aria-expanded={ideasOpen} title={labels.ideasLabel} aria-label={labels.ideasLabel} className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${ideasOpen ? "bg-coral-soft text-coral" : "text-coffee hover:bg-parchment"}`}>
+                <LightbulbIcon className="h-4 w-4" />
+              </button>
+              <button type="button" onClick={() => { setTplOpen(!tplOpen); setIdeasOpen(false); }} aria-expanded={tplOpen} title={labels.tplLabel} aria-label={labels.tplLabel} className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${tplOpen ? "bg-coral-soft text-coral" : "text-coffee hover:bg-parchment"}`}>
+                <PaletteIcon className="h-4 w-4" />
+              </button>
+            </div>
+            <button className="btn-primary !px-4 !py-2 text-sm" disabled={loading || busyFiles || (!input.trim() && !files.length && !tpl)} onClick={() => generate(input.trim(), files.map((f) => f.url), tpl?.id)}>
+              <SparkIcon className="h-4 w-4" />
+              {loading ? gen.painting : gen.generate}
+            </button>
+          </div>
         </div>
         <p className="mt-2 text-xs text-fog">{labels.helper}</p>
       </div>
