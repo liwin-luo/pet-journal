@@ -1,6 +1,7 @@
 // DATABASE_URL 走原来的 Postgres。否则 Supabase 表，再否则本地 SQLite。
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { readState, writeState, usePg } from "@/lib/accounts";
+import { readState, writeState } from "@/lib/accounts";
+import { usePg } from "@/lib/db-mode";
 
 export interface UserData {
   pets: unknown[];

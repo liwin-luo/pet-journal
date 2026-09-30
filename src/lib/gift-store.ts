@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { readyDb } from "@/lib/pgdb";
-import { usePg } from "@/lib/accounts";
+import { usePg } from "@/lib/db-mode";
 
 export interface GiftRecord {
   token: string;
