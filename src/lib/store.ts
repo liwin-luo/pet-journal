@@ -182,8 +182,12 @@ export async function readStoreFile(
 ): Promise<{ mime: string; bytes: Buffer } | null> {
   if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
   if (usePg) {
+    // kind 必须参与过滤：生成图要靠"非 uploads"来走下载门控
     const pool = await pg();
-    const res = await pool.query<{ mime: string; bytes: Buffer }>(`select mime, bytes from pd_media where id = $1`, [id]);
+    const res = await pool.query<{ mime: string; bytes: Buffer }>(
+      `select mime, bytes from pd_media where id = $1 and kind = $2`,
+      [id, kind],
+    );
     const row = res.rows[0];
     if (!row) return null;
     return { mime: row.mime, bytes: Buffer.isBuffer(row.bytes) ? row.bytes : Buffer.from(row.bytes as unknown as string) };
