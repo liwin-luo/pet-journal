@@ -33,6 +33,22 @@ export type GalleryEntry = {
   createdAt: string;
 };
 
+/** 宠物档案（Phase 1：每主人一份）。avatar 取自主人某张作品的 /api/media/ 地址。 */
+export type PetProfile = {
+  name: string;
+  species: string;
+  avatar?: string;
+  updatedAt: string;
+};
+
+/** 一天的日记文案（按 主人|日期|语言 缓存，生成后不再变）。 */
+export type DiaryText = {
+  title: string;
+  text: string;
+  lang: string;
+  createdAt: string;
+};
+
 export type LikeRec = { count: number; devices: string[] };
 
 type Db = {
@@ -40,9 +56,11 @@ type Db = {
   gallery: GalleryEntry[];
   usage: Record<string, { date: string; count: number }>;
   likes: Record<string, LikeRec>;
+  pets: Record<string, PetProfile>; // key = ownerKey（"u:email" / "d:deviceid"）
+  diary: Record<string, DiaryText>; // key = `${ownerKey}|${YYYY-MM-DD}|${lang}`
 };
 
-const EMPTY: Db = { shares: {}, gallery: [], usage: {}, likes: {} };
+const EMPTY: Db = { shares: {}, gallery: [], usage: {}, likes: {}, pets: {}, diary: {} };
 
 const usePg = !!process.env.DATABASE_URL?.trim();
 
@@ -180,6 +198,42 @@ export async function toggleLike(entryId: string, deviceId: string): Promise<{ l
 export async function getLikeSnapshot(): Promise<Record<string, LikeRec>> {
   const db = await readDb();
   return db.likes ?? {};
+}
+
+// ===== 宠物日记 =====
+
+export async function getPetProfile(ownerKey: string): Promise<PetProfile | null> {
+  const db = await readDb();
+  return db.pets[ownerKey] ?? null;
+}
+
+export async function savePetProfile(
+  ownerKey: string,
+  pet: { name: string; species: string; avatar?: string },
+): Promise<PetProfile> {
+  return updateDb((db) => {
+    const rec: PetProfile = { ...pet, updatedAt: new Date().toISOString() };
+    db.pets[ownerKey] = rec;
+    return rec;
+  });
+}
+
+export async function getDiaryText(ownerKey: string, date: string, lang: string): Promise<DiaryText | null> {
+  const db = await readDb();
+  return db.diary[`${ownerKey}|${date}|${lang}`] ?? null;
+}
+
+export async function saveDiaryText(
+  ownerKey: string,
+  date: string,
+  lang: string,
+  entry: { title: string; text: string },
+): Promise<DiaryText> {
+  return updateDb((db) => {
+    const rec: DiaryText = { ...entry, lang, createdAt: new Date().toISOString() };
+    db.diary[`${ownerKey}|${date}|${lang}`] = rec;
+    return rec;
+  });
 }
 
 // ===== 每日额度（原子计数，避免多实例丢更新）=====
