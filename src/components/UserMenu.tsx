@@ -11,7 +11,6 @@ type Texts = {
   quotaLeft: string;
   myPictures: string;
   plans: string;
-  plansSoon: string;
   signout: { title: string; body: string; cancel: string; confirm: string };
 };
 
@@ -107,7 +106,7 @@ export function UserMenu({ user, quota, homePath, accountPath, texts }: Props) {
             </Link>
             <Link href={accountPath} onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-coffee transition-colors hover:bg-parchment hover:text-coral">
               <PawIcon className="h-4 w-4 text-coral" /> {texts.plans}
-              <span className="ml-auto rounded-full bg-sage-soft px-2 py-0.5 text-[10px] font-semibold text-sage">{texts.plansSoon}</span>
+              <SparkIcon className="ml-auto h-3.5 w-3.5 text-gold" />
             </Link>
           </div>
 
