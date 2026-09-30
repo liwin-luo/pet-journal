@@ -56,6 +56,12 @@ const STATEMENTS = [
       token TEXT PRIMARY KEY,
       body JSONB NOT NULL
     )`,
+  `CREATE TABLE IF NOT EXISTS media (
+      id TEXT PRIMARY KEY,
+      mime TEXT NOT NULL,
+      bytes BYTEA NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )`,
 ];
 
 export async function readyDb(): Promise<Pool> {
@@ -186,4 +192,17 @@ export async function grantStored(userId: string, tier: "studio" | "home"): Prom
 
 export async function addStored(userId: string, n: number): Promise<StoredWallet> {
   return withWallet(userId, (cur) => ({ ...cur, credits: cur.credits + Math.max(0, Math.floor(n)) }));
+}
+
+export async function putMedia(id: string, mime: string, bytes: Buffer): Promise<void> {
+  const pool = await readyDb();
+  await pool.query(`INSERT INTO media (id, mime, bytes) VALUES ($1, $2, $3)`, [id, mime, bytes]);
+}
+
+export async function getMedia(id: string): Promise<{ mime: string; bytes: Buffer } | undefined> {
+  const pool = await readyDb();
+  const result = await pool.query(`SELECT mime, bytes FROM media WHERE id = $1`, [id]);
+  const row = result.rows[0] as { mime: string; bytes: Buffer | string } | undefined;
+  if (!row) return undefined;
+  return { mime: row.mime, bytes: Buffer.isBuffer(row.bytes) ? row.bytes : Buffer.from(row.bytes) };
 }

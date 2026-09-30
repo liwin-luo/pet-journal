@@ -32,6 +32,7 @@ export async function POST(req: Request) {
   } catch (e: unknown) {
     await addStored(user.id, taken);
     const message = e instanceof Error ? e.message : "batch failed";
+    console.error("batch", message.slice(0, 240));
     return NextResponse.json({ error: message }, { status: 502 });
   }
 }

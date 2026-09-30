@@ -1,3 +1,4 @@
+import { usePg } from "@/lib/db-mode";
 import { loadRef } from "./load-ref";
 import { StillProvider } from "./providers";
 
@@ -35,7 +36,15 @@ export const seedream: StillProvider = {
     if (!res.ok) throw new Error(`Seedream HTTP ${res.status}: ${text.slice(0, 240)}`);
     const b64 = (JSON.parse(text) as { data?: Array<{ b64_json?: string }> }).data?.[0]?.b64_json;
     if (!b64) throw new Error("Seedream 没有返回图片");
-    // ponytail: Vercel 上 public/ 只读，写成 /generated 会 502。data URL 单张大约几 MB，8 张一起回传可能顶到响应上限；再大就改对象存储。
-    return `data:image/jpeg;base64,${b64}`;
+    return storeJpeg(b64);
   },
 };
+
+/** 线上写进原来的 media 表，返回短地址。没配库时才用 data URL。 */
+async function storeJpeg(b64: string): Promise<string> {
+  if (!usePg()) return `data:image/jpeg;base64,${b64}`;
+  const { putMedia } = await import("@/lib/pgdb");
+  const id = crypto.randomUUID();
+  await putMedia(id, "image/jpeg", Buffer.from(b64, "base64"));
+  return `/api/media/${id}`;
+}

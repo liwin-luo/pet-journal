@@ -31,7 +31,7 @@ export default async function PublicSharePage({ params }: { params: Promise<{ to
   }
   return (
     <div className="share-stage">
-      <ShareCard kind={rec.kind} petName={rec.petName} text={rec.text} image={rec.image} date={rec.date} mark={rec.mark} />
+      <ShareCard kind={rec.kind} petName={rec.petName} text={rec.text} image={rec.image ? `/api/share/${token}/img` : ""} date={rec.date} mark={rec.mark} />
       <ShareBar image={rec.image} />
     </div>
   );
