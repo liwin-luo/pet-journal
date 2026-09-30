@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PawIcon, SparkIcon } from "@/components/icons";
+import { ShareBar } from "@/components/ShareBar";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { readDb } from "@/lib/store";
@@ -54,6 +55,18 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
           </Link>
         </p>
       )}
+
+      <div className="mt-8">
+        <p className="mb-3 text-sm font-semibold text-coffee">Love it? Share the joy 🐾</p>
+        <div className="flex justify-center">
+          <ShareBar
+            url={`${SITE_URL}/share/${token}`}
+            imageUrl={`${SITE_URL}${share.image}?st=${token}`}
+            fileShareSrc={`${share.image}?st=${token}`}
+            text="Check out this AI pet portrait I made! 🐾"
+          />
+        </div>
+      </div>
       <div className="mt-8 rounded-big bg-coral px-6 py-8 text-white shadow-lift">
         <h1 className="h-display text-2xl">Make one of YOUR pet</h1>
         <p className="mx-auto mt-1 max-w-sm text-sm text-coral-soft">One photo + one sentence. Free to try, no account.</p>

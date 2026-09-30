@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           h: "Who else sees your photo",
           body: [
             `To create your picture we send the uploaded photo and a short text prompt to our AI service providers: a language model (Zhipu AI) that writes the image prompt, and an image model (Volcengine / BytePlus Seedream) that paints the picture. They process your photo only to return a result to us, under their own privacy and security terms.`,
-            `Pictures appear publicly ONLY if you submit them to the gallery yourself. Submissions are reviewed before publishing, and you can ask us to remove one at any time.`,
+            `Pictures become public only when you choose to: by sharing a picture's link yourself, or by posting it to the public gallery (submissions are reviewed before publishing, and you can ask us to remove one at any time).`,
           ],
         },
         {

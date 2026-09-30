@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Tpl } from "@/lib/templates";
 import { CopyButton } from "./CopyButton";
-import { DownloadIcon, PawIcon, RefreshIcon, SparkIcon, StarIcon, UploadIcon } from "./icons";
+import { ShareBar } from "./ShareBar";
+import { DownloadIcon, PawIcon, RefreshIcon, ShareIcon, SparkIcon, StarIcon, UploadIcon } from "./icons";
 
 type Msg = {
   id: number;
@@ -52,6 +53,7 @@ export function Generator({ featured, user }: Props) {
   const [tpl, setTpl] = useState<Tpl | null>(null);
   const [loadingLine, setLoadingLine] = useState(0);
   const [shareFor, setShareFor] = useState<number | null>(null);
+  const [shareOpenFor, setShareOpenFor] = useState<number | null>(null);
   const [signInFor, setSignInFor] = useState<number | null>(null);
   const idRef = useRef(0);
   const chatRef = useRef<HTMLDivElement>(null);
@@ -221,11 +223,35 @@ export function Generator({ featured, user }: Props) {
                     <CopyButton text={m.result.prompt} label="Copy the prompt" />
                     <button
                       className="btn-ghost !py-2 text-sm"
+                      onClick={() => setShareOpenFor(shareOpenFor === m.id ? null : m.id)}
+                    >
+                      <ShareIcon className="h-4 w-4" /> Share
+                    </button>
+                    <button
+                      className="btn-ghost !py-2 text-sm"
                       onClick={() => setShareFor(shareFor === m.id ? null : m.id)}
                     >
                       <StarIcon className="h-4 w-4 text-gold" /> Post to gallery
                     </button>
                   </div>
+                  {shareOpenFor === m.id && m.result && (
+                    <div className="mt-3 rounded-xl bg-parchment/60 p-4">
+                      <p className="text-sm font-semibold">Share to social media</p>
+                      <p className="mb-3 mt-1 text-xs text-fog">
+                        Anyone with the link can view this picture.
+                      </p>
+                      <ShareBar
+                        url={`${window.location.origin}${m.result.shareUrl}`}
+                        imageUrl={
+                          m.result.imagePath
+                            ? `${window.location.origin}${m.result.imagePath}?st=${m.result.shareUrl.split("/").pop()}`
+                            : undefined
+                        }
+                        fileShareSrc={m.result.image}
+                        text="Check out this AI pet portrait I made! 🐾"
+                      />
+                    </div>
+                  )}
                   {signInFor === m.id && !user && (
                     <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
                       Downloading needs a free account — it keeps your pictures safe.

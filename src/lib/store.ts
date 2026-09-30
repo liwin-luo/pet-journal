@@ -74,7 +74,12 @@ export async function readDb(): Promise<Db> {
 
 // ===== 图片存储 =====
 
-const EXT: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
+const EXT: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+  "image/svg+xml": "svg",
+};
 
 export async function storeImage(bytes: Buffer, kind: "uploads" | "generated", mime = "image/jpeg"): Promise<string> {
   const id = randomUUID();
