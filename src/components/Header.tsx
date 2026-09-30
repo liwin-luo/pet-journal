@@ -19,7 +19,7 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-coral text-white">
             <PawIcon className="h-5 w-5" />
           </span>
-          {SITE_NAME}
+          <span className="hidden min-[480px]:inline">{SITE_NAME}</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium text-coffee md:flex" aria-label="Main">
           <NavLinks locale={locale} labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq }} variant="desktop" />
