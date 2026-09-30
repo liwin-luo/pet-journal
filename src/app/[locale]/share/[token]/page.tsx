@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return pageMeta({
     locale: raw as Locale,
     path: `/share/${token}`,
-    title: share.message ? `${t.share.made}: “${share.message.slice(0, 60)}”` : "AI pet portrait",
+    title: `AI pet portrait: “${(share.message || t.share.made).slice(0, 42)}”`,
     description: `AI pet portrait${tpl ? ` — ${tpl.name}` : ""}. ${t.share.makeSub}`,
     ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image}?st=${token}`,
     ogImageDims: { w: 1728, h: 2304 },

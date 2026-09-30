@@ -16,7 +16,9 @@ export function pageMeta(opts: {
   const locale = opts.locale ?? DEFAULT_LOCALE;
   const path = opts.path ?? "/";
   const title = opts.title ? `${opts.title} — ${SITE_NAME}` : `${SITE_NAME} — ${SITE_TAGLINE}`;
-  const description = opts.description ?? SITE_TAGLINE;
+  // Google 展示约 155–160 字符，超长会截断；统一钳制
+  const rawDesc = opts.description ?? SITE_TAGLINE;
+  const description = rawDesc.length > 160 ? rawDesc.slice(0, 157).trimEnd() + "…" : rawDesc;
   const canon = `${SITE_URL}${lp(locale, path)}`;
   const languages: Record<string, string> = {};
   for (const l of LOCALES) languages[hreflangOf(l)] = `${SITE_URL}${lp(l, path)}`;

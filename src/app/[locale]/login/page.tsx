@@ -9,7 +9,14 @@ import { pageMeta } from "@/lib/seo";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
-  return pageMeta({ locale: raw as Locale, path: "/login", noindex: true });
+  const t = getDict(raw as Locale);
+  return pageMeta({
+    locale: raw as Locale,
+    path: "/login",
+    title: t.login.title,
+    description: t.login.sub,
+    noindex: true,
+  });
 }
 
 export default async function LoginPage({

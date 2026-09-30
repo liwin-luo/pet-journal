@@ -18,9 +18,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
-  return {
-    title: { default: `${SITE_NAME} — ${getDict(raw).home.heroHl}`, template: `%s — ${SITE_NAME}` },
-  };
+  // 只给默认标题；子页面的标题由 pageMeta 统一追加品牌后缀
+  return { title: `${SITE_NAME} — ${getDict(raw as Locale).home.heroHl}` };
 }
 
 export default async function LocaleLayout({

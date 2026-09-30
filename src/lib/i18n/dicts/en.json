@@ -1,11 +1,11 @@
 {
   "meta": {
-    "homeDesc": "Upload one photo of your pet, type what you want, and get an AI portrait that still looks like them. 100 free templates — renaissance, holiday cards, movie posters and more.",
-    "templatesTitle": "Pet portrait template center — 100 free AI styles",
+    "homeDesc": "Upload one pet photo, write your wish, and get an AI portrait that still looks like them. 100 free templates, ready in ~30 seconds.",
+    "templatesTitle": "100 free AI pet portrait templates",
     "templatesDesc": "Browse 100 AI pet portrait templates: renaissance paintings, Christmas cards, movie posters, anime and more. Copy any prompt for free and make yours in 30 seconds.",
-    "galleryTitle": "Gallery — AI pet portraits & reviews from pet people",
-    "galleryDesc": "See real AI pet portraits made with our studio: cats, dogs, birds and fish as renaissance royals, astronauts, movie stars and more — plus honest reviews from the humans behind them.",
-    "faqTitle": "FAQ — questions about our AI pet portrait generator",
+    "galleryTitle": "AI pet portrait gallery & reviews",
+    "galleryDesc": "Real AI pet portraits from our studio — cats, dogs, birds and more — with honest reviews from their humans.",
+    "faqTitle": "AI pet portrait generator — FAQ",
     "faqDesc": "How it works, photo tips, what happens to your uploads, free limits, AI labeling and more — everything about turning your pet's photo into AI art.",
     "privacyTitle": "Privacy policy",
     "privacyDesc": "What we collect, what we do with your pet photos (and what we never do), how long we keep them, and your rights under GDPR and CCPA.",
@@ -172,7 +172,7 @@
     "exampleCap": "Example made with this template · every result is AI-generated",
     "more": "More {cat} templates",
     "empty": "No {badge} templates in this category yet.",
-    "detailTitle": "{name} pet portrait — free AI template",
+    "detailTitle": "{name} — AI pet portrait template",
     "detailDesc": "{blurb} Copy the exact {name} prompt and turn your cat or dog into it in ~30 seconds. Free, no account needed.",
     "download": "Download example"
   },

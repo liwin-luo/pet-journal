@@ -15,6 +15,10 @@ export function middleware(req: NextRequest) {
   }
 
   const seg = pathname.split("/")[1];
+  // 默认语言的 /en/* 前缀 URL 308 归一到根路径，避免重复收录
+  if (seg === DEFAULT_LOCALE) {
+    return NextResponse.redirect(new URL(`${pathname.slice(DEFAULT_LOCALE.length + 1) || "/"}${search}`, req.url), 308);
+  }
   if ((LOCALES as readonly string[]).includes(seg)) return NextResponse.next();
 
   const cookieLocale = req.cookies.get(LOCALE_COOKIE)?.value;
