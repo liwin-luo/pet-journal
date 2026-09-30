@@ -6,13 +6,13 @@ import { useI18n } from "@/components/I18n";
 import { Header, Stepper } from "@/components/ui";
 import { loadState, updateState, curPet } from "@/lib/store";
 import { petCtx } from "@/lib/flow";
+import { templatePrompt } from "@/lib/catalog";
 import { getRefs } from "@/lib/refs";
 import { isPortrait } from "@/lib/guards";
 
 export default function AnchorPage() {
   const router = useRouter();
   const { t, tArr, lang } = useI18n();
-  const pet = curPet(loadState());
   const [phase, setPhase] = useState<"gen" | "confirm">("gen");
   const [img, setImg] = useState("");
   const [prog, setProg] = useState(0);
@@ -23,7 +23,6 @@ export default function AnchorPage() {
   const started = useRef(false);
 
   const facts = tArr("anchor.facts");
-  const ctx = petCtx(pet, pet?.tags.map((i) => tArr("tags8")[i]).filter(Boolean) as string[] ?? []);
 
   const run = useCallback(() => {
     setPhase("gen"); setProg(8); setFailed(false);
@@ -31,9 +30,16 @@ export default function AnchorPage() {
     const p2 = setTimeout(() => setProg(72), 1200);
     (async () => {
       try {
+        const s = loadState();
+        const petNow = curPet(s);
         const res = await fetch("/api/generate/anchor", {
           method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ refImages: getRefs(), pet: ctx }),
+          body: JSON.stringify({
+            refImages: getRefs(),
+            pet: petCtx(petNow, petNow?.tags.map((i) => tArr("tags8")[i]).filter(Boolean) as string[] ?? []),
+            note: s.customDesc,
+            templatePrompt: templatePrompt(s.selectedTemplate),
+          }),
         });
         if (res.status === 401) {
           window.location.href = "/login?next=/anchor";

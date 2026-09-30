@@ -13,6 +13,8 @@ export async function POST(req: Request) {
     const { image } = await runEngine((engine) => engine.generateAnchor({
       refImages: body.refImages,
       pet: body.pet,
+      note: typeof body.note === "string" ? body.note : undefined,
+      templatePrompt: typeof body.templatePrompt === "string" ? body.templatePrompt : undefined,
     }));
     if (!image) throw new Error("no image");
     return NextResponse.json({ anchorImage: image });

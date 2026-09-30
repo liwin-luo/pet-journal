@@ -8,6 +8,9 @@ export interface PetPromptContext {
 
 export interface AnchorInput {
   refImages?: string[]; // data-URL 或对象存储 URL（6-10 张）
+  templatePrompt?: string;
+  /** 用户在创作框里写的话，含没点选菜单时留下的 @ 内容 */
+  note?: string;
   pet: PetPromptContext;
 }
 
@@ -20,6 +23,10 @@ export interface BatchInput {
   templatePrompt?: string;
   /** 物品场景（三类各一场景包） */
   keepsakeScene?: "toy" | "bandana" | "blanket";
+  /** 用户在创作框里写的话 */
+  note?: string;
+  /** 其余被 @ 的宠物的锚点图 */
+  refImages?: string[];
   pet: PetPromptContext;
 }
 

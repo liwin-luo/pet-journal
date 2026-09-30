@@ -38,8 +38,10 @@ export default function ProcessingPage() {
           body: JSON.stringify({
             count,
             anchorImage: group[0]?.anchorImage,
+            refImages: group.slice(1).map((p) => p.anchorImage).filter((src): src is string => isPortrait(src)),
             templatePrompt: templatePrompt(s.selectedTemplate),
             stylePrompt: s.selectedTemplate ? undefined : (s.selectedStyle != null ? STYLE_PROMPTS[s.selectedStyle] : undefined),
+            note: s.customDesc,
             pet: groupCtx(group, (p) => p.tags.map((i) => tagNames[i]).filter(Boolean)),
           }),
         });
