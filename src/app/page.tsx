@@ -5,6 +5,7 @@ import { Generator } from "@/components/Generator";
 import { JsonLd } from "@/components/JsonLd";
 import { PawIcon, SparkIcon, StarIcon, UploadIcon } from "@/components/icons";
 import { TemplateCard } from "@/components/TemplateCard";
+import { getSessionUser } from "@/lib/auth";
 import { FAQS } from "@/lib/faq";
 import { getAllGallery, splitWorksReviews } from "@/lib/gallery";
 import { pageMeta } from "@/lib/seo";
@@ -21,6 +22,7 @@ export default async function Home() {
     ["royal", "xmas", "poster", "pixar", "sticker", "neon", "polaroid", "astronaut"].includes(t.id),
   );
   const { works, reviews } = splitWorksReviews(await getAllGallery());
+  const user = await getSessionUser().catch(() => null);
 
   return (
     <>
@@ -40,10 +42,11 @@ export default async function Home() {
 
         <div className="mx-auto mt-8 max-w-2xl text-left">
           <Suspense fallback={<div className="card h-72 animate-pulse !rounded-big" />}>
-            <Generator featured={featured} />
+            <Generator featured={featured} user={user} />
           </Suspense>
           <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-fog">
-            <li>✓ Free daily pictures</li>
+            <li>✓ 3 free pictures a day</li>
+            <li>✓ Sign in only to download</li>
             <li>✓ Photos auto-deleted in 7 days</li>
             <li>✓ Every image labeled AI-generated</li>
           </ul>

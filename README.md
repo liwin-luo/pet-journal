@@ -21,17 +21,21 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
                     → Seedream 参考图出图 → 存 .data/generated → 返回 /api/media/{id} + shareToken
 ```
 
-- 限流：设备 cookie，每天 5 次（`FREE_DAILY_LIMIT`）
-- 无登录、无数据库依赖：JSON 文件库 `.data/db.json`，图片 `.data/{uploads,generated}/`
+- 限流：**每人每天 3 次**（`FREE_DAILY_LIMIT` 可配置）；登录按账号计，匿名按设备 cookie 计；生成成功才计数
+- 登录：Google OAuth（仅下载需要登录，生成不强制）；会话为 HMAC 签名 httpOnly cookie（30 天），无数据库
+- 下载保护：`/api/media/{id}` 对生成图鉴权（登录 / 分享令牌 `?st=` / 已入画廊作品三种通行）
+- 审核：关键词黑名单 + **GLM 语义门控**——非宠物诉求、人物主体、色情/歧视/暴力/违法内容一律拒绝（语义门控失败时 fail-closed）
+- 无数据库依赖：JSON 文件库 `.data/db.json`，图片 `.data/{uploads,generated}/`
 
 ## 上线清单（按顺序）
 
 1. **域名与品牌**：`.env.local` 里改 `NEXT_PUBLIC_SITE_URL`（你买的域名，含 https）、`NEXT_PUBLIC_SITE_NAME`、`NEXT_PUBLIC_SITE_MAIL`。全站 canonical/sitemap/OG 都从这里取。
-2. **种子评价**：`src/lib/seed.ts` 里的评价是**示例文案**（图片为引擎真实产出），上线前替换或删除为真实用户反馈；投稿在 `.data/db.json` 的 `gallery` 里，`approved:true` 后前台可见。
-3. **HTTPS 与反代**：生产建议 `npm run build && npm start`（端口 3000），前面挂 Nginx/Caddy 做 TLS。
-4. **robots/sitemap 提交**：域名生效后到 Google Search Console 提交 `/sitemap.xml`。
-5. **Vercel 部署注意**：`.data/` 文件系统在 serverless 上不持久。要上 Vercel 需把 `src/lib/store.ts` 的几个函数换成 R2/Blob + 数据库（接口已隔离，改动集中一个文件）；放 VPS 则无需改动。
-6. **可选接入**：PostHog 分析（layout.tsx 预留）、Plausible/GA、支付（参考 petpics 的 Paddle 实现）。
+2. **Google 登录**：`.env.local` 已带 `AUTH_GOOGLE_ID/SECRET`（与参考项目同一客户端）。上线前到 Google Cloud Console 给该客户端**补登记你域名的回调** `https://你的域名/api/auth/google/callback`；本地回调默认 `http://127.0.0.1:3000/...`（`GOOGLE_REDIRECT_URI` 可改）。确认线上 `AUTH_DEMO` 为空（演示登录必须关闭）。
+3. **种子评价**：`src/lib/seed.ts` 里的评价是**示例文案**（图片为引擎真实产出），上线前替换或删除为真实用户反馈；投稿在 `.data/db.json` 的 `gallery` 里，`approved:true` 后前台可见。
+4. **HTTPS 与反代**：生产建议 `npm run build && npm start`（端口 3000），前面挂 Nginx/Caddy 做 TLS。
+5. **robots/sitemap 提交**：域名生效后到 Google Search Console 提交 `/sitemap.xml`。
+6. **Vercel 部署注意**：`.data/` 文件系统在 serverless 上不持久。要上 Vercel 需把 `src/lib/store.ts` 的几个函数换成 R2/Blob + 数据库（接口已隔离，改动集中一个文件）；放 VPS 则无需改动。
+7. **可选接入**：PostHog 分析（layout.tsx 预留）、支付（参考 petpics 的 Paddle 实现）。
 
 ## 结构
 

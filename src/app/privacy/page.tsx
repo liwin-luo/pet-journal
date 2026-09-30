@@ -20,7 +20,8 @@ export default function PrivacyPage() {
           h: "What we collect",
           body: [
             `Photos you upload, the text you type into the generator, and the pictures we generate for you. A random ID stored in a cookie so we can apply the free daily limit. If you post to the public gallery: the name, pet name and review you choose to submit.`,
-            `We don't ask for your email, don't require an account, and don't use analytics cookies today.`,
+            `If you sign in (required only for downloading pictures): your Google name, email and profile picture, plus a signed session cookie that keeps you signed in for 30 days. We never see or store your Google password.`,
+            `We don't show ads and don't use tracking cookies.`,
           ],
         },
         {

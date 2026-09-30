@@ -13,7 +13,7 @@ type Msg = {
   images: string[];
   templateId?: string;
   status: "loading" | "done" | "error";
-  result?: { image: string; prompt: string; shareUrl: string; left: number };
+  result?: { image: string; imagePath?: string; prompt: string; shareUrl: string; left: number };
   error?: string;
 };
 
@@ -41,9 +41,9 @@ const IDEAS = [
   "Birthday party hat",
 ];
 
-type Props = { featured: Tpl[] };
+type Props = { featured: Tpl[]; user: { name?: string; email: string } | null };
 
-export function Generator({ featured }: Props) {
+export function Generator({ featured, user }: Props) {
   const params = useSearchParams();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -52,6 +52,7 @@ export function Generator({ featured }: Props) {
   const [tpl, setTpl] = useState<Tpl | null>(null);
   const [loadingLine, setLoadingLine] = useState(0);
   const [shareFor, setShareFor] = useState<number | null>(null);
+  const [signInFor, setSignInFor] = useState<number | null>(null);
   const idRef = useRef(0);
   const chatRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -119,6 +120,22 @@ export function Generator({ featured }: Props) {
     }
   }
 
+  async function download(id: number, result: Msg["result"]) {
+    if (!result) return;
+    const res = await fetch(result.imagePath || result.image);
+    if (res.status === 401) {
+      setSignInFor(id);
+      return;
+    }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "pet-portrait.jpg";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   const hasHistory = msgs.length > 0;
   const loading = msgs.some((m) => m.status === "loading");
 
@@ -132,7 +149,7 @@ export function Generator({ featured }: Props) {
           </span>
           {hasHistory ? "Your session" : "Tell the studio what to paint"}
         </p>
-        <span className="text-xs text-fog">Free · no account needed</span>
+        <span className="text-xs text-fog">3 free pictures a day</span>
       </div>
 
       <div className={hasHistory ? "max-h-[480px] overflow-y-auto px-5 py-4" : ""} ref={chatRef}>
@@ -182,9 +199,18 @@ export function Generator({ featured }: Props) {
                     className="mx-auto max-h-[420px] w-auto rounded-xl"
                   />
                   <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <a href={m.result.image} download={`pet-portrait.png`} className="btn-primary !px-4 !py-2 text-sm">
-                      <DownloadIcon className="h-4 w-4" /> Download
-                    </a>
+                    {user ? (
+                      <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => download(m.id, m.result)}>
+                        <DownloadIcon className="h-4 w-4" /> Download
+                      </button>
+                    ) : (
+                      <button
+                        className="btn-primary !px-4 !py-2 text-sm"
+                        onClick={() => setSignInFor(signInFor === m.id ? null : m.id)}
+                      >
+                        <DownloadIcon className="h-4 w-4" /> Sign in to download
+                      </button>
+                    )}
                     <button
                       className="btn-ghost !py-2 text-sm"
                       onClick={() => generate(m.text, m.images, m.templateId)}
@@ -200,9 +226,17 @@ export function Generator({ featured }: Props) {
                       <StarIcon className="h-4 w-4 text-gold" /> Post to gallery
                     </button>
                   </div>
+                  {signInFor === m.id && !user && (
+                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
+                      Downloading needs a free account — it keeps your pictures safe.
+                      <Link href="/login?next=/" className="btn-primary !px-4 !py-2 text-sm">
+                        Sign in
+                      </Link>
+                    </div>
+                  )}
                   {shareFor === m.id && (
                     <ShareForm
-                      image={m.result.image}
+                      image={m.result.imagePath || m.result.image}
                       onDone={() => setShareFor(null)}
                     />
                   )}

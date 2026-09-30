@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
   return pageMeta({
     title: share.message ? `Someone made this: “${share.message.slice(0, 60)}”` : "An AI pet portrait",
     description: `AI pet portrait${tpl ? ` made with the ${tpl.name} template` : ""}. Make one of your pet — free, ~30 seconds.`,
-    ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image}`,
+    ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image}?st=${token}`,
     noindex: true,
   });
 }
@@ -41,7 +41,7 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
       </p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={share.image}
+        src={`${share.image}?st=${token}`}
         alt={share.message || "AI-generated pet portrait"}
         className="mx-auto mt-6 w-full max-w-md rounded-big shadow-lift"
       />

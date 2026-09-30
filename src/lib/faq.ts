@@ -18,7 +18,11 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Is it free? How many pictures can I make?",
-    a: "You can make a handful of pictures every day for free — no account needed. When you hit the daily limit it resets the next day. Paid plans with more volume are coming soon.",
+    a: "You can make 3 pictures a day for free — no account needed to create. Signing in (with Google) is only required when you want to download and keep them. The counter resets every day.",
+  },
+  {
+    q: "Why do I need to sign in to download?",
+    a: "Generating is open to everyone, but downloading requires a free Google sign-in. It protects your pictures and keeps the free daily quota fair. We only store your Google name, email and profile picture.",
   },
   {
     q: "Are these images really AI-generated?",

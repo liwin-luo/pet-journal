@@ -19,7 +19,13 @@ export default function TermsPage() {
         {
           h: "The service",
           body: [
-            `${SITE_NAME} turns a photo of your pet into an AI-generated picture. You get a limited number of free generations per day; we may change the limit, and paid plans may launch later — we'll always show the current rules in the product.`,
+            `${SITE_NAME} turns a photo of your pet into an AI-generated picture. You can make up to 3 pictures per day for free (we may change this limit; the current rules are always shown in the product). Generating needs no account; downloading pictures requires signing in with Google.`,
+          ],
+        },
+        {
+          h: "Your account",
+          body: [
+            `Sign-in uses Google OAuth — we receive your name, email and profile picture and store a signed session cookie for 30 days. You are responsible for your Google account. You can sign out anytime; signing back in restores access to downloads.`,
           ],
         },
         {
