@@ -5,13 +5,13 @@ import { SITE_URL } from "@/lib/site";
 const LOCALE_COOKIE = "paw_locale";
 
 export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname, search } = req.nextUrl;
 
   // www → 裸域 308（规范域名不含 www）。hostname 要从 Host 头取（nextUrl 不反映它）。
   const host = (req.headers.get("host") ?? "").split(":")[0].toLowerCase();
   const wwwHost = `www.${new URL(SITE_URL).hostname}`;
   if (host === wwwHost) {
-    return NextResponse.redirect(`${SITE_URL}${pathname}`, 308);
+    return NextResponse.redirect(`${SITE_URL}${pathname}${search}`, 308);
   }
 
   const seg = pathname.split("/")[1];
@@ -22,9 +22,10 @@ export function middleware(req: NextRequest) {
   const rest = pathname === "/" ? "" : pathname;
 
   if (remembered !== DEFAULT_LOCALE) {
-    return NextResponse.redirect(new URL(`/${remembered}${rest}`, req.url));
+    return NextResponse.redirect(new URL(`/${remembered}${rest}${search}`, req.url));
   }
-  return NextResponse.rewrite(new URL(`/${DEFAULT_LOCALE}${rest}`, req.url));
+  // 改写必须带上查询串，否则页面的 searchParams（徽章/分类/物种筛选）全部失效
+  return NextResponse.rewrite(new URL(`/${DEFAULT_LOCALE}${rest}${search}`, req.url));
 }
 
 export const config = {

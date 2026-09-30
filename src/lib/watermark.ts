@@ -11,7 +11,7 @@ export async function addDomainWatermark(bytes: Buffer): Promise<Buffer> {
   const w = meta.width ?? 800;
   const h = meta.height ?? 600;
 
-  const overlay = await sharp(OVERLAY_PATH).resize({ width: Math.round(w * 0.5) }).png().toBuffer();
+  const overlay = await sharp(OVERLAY_PATH).resize({ width: Math.round(w * 0.62) }).png().toBuffer();
   const om = await sharp(overlay).metadata();
   const padX = Math.round(w * 0.025);
   const padY = Math.round(h * 0.025);

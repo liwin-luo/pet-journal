@@ -7,9 +7,9 @@ import { getDict, isLocale, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { BADGES, CATS, TEMPLATES, type Badge, type CatId } from "@/lib/templates";
 
-export function generateStaticParams() {
-  return [{ locale: "en" }];
-}
+// 徽章/分类筛选走 searchParams，必须每次请求渲染
+export const dynamic = "force-dynamic";
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;

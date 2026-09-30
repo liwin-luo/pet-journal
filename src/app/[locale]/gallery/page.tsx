@@ -10,6 +10,9 @@ import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { templateById } from "@/lib/templates";
 
+// 物种筛选走 searchParams，且点赞数随请求变化
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
