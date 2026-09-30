@@ -11,7 +11,7 @@ async function callOpenRouter(body: object) {
       Authorization: `Bearer ${key}`,
       "Content-Type": "application/json",
       "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-      "X-Title": process.env.NEXT_PUBLIC_SITE_NAME || "Pawtrait",
+      "X-Title": process.env.NEXT_PUBLIC_SITE_NAME || "PetsDaily",
     },
     body: JSON.stringify(body),
   });

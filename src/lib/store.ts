@@ -72,6 +72,24 @@ export async function readDb(): Promise<Db> {
   return load();
 }
 
+export async function approveGalleryEntry(id: string): Promise<void> {
+  await updateDb((db) => {
+    const entry = db.gallery.find((g) => g.id === id);
+    if (entry) entry.approved = true;
+  });
+}
+
+export async function removeGalleryEntry(id: string): Promise<void> {
+  await updateDb((db) => {
+    db.gallery = db.gallery.filter((g) => g.id !== id);
+  });
+}
+
+export async function pendingGalleryEntries(): Promise<GalleryEntry[]> {
+  const db = await load();
+  return db.gallery.filter((g) => !g.approved);
+}
+
 // ===== 图片存储 =====
 
 const EXT: Record<string, string> = {

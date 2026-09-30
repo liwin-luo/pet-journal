@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PawIcon, StarIcon } from "@/components/icons";
 import { getAllGallery } from "@/lib/gallery";
 import { pageMeta } from "@/lib/seo";
+import { SITE_NAME } from "@/lib/site";
 import { templateById } from "@/lib/templates";
 
 export const metadata: Metadata = pageMeta({
@@ -135,7 +136,7 @@ export default async function GalleryPage({ searchParams }: { searchParams: Prom
           .map((r) => ({
           "@context": "https://schema.org",
           "@type": "Review",
-          itemReviewed: { "@type": "WebApplication", name: "Pawtrait" },
+          itemReviewed: { "@type": "WebApplication", name: SITE_NAME },
           reviewRating: { "@type": "Rating", ratingValue: r.rating ?? 5, bestRating: 5 },
           author: { "@type": "Person", name: r.nickname },
           reviewBody: r.text,
