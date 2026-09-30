@@ -5,6 +5,7 @@ import { getQuota, getSubjectId, nextResetIso } from "@/lib/ratelimit";
 import { SITE_NAME } from "@/lib/site";
 import { PawIcon, SparkIcon } from "./icons";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NavLinks } from "./NavLinks";
 import { UserMenu } from "./UserMenu";
 
 export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
@@ -21,10 +22,7 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
           {SITE_NAME}
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium text-coffee md:flex" aria-label="Main">
-          <Link href={lp(locale, "/")} className="transition-colors hover:text-coral">{t.nav.home}</Link>
-          <Link href={lp(locale, "/templates")} className="transition-colors hover:text-coral">{t.nav.templates}</Link>
-          <Link href={lp(locale, "/gallery")} className="transition-colors hover:text-coral">{t.nav.gallery}</Link>
-          <Link href={lp(locale, "/faq")} className="transition-colors hover:text-coral">{t.nav.faq}</Link>
+          <NavLinks locale={locale} labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq }} variant="desktop" />
         </nav>
         <div className="flex items-center gap-2">
           <LocaleSwitcher locale={locale} />
@@ -51,10 +49,7 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
       </div>
       {/* 移动端导航 */}
       <nav className="flex justify-center gap-6 border-t border-sand/60 py-2 text-sm font-medium text-coffee md:hidden" aria-label="Mobile">
-        <Link href={lp(locale, "/")}>{t.nav.home}</Link>
-        <Link href={lp(locale, "/templates")}>{t.nav.templates}</Link>
-        <Link href={lp(locale, "/gallery")}>{t.nav.gallery}</Link>
-        <Link href={lp(locale, "/faq")}>{t.nav.faq}</Link>
+        <NavLinks locale={locale} labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq }} variant="mobile" />
       </nav>
     </header>
   );
