@@ -9,12 +9,12 @@ export async function GET(req: Request) {
   try { user = await getSessionUser(); }
   catch { return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 }); }
   const source = new URL(req.url).searchParams.get("source") || "";
-  return NextResponse.json({ on: plazaOn(source, user.id) });
+  return NextResponse.json({ on: await plazaOn(source, user.id) });
 }
 
 export async function DELETE() {
   let user;
   try { user = await getSessionUser(); }
   catch { return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 }); }
-  return NextResponse.json({ n: unpublishOwned(user.id) });
+  return NextResponse.json({ n: await unpublishOwned(user.id) });
 }

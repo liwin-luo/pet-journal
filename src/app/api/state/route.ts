@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/session";
 import { getUserData, putUserData } from "@/lib/db";
-import { readWallet } from "@/lib/sqlite";
+import { readWallet } from "@/lib/accounts";
 
 export const runtime = "nodejs";
 
@@ -12,7 +12,7 @@ export async function GET() {
   try {
     const user = await getSessionUser();
     const data = await getUserData(user.id);
-    return NextResponse.json({ ...data, ...readWallet(user.id) });
+    return NextResponse.json({ ...data, ...await readWallet(user.id) });
   } catch (e: any) {
     if (e.message === "UNAUTHORIZED") return NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 });
     throw e;

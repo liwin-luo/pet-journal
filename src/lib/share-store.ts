@@ -1,5 +1,7 @@
 import fs from "fs";
 import path from "path";
+import { readyDb } from "@/lib/pgdb";
+import { usePg } from "@/lib/accounts";
 
 export interface ShareRecord {
   token: string;
@@ -19,69 +21,92 @@ export interface ShareRecord {
 
 const FILE = path.join(process.cwd(), ".data", "shares.json");
 
-function readAll(): Record<string, ShareRecord> {
-  if (!fs.existsSync(FILE)) return {};
-  try { return JSON.parse(fs.readFileSync(FILE, "utf8")); } catch { return {}; }
+async function readAll(): Promise<Record<string, ShareRecord>> {
+  if (!usePg()) {
+    if (!fs.existsSync(FILE)) return {};
+    try { return JSON.parse(fs.readFileSync(FILE, "utf8")); } catch { return {}; }
+  }
+  const pool = await readyDb();
+  const res = await pool.query(`SELECT token, body FROM app_shares`);
+  const all: Record<string, ShareRecord> = {};
+  for (const row of res.rows) {
+    all[row.token] = typeof row.body === "string" ? JSON.parse(row.body) : row.body;
+  }
+  return all;
 }
 
-export function saveShare(rec: ShareRecord) {
-  const all = readAll();
+async function writeAll(all: Record<string, ShareRecord>) {
+  if (!usePg()) {
+    fs.mkdirSync(path.dirname(FILE), { recursive: true });
+    fs.writeFileSync(FILE, JSON.stringify(all));
+    return;
+  }
+  const pool = await readyDb();
+  for (const [token, body] of Object.entries(all)) {
+    await pool.query(
+      `INSERT INTO app_shares (token, body) VALUES ($1, $2::jsonb)
+       ON CONFLICT (token) DO UPDATE SET body = EXCLUDED.body`,
+      [token, JSON.stringify(body)],
+    );
+  }
+}
+
+export async function saveShare(rec: ShareRecord) {
+  const all = await readAll();
   all[rec.token] = rec;
-  fs.mkdirSync(path.dirname(FILE), { recursive: true });
-  fs.writeFileSync(FILE, JSON.stringify(all));
+  await writeAll(all);
 }
 
-export function readShare(token: string): ShareRecord | null {
-  return readAll()[token] ?? null;
+export async function readShare(token: string): Promise<ShareRecord | null> {
+  return (await readAll())[token] ?? null;
 }
 
 export function visiblePlaza(rows: ShareRecord[]): ShareRecord[] {
   return rows.filter((r) => r.plaza).sort((a, b) => b.date - a.date);
 }
 
-export function listPlaza(): ShareRecord[] {
-  return visiblePlaza(Object.values(readAll()));
+export async function listPlaza(): Promise<ShareRecord[]> {
+  return visiblePlaza(Object.values(await readAll()));
 }
 
-function owned(source: string, ownerId: string): ShareRecord | undefined {
-  return Object.values(readAll()).find((r) => r.source === source && r.ownerId === ownerId);
+async function owned(source: string, ownerId: string): Promise<ShareRecord | undefined> {
+  return Object.values(await readAll()).find((r) => r.source === source && r.ownerId === ownerId);
 }
 
-export function plazaOn(source: string, ownerId: string): boolean {
-  return !!owned(source, ownerId)?.plaza;
+export async function plazaOn(source: string, ownerId: string): Promise<boolean> {
+  return !!(await owned(source, ownerId))?.plaza;
 }
 
 /** 发布到广场。已有记录就打开广场开关，链接不变。 */
-export function publishPlaza(rec: ShareRecord): ShareRecord {
-  const all = readAll();
+export async function publishPlaza(rec: ShareRecord): Promise<ShareRecord> {
+  const all = await readAll();
   const prev = Object.values(all).find((r) => r.source === rec.source && r.ownerId === rec.ownerId);
   const token = prev?.token ?? rec.token;
   const next: ShareRecord = { ...prev, ...rec, token, plaza: true };
   all[token] = next;
-  fs.mkdirSync(path.dirname(FILE), { recursive: true });
-  fs.writeFileSync(FILE, JSON.stringify(all));
+  await writeAll(all);
   return next;
 }
 
 /** 账户删除照片时，这个人广场上的都撤下。分享链接还留着。 */
-export function unpublishOwned(ownerId: string): number {
-  const all = readAll();
+export async function unpublishOwned(ownerId: string): Promise<number> {
+  const all = await readAll();
   let n = 0;
   for (const rec of Object.values(all)) {
     if (rec.ownerId === ownerId && rec.plaza) { rec.plaza = false; n += 1; }
   }
-  if (n) fs.writeFileSync(FILE, JSON.stringify(all));
+  if (n) await writeAll(all);
   return n;
 }
 
 /** 从广场撤下。记录留着，分享页照常能打开。 */
-export function unpublishPlaza(source: string, ownerId: string): ShareRecord | null {
-  const all = readAll();
+export async function unpublishPlaza(source: string, ownerId: string): Promise<ShareRecord | null> {
+  const all = await readAll();
   const prev = Object.values(all).find((r) => r.source === source && r.ownerId === ownerId);
   if (!prev) return null;
   prev.plaza = false;
   all[prev.token] = prev;
-  fs.writeFileSync(FILE, JSON.stringify(all));
+  await writeAll(all);
   return prev;
 }
 

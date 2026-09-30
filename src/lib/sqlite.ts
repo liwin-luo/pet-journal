@@ -8,7 +8,7 @@ export type JsonState = { pets: unknown[]; orders: unknown[]; diary: unknown[] }
 export type StoredWallet = { plan: PlanId; credits: number; creditDay: string; monthUsed: number };
 export type UserRow = { id: string; googleSub: string; email: string; name?: string };
 
-// ponytail: Vercel 磁盘只让写 /tmp，这个库换实例就没了。要留住用户，接上 Supabase。
+// ponytail: 线上走 DATABASE_URL。这里只给没配库的本机，以及 Vercel 上还没配库时的临时文件。
 const file = process.env.SQLITE_CHECK === "1"
   ? path.join(os.tmpdir(), "petpics-sqlite-check.sqlite")
   : process.env.VERCEL

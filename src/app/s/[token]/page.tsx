@@ -6,7 +6,7 @@ import { ShareBar } from "@/components/ShareBar";
 
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
   const { token } = await params;
-  const rec = readShare(token);
+  const rec = await readShare(token);
   const h = await headers();
   const host = h.get("x-forwarded-host") || h.get("host") || "localhost:3000";
   const proto = h.get("x-forwarded-proto") || "http";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 
 export default async function PublicSharePage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
-  const rec = readShare(token);
+  const rec = await readShare(token);
   if (!rec) {
     return <div className="share-stage"><p className="psub">PetsDaily</p></div>;
   }

@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const images = Array.isArray(body.images)
     ? body.images.filter((x: unknown) => typeof x === "string" && isPortrait(x)).slice(0, 12)
     : [];
-  saveGift({
+  await saveGift({
     token,
     toName: String(body.toName || "").slice(0, 80),
     email: String(body.email || "").slice(0, 120),

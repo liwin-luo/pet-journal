@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { publicOrigin } from "@/lib/google-oauth";
 import { sessionOrNull } from "@/lib/session";
-import { grantStored } from "@/lib/sqlite";
+import { grantStored } from "@/lib/accounts";
 
 export const runtime = "nodejs";
 
@@ -18,5 +18,5 @@ export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const tier = body.tier === "home" ? "home" : body.tier === "studio" ? "studio" : "";
   if (!tier) return NextResponse.json({ error: "tier" }, { status: 400 });
-  return NextResponse.json(grantStored(user.id, tier));
+  return NextResponse.json(await grantStored(user.id, tier));
 }

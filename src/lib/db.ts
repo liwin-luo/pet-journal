@@ -1,6 +1,6 @@
-// 配了 Supabase 走表；否则本地 SQLite（.data/app.sqlite）。
+// DATABASE_URL 走原来的 Postgres。否则 Supabase 表，再否则本地 SQLite。
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { readState, writeState } from "@/lib/sqlite";
+import { readState, writeState, usePg } from "@/lib/accounts";
 
 export interface UserData {
   pets: unknown[];
@@ -18,6 +18,7 @@ function supabase(): SupabaseClient {
 }
 
 export async function getUserData(userId: string): Promise<UserData> {
+  if (usePg() || !(SB_URL && SB_KEY)) return readState(userId);
   if (SB_URL && SB_KEY) {
     const [pets, orders, diary] = await Promise.all([
       supabase().from("pets").select("*").eq("user_id", userId),
@@ -34,6 +35,10 @@ export async function getUserData(userId: string): Promise<UserData> {
 }
 
 export async function putUserData(userId: string, data: UserData): Promise<void> {
+  if (usePg() || !(SB_URL && SB_KEY)) {
+    await writeState(userId, data);
+    return;
+  }
   if (SB_URL && SB_KEY) {
     const s = supabase();
     // MVP 策略：整体替换该用户三表数据（单用户单写者，规模小；并发写场景迁移 upsert）

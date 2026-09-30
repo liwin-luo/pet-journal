@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 const SOURCE = /^(?:work:[A-Za-z0-9_-]+:\d{1,4}|diary:[A-Za-z0-9_-]+)$/;
 
 export async function GET() {
-  const items = listPlaza().map(({ token, kind, petName, text, date }) => ({ token, kind, petName, text, date }));
+  const items = (await listPlaza()).map(({ token, kind, petName, text, date }) => ({ token, kind, petName, text, date }));
   return NextResponse.json(items);
 }
 
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   if (!SOURCE.test(source)) return NextResponse.json({ error: "bad source" }, { status: 400 });
 
   if (!body.on) {
-    const rec = unpublishPlaza(source, user.id);
+    const rec = await unpublishPlaza(source, user.id);
     if (!rec) return NextResponse.json({ error: "not found" }, { status: 404 });
     return NextResponse.json({ on: false, token: rec.token });
   }
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
   if (!isPortrait(image) || image.length > 1_500_000) {
     return NextResponse.json({ error: "bad image" }, { status: 400 });
   }
-  const rec = publishPlaza({
+  const rec = await publishPlaza({
     token: "s_" + Date.now().toString(36),
     source,
     ownerId: user.id,

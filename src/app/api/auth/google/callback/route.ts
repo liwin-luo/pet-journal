@@ -1,6 +1,6 @@
 import { googleProfile, publicOrigin, readOauthState } from "@/lib/google-oauth";
 import { sessionCookie, signSession } from "@/lib/session-cookie";
-import { upsertGoogleUser } from "@/lib/sqlite";
+import { upsertGoogleUser } from "@/lib/accounts";
 
 export const runtime = "nodejs";
 
@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   }
   try {
     const profile = await googleProfile(code, req);
-    const user = upsertGoogleUser({ googleSub: profile.sub, email: profile.email, name: profile.name });
+    const user = await upsertGoogleUser({ googleSub: profile.sub, email: profile.email, name: profile.name });
     return new Response(null, {
       status: 302,
       headers: {

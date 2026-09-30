@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "bad image" }, { status: 400 });
   }
   const kind = body.kind === "diary" ? "diary" : "work";
-  saveShare({
+  await saveShare({
     token,
     kind,
     petName: String(body.petName || "").slice(0, 40),
