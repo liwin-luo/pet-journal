@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Tpl } from "@/lib/templates";
 import { CopyButton } from "./CopyButton";
 import { ShareBar } from "./ShareBar";
 import { DownloadIcon, PawIcon, RefreshIcon, ShareIcon, SparkIcon, StarIcon, UploadIcon } from "./icons";
+
+type HistItem = {
+  imagePath: string;
+  shareUrl: string;
+  prompt: string;
+  message: string;
+  templateId?: string;
+  createdAt: string;
+};
 
 type Msg = {
   id: number;
@@ -55,6 +64,9 @@ export function Generator({ featured, user }: Props) {
   const [shareFor, setShareFor] = useState<number | null>(null);
   const [shareOpenFor, setShareOpenFor] = useState<number | null>(null);
   const [signInFor, setSignInFor] = useState<number | null>(null);
+  const [hist, setHist] = useState<HistItem[]>([]);
+  const [histSel, setHistSel] = useState<string | null>(null);
+  const [histSignIn, setHistSignIn] = useState(false);
   const idRef = useRef(0);
   const chatRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -77,6 +89,20 @@ export function Generator({ featured, user }: Props) {
   useEffect(() => {
     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs]);
+
+  // 生成历史：登录状态变化或新生成后刷新（同一浏览器登录前后都能找回图）
+  const loadHistory = useCallback(async () => {
+    try {
+      const res = await fetch("/api/history");
+      const data = (await res.json()) as { items?: HistItem[] };
+      setHist(data.items ?? []);
+    } catch {
+      // 历史加载失败不影响生成
+    }
+  }, []);
+  useEffect(() => {
+    loadHistory();
+  }, [loadHistory, user]);
 
   async function pickFiles(list: FileList | null) {
     if (!list?.length) return;
@@ -115,6 +141,7 @@ export function Generator({ featured, user }: Props) {
       const data = (await res.json()) as Msg["result"] & { error?: string };
       if (!res.ok || !data?.image) throw new Error(data?.error || "Generation failed");
       setMsgs((prev) => prev.map((m) => (m.id === id ? { ...m, status: "done", result: data } : m)));
+      loadHistory();
     } catch (err) {
       setMsgs((prev) =>
         prev.map((m) => (m.id === id ? { ...m, status: "error", error: err instanceof Error ? err.message : "Failed" } : m)),
@@ -124,11 +151,13 @@ export function Generator({ featured, user }: Props) {
 
   async function download(id: number, result: Msg["result"]) {
     if (!result) return;
-    const res = await fetch(result.imagePath || result.image);
-    if (res.status === 401) {
-      setSignInFor(id);
-      return;
-    }
+    const ok = await fetchDownload(result.imagePath || result.image);
+    if (!ok) setSignInFor(id);
+  }
+
+  async function fetchDownload(path: string): Promise<boolean> {
+    const res = await fetch(path);
+    if (res.status === 401) return false;
     const blob = await res.blob();
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -136,6 +165,7 @@ export function Generator({ featured, user }: Props) {
     a.download = "pet-portrait.jpg";
     a.click();
     URL.revokeObjectURL(url);
+    return true;
   }
 
   const hasHistory = msgs.length > 0;
@@ -153,6 +183,70 @@ export function Generator({ featured, user }: Props) {
         </p>
         <span className="text-xs text-fog">3 free pictures a day</span>
       </div>
+
+      {/* 历史区：同一浏览器/账号生成过的图都在这里，登录前后都能找回 */}
+      {hist.length > 0 && (
+        <div className="border-b border-sand/70 bg-parchment/40 px-5 py-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-fog">Your pictures</p>
+          <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+            {hist.map((h) => (
+              <button
+                key={h.imagePath}
+                onClick={() => {
+                  setHistSel(histSel === h.imagePath ? null : h.imagePath);
+                  setHistSignIn(false);
+                }}
+                className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
+                  histSel === h.imagePath ? "border-coral" : "border-transparent hover:border-sand"
+                }`}
+                aria-label="Open your picture"
+                title={h.message || "Your picture"}
+              >
+                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
+              </button>
+            ))}
+          </div>
+          {histSel &&
+            (() => {
+              const h = hist.find((x) => x.imagePath === histSel);
+              if (!h) return null;
+              return (
+                <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
+                  <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    {user ? (
+                      <button
+                        className="btn-primary !px-4 !py-2 text-sm"
+                        onClick={async () => {
+                          const ok = await fetchDownload(h.imagePath);
+                          if (!ok) setHistSignIn(true);
+                        }}
+                      >
+                        <DownloadIcon className="h-4 w-4" /> Download
+                      </button>
+                    ) : (
+                      <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => setHistSignIn(!histSignIn)}>
+                        <DownloadIcon className="h-4 w-4" /> Sign in to download
+                      </button>
+                    )}
+                    <CopyButton text={h.prompt} label="Copy the prompt" />
+                    <a href={h.shareUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 text-sm">
+                      <ShareIcon className="h-4 w-4" /> Share page
+                    </a>
+                  </div>
+                  {histSignIn && !user && (
+                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
+                      Downloading needs a free account — it keeps your pictures safe.
+                      <Link href="/login?next=/" className="btn-primary !px-4 !py-2 text-sm">
+                        Sign in
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+        </div>
+      )}
 
       <div className={hasHistory ? "max-h-[480px] overflow-y-auto px-5 py-4" : ""} ref={chatRef}>
         {/* 历史消息 */}

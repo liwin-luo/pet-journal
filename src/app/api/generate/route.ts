@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { generatePicture } from "@/lib/engine";
 import { BLOCKED_REASON, checkMessage, gateRequest } from "@/lib/moderation";
-import { checkLimit, FREE_DAILY_LIMIT, getSubjectId, recordUse } from "@/lib/ratelimit";
+import { checkLimit, FREE_DAILY_LIMIT, getDeviceId, getSubjectId, recordUse } from "@/lib/ratelimit";
 import { readStoreFile, storeImage, updateDb } from "@/lib/store";
 import { templateById } from "@/lib/templates";
 
@@ -64,6 +64,7 @@ export async function POST(req: Request) {
 
     const token = randomUUID().replace(/-/g, "").slice(0, 12);
     const user = await getSessionUser().catch(() => null);
+    const deviceId = await getDeviceId();
     let publicPath: string;
     let preview: string | undefined; // 未登录的即时预览（data-URL）
 
@@ -87,6 +88,8 @@ export async function POST(req: Request) {
         message: message.text,
         prompt: result.prompt,
         createdAt: new Date().toISOString(),
+        deviceId,
+        email: user?.email,
       };
     });
 

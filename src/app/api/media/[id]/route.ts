@@ -1,11 +1,16 @@
+import { cookies } from "next/headers";
 import { getSessionUser } from "@/lib/auth";
 import { readDb, readStoreFile } from "@/lib/store";
 
 export const runtime = "nodejs";
 
 /**
- * 生成图下载保护：登录用户可取；st=分享令牌放行分享页/社交卡；进画廊的已审核作品公开。
- * 上传图 UUID 不可猜，保持公开以支持匿名预览与生成链路。
+ * 生成图访问规则（上传图 UUID 不可猜，保持公开以支持匿名预览与生成链路）：
+ * - 登录用户可取
+ * - st=分享令牌 放行分享页/社交卡
+ * - 已审核进入画廊的作品公开
+ * - 生成者本人设备（device cookie 匹配）可回看自己的历史图
+ * 其余一律 401 —— 下载按钮未登录会引导登录。
  */
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -18,16 +23,15 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   const path = `/api/media/${id}`;
   const url = new URL(req.url);
   const st = url.searchParams.get("st");
+  const device = (await cookies().catch(() => null))?.get("paw_device")?.value ?? null;
 
-  let allowed = !!(await getSessionUser().catch(() => null));
-  if (!allowed && st) {
-    const db = await readDb();
-    allowed = db.shares[st]?.image === path;
-  }
-  if (!allowed) {
-    const db = await readDb();
-    allowed = db.gallery.some((g) => g.approved && g.image === path);
-  }
+  const db = await readDb();
+  const allowed =
+    !!(await getSessionUser().catch(() => null)) ||
+    (st ? db.shares[st]?.image === path : false) ||
+    db.gallery.some((g) => g.approved && g.image === path) ||
+    (device ? Object.values(db.shares).some((s) => s.image === path && s.deviceId === device) : false);
+
   if (!allowed) {
     return Response.json({ error: "Sign in to download this picture", loginUrl: "/login" }, { status: 401 });
   }

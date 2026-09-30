@@ -14,6 +14,9 @@ export type Share = {
   message: string;
   prompt: string;
   createdAt: string;
+  /** 归属：匿名按设备 cookie，登录按账号邮箱（历史记录 / Your pictures 用） */
+  deviceId?: string;
+  email?: string;
 };
 
 export type GalleryEntry = {
