@@ -584,7 +584,7 @@ git commit -m "feat: POST /api/diary/caption 惰性补写每日日记文案（�
 }
 ```
 
-**其余 8 个语言，`diary` 段如下（`acct.myDiary` / `lib.viewDiary` 跟随各语言 diar­y.title / "以日记查看" 的对应译法）：**
+**其余 8 个语言，`diary` 段如下（`acct.myDiary` / `lib.viewDiary` 用各语言括号里注明的译法）：**
 
 `es.json`（myDiary `"Diario de la mascota"` / viewDiary `"Ver como diario"`）：
 
