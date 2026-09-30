@@ -70,7 +70,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`/api/wm/gallery/${w.id}`}
+        src={w.image}
         alt={`AI ${tpl?.name ?? "studio"} portrait of ${w.petName} the ${w.species}`}
         className="mx-auto mt-6 w-full rounded-big shadow-lift"
       />

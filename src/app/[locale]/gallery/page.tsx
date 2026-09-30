@@ -84,7 +84,7 @@ export default async function GalleryPage({
               <Link href={lp(locale, workPath(w))} aria-label={`${w.petName} — ${tpl?.name ?? ""}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`/api/wm/gallery/${w.id}`}
+                  src={w.image}
                   alt={`AI ${tpl?.name ?? "studio"} portrait of ${w.petName} the ${w.species}`}
                   width={512}
                   height={683}

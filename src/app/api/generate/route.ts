@@ -6,18 +6,16 @@ import { BLOCKED_REASON, checkMessage, gateRequest } from "@/lib/moderation";
 import { checkLimit, FREE_DAILY_LIMIT, getDeviceId, getSubjectId, recordUse } from "@/lib/ratelimit";
 import { readStoreFile, storeImage, updateDb } from "@/lib/store";
 import { templateById } from "@/lib/templates";
-import { addDomainWatermark } from "@/lib/watermark";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
 
-/** 把生成图水印化后读回 data-URL，给未登录用户当即时预览（媒体接口对未登录是关掉的）。 */
-async function toWatermarkedDataUrl(path: string): Promise<string | null> {
+/** 把生成图读回 data-URL，给未登录用户当即时预览（展示保持干净；水印只在下载时携带）。 */
+async function toDataUrl(path: string): Promise<string | null> {
   const id = path.slice("/api/media/".length).split(/[?#]/)[0];
   const file = await readStoreFile("generated", id);
   if (!file) return null;
-  const wm = await addDomainWatermark(file.bytes);
-  return `data:image/jpeg;base64,${wm.toString("base64")}`;
+  return `data:${file.mime};base64,${file.bytes.toString("base64")}`;
 }
 
 export async function POST(req: Request) {
@@ -72,17 +70,14 @@ export async function POST(req: Request) {
 
     if (result.image.startsWith("/api/media/")) {
       publicPath = result.image;
-      if (!user) preview = (await toWatermarkedDataUrl(publicPath)) ?? undefined;
+      if (!user) preview = (await toDataUrl(publicPath)) ?? undefined;
     } else {
       // Mock data-URL：落盘一份，登录后的下载/投稿走统一出口
       const b64 = result.image.slice(result.image.indexOf(";base64,") + 8);
       const mime = result.image.slice(5, result.image.indexOf(";"));
       const id = await storeImage(Buffer.from(b64, "base64"), "generated", mime);
       publicPath = `/api/media/${id}`;
-      if (!user) {
-        const wm = await addDomainWatermark(Buffer.from(b64, "base64"));
-        preview = `data:image/jpeg;base64,${wm.toString("base64")}`;
-      }
+      if (!user) preview = result.image;
     }
 
     await updateDb((db) => {

@@ -297,7 +297,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                               ? `${window.location.origin}${m.result.imagePath}?st=${m.result.shareUrl.split("/").pop()}`
                               : undefined
                           }
-                          fileShareSrc={wmSrc(m.result.image)}
+                          fileShareSrc={m.result.image}
                           text={gen.shareText}
                         />
                       </div>
@@ -449,7 +449,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 aria-label={gen.histOpen}
                 title={h.message || gen.histOpen}
               >
-                <img src={wmSrc(h.imagePath)} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
+                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
               </button>
             ))}
             <Link href={P("/library")} className="shrink-0 whitespace-nowrap text-xs font-semibold text-coral hover:underline">
@@ -462,7 +462,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
               if (!h) return null;
               return (
                 <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
-                  <img src={wmSrc(h.imagePath)} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
+                  <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     {user ? (
                       <button

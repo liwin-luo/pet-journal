@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Tpl } from "@/lib/templates";
-import { tplImgWm } from "@/lib/templates";
+import { tplImg } from "@/lib/templates";
 import { BadgeChip } from "./BadgeChip";
 import { CopyButton } from "./CopyButton";
 
@@ -10,7 +10,7 @@ export function TemplateCard({ tpl, priority = false }: { tpl: Tpl; priority?: b
       <Link href={`/templates/${tpl.id}`} className="relative block" aria-label={`${tpl.name} template`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={tplImgWm(tpl.id)}
+          src={tplImg(tpl.id)}
           alt={`${tpl.name} — AI pet portrait template`}
           width={512}
           height={683}

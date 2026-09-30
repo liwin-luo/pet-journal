@@ -57,7 +57,7 @@ export default async function TemplateDetail({ params }: { params: Promise<{ loc
         <figure>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={tplImgWm(tpl.id)}
+            src={tplImg(tpl.id)}
             alt={`${tpl.name} — AI pet portrait template example`}
             width={512}
             height={683}
