@@ -194,7 +194,13 @@
     "ctaTitle": "你家宠物也该在这里",
     "ctaSub": "免费体验，无需账号，每张约 30 秒。",
     "ctaBtn": "为我的宠物创建画像",
-    "custom": "自定义"
+    "custom": "自定义",
+    "likeBtn": "点赞",
+    "shareBtn": "分享",
+    "storyTitle": "这张图背后的故事",
+    "backTo": "返回画廊",
+    "by": "{nickname} 创作",
+    "detailTitle": "{pet} 的 AI 宠物画像"
   },
   "faqPage": {
     "title": "常见问题",

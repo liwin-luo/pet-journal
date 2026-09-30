@@ -194,7 +194,13 @@
     "ctaTitle": "Votre animal a sa place ici",
     "ctaSub": "Gratuit, sans compte, ~30 secondes par image.",
     "ctaBtn": "Créer le portrait de mon animal",
-    "custom": "personnalisé"
+    "custom": "personnalisé",
+    "likeBtn": "J'aime",
+    "shareBtn": "Partager",
+    "storyTitle": "L'histoire de cette image",
+    "backTo": "Retour à la galerie",
+    "by": "par {nickname}",
+    "detailTitle": "{pet} — portrait d'animal par IA"
   },
   "faqPage": {
     "title": "Foire aux questions",

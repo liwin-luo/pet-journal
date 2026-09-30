@@ -194,7 +194,13 @@
     "ctaTitle": "Il tuo animale merita di esserci",
     "ctaSub": "Gratis, senza account, ~30 secondi per immagine.",
     "ctaBtn": "Crea il ritratto del mio animale",
-    "custom": "personalizzato"
+    "custom": "personalizzato",
+    "likeBtn": "Mi piace",
+    "shareBtn": "Condividi",
+    "storyTitle": "La storia di questa immagine",
+    "backTo": "Torna alla galleria",
+    "by": "di {nickname}",
+    "detailTitle": "{pet} — ritratto di animale IA"
   },
   "faqPage": {
     "title": "Domande frequenti",

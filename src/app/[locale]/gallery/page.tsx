@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
+import { LikeButton } from "@/components/LikeButton";
 import { PawIcon, StarIcon } from "@/components/icons";
-import { getAllGallery } from "@/lib/gallery";
+import { WorkShareButton } from "@/components/WorkShareButton";
+import { getGalleryWithLikes } from "@/lib/gallery";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { templateById } from "@/lib/templates";
@@ -35,11 +37,11 @@ export default async function GalleryPage({
   const locale = raw as Locale;
   const t = getDict(locale);
   const { species } = await searchParams;
-  const all = await getAllGallery();
+  const all = await getGalleryWithLikes();
   const filter = species && SPECIES_KEYS.includes(species as never) ? species : "all";
   const works = (filter === "all" ? all : all.filter((g) => g.species === filter)).filter((g) => !g.text);
   const reviews = all.filter((g) => g.text);
-  const speciesLabel = (key: string) => (key === "all" ? t.gal.speciesAll : t.gal[key as keyof typeof t.gal] as string);
+  const speciesLabel = (key: string) => (key === "all" ? t.gal.speciesAll : (t.gal[key as keyof typeof t.gal] as string));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -47,7 +49,7 @@ export default async function GalleryPage({
         <h1 className="h-display text-4xl">{t.gal.title}</h1>
         <p className="mx-auto mt-3 max-w-2xl text-coffee">
           {t.gal.desc}{" "}
-          <Link href={lp(locale, "/#create")} className="font-semibold text-coral hover:underline">
+          <Link href={`${lp(locale, "/")}#create`} className="font-semibold text-coral hover:underline">
             {t.gal.createPost}
           </Link>
           .
@@ -75,22 +77,30 @@ export default async function GalleryPage({
           const tpl = templateById(w.templateId);
           return (
             <figure key={w.id} className="group relative break-inside-avoid">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={w.image}
-                alt={`AI ${tpl?.name ?? "studio"} portrait of ${w.petName} the ${w.species}`}
-                width={512}
-                height={683}
-                loading="lazy"
-                className="w-full rounded-card object-cover shadow-soft transition-shadow group-hover:shadow-lift"
-              />
-              <figcaption className="mt-2 flex items-center gap-1.5 text-xs text-coffee">
-                <PawIcon className="h-3.5 w-3.5 text-coral" />
-                <span className="font-semibold">{w.petName}</span>
-                <span className="text-fog">·</span>
-                <Link href={tpl ? lp(locale, `/templates/${tpl.id}`) : lp(locale, "/templates")} className="hover:text-coral">
-                  {tpl?.name ?? t.gal.custom}
-                </Link>
+              <Link href={lp(locale, `/gallery/${w.id}`)} aria-label={`${w.petName} — ${tpl?.name ?? ""}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={w.image}
+                  alt={`AI ${tpl?.name ?? "studio"} portrait of ${w.petName} the ${w.species}`}
+                  width={512}
+                  height={683}
+                  loading="lazy"
+                  className="w-full rounded-card object-cover shadow-soft transition-shadow group-hover:shadow-lift"
+                />
+              </Link>
+              <figcaption className="mt-2">
+                <div className="flex items-center gap-1.5 text-xs text-coffee">
+                  <PawIcon className="h-3.5 w-3.5 text-coral" />
+                  <span className="font-semibold">{w.petName}</span>
+                  <span className="text-fog">·</span>
+                  <Link href={tpl ? lp(locale, `/templates/${tpl.id}`) : lp(locale, "/templates")} className="hover:text-coral">
+                    {tpl?.name ?? t.gal.custom}
+                  </Link>
+                </div>
+                <div className="mt-1.5 flex items-center gap-1.5">
+                  <LikeButton id={w.id} count={w.likeCount} liked={w.liked} label={t.gal.likeBtn} />
+                  <WorkShareButton path={lp(locale, `/gallery/${w.id}`)} title={`${w.petName} — ${tpl?.name ?? "AI"}`} label={t.gal.shareBtn} />
+                </div>
               </figcaption>
             </figure>
           );
@@ -133,7 +143,7 @@ export default async function GalleryPage({
         {!reviews.length && (
           <p className="mt-6 text-sm text-coffee">
             {t.gal.noReviewsPre}
-            <Link href={lp(locale, "/#create")} className="font-semibold text-coral hover:underline">{t.gal.noReviewsLink}</Link>
+            <Link href={`${lp(locale, "/")}#create`} className="font-semibold text-coral hover:underline">{t.gal.noReviewsLink}</Link>
             {t.gal.noReviewsPost}
           </p>
         )}

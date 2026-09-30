@@ -194,7 +194,13 @@
     "ctaTitle": "여러분의 아이도 여기에",
     "ctaSub": "무료 체험, 계정 불필요, 1장 약 30초.",
     "ctaBtn": "우리 아이 초상 만들기",
-    "custom": "커스텀"
+    "custom": "커스텀",
+    "likeBtn": "좋아요",
+    "shareBtn": "공유",
+    "storyTitle": "이 그림의 이야기",
+    "backTo": "갤러리로 돌아가기",
+    "by": "{nickname} 제작",
+    "detailTitle": "{pet} — AI 반려동물 초상"
   },
   "faqPage": {
     "title": "자주 묻는 질문",

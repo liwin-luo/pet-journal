@@ -194,7 +194,13 @@
     "ctaTitle": "Your pet belongs here",
     "ctaSub": "Free to try, no account, ~30 seconds per picture.",
     "ctaBtn": "Create my pet portrait",
-    "custom": "custom"
+    "custom": "custom",
+    "likeBtn": "Like",
+    "shareBtn": "Share",
+    "storyTitle": "The story behind this picture",
+    "backTo": "Back to gallery",
+    "by": "by {nickname}",
+    "detailTitle": "{pet} — AI pet portrait"
   },
   "faqPage": {
     "title": "Frequently asked questions",

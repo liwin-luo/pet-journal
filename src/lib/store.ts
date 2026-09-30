@@ -33,13 +33,16 @@ export type GalleryEntry = {
   createdAt: string;
 };
 
+export type LikeRec = { count: number; devices: string[] };
+
 type Db = {
   shares: Record<string, Share>;
   gallery: GalleryEntry[];
   usage: Record<string, { date: string; count: number }>;
+  likes: Record<string, LikeRec>;
 };
 
-const EMPTY: Db = { shares: {}, gallery: [], usage: {} };
+const EMPTY: Db = { shares: {}, gallery: [], usage: {}, likes: {} };
 
 const usePg = !!process.env.DATABASE_URL?.trim();
 
@@ -154,6 +157,22 @@ export async function removeGalleryEntry(id: string): Promise<void> {
 export async function pendingGalleryEntries(): Promise<GalleryEntry[]> {
   const db = await readDb();
   return db.gallery.filter((g) => !g.approved);
+}
+
+/** 点赞切换（设备去重）：返回切换后的状态。 */
+export async function toggleLike(entryId: string, deviceId: string): Promise<{ liked: boolean; count: number }> {
+  return updateDb((db) => {
+    const rec = db.likes[entryId] ?? { count: 0, devices: [] };
+    const had = rec.devices.includes(deviceId);
+    const devices = had ? rec.devices.filter((d) => d !== deviceId) : [...rec.devices, deviceId];
+    db.likes[entryId] = { count: devices.length, devices };
+    return { liked: !had, count: devices.length };
+  });
+}
+
+export async function getLikeSnapshot(): Promise<Record<string, LikeRec>> {
+  const db = await readDb();
+  return db.likes ?? {};
 }
 
 // ===== 图片存储 =====

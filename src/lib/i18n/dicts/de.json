@@ -194,7 +194,13 @@
     "ctaTitle": "Dein Haustier gehört hierher",
     "ctaSub": "Kostenlos, ohne Konto, ~30 Sekunden pro Bild.",
     "ctaBtn": "Haustier-Porträt erstellen",
-    "custom": "eigene"
+    "custom": "eigene",
+    "likeBtn": "Gefällt mir",
+    "shareBtn": "Teilen",
+    "storyTitle": "Die Geschichte zu diesem Bild",
+    "backTo": "Zurück zur Galerie",
+    "by": "von {nickname}",
+    "detailTitle": "{pet} — KI-Haustierporträt"
   },
   "faqPage": {
     "title": "Häufige Fragen",

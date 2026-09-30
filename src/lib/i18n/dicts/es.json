@@ -194,7 +194,13 @@
     "ctaTitle": "Tu mascota pertenece aquí",
     "ctaSub": "Gratis, sin cuenta, ~30 segundos por imagen.",
     "ctaBtn": "Crear retrato de mi mascota",
-    "custom": "personalizado"
+    "custom": "personalizado",
+    "likeBtn": "Me gusta",
+    "shareBtn": "Compartir",
+    "storyTitle": "La historia de esta imagen",
+    "backTo": "Volver a la galería",
+    "by": "por {nickname}",
+    "detailTitle": "{pet} — Retrato de mascota IA"
   },
   "faqPage": {
     "title": "Preguntas frecuentes",

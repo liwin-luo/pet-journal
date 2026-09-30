@@ -194,7 +194,13 @@
     "ctaTitle": "あなたのペットもここに",
     "ctaSub": "無料、アカウント不要、1枚約30秒。",
     "ctaBtn": "うちの子のポートレートを作る",
-    "custom": "カスタム"
+    "custom": "カスタム",
+    "likeBtn": "いいね",
+    "shareBtn": "シェア",
+    "storyTitle": "この絵の物語",
+    "backTo": "ギャラリーに戻る",
+    "by": "{nickname} さん",
+    "detailTitle": "{pet} の AI ペットポートレート"
   },
   "faqPage": {
     "title": "よくある質問",
