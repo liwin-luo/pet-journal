@@ -1,0 +1,18 @@
+# deps
+/node_modules
+
+# next
+/.next
+/out
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# runtime data（上传、生成图、JSON 库）
+/.data
+
+# secrets
+.env*.local
+
+# misc
+.DS_Store
+*.log

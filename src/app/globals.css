@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* 暖奶油 + 陶土珊瑚品牌体系（对齐参考项目设计规范） */
+  --color-cream: #faf6ef;
+  --color-parchment: #f3ecdf;
+  --color-sand: #e9dfcd;
+  --color-ink: #3d2e24;
+  --color-coffee: #6b5a4e;
+  --color-fog: #b8a894;
+  --color-coral: #e0715c;
+  --color-coral-deep: #c85a46;
+  --color-coral-soft: #fbeae5;
+  --color-sage: #6e7a62;
+  --color-sage-soft: #e8ede2;
+  --color-gold: #d4a857;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 1rem;
+  --radius-big: 1.5rem;
+  --shadow-soft: 0 2px 12px rgba(61, 46, 36, 0.06);
+  --shadow-lift: 0 6px 24px rgba(61, 46, 36, 0.1);
+}
+
+body {
+  @apply bg-cream font-sans text-ink antialiased;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: #fff;
+}
+
+/* 陶土珊瑚主按钮 */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-coral px-6 py-3 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-coral-deep hover:shadow-lift active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand bg-white/60 px-5 py-2.5 font-semibold text-ink transition-colors hover:border-coral hover:text-coral;
+}
+
+.card {
+  @apply rounded-card border border-sand/70 bg-white shadow-soft;
+}
+
+.h-display {
+  @apply font-display font-semibold tracking-tight;
+}
+
+/* 聊天流 出现动画 */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.35s ease-out both;
+}
+
+@keyframes bounce-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.bounce-soft {
+  animation: bounce-soft 1s ease-in-out infinite;
+}
