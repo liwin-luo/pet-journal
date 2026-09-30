@@ -48,10 +48,14 @@ const globalStore = globalThis as unknown as { pdPool?: any };
 async function pg(): Promise<import("pg").Pool> {
   if (!globalStore.pdPool) {
     const { Pool } = await import("pg");
+    // Supabase 等托管库的证书链不带公共 CA；连接串里的 sslmode=require 会被 pg 按 verify-full
+    // 严格校验而报 SELF_SIGNED_CERT_IN_CHAIN。剥掉 sslmode，显式关闭校验（连接仍加密）。
+    const cs = new URL(process.env.DATABASE_URL!);
+    cs.searchParams.delete("sslmode");
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString: cs.toString(),
       max: 5,
-      ssl: /sslmode=disable/.test(process.env.DATABASE_URL || "") ? undefined : { rejectUnauthorized: false },
+      ssl: { rejectUnauthorized: false },
     });
     await pool.query(`
       create table if not exists pd_media (
