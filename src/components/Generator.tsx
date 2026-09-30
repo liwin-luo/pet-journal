@@ -74,6 +74,8 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
   const chatRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const P = (path: string) => (locale === "en" ? path : `/${locale}${path}`);
+  /** 生成图统一走水印出口（登录后可取，下载即带域名水印）。 */
+  const wmSrc = (p: string) => p.replace("/api/media/", "/api/wm/media/");
 
   // /templates/[slug] 点 "Try it" 带 ?tpl= 进来，预选模板
   useEffect(() => {
@@ -170,7 +172,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
 
   async function download(id: number, result: Msg["result"]) {
     if (!result) return;
-    const ok = await fetchDownload(result.imagePath || result.image);
+    const ok = await fetchDownload(wmSrc(result.imagePath || result.image));
     if (!ok) setSignInFor(id);
   }
 
@@ -295,7 +297,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                               ? `${window.location.origin}${m.result.imagePath}?st=${m.result.shareUrl.split("/").pop()}`
                               : undefined
                           }
-                          fileShareSrc={m.result.image}
+                          fileShareSrc={wmSrc(m.result.image)}
                           text={gen.shareText}
                         />
                       </div>
@@ -447,7 +449,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 aria-label={gen.histOpen}
                 title={h.message || gen.histOpen}
               >
-                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
+                <img src={wmSrc(h.imagePath)} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
               </button>
             ))}
             <Link href={P("/library")} className="shrink-0 whitespace-nowrap text-xs font-semibold text-coral hover:underline">
@@ -460,13 +462,13 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
               if (!h) return null;
               return (
                 <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
-                  <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
+                  <img src={wmSrc(h.imagePath)} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     {user ? (
                       <button
                         className="btn-primary !px-4 !py-2 text-sm"
                         onClick={async () => {
-                          const ok = await fetchDownload(h.imagePath);
+                          const ok = await fetchDownload(wmSrc(h.imagePath));
                           if (!ok) setHistSignIn(true);
                         }}
                       >

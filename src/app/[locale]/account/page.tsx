@@ -78,7 +78,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
             {history.map((h) => (
               <Link key={h.token} href={lp(locale, `/share/${h.token}`)} className="group block" title={h.message || h.templateId || ""}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="aspect-[3/4] w-full rounded-lg border border-sand object-cover transition-transform group-hover:scale-[1.03]" />
+                <img src={h.imagePath.replace("/api/media/", "/api/wm/media/")} alt={h.message || "Generated pet picture"} className="aspect-[3/4] w-full rounded-lg border border-sand object-cover transition-transform group-hover:scale-[1.03]" />
               </Link>
             ))}
           </div>

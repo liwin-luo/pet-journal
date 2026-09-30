@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     path: `/share/${token}`,
     title: `AI pet portrait: “${(share.message || t.share.made).slice(0, 42)}”`,
     description: `AI pet portrait${tpl ? ` — ${tpl.name}` : ""}. ${t.share.makeSub}`,
-    ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image}?st=${token}`,
+    ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image.replace("/api/media/", "/api/wm/media/")}?st=${token}`,
     ogImageDims: { w: 1728, h: 2304 },
     noindex: true,
   });
@@ -53,7 +53,7 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
       </p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${share.image}?st=${token}`}
+        src={`${share.image.replace("/api/media/", "/api/wm/media/")}?st=${token}`}
         alt={share.message || "AI-generated pet portrait"}
         className="mx-auto mt-6 w-full max-w-md rounded-big shadow-lift"
       />
@@ -81,8 +81,8 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
           )}
           <ShareBar
             url={`${SITE_URL}/share/${token}`}
-            imageUrl={`${SITE_URL}${share.image}?st=${token}`}
-            fileShareSrc={`${share.image}?st=${token}`}
+            imageUrl={`${SITE_URL}${share.image.replace("/api/media/", "/api/wm/media/")}?st=${token}`}
+            fileShareSrc={`${share.image.replace("/api/media/", "/api/wm/media/")}?st=${token}`}
             text="Check out this AI pet portrait I made! 🐾"
           />
         </div>

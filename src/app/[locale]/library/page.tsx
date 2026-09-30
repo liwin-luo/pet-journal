@@ -53,7 +53,7 @@ export default async function LibraryPage({ params }: { params: Promise<{ locale
             return (
               <Link key={h.token} href={lp(locale, `/share/${h.token}`)} className="group card overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lift">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={h.imagePath} alt={h.message || "Generated pet picture"} width={512} height={683} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                <img src={h.imagePath.replace("/api/media/", "/api/wm/media/")} alt={h.message || "Generated pet picture"} width={512} height={683} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                 <div className="p-3">
                   <p className="truncate text-xs font-semibold text-coffee">{h.message || (tpl?.name ?? t.gal.custom)}</p>
                   <p className="mt-0.5 text-[11px] text-fog">
