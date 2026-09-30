@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { cookieDomain } from "./site";
 import { getSessionUser } from "./auth";
 import { updateDb } from "./store";
 
@@ -13,7 +14,7 @@ export async function getDeviceId(): Promise<string> {
   if (existing && /^[\w-]{10,64}$/.test(existing)) return existing;
   const id = crypto.randomUUID();
   try {
-    jar.set(COOKIE, id, { httpOnly: true, sameSite: "lax", maxAge: YEAR, path: "/" });
+    jar.set(COOKIE, id, { httpOnly: true, sameSite: "lax", maxAge: YEAR, path: "/", domain: cookieDomain() });
   } catch {
     // 只读上下文（RSC 里调用）会抛错；生成接口是 Route Handler，可以写。
   }

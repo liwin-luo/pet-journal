@@ -1,5 +1,6 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
+import { cookieDomain } from "./site";
 
 // 会话：无数据库，用户信息 HMAC 签名后放进 httpOnly cookie。
 export type SessionUser = {
@@ -10,7 +11,8 @@ export type SessionUser = {
 };
 
 const COOKIE = "paw_session";
-const TTL_MS = 30 * 24 * 60 * 60 * 1000;
+// 180 天：登录状态长期保留（持久 cookie，关浏览器也不丢）
+const TTL_MS = 180 * 24 * 60 * 60 * 1000;
 
 function secret(): string {
   return process.env.AUTH_SECRET?.trim() || "dev-insecure-secret";
@@ -51,11 +53,13 @@ export async function getSessionUser(): Promise<SessionUser | null> {
 /** Route Handler 里用：读 + 可选写。 */
 export async function sessionCookie(token: string): Promise<string> {
   const secure = (process.env.NEXT_PUBLIC_SITE_URL || "").startsWith("https");
-  return `${COOKIE}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${TTL_MS / 1000}${secure ? "; Secure" : ""}`;
+  const domain = cookieDomain();
+  return `${COOKIE}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${TTL_MS / 1000}${secure ? "; Secure" : ""}${domain ? `; Domain=${domain}` : ""}`;
 }
 
 export function clearSessionCookie(): string {
-  return `${COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+  const domain = cookieDomain();
+  return `${COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${domain ? `; Domain=${domain}` : ""}`;
 }
 
 export function authEnabled(): boolean {

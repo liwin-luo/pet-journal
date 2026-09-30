@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getSessionUser } from "@/lib/auth";
 import { SITE_NAME } from "@/lib/site";
 import { PawIcon, SparkIcon } from "./icons";
+import { SignOutButton } from "./SignOutButton";
 
 export async function Header() {
   const user = await getSessionUser();
@@ -22,7 +23,7 @@ export async function Header() {
         </nav>
         <div className="flex items-center gap-3">
           {user ? (
-            <form action="/api/auth/logout" method="post" className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span className="hidden items-center gap-2 text-sm text-coffee sm:flex" title={user.email}>
                 {user.picture ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -34,10 +35,8 @@ export async function Header() {
                 )}
                 <span className="max-w-28 truncate">{user.name || user.email}</span>
               </span>
-              <button type="submit" className="text-sm font-medium text-coffee transition-colors hover:text-coral">
-                Sign out
-              </button>
-            </form>
+              <SignOutButton />
+            </div>
           ) : (
             <Link href="/login" className="text-sm font-medium text-coffee transition-colors hover:text-coral">
               Sign in
