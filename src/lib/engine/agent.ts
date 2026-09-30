@@ -34,6 +34,7 @@ export function readPlanBody(raw: unknown): PlanBody {
 export function planBrief(input: Pick<PlanBody, "text" | "mentions" | "images">): string {
   const lines = [
     "You plan one picture. Read the dialog and the image list. Write the image prompt, and choose which image ids the image model should see.",
+    "Those photos only show who the pet is. The pose, clothes, place and action must follow the dialog, not copy the photo.",
     "The image model cannot see this dialog. Put the user's request into the prompt. Write the prompt in English. Do not put words in the picture.",
     "Reply with JSON only: {\"prompt\":\"...\",\"images\":[\"id\"]}",
     "",

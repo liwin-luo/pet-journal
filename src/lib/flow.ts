@@ -67,8 +67,7 @@ export function planRequest(s: ReturnType<typeof loadState>, uploads: string[], 
     const id = `pet-${p.id}`.replace(/[^\w.-]/g, "").slice(0, 40);
     if (id) images.push({ id, note: `saved portrait of ${p.name || "this pet"}`, src: p.anchorImage! });
   }
-  if (tpl) images.push({ id: `tpl-${tpl.id}`, note: `example of the ${tpl.en} template`, src: `/tpl/${tpl.id}.jpg` });
-  return { text: s.customDesc || "", mentions, images: images.slice(0, 8) };
+  return { text: [s.customDesc, s.intent].filter(Boolean).join("\n"), mentions, images: images.slice(0, 8) };
 }
 
 /** 多只宠物合成一条提示。ponytail: 仍是一张锚点图，其它宠物只写进文字。要各用各的照片，得按宠物传参考图。 */
