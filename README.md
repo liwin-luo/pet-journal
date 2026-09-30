@@ -27,6 +27,7 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
 - 审核：关键词黑名单 + **GLM 语义门控**——非宠物诉求、人物主体、色情/歧视/暴力/违法内容一律拒绝（语义门控失败时 fail-closed）
 - 无数据库依赖：JSON 文件库 `.data/db.json`，图片 `.data/{uploads,generated}/`
 - 生成历史：`GET /api/history` 按设备/账号返回最近 24 张；生成器面板顶部 "Your pictures" 区可随时找回（登录前后都有效）
+- 宠物日记：`/diary` 日历/时间线/日记本三视图回看作品，AI 以宠物口吻写每日日记
 - 审核后台：`/admin?key=ADMIN_KEY` 审批/拒绝画廊投稿（`ADMIN_KEY` 在 .env.local，上线换长随机串）
 
 ## 上线清单（按顺序）

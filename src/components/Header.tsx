@@ -34,7 +34,8 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
               homePath={lp(locale, "/")}
               accountPath={lp(locale, "/account")}
               libPath={lp(locale, "/library")}
-              texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, resetsAt: t.acct.resetsAt, myPictures: t.acct.myPictures, plans: t.acct.plans, signout: t.signout }}
+              diaryPath={lp(locale, "/diary")}
+              texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, resetsAt: t.acct.resetsAt, myPictures: t.acct.myPictures, myDiary: t.acct.myDiary, plans: t.acct.plans, signout: t.signout }}
             />
           ) : (
             <Link href={lp(locale, "/login")} className="text-sm font-medium text-coffee transition-colors hover:text-coral">

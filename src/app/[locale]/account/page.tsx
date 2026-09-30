@@ -71,7 +71,10 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
       <section className="mt-6 card p-6" aria-labelledby="acct-pics">
         <div className="flex items-center justify-between">
           <h2 id="acct-pics" className="text-xs font-semibold uppercase tracking-wide text-fog">{t.acct.myPictures}</h2>
-          <Link href={`${lp(locale, "/")}#create`} className="text-xs font-semibold text-coral hover:underline">+ {t.nav.create}</Link>
+          <div className="flex items-center gap-4 text-xs font-semibold">
+            <Link href={lp(locale, "/diary")} className="text-coral hover:underline">{t.acct.myDiary}</Link>
+            <Link href={`${lp(locale, "/")}#create`} className="text-coral hover:underline">+ {t.nav.create}</Link>
+          </div>
         </div>
         {history.length ? (
           <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">

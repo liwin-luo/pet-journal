@@ -41,9 +41,14 @@ export default async function LibraryPage({ params }: { params: Promise<{ locale
             {t.home.freeCount.replace("3", String(quota.limit))} · {t.acct.quotaLeft.replace("{left}", String(quota.left))}
           </p>
         </div>
-        <Link href={`${lp(locale, "/")}#create`} className="btn-primary !px-5 !py-2.5 text-sm">
-          {t.nav.create}
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href={lp(locale, "/diary")} className="btn-ghost !px-5 !py-2.5 text-sm">
+            {t.lib.viewDiary}
+          </Link>
+          <Link href={`${lp(locale, "/")}#create`} className="btn-primary !px-5 !py-2.5 text-sm">
+            {t.nav.create}
+          </Link>
+        </div>
       </div>
 
       {items.length ? (
