@@ -20,7 +20,8 @@
     "gallery": "갤러리",
     "faq": "FAQ",
     "create": "만들기",
-    "signIn": "로그인"
+    "signIn": "로그인",
+    "home": "홈"
   },
   "signout": {
     "title": "로그아웃할까요?",

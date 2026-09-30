@@ -20,7 +20,8 @@
     "gallery": "画廊",
     "faq": "常见问题",
     "create": "开始创作",
-    "signIn": "登录"
+    "signIn": "登录",
+    "home": "首页"
   },
   "signout": {
     "title": "要退出登录吗？",

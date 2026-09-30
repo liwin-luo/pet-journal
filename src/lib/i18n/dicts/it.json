@@ -20,7 +20,8 @@
     "gallery": "Galleria",
     "faq": "FAQ",
     "create": "Crea",
-    "signIn": "Accedi"
+    "signIn": "Accedi",
+    "home": "Home"
   },
   "signout": {
     "title": "Uscire?",

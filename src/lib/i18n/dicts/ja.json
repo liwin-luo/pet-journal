@@ -20,7 +20,8 @@
     "gallery": "ギャラリー",
     "faq": "FAQ",
     "create": "作成",
-    "signIn": "ログイン"
+    "signIn": "ログイン",
+    "home": "ホーム"
   },
   "signout": {
     "title": "ログアウトしますか？",

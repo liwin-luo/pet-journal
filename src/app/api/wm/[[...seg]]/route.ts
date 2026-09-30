@@ -20,14 +20,19 @@ export async function GET(_req: Request, { params }: { params: Promise<{ seg?: s
   try {
     if (kind === "tpl" && name && /^[\w.-]+\.jpe?g$/i.test(name)) {
       bytes = await readFile(path.join(process.cwd(), "public", "tpl", name));
+    } else if (kind === "land" && name && /^[\w.-]+\.jpe?g$/i.test(name)) {
+      bytes = await readFile(path.join(process.cwd(), "public", "land", name));
     } else if (kind === "gallery" && name && /^[0-9a-zA-Z-]+$/.test(name)) {
       const all = await getAllGallery();
       const entry = all.find((g) => g.id === name);
       if (entry) {
-        if (entry.image.startsWith("/tpl/")) {
-          bytes = await readFile(path.join(process.cwd(), "public", "tpl", entry.image.slice("/tpl/".length)));
-        } else if (entry.image.startsWith("/api/media/")) {
-          const mediaId = entry.image.slice("/api/media/".length).split(/[?#]/)[0];
+        const img = entry.image;
+        if (img.startsWith("/land/")) {
+          bytes = await readFile(path.join(process.cwd(), "public", "land", img.slice("/land/".length)));
+        } else if (img.startsWith("/tpl/")) {
+          bytes = await readFile(path.join(process.cwd(), "public", "tpl", img.slice("/tpl/".length)));
+        } else if (img.startsWith("/api/media/")) {
+          const mediaId = img.slice("/api/media/".length).split(/[?#]/)[0];
           bytes = (await readStoreFile("generated", mediaId) ?? (await readStoreFile("uploads", mediaId)))?.bytes ?? null;
         }
       }

@@ -20,7 +20,8 @@
     "gallery": "Galerie",
     "faq": "FAQ",
     "create": "Créer",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "home": "Accueil"
   },
   "signout": {
     "title": "Se déconnecter ?",

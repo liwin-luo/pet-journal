@@ -20,7 +20,8 @@
     "gallery": "Galería",
     "faq": "FAQ",
     "create": "Crear",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "home": "Inicio"
   },
   "signout": {
     "title": "¿Cerrar sesión?",

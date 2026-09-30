@@ -20,7 +20,8 @@
     "gallery": "Gallery",
     "faq": "FAQ",
     "create": "Create",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "home": "Home"
   },
   "signout": {
     "title": "Sign out?",

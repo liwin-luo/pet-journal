@@ -20,7 +20,8 @@
     "gallery": "Galeria",
     "faq": "FAQ",
     "create": "Criar",
-    "signIn": "Entrar"
+    "signIn": "Entrar",
+    "home": "Início"
   },
   "signout": {
     "title": "Sair da conta?",
