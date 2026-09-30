@@ -186,8 +186,8 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
       {/* 历史区：同一浏览器/账号生成过的图都在这里，登录前后都能找回 */}
       {hist.length > 0 && (
         <div className="border-b border-sand/70 bg-parchment/40 px-5 py-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-fog">{gen.histTitle}</p>
-          <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">{gen.histTitle}</span>
             {hist.map((h) => (
               <button
                 key={h.imagePath}
@@ -204,6 +204,9 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
               </button>
             ))}
+            <Link href={P("/library")} className="shrink-0 whitespace-nowrap text-xs font-semibold text-coral hover:underline">
+              {gen.viewAll}
+            </Link>
           </div>
           {histSel &&
             (() => {

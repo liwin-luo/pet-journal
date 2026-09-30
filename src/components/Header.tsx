@@ -33,6 +33,7 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
               quota={quota}
               homePath={lp(locale, "/")}
               accountPath={lp(locale, "/account")}
+              libPath={lp(locale, "/library")}
               texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, myPictures: t.acct.myPictures, plans: t.acct.plans, signout: t.signout }}
             />
           ) : (

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PawIcon, SparkIcon } from "@/components/icons";
+import { DownloadIcon, PawIcon, SparkIcon } from "@/components/icons";
 import { ShareBar } from "@/components/ShareBar";
+import { getSessionUser } from "@/lib/auth";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -42,6 +43,7 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
   const share = await getShare(token);
   if (!share) notFound();
   const tpl = templateById(share.templateId);
+  const user = await getSessionUser().catch(() => null);
 
   return (
     <div className="mx-auto max-w-xl px-4 py-12 text-center">
@@ -67,12 +69,21 @@ export default async function SharePage({ params }: { params: Promise<{ locale: 
 
       <div className="mt-8">
         <p className="mb-3 text-sm font-semibold text-coffee">{t.share.love}</p>
-        <div className="flex justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {user && (
+            <a
+              href={`${share.image}?st=${token}`}
+              download={`petsdaily-${token}.jpg`}
+              className="btn-primary !px-4 !py-2 text-sm"
+            >
+              {t.gal.download}
+            </a>
+          )}
           <ShareBar
             url={`${SITE_URL}/share/${token}`}
             imageUrl={`${SITE_URL}${share.image}?st=${token}`}
             fileShareSrc={`${share.image}?st=${token}`}
-            text={t.gen.shareText}
+            text="Check out this AI pet portrait I made! 🐾"
           />
         </div>
       </div>

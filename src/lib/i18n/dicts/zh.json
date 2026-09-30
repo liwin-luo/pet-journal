@@ -139,7 +139,8 @@
       "other": "其他宠物"
     },
     "painting": "绘制中…",
-    "generate": "生成"
+    "generate": "生成",
+    "viewAll": "查看全部"
   },
   "tpl": {
     "title": "模板中心",
@@ -436,5 +437,10 @@
     "plansSoon": "即将上线",
     "signOut": "退出登录",
     "back": "回到工作室"
+  },
+  "lib": {
+    "title": "我的作品",
+    "viewAll": "查看全部",
+    "empty": "还没有作品——创作后会显示在这里。"
   }
 }

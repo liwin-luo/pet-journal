@@ -19,11 +19,12 @@ type Props = {
   quota: { used: number; limit: number; left: number };
   homePath: string;
   accountPath: string;
+  libPath: string;
   texts: Texts;
 };
 
 /** 顶栏个人中心：头像下拉（资料 / 今日额度 / 入口 / 登出确认）。 */
-export function UserMenu({ user, quota, homePath, accountPath, texts }: Props) {
+export function UserMenu({ user, quota, homePath, accountPath, libPath, texts }: Props) {
   const [open, setOpen] = useState(false);
   const [modal, setModal] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -101,7 +102,7 @@ export function UserMenu({ user, quota, homePath, accountPath, texts }: Props) {
 
           {/* 入口 */}
           <div className="border-b border-sand/70 py-1">
-            <Link href={`${homePath}#create`} onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-coffee transition-colors hover:bg-parchment hover:text-coral">
+            <Link href={libPath} onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-coffee transition-colors hover:bg-parchment hover:text-coral">
               <SparkIcon className="h-4 w-4 text-coral" /> {texts.myPictures}
             </Link>
             <Link href={accountPath} onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-coffee transition-colors hover:bg-parchment hover:text-coral">

@@ -139,7 +139,8 @@
       "other": "기타 반려동물"
     },
     "painting": "그리는 중…",
-    "generate": "생성"
+    "generate": "생성",
+    "viewAll": "모두 보기"
   },
   "tpl": {
     "title": "템플릿 센터",
@@ -436,5 +437,10 @@
     "plansSoon": "곧 출시",
     "signOut": "로그아웃",
     "back": "스튜디오로 돌아가기"
+  },
+  "lib": {
+    "title": "내 작품",
+    "viewAll": "모두 보기",
+    "empty": "아직 작품이 없습니다 — 만들면 여기에 표시됩니다."
   }
 }

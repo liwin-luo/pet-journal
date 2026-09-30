@@ -139,7 +139,8 @@
       "other": "Outro pet"
     },
     "painting": "Pintando…",
-    "generate": "Gerar"
+    "generate": "Gerar",
+    "viewAll": "Ver todas"
   },
   "tpl": {
     "title": "Central de modelos",
@@ -436,5 +437,10 @@
     "plansSoon": "Em breve",
     "signOut": "Sair",
     "back": "Voltar ao estúdio"
+  },
+  "lib": {
+    "title": "Minhas imagens",
+    "viewAll": "Ver todas",
+    "empty": "Nada por aqui ainda — suas criações aparecerão aqui."
   }
 }

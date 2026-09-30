@@ -139,7 +139,8 @@
       "other": "Other pet"
     },
     "painting": "Painting…",
-    "generate": "Generate"
+    "generate": "Generate",
+    "viewAll": "View all"
   },
   "tpl": {
     "title": "Template center",
@@ -436,5 +437,10 @@
     "plansSoon": "Coming soon",
     "signOut": "Sign out",
     "back": "Back to studio"
+  },
+  "lib": {
+    "title": "My pictures",
+    "viewAll": "View all",
+    "empty": "No pictures yet — your studio creations will appear here."
   }
 }

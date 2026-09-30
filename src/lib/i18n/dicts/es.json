@@ -139,7 +139,8 @@
       "other": "Otra mascota"
     },
     "painting": "Pintando…",
-    "generate": "Generar"
+    "generate": "Generar",
+    "viewAll": "Ver todas"
   },
   "tpl": {
     "title": "Centro de plantillas",
@@ -436,5 +437,10 @@
     "plansSoon": "Próximamente",
     "signOut": "Cerrar sesión",
     "back": "Volver al estudio"
+  },
+  "lib": {
+    "title": "Mis imágenes",
+    "viewAll": "Ver todas",
+    "empty": "Aún no hay imágenes — tus creaciones aparecerán aquí."
   }
 }

@@ -139,7 +139,8 @@
       "other": "Anderes Haustier"
     },
     "painting": "Wird gemalt…",
-    "generate": "Generieren"
+    "generate": "Generieren",
+    "viewAll": "Alle ansehen"
   },
   "tpl": {
     "title": "Vorlagen-Center",
@@ -436,5 +437,10 @@
     "plansSoon": "Demnächst",
     "signOut": "Abmelden",
     "back": "Zurück ins Studio"
+  },
+  "lib": {
+    "title": "Meine Bilder",
+    "viewAll": "Alle ansehen",
+    "empty": "Noch keine Bilder — deine Kreationen erscheinen hier."
   }
 }

@@ -139,7 +139,8 @@
       "other": "Autre animal"
     },
     "painting": "On peint…",
-    "generate": "Générer"
+    "generate": "Générer",
+    "viewAll": "Tout voir"
   },
   "tpl": {
     "title": "Centre de modèles",
@@ -436,5 +437,10 @@
     "plansSoon": "Bientôt",
     "signOut": "Se déconnecter",
     "back": "Retour au studio"
+  },
+  "lib": {
+    "title": "Mes images",
+    "viewAll": "Tout voir",
+    "empty": "Pas encore d'images — vos créations apparaîtront ici."
   }
 }
