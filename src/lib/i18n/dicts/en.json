@@ -12,7 +12,8 @@
     "termsTitle": "Terms of service",
     "termsDesc": "The rules for using PetsDaily: what you may upload, what you may do with the AI pictures, and the common sense we expect.",
     "aiTitle": "AI disclosure",
-    "aiDesc": "Every image on this site is AI-generated. Here is exactly how our generation pipeline works and how we label it."
+    "aiDesc": "Every image on this site is AI-generated. Here is exactly how our generation pipeline works and how we label it.",
+    "homeTitle": "Turn your pet into any picture you can imagine"
   },
   "nav": {
     "templates": "Templates",

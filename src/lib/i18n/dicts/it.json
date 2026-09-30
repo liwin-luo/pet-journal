@@ -12,7 +12,8 @@
     "termsTitle": "Termini di servizio",
     "termsDesc": "Le regole per usare PetsDaily: cosa puoi caricare, cosa puoi fare con le immagini IA e il buonsenso che ci aspettiamo.",
     "aiTitle": "Dichiarazione IA",
-    "aiDesc": "Ogni immagine su questo sito è generata da IA. Ecco esattamente come funziona la nostra pipeline e come etichettiamo."
+    "aiDesc": "Ogni immagine su questo sito è generata da IA. Ecco esattamente come funziona la nostra pipeline e come etichettiamo.",
+    "homeTitle": "Trasforma il tuo animale in qualsiasi immagine immagina"
   },
   "nav": {
     "templates": "Modelli",

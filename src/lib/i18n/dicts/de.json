@@ -12,7 +12,8 @@
     "termsTitle": "Nutzungsbedingungen",
     "termsDesc": "Die Regeln für PetsDaily: was du hochladen darfst, was du mit den KI-Bildern tun darfst und der gesunde Menschenverstand, den wir erwarten.",
     "aiTitle": "KI-Kennzeichnung",
-    "aiDesc": "Jedes Bild auf dieser Website ist KI-generiert. Hier steht genau, wie unsere Pipeline funktioniert und wie wir kennzeichnen."
+    "aiDesc": "Jedes Bild auf dieser Website ist KI-generiert. Hier steht genau, wie unsere Pipeline funktioniert und wie wir kennzeichnen.",
+    "homeTitle": "Verwandle dein Haustier in jedes Bild, das du dir vorstellst"
   },
   "nav": {
     "templates": "Vorlagen",

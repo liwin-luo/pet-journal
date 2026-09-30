@@ -12,7 +12,8 @@
     "termsTitle": "服务条款",
     "termsDesc": "使用 PetsDaily 的规则：可以上传什么、可以对 AI 图片做什么，以及我们期待的基本规范。",
     "aiTitle": "AI 内容声明",
-    "aiDesc": "本站所有图片均为 AI 生成。这里详细说明生成流程与标注方式。"
+    "aiDesc": "本站所有图片均为 AI 生成。这里详细说明生成流程与标注方式。",
+    "homeTitle": "把宠物变成你想象的任何画面"
   },
   "nav": {
     "templates": "模板",

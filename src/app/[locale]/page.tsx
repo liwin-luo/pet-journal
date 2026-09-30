@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return pageMeta({
     locale: raw as Locale,
     path: "/",
+    title: t.meta.homeTitle,
     description: t.meta.homeDesc,
     ogImage: "/og.jpg",
     ogImageDims: { w: 1728, h: 2304 },
