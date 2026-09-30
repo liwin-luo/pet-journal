@@ -77,6 +77,13 @@ async function pg(): Promise<import("pg").Pool> {
         data jsonb not null,
         updated_at timestamptz default now()
       )`);
+    await pool.query(`
+      create table if not exists pd_usage (
+        subject text not null,
+        day text not null,
+        count int not null default 0,
+        primary key (subject, day)
+      )`);
     globalStore.pdPool = pool;
   }
   return globalStore.pdPool;
@@ -173,6 +180,38 @@ export async function toggleLike(entryId: string, deviceId: string): Promise<{ l
 export async function getLikeSnapshot(): Promise<Record<string, LikeRec>> {
   const db = await readDb();
   return db.likes ?? {};
+}
+
+// ===== 每日额度（原子计数，避免多实例丢更新）=====
+
+/** 原子 +1，返回累计次数。PG 走单条 upsert；文件模式走串行队列。 */
+export async function bumpUsage(subject: string, day: string): Promise<number> {
+  if (usePg) {
+    const pool = await pg();
+    const res = await pool.query<{ count: number }>(
+      `insert into pd_usage (subject, day, count) values ($1, $2, 1)
+       on conflict (subject, day) do update set count = pd_usage.count + 1
+       returning count`,
+      [subject, day],
+    );
+    return res.rows[0].count;
+  }
+  return updateDb((db) => {
+    const rec = db.usage[subject];
+    db.usage[subject] = { date: day, count: rec && rec.date === day ? rec.count + 1 : 1 };
+    return db.usage[subject].count;
+  });
+}
+
+export async function peekUsage(subject: string, day: string): Promise<number> {
+  if (usePg) {
+    const pool = await pg();
+    const res = await pool.query<{ count: number }>(`select count from pd_usage where subject = $1 and day = $2`, [subject, day]);
+    return res.rows[0]?.count ?? 0;
+  }
+  const db = await readDb();
+  const rec = db.usage[subject];
+  return rec && rec.date === day ? rec.count : 0;
 }
 
 // ===== 图片存储 =====

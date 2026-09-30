@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { cookieDomain } from "./site";
 import { getSessionUser } from "./auth";
-import { updateDb } from "./store";
+import { bumpUsage, peekUsage } from "./store";
 
 const COOKIE = "paw_device";
 const YEAR = 60 * 60 * 24 * 365;
@@ -28,32 +28,22 @@ export async function getSubjectId(): Promise<string> {
   return `d:${await getDeviceId()}`;
 }
 
-/** 个人中心额度信息：已用 / 上限 / 剩余。 */
-export async function getQuota(subject: string): Promise<{ used: number; limit: number; left: number }> {
-  const { used } = await checkLimit(subject);
-  return { used, limit: FREE_DAILY_LIMIT, left: Math.max(0, FREE_DAILY_LIMIT - used) };
-}
-
 function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-export function usedToday(db: { usage: Record<string, { date: string; count: number }> }, subject: string): number {
-  const rec = db.usage[subject];
-  return rec && rec.date === today() ? rec.count : 0;
-}
-
 /** 只查不加。生成成功后才 recordUse，失败不占额度。 */
 export async function checkLimit(subject: string): Promise<{ ok: boolean; used: number; left: number }> {
-  const db = await import("./store").then((m) => m.readDb());
-  const used = usedToday(db, subject);
+  const used = await peekUsage(subject, today());
   return { ok: used < FREE_DAILY_LIMIT, used, left: Math.max(0, FREE_DAILY_LIMIT - used) };
 }
 
 export async function recordUse(subject: string): Promise<void> {
-  await updateDb((db) => {
-    const day = today();
-    const rec = db.usage[subject];
-    db.usage[subject] = { date: day, count: (rec && rec.date === day ? rec.count : 0) + 1 };
-  });
+  await bumpUsage(subject, today());
+}
+
+/** 个人中心额度信息：已用 / 上限 / 剩余。 */
+export async function getQuota(subject: string): Promise<{ used: number; limit: number; left: number }> {
+  const used = await peekUsage(subject, today());
+  return { used, limit: FREE_DAILY_LIMIT, left: Math.max(0, FREE_DAILY_LIMIT - used) };
 }
