@@ -5,6 +5,8 @@ import { AppState, emptyPet, Lang } from "./types";
 
 const KEY = "petpics_state_v1";
 let syncTimer: ReturnType<typeof setTimeout> | null = null;
+// 锚点图是 data URL，localStorage 配额不够时仍留在这一份，同步才读得到。
+let mem: AppState | null = null;
 
 export const defaultState = (): AppState => ({
   lang: "en",
@@ -25,17 +27,23 @@ export const defaultState = (): AppState => ({
 });
 
 export function loadState(): AppState {
+  if (mem) return mem;
   if (typeof window === "undefined") return defaultState();
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return { ...defaultState(), ...JSON.parse(raw) };
+    if (raw) {
+      const parsed = { ...defaultState(), ...JSON.parse(raw) };
+      mem = parsed;
+      return parsed;
+    }
   } catch {}
   // 新用户从空状态开始（绝不预置演示宠物——否则跳过上传/锚点直达付费）
   return defaultState();
 }
 
 export function saveState(s: AppState) {
-  try { localStorage.setItem(KEY, JSON.stringify(s)); } catch {}
+  mem = s;
+  try { localStorage.setItem(KEY, JSON.stringify(s)); } catch { /* 配额满时只留 mem */ }
 }
 
 export function updateState(patch: Partial<AppState> | ((s: AppState) => Partial<AppState>)): AppState {

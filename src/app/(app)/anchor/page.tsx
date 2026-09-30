@@ -91,8 +91,8 @@ export default function AnchorPage() {
           </div>
         ) : failed ? (
           <div className="stage-card card">
-            <h1 className="ptitle">{t("anchor.gen")}</h1>
-            <p className="psub">{t("anchor.outB")}</p>
+            <h1 className="ptitle">{t("anchor.failT")}</h1>
+            <p className="psub">{t("anchor.fail")}</p>
             <button className="btn bp" onClick={() => { started.current = false; run(); }}>{t("anchor.restart")}</button>
           </div>
         ) : (

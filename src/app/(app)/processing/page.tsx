@@ -118,10 +118,9 @@ export default function ProcessingPage() {
     <>
       <Header />
       <div className="page"><div className="wrap" style={{ textAlign: "center" }}>
-        <h1 className="ptitle" style={{ margin: "8px 0 4px" }}>{err ? t("anchor.gen") : t("proc.celeb")}</h1>
+        <h1 className="ptitle" style={{ margin: "8px 0 4px" }}>{err ? t("proc.fail") : t("proc.celeb")}</h1>
         {err ? (
           <div style={{ marginTop: 18 }}>
-            <p className="psub">{t("proc.fail")}</p>
             <button className="btn bp" onClick={() => { setErr(false); setTryN((x) => x + 1); }}>{t("anchor.restart")}</button>
           </div>
         ) : (

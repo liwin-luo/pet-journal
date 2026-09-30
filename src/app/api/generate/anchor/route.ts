@@ -16,8 +16,9 @@ export async function POST(req: Request) {
     }));
     if (!image) throw new Error("no image");
     return NextResponse.json({ anchorImage: image });
-  } catch (e: any) {
-    // 引擎降级预案（技术调研 §1.4）：连续失败由客户端切换 Mock 引擎重试
-    return NextResponse.json({ error: e.message ?? "anchor failed" }, { status: 502 });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : "anchor failed";
+    console.error("anchor", message.slice(0, 240));
+    return NextResponse.json({ error: message }, { status: 502 });
   }
 }
