@@ -442,11 +442,33 @@
     "plansSoon": "Em breve",
     "signOut": "Sair",
     "back": "Voltar ao estúdio",
-    "resetsAt": "Renova às {time}"
+    "resetsAt": "Renova às {time}",
+    "myDiary": "Diário do pet"
   },
   "lib": {
     "title": "Minhas imagens",
     "viewAll": "Ver todas",
-    "empty": "Nada por aqui ainda — suas criações aparecerão aqui."
+    "empty": "Nada por aqui ainda — suas criações aparecerão aqui.",
+    "viewDiary": "Ver como diário"
+  },
+  "diary": {
+    "title": "Diário do pet",
+    "subtitle": "Cada retrato é um dia da vida dele",
+    "tabCalendar": "Calendário",
+    "tabTimeline": "Linha do tempo",
+    "tabBook": "Diário",
+    "empty": "O diário está vazio — crie o primeiro retrato e a história começa.",
+    "create": "Criar um retrato",
+    "setupTitle": "De quem é este diário?",
+    "petNamePh": "ex.: Mochi",
+    "petSpeciesPh": "gato, cachorro, coelho…",
+    "petAvatar": "Avatar (escolha um retrato)",
+    "petSave": "Salvar",
+    "petEdit": "Editar",
+    "writing": "Escrevendo a entrada…",
+    "picsCount": "{count} fotos",
+    "picCount": "1 foto",
+    "prev": "Anterior",
+    "next": "Próximo"
   }
 }

@@ -442,11 +442,33 @@
     "plansSoon": "Demnächst",
     "signOut": "Abmelden",
     "back": "Zurück ins Studio",
-    "resetsAt": "Setzt sich um {time} zurück"
+    "resetsAt": "Setzt sich um {time} zurück",
+    "myDiary": "Haustier-Tagebuch"
   },
   "lib": {
     "title": "Meine Bilder",
     "viewAll": "Alle ansehen",
-    "empty": "Noch keine Bilder — deine Kreationen erscheinen hier."
+    "empty": "Noch keine Bilder — deine Kreationen erscheinen hier.",
+    "viewDiary": "Als Tagebuch ansehen"
+  },
+  "diary": {
+    "title": "Haustier-Tagebuch",
+    "subtitle": "Jedes Porträt ist ein Tag in seinem Leben",
+    "tabCalendar": "Kalender",
+    "tabTimeline": "Zeitstrahl",
+    "tabBook": "Tagebuch",
+    "empty": "Das Tagebuch ist leer – erschaffe dein erstes Porträt und die Geschichte beginnt.",
+    "create": "Porträt erstellen",
+    "setupTitle": "Für wen ist dieses Tagebuch?",
+    "petNamePh": "z. B. Mochi",
+    "petSpeciesPh": "Katze, Hund, Kaninchen…",
+    "petAvatar": "Avatar (Porträt auswählen)",
+    "petSave": "Speichern",
+    "petEdit": "Bearbeiten",
+    "writing": "Eintrag wird geschrieben…",
+    "picsCount": "{count} Bilder",
+    "picCount": "1 Bild",
+    "prev": "Zurück",
+    "next": "Weiter"
   }
 }

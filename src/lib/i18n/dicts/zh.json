@@ -442,11 +442,33 @@
     "plansSoon": "即将上线",
     "signOut": "退出登录",
     "back": "回到工作室",
-    "resetsAt": "{time} 重置"
+    "resetsAt": "{time} 重置",
+    "myDiary": "宠物日记"
   },
   "lib": {
     "title": "我的作品",
     "viewAll": "查看全部",
-    "empty": "还没有作品——创作后会显示在这里。"
+    "empty": "还没有作品——创作后会显示在这里。",
+    "viewDiary": "以日记查看"
+  },
+  "diary": {
+    "title": "宠物日记",
+    "subtitle": "每一张画像，都是它生命里的一天",
+    "tabCalendar": "日历",
+    "tabTimeline": "时间线",
+    "tabBook": "日记本",
+    "empty": "日记还是空的——创建第一张画像，故事就开始了。",
+    "create": "去创作画像",
+    "setupTitle": "这本日记的主角是谁？",
+    "petNamePh": "例如：年糕",
+    "petSpeciesPh": "猫、狗、兔子…",
+    "petAvatar": "头像（选一张画像）",
+    "petSave": "保存",
+    "petEdit": "编辑",
+    "writing": "正在写今天的日记…",
+    "picsCount": "{count} 张照片",
+    "picCount": "1 张照片",
+    "prev": "前一天",
+    "next": "后一天"
   }
 }

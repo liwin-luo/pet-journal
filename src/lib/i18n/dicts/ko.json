@@ -442,11 +442,33 @@
     "plansSoon": "곧 출시",
     "signOut": "로그아웃",
     "back": "스튜디오로 돌아가기",
-    "resetsAt": "{time} 초기화"
+    "resetsAt": "{time} 초기화",
+    "myDiary": "반려동물 일기"
   },
   "lib": {
     "title": "내 작품",
     "viewAll": "모두 보기",
-    "empty": "아직 작품이 없습니다 — 만들면 여기에 표시됩니다."
+    "empty": "아직 작품이 없습니다 — 만들면 여기에 표시됩니다.",
+    "viewDiary": "일기로 보기"
+  },
+  "diary": {
+    "title": "반려동물 일기",
+    "subtitle": "모든 초상화는 아이의 하루입니다",
+    "tabCalendar": "달력",
+    "tabTimeline": "타임라인",
+    "tabBook": "일기장",
+    "empty": "일기가 아직 비어 있어요. 첫 초상화를 만들면 이야기가 시작됩니다.",
+    "create": "초상화 만들기",
+    "setupTitle": "누구의 일기인가요?",
+    "petNamePh": "예: 모찌",
+    "petSpeciesPh": "고양이, 강아지, 토끼…",
+    "petAvatar": "아바타 (초상화 선택)",
+    "petSave": "저장",
+    "petEdit": "편집",
+    "writing": "일기를 쓰고 있어요…",
+    "picsCount": "사진 {count}장",
+    "picCount": "사진 1장",
+    "prev": "이전",
+    "next": "다음"
   }
 }

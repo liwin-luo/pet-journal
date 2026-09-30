@@ -442,11 +442,33 @@
     "plansSoon": "Bientôt",
     "signOut": "Se déconnecter",
     "back": "Retour au studio",
-    "resetsAt": "Se réinitialise à {time}"
+    "resetsAt": "Se réinitialise à {time}",
+    "myDiary": "Journal de l'animal"
   },
   "lib": {
     "title": "Mes images",
     "viewAll": "Tout voir",
-    "empty": "Pas encore d'images — vos créations apparaîtront ici."
+    "empty": "Pas encore d'images — vos créations apparaîtront ici.",
+    "viewDiary": "Voir en journal"
+  },
+  "diary": {
+    "title": "Journal de votre animal",
+    "subtitle": "Chaque portrait est une journée de sa vie",
+    "tabCalendar": "Calendrier",
+    "tabTimeline": "Chronologie",
+    "tabBook": "Journal",
+    "empty": "Le journal est vide — créez votre premier portrait et l'histoire commence.",
+    "create": "Créer un portrait",
+    "setupTitle": "À qui est ce journal ?",
+    "petNamePh": "ex. Mochi",
+    "petSpeciesPh": "chat, chien, lapin…",
+    "petAvatar": "Avatar (choisir un portrait)",
+    "petSave": "Enregistrer",
+    "petEdit": "Modifier",
+    "writing": "Rédaction de l'entrée…",
+    "picsCount": "{count} photos",
+    "picCount": "1 photo",
+    "prev": "Précédent",
+    "next": "Suivant"
   }
 }

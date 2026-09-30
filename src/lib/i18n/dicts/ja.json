@@ -442,11 +442,33 @@
     "plansSoon": "準備中",
     "signOut": "ログアウト",
     "back": "スタジオに戻る",
-    "resetsAt": "{time} にリセット"
+    "resetsAt": "{time} にリセット",
+    "myDiary": "ペット日記"
   },
   "lib": {
     "title": "私の作品",
     "viewAll": "すべて見る",
-    "empty": "まだ作品がありません — 作成するとここに表示されます。"
+    "empty": "まだ作品がありません — 作成するとここに表示されます。",
+    "viewDiary": "日記で見る"
+  },
+  "diary": {
+    "title": "ペット日記",
+    "subtitle": "肖像画はどれも、この子の一日です",
+    "tabCalendar": "カレンダー",
+    "tabTimeline": "タイムライン",
+    "tabBook": "日記帳",
+    "empty": "日記はまだ空です。最初の肖像画を作ると、物語が始まります。",
+    "create": "肖像画を作る",
+    "setupTitle": "誰の日記にしますか？",
+    "petNamePh": "例：モチ",
+    "petSpeciesPh": "猫、犬、うさぎ…",
+    "petAvatar": "アイコン（肖像画を選択）",
+    "petSave": "保存",
+    "petEdit": "編集",
+    "writing": "日記を書いています…",
+    "picsCount": "写真 {count} 枚",
+    "picCount": "写真 1 枚",
+    "prev": "前へ",
+    "next": "次へ"
   }
 }

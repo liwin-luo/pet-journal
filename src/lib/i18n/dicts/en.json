@@ -442,11 +442,33 @@
     "plansSoon": "Coming soon",
     "signOut": "Sign out",
     "back": "Back to studio",
-    "resetsAt": "Resets at {time}"
+    "resetsAt": "Resets at {time}",
+    "myDiary": "Pet diary"
   },
   "lib": {
     "title": "My pictures",
     "viewAll": "View all",
-    "empty": "No pictures yet — your studio creations will appear here."
+    "empty": "No pictures yet — your studio creations will appear here.",
+    "viewDiary": "View as diary"
+  },
+  "diary": {
+    "title": "Pet Diary",
+    "subtitle": "Every portrait is a day in their life",
+    "tabCalendar": "Calendar",
+    "tabTimeline": "Timeline",
+    "tabBook": "Diary book",
+    "empty": "The diary is empty — create your first portrait and the story begins.",
+    "create": "Create a portrait",
+    "setupTitle": "Who is this diary about?",
+    "petNamePh": "e.g. Mochi",
+    "petSpeciesPh": "cat, dog, rabbit…",
+    "petAvatar": "Avatar (pick a portrait)",
+    "petSave": "Save",
+    "petEdit": "Edit",
+    "writing": "Writing the entry…",
+    "picsCount": "{count} pictures",
+    "picCount": "1 picture",
+    "prev": "Previous",
+    "next": "Next"
   }
 }
