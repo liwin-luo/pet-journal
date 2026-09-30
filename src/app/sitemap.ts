@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LOCALES, lp } from "@/lib/i18n";
-import { getAllGallery } from "@/lib/gallery";
+import { getAllGallery, workPath } from "@/lib/gallery";
 import { SITE_URL } from "@/lib/site";
 import { TEMPLATES } from "@/lib/templates";
 
@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       out.push({ url: `${SITE_URL}${lp(locale, `/templates/${t.id}`)}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 });
     }
     for (const w of works) {
-      out.push({ url: `${SITE_URL}${lp(locale, `/gallery/${w.id}`)}`, lastModified: new Date(w.createdAt), changeFrequency: "monthly", priority: 0.5 });
+      out.push({ url: `${SITE_URL}${lp(locale, workPath(w))}`, lastModified: new Date(w.createdAt), changeFrequency: "monthly", priority: 0.5 });
     }
   }
   return out;

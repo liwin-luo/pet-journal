@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { LikeButton } from "@/components/LikeButton";
 import { ShareBar } from "@/components/ShareBar";
 import { PawIcon, StarIcon } from "@/components/icons";
-import { getGalleryWithLikes } from "@/lib/gallery";
+import { getGalleryWithLikes, resolveWork, workPath } from "@/lib/gallery";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -13,35 +13,38 @@ import { templateById } from "@/lib/templates";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; id: string }> }): Promise<Metadata> {
-  const { locale: raw, id } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale: raw, slug } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
   const t = getDict(locale);
   const all = await getGalleryWithLikes();
-  const entry = all.find((g) => g.id === id);
-  if (!entry) return pageMeta({ locale, path: `/gallery/${id}`, title: "Not found", noindex: true });
+  const found = resolveWork(all, slug);
+  if (!found) return pageMeta({ locale, path: `/gallery/${slug}`, title: "Not found", noindex: true });
+  const { work: entry, canonical, needsRedirect } = found;
   const tpl = templateById(entry.templateId);
   const title = t.gal.detailTitle.replace("{pet}", entry.petName).replace("{tpl}", tpl?.name ?? "");
   return pageMeta({
     locale,
-    path: `/gallery/${id}`,
+    // 非规范 slug（旧 /gallery/seed-5 等）也渲染，canonical 统一指向规范 URL
+    path: needsRedirect ? `/gallery/${canonical}` : `/gallery/${slug}`,
     title,
     description: entry.text ?? `${tpl?.name ?? t.gal.custom} · ${t.gal.desc}`,
     ogImage: entry.image.startsWith("data:") ? undefined : entry.image,
-    ogImageDims: { w: 1728, h: 2304 },
-    ogImageAlt: `AI portrait of ${entry.petName}`,
   });
 }
 
-export default async function WorkDetailPage({ params }: { params: Promise<{ locale: string; id: string }> }) {
-  const { locale: raw, id } = await params;
+export default async function WorkDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: raw, slug } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getDict(locale);
   const all = await getGalleryWithLikes();
-  const w = all.find((g) => g.id === id);
-  if (!w) notFound();
+  const found = resolveWork(all, slug);
+  if (!found) notFound();
+  const { work: w, needsRedirect } = found;
+  // 旧 ID 链接（/gallery/seed-5、/gallery/<uuid>）永久重定向到 SEO slug
+  if (needsRedirect) permanentRedirect(lp(locale, workPath(w)));
   const tpl = templateById(w.templateId);
 
   return (
@@ -82,7 +85,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
         </a>
         <LikeButton id={w.id} count={w.likeCount} liked={w.liked} label={t.gal.likeBtn} />
         <ShareBar
-          url={`${SITE_URL}${lp(locale, `/gallery/${w.id}`)}`}
+          url={`${SITE_URL}${lp(locale, workPath(w))}`}
           imageUrl={w.image.startsWith("data:") ? undefined : `${SITE_URL}${w.image}`}
           fileShareSrc={w.image}
           text={t.gen.shareText}

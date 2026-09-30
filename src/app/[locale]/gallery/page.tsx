@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { LikeButton } from "@/components/LikeButton";
 import { PawIcon, StarIcon } from "@/components/icons";
 import { WorkShareButton } from "@/components/WorkShareButton";
-import { getGalleryWithLikes } from "@/lib/gallery";
+import { getGalleryWithLikes, workPath } from "@/lib/gallery";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { templateById } from "@/lib/templates";
@@ -78,7 +78,7 @@ export default async function GalleryPage({
           const tpl = templateById(w.templateId);
           return (
             <figure key={w.id} className="group relative break-inside-avoid">
-              <Link href={lp(locale, `/gallery/${w.id}`)} aria-label={`${w.petName} — ${tpl?.name ?? ""}`}>
+              <Link href={lp(locale, workPath(w))} aria-label={`${w.petName} — ${tpl?.name ?? ""}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/api/wm/gallery/${w.id}`}

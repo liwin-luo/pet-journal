@@ -1,17 +1,19 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/site";
 
 const LOCALE_COOKIE = "paw_locale";
 
-/**
- * 语言路由：
- * - 带语言前缀的路径（/es/...）直接放行；
- * - 无前缀路径（默认语言区）：若用户之前选过语言（paw_locale cookie），302 重定向到该语言；
- *   否则内部改写为 /en/...，URL 保持干净（爬虫无 cookie，SEO 不受影响）。
- * cookie 由语言切换器在用户主动切换时写入（本地保留一年）。
- */
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  // www → 裸域 308（规范域名不含 www）。hostname 要从 Host 头取（nextUrl 不反映它）。
+  const host = (req.headers.get("host") ?? "").split(":")[0].toLowerCase();
+  const wwwHost = `www.${new URL(SITE_URL).hostname}`;
+  if (host === wwwHost) {
+    return NextResponse.redirect(`${SITE_URL}${pathname}`, 308);
+  }
+
   const seg = pathname.split("/")[1];
   if ((LOCALES as readonly string[]).includes(seg)) return NextResponse.next();
 

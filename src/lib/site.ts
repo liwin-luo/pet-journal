@@ -6,10 +6,12 @@ export const SITE_TAGLINE = "Turn your pet into any picture you can imagine";
 export const UPDATED = "September 30, 2026";
 
 /**
- * Cookie 的 Domain 属性：www 主机名时落到裸域（petsdaily.live），
+ * Cookie 的 Domain 属性：取注册域名（petsdaily.live），
  * 让 www / 裸域 / 子域共享登录态与设备身份；本地 localhost 返回 undefined（host-only）。
  */
 export function cookieDomain(): string | undefined {
   const host = new URL(SITE_URL).hostname;
-  return host.startsWith("www.") ? host.slice(4) : undefined;
+  if (host === "localhost" || /^\d+(\.\d+){3}$/.test(host)) return undefined;
+  const parts = host.split(".");
+  return parts.length >= 2 ? parts.slice(-2).join(".") : undefined;
 }
