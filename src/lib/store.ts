@@ -2,7 +2,9 @@ import { randomUUID } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-// JSON 文件库（MVP）。上 Vercel 等无盘环境时，把这几个函数换成对象存储/数据库即可，接口不变。
+// 存储层，两种模式（接口不变）：
+// - Postgres（配了 DATABASE_URL，线上/Vercel 用）：pd_media 存图，pd_state 存 JSON 文档
+// - 本地文件 .data/（没配 DATABASE_URL，本地开发用）
 const DATA_DIR = path.join(process.cwd(), ".data");
 
 export type Share = {
@@ -35,14 +37,66 @@ type Db = {
 };
 
 const EMPTY: Db = { shares: {}, gallery: [], usage: {} };
+
+const usePg = !!process.env.DATABASE_URL?.trim();
+
+// ===== Postgres 模式 =====
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const globalStore = globalThis as unknown as { pdPool?: any };
+
+async function pg(): Promise<import("pg").Pool> {
+  if (!globalStore.pdPool) {
+    const { Pool } = await import("pg");
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      max: 5,
+      ssl: /sslmode=disable/.test(process.env.DATABASE_URL || "") ? undefined : { rejectUnauthorized: false },
+    });
+    await pool.query(`
+      create table if not exists pd_media (
+        id text primary key,
+        kind text not null,
+        mime text not null,
+        bytes bytea not null,
+        created_at timestamptz default now()
+      )`);
+    await pool.query(`
+      create table if not exists pd_state (
+        key text primary key,
+        data jsonb not null,
+        updated_at timestamptz default now()
+      )`);
+    globalStore.pdPool = pool;
+  }
+  return globalStore.pdPool;
+}
+
+async function pgLoad(): Promise<Db> {
+  const pool = await pg();
+  const res = await pool.query<{ data: Partial<Db> }>(`select data from pd_state where key = 'main'`);
+  return res.rows[0] ? { ...structuredClone(EMPTY), ...res.rows[0].data } : structuredClone(EMPTY);
+}
+
+async function pgSave(db: Db): Promise<void> {
+  const pool = await pg();
+  await pool.query(
+    `insert into pd_state (key, data) values ('main', $1)
+     on conflict (key) do update set data = $1, updated_at = now()`,
+    [JSON.stringify(db)],
+  );
+}
+
+// ===== 本地文件模式 =====
+
 let queue: Promise<unknown> = Promise.resolve();
 let cache: Db | null = null;
 
-async function load(): Promise<Db> {
+async function fileLoad(): Promise<Db> {
   if (cache) return cache;
   try {
     const raw = await readFile(path.join(DATA_DIR, "db.json"), "utf8");
-    cache = { ...EMPTY, ...(JSON.parse(raw) as Partial<Db>) };
+    cache = { ...structuredClone(EMPTY), ...(JSON.parse(raw) as Partial<Db>) };
   } catch {
     cache = structuredClone(EMPTY);
   }
@@ -56,20 +110,25 @@ function locked<T>(fn: () => Promise<T>): Promise<T> {
   return run;
 }
 
+// ===== 对外接口 =====
+
 export async function updateDb<T>(fn: (db: Db) => T | Promise<T>): Promise<T> {
   return locked(async () => {
-    const db = await load();
+    const db = usePg ? await pgLoad() : await fileLoad();
     const out = await fn(db);
-    await mkdir(DATA_DIR, { recursive: true });
-    const tmp = path.join(DATA_DIR, `db.json.${randomUUID()}.tmp`);
-    await writeFile(tmp, JSON.stringify(db, null, 2), "utf8");
-    await rename(tmp, path.join(DATA_DIR, "db.json"));
+    if (usePg) await pgSave(db);
+    else {
+      await mkdir(DATA_DIR, { recursive: true });
+      const tmp = path.join(DATA_DIR, `db.json.${randomUUID()}.tmp`);
+      await writeFile(tmp, JSON.stringify(db, null, 2), "utf8");
+      await rename(tmp, path.join(DATA_DIR, "db.json"));
+    }
     return out;
   });
 }
 
 export async function readDb(): Promise<Db> {
-  return load();
+  return usePg ? pgLoad() : fileLoad();
 }
 
 export async function approveGalleryEntry(id: string): Promise<void> {
@@ -86,7 +145,7 @@ export async function removeGalleryEntry(id: string): Promise<void> {
 }
 
 export async function pendingGalleryEntries(): Promise<GalleryEntry[]> {
-  const db = await load();
+  const db = await readDb();
   return db.gallery.filter((g) => !g.approved);
 }
 
@@ -101,6 +160,11 @@ const EXT: Record<string, string> = {
 
 export async function storeImage(bytes: Buffer, kind: "uploads" | "generated", mime = "image/jpeg"): Promise<string> {
   const id = randomUUID();
+  if (usePg) {
+    const pool = await pg();
+    await pool.query(`insert into pd_media (id, kind, mime, bytes) values ($1, $2, $3, $4)`, [id, kind, mime, bytes]);
+    return id;
+  }
   const ext = EXT[mime] ?? "jpg";
   const dir = path.join(DATA_DIR, kind);
   await mkdir(dir, { recursive: true });
@@ -113,6 +177,13 @@ export async function readStoreFile(
   id: string,
 ): Promise<{ mime: string; bytes: Buffer } | null> {
   if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
+  if (usePg) {
+    const pool = await pg();
+    const res = await pool.query<{ mime: string; bytes: Buffer }>(`select mime, bytes from pd_media where id = $1`, [id]);
+    const row = res.rows[0];
+    if (!row) return null;
+    return { mime: row.mime, bytes: Buffer.isBuffer(row.bytes) ? row.bytes : Buffer.from(row.bytes as unknown as string) };
+  }
   for (const [mime, ext] of Object.entries(EXT)) {
     try {
       const bytes = await readFile(path.join(DATA_DIR, kind, `${id}.${ext}`));
