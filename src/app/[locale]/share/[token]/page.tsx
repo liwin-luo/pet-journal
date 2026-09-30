@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: share.message ? `${t.share.made}: “${share.message.slice(0, 60)}”` : "AI pet portrait",
     description: `AI pet portrait${tpl ? ` — ${tpl.name}` : ""}. ${t.share.makeSub}`,
     ogImage: share.image.startsWith("data:") ? undefined : `${SITE_URL}${share.image}?st=${token}`,
+    ogImageDims: { w: 1728, h: 2304 },
     noindex: true,
   });
 }

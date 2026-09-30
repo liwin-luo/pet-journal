@@ -20,7 +20,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const t = getDict(raw as Locale);
-  return pageMeta({ locale: raw as Locale, path: "/", description: t.meta.homeDesc, ogImage: "/og.jpg" });
+  return pageMeta({
+    locale: raw as Locale,
+    path: "/",
+    description: t.meta.homeDesc,
+    ogImage: "/og.jpg",
+    ogImageDims: { w: 1728, h: 2304 },
+    ogImageAlt: "AI pet portrait example — a pet painted in a renaissance style",
+  });
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

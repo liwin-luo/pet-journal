@@ -13,17 +13,17 @@ export const LOCALES = ["en", "es", "pt", "de", "fr", "it", "ja", "zh", "ru", "k
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = "en";
 
-export const LOCALE_META: Record<Locale, { label: string; flag: string; hreflang: string }> = {
-  en: { label: "English", flag: "🇺🇸", hreflang: "en" },
-  es: { label: "Español", flag: "🇪🇸", hreflang: "es" },
-  pt: { label: "Português", flag: "🇧🇷", hreflang: "pt-BR" },
-  de: { label: "Deutsch", flag: "🇩🇪", hreflang: "de" },
-  fr: { label: "Français", flag: "🇫🇷", hreflang: "fr" },
-  it: { label: "Italiano", flag: "🇮🇹", hreflang: "it" },
-  ja: { label: "日本語", flag: "🇯🇵", hreflang: "ja" },
-  zh: { label: "中文", flag: "🇨🇳", hreflang: "zh-CN" },
-  ru: { label: "Русский", flag: "🇷🇺", hreflang: "ru" },
-  ko: { label: "한국어", flag: "🇰🇷", hreflang: "ko" },
+export const LOCALE_META: Record<Locale, { label: string; flag: string; hreflang: string; og: string }> = {
+  en: { label: "English", flag: "🇺🇸", hreflang: "en", og: "en_US" },
+  es: { label: "Español", flag: "🇪🇸", hreflang: "es", og: "es_ES" },
+  pt: { label: "Português", flag: "🇧🇷", hreflang: "pt-BR", og: "pt_BR" },
+  de: { label: "Deutsch", flag: "🇩🇪", hreflang: "de", og: "de_DE" },
+  fr: { label: "Français", flag: "🇫🇷", hreflang: "fr", og: "fr_FR" },
+  it: { label: "Italiano", flag: "🇮🇹", hreflang: "it", og: "it_IT" },
+  ja: { label: "日本語", flag: "🇯🇵", hreflang: "ja", og: "ja_JP" },
+  zh: { label: "中文", flag: "🇨🇳", hreflang: "zh-CN", og: "zh_CN" },
+  ru: { label: "Русский", flag: "🇷🇺", hreflang: "ru", og: "ru_RU" },
+  ko: { label: "한국어", flag: "🇰🇷", hreflang: "ko", og: "ko_KR" },
 };
 
 const DICTS: Record<Locale, Dict> = { en, es, pt, de, fr, it, ja, zh, ru, ko };

@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t.meta.galleryTitle,
     description: t.meta.galleryDesc,
     ogImage: "/land/cat-suit.jpg",
+    ogImageDims: { w: 1024, h: 1024 },
   });
 }
 

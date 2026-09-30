@@ -394,19 +394,17 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 ))}
               </div>
             )}
-            <div className="mt-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-fog">{labels.ideasLabel}</p>
-              <div className="flex flex-wrap gap-2">
-                {labels.ideas.map((idea) => (
-                  <button
-                    key={idea}
-                    onClick={() => setInput(idea)}
-                    className="rounded-full border border-sand bg-white px-3 py-1.5 text-xs font-medium text-coffee transition-colors hover:border-coral hover:text-coral"
-                  >
-                    {idea}
-                  </button>
-                ))}
-              </div>
+            <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1">
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">{labels.ideasLabel}</span>
+              {labels.ideas.map((idea) => (
+                <button
+                  key={idea}
+                  onClick={() => setInput(idea)}
+                  className="shrink-0 rounded-full border border-sand bg-white px-3 py-1.5 text-xs font-medium text-coffee transition-colors hover:border-coral hover:text-coral"
+                >
+                  {idea}
+                </button>
+              ))}
             </div>
           </div>
         )}

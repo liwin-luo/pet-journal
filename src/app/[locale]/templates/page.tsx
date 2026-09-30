@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t.meta.templatesTitle,
     description: t.meta.templatesDesc,
     ogImage: "/tpl/royal.jpg",
+    ogImageDims: { w: 768, h: 768 },
   });
 }
 

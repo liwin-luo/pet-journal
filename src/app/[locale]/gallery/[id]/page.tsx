@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title,
     description: entry.text ?? `${tpl?.name ?? t.gal.custom} · ${t.gal.desc}`,
     ogImage: entry.image.startsWith("data:") ? undefined : entry.image,
+    ogImageDims: { w: 1728, h: 2304 },
+    ogImageAlt: `AI portrait of ${entry.petName}`,
   });
 }
 

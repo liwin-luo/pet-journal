@@ -28,6 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t.tpl.detailTitle.replace("{name}", tpl.name),
     description: t.tpl.detailDesc.replace("{blurb}", tpl.blurb).replace(/\{name\}/g, tpl.name),
     ogImage: tplImg(tpl.id),
+    ogImageDims: { w: 768, h: 768 },
+    ogImageAlt: `${tpl.name} — AI pet portrait example`,
   });
 }
 
