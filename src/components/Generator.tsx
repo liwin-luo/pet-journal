@@ -198,73 +198,6 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
         <span className="text-xs text-fog">{labels.freeCount}</span>
       </div>
 
-      {/* 历史区：同一浏览器/账号生成过的图都在这里，登录前后都能找回 */}
-      {hist.length > 0 && (
-        <div className="border-b border-sand/70 bg-parchment/40 px-5 py-3">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1">
-            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">{gen.histTitle}</span>
-            {hist.map((h) => (
-              <button
-                key={h.imagePath}
-                onClick={() => {
-                  setHistSel(histSel === h.imagePath ? null : h.imagePath);
-                  setHistSignIn(false);
-                }}
-                className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                  histSel === h.imagePath ? "border-coral" : "border-transparent hover:border-sand"
-                }`}
-                aria-label={gen.histOpen}
-                title={h.message || gen.histOpen}
-              >
-                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
-              </button>
-            ))}
-            <Link href={P("/library")} className="shrink-0 whitespace-nowrap text-xs font-semibold text-coral hover:underline">
-              {gen.viewAll}
-            </Link>
-          </div>
-          {histSel &&
-            (() => {
-              const h = hist.find((x) => x.imagePath === histSel);
-              if (!h) return null;
-              return (
-                <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
-                  <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
-                  <div className="mt-3 flex flex-wrap items-center gap-2">
-                    {user ? (
-                      <button
-                        className="btn-primary !px-4 !py-2 text-sm"
-                        onClick={async () => {
-                          const ok = await fetchDownload(h.imagePath);
-                          if (!ok) setHistSignIn(true);
-                        }}
-                      >
-                        <DownloadIcon className="h-4 w-4" /> {gen.download}
-                      </button>
-                    ) : (
-                      <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => setHistSignIn(!histSignIn)}>
-                        <DownloadIcon className="h-4 w-4" /> {gen.signInTitle}
-                      </button>
-                    )}
-                    <CopyButton text={h.prompt} label={gen.copyPrompt} />
-                    <a href={P(h.shareUrl)} target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 text-sm">
-                      <ShareIcon className="h-4 w-4" /> {gen.sharePage}
-                    </a>
-                  </div>
-                  {histSignIn && !user && (
-                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
-                      {gen.signInBody}
-                      <Link href={P("/login?next=/")} className="btn-primary !px-4 !py-2 text-sm">
-                        {gen.signInBtn}
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              );
-            })()}
-        </div>
-      )}
-
       {/* 对话区 */}
       {hasHistory && (
         <div className="max-h-[480px] overflow-y-auto px-5 py-4" ref={chatRef}>
@@ -517,6 +450,73 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
         </div>
         <p className="mt-2 text-xs text-fog">{labels.helper}</p>
       </div>
+
+      {/* 历史区：同一浏览器/账号生成过的图都在这里，登录前后都能找回 */}
+      {hist.length > 0 && (
+        <div className="border-t border-sand/70 bg-parchment/40 px-5 py-3">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">{gen.histTitle}</span>
+            {hist.map((h) => (
+              <button
+                key={h.imagePath}
+                onClick={() => {
+                  setHistSel(histSel === h.imagePath ? null : h.imagePath);
+                  setHistSignIn(false);
+                }}
+                className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
+                  histSel === h.imagePath ? "border-coral" : "border-transparent hover:border-sand"
+                }`}
+                aria-label={gen.histOpen}
+                title={h.message || gen.histOpen}
+              >
+                <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
+              </button>
+            ))}
+            <Link href={P("/library")} className="shrink-0 whitespace-nowrap text-xs font-semibold text-coral hover:underline">
+              {gen.viewAll}
+            </Link>
+          </div>
+          {histSel &&
+            (() => {
+              const h = hist.find((x) => x.imagePath === histSel);
+              if (!h) return null;
+              return (
+                <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
+                  <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    {user ? (
+                      <button
+                        className="btn-primary !px-4 !py-2 text-sm"
+                        onClick={async () => {
+                          const ok = await fetchDownload(h.imagePath);
+                          if (!ok) setHistSignIn(true);
+                        }}
+                      >
+                        <DownloadIcon className="h-4 w-4" /> {gen.download}
+                      </button>
+                    ) : (
+                      <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => setHistSignIn(!histSignIn)}>
+                        <DownloadIcon className="h-4 w-4" /> {gen.signInTitle}
+                      </button>
+                    )}
+                    <CopyButton text={h.prompt} label={gen.copyPrompt} />
+                    <a href={P(h.shareUrl)} target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 text-sm">
+                      <ShareIcon className="h-4 w-4" /> {gen.sharePage}
+                    </a>
+                  </div>
+                  {histSignIn && !user && (
+                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
+                      {gen.signInBody}
+                      <Link href={P("/login?next=/")} className="btn-primary !px-4 !py-2 text-sm">
+                        {gen.signInBtn}
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+        </div>
+      )}
     </div>
   );
 }
