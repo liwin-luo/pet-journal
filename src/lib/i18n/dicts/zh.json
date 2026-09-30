@@ -141,7 +141,10 @@
     },
     "painting": "绘制中…",
     "generate": "生成",
-    "viewAll": "查看全部"
+    "viewAll": "查看全部",
+    "photo": "照片",
+    "ideas": "灵感",
+    "styles": "风格"
   },
   "tpl": {
     "title": "模板中心",

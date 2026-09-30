@@ -141,7 +141,10 @@
     },
     "painting": "Wird gemalt…",
     "generate": "Generieren",
-    "viewAll": "Alle ansehen"
+    "viewAll": "Alle ansehen",
+    "photo": "Foto",
+    "ideas": "Ideen",
+    "styles": "Stile"
   },
   "tpl": {
     "title": "Vorlagen-Center",

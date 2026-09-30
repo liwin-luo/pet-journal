@@ -141,7 +141,10 @@
     },
     "painting": "Pintando…",
     "generate": "Generar",
-    "viewAll": "Ver todas"
+    "viewAll": "Ver todas",
+    "photo": "Foto",
+    "ideas": "Ideas",
+    "styles": "Estilos"
   },
   "tpl": {
     "title": "Centro de plantillas",

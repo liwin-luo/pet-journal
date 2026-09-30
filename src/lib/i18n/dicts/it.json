@@ -141,7 +141,10 @@
     },
     "painting": "Sto dipingendo…",
     "generate": "Genera",
-    "viewAll": "Vedi tutte"
+    "viewAll": "Vedi tutte",
+    "photo": "Foto",
+    "ideas": "Idee",
+    "styles": "Stili"
   },
   "tpl": {
     "title": "Centro modelli",

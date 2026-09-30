@@ -69,8 +69,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 topbarSession: t.home.topbarSession,
                 freeCount: t.home.freeCount,
                 uploadTitle: t.home.uploadTitle,
-                uploadSub: t.home.uploadSub,
-                uploading: t.home.uploading,
                 ideasLabel: t.home.ideasLabel,
                 ideas: [...t.home.ideas],
                 tplLabel: t.home.tplLabel,

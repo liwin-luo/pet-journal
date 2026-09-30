@@ -141,7 +141,10 @@
     },
     "painting": "그리는 중…",
     "generate": "생성",
-    "viewAll": "모두 보기"
+    "viewAll": "모두 보기",
+    "photo": "사진",
+    "ideas": "아이디어",
+    "styles": "스타일"
   },
   "tpl": {
     "title": "템플릿 센터",

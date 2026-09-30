@@ -141,7 +141,10 @@
     },
     "painting": "On peint…",
     "generate": "Générer",
-    "viewAll": "Tout voir"
+    "viewAll": "Tout voir",
+    "photo": "Photo",
+    "ideas": "Idées",
+    "styles": "Styles"
   },
   "tpl": {
     "title": "Centre de modèles",

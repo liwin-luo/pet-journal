@@ -141,7 +141,10 @@
     },
     "painting": "Painting…",
     "generate": "Generate",
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "photo": "Photo",
+    "ideas": "Ideas",
+    "styles": "Styles"
   },
   "tpl": {
     "title": "Template center",

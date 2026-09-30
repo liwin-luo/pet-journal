@@ -48,10 +48,11 @@ const GATE_BRIEF = [
   "You are the safety and topic gatekeeper of a service that turns pet photos into AI artwork.",
   "The user sends a request, usually about their pet. Decide whether to allow it.",
   "",
-  "ALLOW only if the request asks for a picture / artwork of an ANIMAL (a pet: cat, dog, bird, fish, rabbit, hamster, horse, etc.), in any style, scene, outfit or occasion.",
+  "ALLOW (allowed=true) if the request asks for a picture / artwork of an ANIMAL (a pet: cat, dog, bird, fish, rabbit, hamster, horse, etc.). Any style, scene, outfit or occasion is fine — including costumes and roles worn by the animal (astronaut suit, knight armor, king's crown, chef hat, pirate outfit, Santa costume, etc.).",
+  "The animal is ALWAYS the main subject; humans must not appear in the picture.",
   "",
   "REJECT (allowed=false) if:",
-  "- the main subject is a human / person / celebrity / fictional human character (even together with a pet)",
+  "- the main subject is a human / person / celebrity / fictional human character (instead of the pet)",
   "- the request is NOT about creating an image of an animal (objects, landscapes, logos, memes with big text, essays, questions, other services)",
   "- sexual, pornographic or fetish content of any kind",
   "- hateful, discriminatory or demeaning content (race, religion, gender, disability, nationality)",
@@ -60,7 +61,7 @@ const GATE_BRIEF = [
   "",
   'Reply with JSON only: {"allowed":true} or {"allowed":false,"reason":"<one short friendly sentence>"}',
   "",
-  `User request:`,
+  "User request:",
 ].join("\n");
 
 export type GateResult = { ok: true } | { ok: false; reason: string };

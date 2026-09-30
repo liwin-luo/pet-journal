@@ -75,6 +75,35 @@ export function CheckIcon({ className }: P) {
   );
 }
 
+export function PaletteIcon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${base} ${className ?? ""}`} aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0 0 20 2 2 0 0 0 2-2v-1a2 2 0 0 1 2-2h3a4 4 0 0 0 4-4c0-5.5-4.9-11-11-11z" />
+      <circle cx="7.5" cy="10.5" r="0.5" />
+      <circle cx="12" cy="7.5" r="0.5" />
+      <circle cx="16.5" cy="10.5" r="0.5" />
+    </svg>
+  );
+}
+
+export function PaperclipIcon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${base} ${className ?? ""}`} aria-hidden="true">
+      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+    </svg>
+  );
+}
+
+export function LightbulbIcon({ className }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${base} ${className ?? ""}`} aria-hidden="true">
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+      <path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3V18h6v-1c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z" />
+    </svg>
+  );
+}
+
 export function HeartIcon({ className }: P) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={`${base} ${className ?? ""}`} aria-hidden="true">

@@ -141,7 +141,10 @@
     },
     "painting": "描いています…",
     "generate": "生成",
-    "viewAll": "すべて見る"
+    "viewAll": "すべて見る",
+    "photo": "写真",
+    "ideas": "アイデア",
+    "styles": "スタイル"
   },
   "tpl": {
     "title": "テンプレートセンター",
