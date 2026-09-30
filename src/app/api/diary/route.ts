@@ -17,7 +17,9 @@ export async function POST(req: Request) {
     }));
     if (!text?.trim()) throw new Error("no text");
     return NextResponse.json({ text });
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message ?? "diary failed" }, { status: 502 });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : "diary failed";
+    console.error("diary", message.slice(0, 240));
+    return NextResponse.json({ error: message }, { status: 502 });
   }
 }
