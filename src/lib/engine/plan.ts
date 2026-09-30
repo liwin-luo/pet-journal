@@ -13,7 +13,7 @@ export function planBrief(input: PlanBody): string {
     "Rules:",
     "- The subject is ALWAYS the pet from the photos. Never draw a human.",
     "- The photos only show who the pet is: same face, fur markings, eye color. Pose, clothes and setting follow the request.",
-    "- Write the prompt in English, vivid but under 120 words, describing one single image.",
+    "- Write the prompt in English. Keep every concrete detail from the template (composition, palette, lighting, texture) so the result closely matches the template example, then weave in the user's twist. Stay under 220 words and describe one single image.",
     "- Do not put any words, letters or captions inside the picture.",
     "- Keep any text-safe zone the template asks for, but do not draw text there.",
     input.imageCount === 0
@@ -34,7 +34,7 @@ export function parsePlan(raw: string, imageCount: number): { prompt: string; im
   const end = raw.lastIndexOf("}");
   if (start < 0 || end <= start) throw new Error("模型没有返回出图计划");
   const json = JSON.parse(raw.slice(start, end + 1)) as { prompt?: unknown; images?: unknown };
-  const prompt = typeof json.prompt === "string" ? json.prompt.trim().slice(0, 1600) : "";
+  const prompt = typeof json.prompt === "string" ? json.prompt.trim().slice(0, 2200) : "";
   if (!prompt) throw new Error("模型没有写出提示词");
   const images = Array.isArray(json.images)
     ? json.images.filter((n): n is number => typeof n === "number" && n >= 1 && n <= imageCount).slice(0, 4)

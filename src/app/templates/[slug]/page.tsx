@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButton } from "@/components/CopyButton";
+import { PromptBlock } from "@/components/PromptBlock";
 import { TemplateCard } from "@/components/TemplateCard";
 import { pageMeta } from "@/lib/seo";
 import { CATS, TEMPLATES, templateById, tplImg } from "@/lib/templates";
@@ -61,7 +62,9 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
 
           <div className="mt-6 card p-5">
             <p className="text-xs font-semibold uppercase tracking-wide text-fog">The prompt — free to copy</p>
-            <p className="mt-2 rounded-xl bg-parchment/70 p-4 font-mono text-sm leading-relaxed">{tpl.prompt}</p>
+            <div className="mt-2">
+              <PromptBlock prompt={tpl.prompt} />
+            </div>
             <div className="mt-4 flex flex-wrap gap-2">
               <CopyButton text={tpl.prompt} />
               <Link href={`/?tpl=${tpl.id}#create`} className="btn-primary !py-2 text-sm">
