@@ -1,8 +1,8 @@
 // 和原来的 PetsDaily 一样：DATABASE_URL 指向 Postgres。用户写进同一张 users 表。
 import { Pool, type PoolConfig } from "pg";
-import { draw, grant, walletFields, type PlanId, type Wallet } from "@/lib/credits";
+import { draw, grant, restoreMonth, walletFields, type PlanId, type Wallet } from "@/lib/credits";
 
-export type StoredWallet = { plan: PlanId; credits: number; creditDay: string; monthUsed: number };
+export type StoredWallet = { plan: PlanId; credits: number; creditDay: string; monthUsed: number; refilled: boolean };
 export type UserRow = { id: string; googleSub: string; email: string; name?: string };
 export type JsonState = { pets: unknown[]; orders: unknown[]; diary: unknown[] };
 
@@ -188,6 +188,10 @@ export async function drawStored(userId: string, n: number, today: string): Prom
 
 export async function grantStored(userId: string, tier: "studio" | "home"): Promise<StoredWallet> {
   return withWallet(userId, (cur) => walletFields(grant(cur, tier)));
+}
+
+export async function restoreStored(userId: string): Promise<StoredWallet> {
+  return withWallet(userId, (cur) => restoreMonth(cur));
 }
 
 export async function addStored(userId: string, n: number): Promise<StoredWallet> {

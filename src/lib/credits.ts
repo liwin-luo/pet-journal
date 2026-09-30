@@ -12,7 +12,7 @@ export const PLANS: Record<PlanId, { pets: number; price: number }> = {
 
 const RANK: Record<PlanId, number> = { free: 0, studio: 1, home: 2 };
 
-export type Wallet = { plan?: PlanId; credits?: number; creditDay?: string; monthUsed?: number };
+export type Wallet = { plan?: PlanId; credits?: number; creditDay?: string; monthUsed?: number; refilled?: boolean };
 
 export function planOf(s: { plan?: PlanId }): PlanId {
   return s.plan === "studio" || s.plan === "home" ? s.plan : "free";
@@ -33,7 +33,13 @@ export function walletFields(w: Wallet) {
     credits: Number(w.credits) || 0,
     creditDay: typeof w.creditDay === "string" ? w.creditDay : "",
     monthUsed: Number(w.monthUsed) || 0,
+    refilled: w.refilled === true,
   };
+}
+
+/** 作品没落库时把本月已用清掉，只做一次。 */
+export function restoreMonth(w: Wallet) {
+  return walletFields({ ...w, monthUsed: 0, refilled: true });
 }
 
 /** 付费档每次最多出 8 张。免费档是本月剩余，加上还没花完的旧余额。 */
@@ -57,7 +63,7 @@ export function draw(w: Wallet, n: number, today = todayKey()): { next: Wallet; 
   used += fromFree;
   return {
     taken: fromBal + fromFree,
-    next: { plan, credits: balance, creditDay: month, monthUsed: used },
+    next: walletFields({ plan, credits: balance, creditDay: month, monthUsed: used, refilled: w.refilled === true }),
   };
 }
 
@@ -82,5 +88,8 @@ if (process.env.PLAN_CHECK) {
   if (cap.taken !== 8) throw new Error("cap");
   if (bought.plan !== "studio" || bought.credits !== 0) throw new Error("grant");
   if (stay.plan !== "home" || stay.credits !== 1) throw new Error("norank");
+  const back = restoreMonth({ creditDay: "2026-9", monthUsed: 8, credits: 0 });
+  const kept = draw(back, 1, day);
+  if (creditsLeft(back, day) !== 8 || back.refilled !== true || kept.taken !== 1 || kept.next.refilled !== true) throw new Error("restore");
   console.log("plan ok");
 }

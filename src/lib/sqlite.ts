@@ -2,10 +2,10 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import Database from "better-sqlite3";
-import { draw, grant, walletFields, type PlanId, type Wallet } from "@/lib/credits";
+import { draw, grant, restoreMonth, walletFields, type PlanId, type Wallet } from "@/lib/credits";
 
 export type JsonState = { pets: unknown[]; orders: unknown[]; diary: unknown[] };
-export type StoredWallet = { plan: PlanId; credits: number; creditDay: string; monthUsed: number };
+export type StoredWallet = { plan: PlanId; credits: number; creditDay: string; monthUsed: number; refilled: boolean };
 export type UserRow = { id: string; googleSub: string; email: string; name?: string };
 
 // ponytail: 线上走 DATABASE_URL。这里只给没配库的本机，以及 Vercel 上还没配库时的临时文件。
@@ -128,6 +128,12 @@ export function drawStored(userId: string, n: number, today: string): { taken: n
 export function grantStored(userId: string, tier: "studio" | "home"): StoredWallet {
   const next = grant(readWallet(userId), tier);
   const wallet = walletFields(next);
+  writeWallet(userId, wallet);
+  return wallet;
+}
+
+export function restoreStored(userId: string): StoredWallet {
+  const wallet = restoreMonth(readWallet(userId));
   writeWallet(userId, wallet);
   return wallet;
 }

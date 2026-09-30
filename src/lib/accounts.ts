@@ -36,6 +36,10 @@ export async function grantStored(userId: string, tier: "studio" | "home") {
   return (await backend()).grantStored(userId, tier);
 }
 
+export async function restoreStored(userId: string) {
+  return (await backend()).restoreStored(userId);
+}
+
 export async function addStored(userId: string, n: number) {
   return (await backend()).addStored(userId, n);
 }
