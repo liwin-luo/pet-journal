@@ -8,7 +8,7 @@ import { loadState, updateState } from "@/lib/store";
 import { planRequest } from "@/lib/flow";
 import { getRefs } from "@/lib/refs";
 import { isPortrait } from "@/lib/guards";
-import { creditsLeft, walletFields } from "@/lib/plan";
+import { walletFields } from "@/lib/plan";
 
 export default function ProcessingPage() {
   const router = useRouter();
@@ -25,8 +25,7 @@ export default function ProcessingPage() {
     setNextGift(new URLSearchParams(location.search).get("next") === "gift");
     const s = loadState();
     const asked = Number(new URLSearchParams(location.search).get("n") || 1);
-    const count = Math.min(8, creditsLeft(s), Math.max(1, asked || 1));
-    if (count < 1) { router.replace("/preview"); return; }
+    const count = Math.min(8, Math.max(1, asked || 1));
     const tagNames = tArr("tags8");
     let cancel = false;
     (async () => {

@@ -1,7 +1,6 @@
 "use client";
 // 主链路共享逻辑：意图带去素材层（审计 #3 的过渡说明）· 素材检查 · 推荐重排
 import { loadState, updateState, curPet } from "./store";
-import { creditsLeft } from "./plan";
 import { STYLE_PROMPTS, TAGMAP, templateById } from "./catalog";
 import { isPortrait } from "./guards";
 
@@ -15,7 +14,8 @@ export function afterCreateIntent(intent: string) {
     window.location.href = "/upload";
     return;
   }
-  window.location.href = creditsLeft(s) > 0 ? "/processing?n=1" : "/preview";
+  // 额度以服务器为准。本地余额是 0 时不能直接打开旧图。
+  window.location.href = "/processing?n=1";
 }
 
 /** 性格标签 → 推荐风格 index 集合 */
