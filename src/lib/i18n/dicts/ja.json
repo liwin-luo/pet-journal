@@ -172,7 +172,8 @@
     "more": "{cat} の他のテンプレート",
     "empty": "このカテゴリーに{badge}のテンプレートはまだありません。",
     "detailTitle": "{name} ペットポートレート — 無料AIテンプレート",
-    "detailDesc": "{blurb} {name} のプロンプトをコピーして、猫や犬を約30秒で変身させましょう。無料、アカウント不要。"
+    "detailDesc": "{blurb} {name} のプロンプトをコピーして、猫や犬を約30秒で変身させましょう。無料、アカウント不要。",
+    "download": "サンプルをダウンロード"
   },
   "gal": {
     "title": "スタジオ生まれの作品",
@@ -200,7 +201,8 @@
     "storyTitle": "この絵の物語",
     "backTo": "ギャラリーに戻る",
     "by": "{nickname} さん",
-    "detailTitle": "{pet} の AI ペットポートレート"
+    "detailTitle": "{pet} の AI ペットポートレート",
+    "download": "ダウンロード"
   },
   "faqPage": {
     "title": "よくある質問",

@@ -172,7 +172,8 @@
     "more": "Más plantillas de {cat}",
     "empty": "Aún no hay plantillas {badge} en esta categoría.",
     "detailTitle": "Retrato de mascota {name} — plantilla de IA gratis",
-    "detailDesc": "{blurb} Copia el prompt exacto de {name} y convierte a tu gato o perro en ~30 segundos. Gratis, sin cuenta."
+    "detailDesc": "{blurb} Copia el prompt exacto de {name} y convierte a tu gato o perro en ~30 segundos. Gratis, sin cuenta.",
+    "download": "Descargar ejemplo"
   },
   "gal": {
     "title": "Hecho en el estudio",
@@ -200,7 +201,8 @@
     "storyTitle": "La historia de esta imagen",
     "backTo": "Volver a la galería",
     "by": "por {nickname}",
-    "detailTitle": "{pet} — Retrato de mascota IA"
+    "detailTitle": "{pet} — Retrato de mascota IA",
+    "download": "Descargar"
   },
   "faqPage": {
     "title": "Preguntas frecuentes",

@@ -172,7 +172,8 @@
     "more": "Mais modelos de {cat}",
     "empty": "Ainda não há modelos {badge} nesta categoria.",
     "detailTitle": "Retrato de pet {name} — modelo de IA grátis",
-    "detailDesc": "{blurb} Copie o prompt exato de {name} e transforme seu gato ou cachorro em ~30 segundos. Grátis, sem conta."
+    "detailDesc": "{blurb} Copie o prompt exato de {name} e transforme seu gato ou cachorro em ~30 segundos. Grátis, sem conta.",
+    "download": "Baixar exemplo"
   },
   "gal": {
     "title": "Feito no estúdio",
@@ -200,7 +201,8 @@
     "storyTitle": "A história desta imagem",
     "backTo": "Voltar para a galeria",
     "by": "por {nickname}",
-    "detailTitle": "{pet} — retrato de pet com IA"
+    "detailTitle": "{pet} — retrato de pet com IA",
+    "download": "Baixar"
   },
   "faqPage": {
     "title": "Perguntas frequentes",

@@ -172,7 +172,8 @@
     "more": "More {cat} templates",
     "empty": "No {badge} templates in this category yet.",
     "detailTitle": "{name} pet portrait — free AI template",
-    "detailDesc": "{blurb} Copy the exact {name} prompt and turn your cat or dog into it in ~30 seconds. Free, no account needed."
+    "detailDesc": "{blurb} Copy the exact {name} prompt and turn your cat or dog into it in ~30 seconds. Free, no account needed.",
+    "download": "Download example"
   },
   "gal": {
     "title": "Made in the studio",
@@ -200,7 +201,8 @@
     "storyTitle": "The story behind this picture",
     "backTo": "Back to gallery",
     "by": "by {nickname}",
-    "detailTitle": "{pet} — AI pet portrait"
+    "detailTitle": "{pet} — AI pet portrait",
+    "download": "Download"
   },
   "faqPage": {
     "title": "Frequently asked questions",

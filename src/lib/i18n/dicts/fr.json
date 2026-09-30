@@ -172,7 +172,8 @@
     "more": "Plus de modèles {cat}",
     "empty": "Pas encore de modèles {badge} dans cette catégorie.",
     "detailTitle": "Portrait d'animal {name} — modèle IA gratuit",
-    "detailDesc": "{blurb} Copiez le prompt exact de {name} et transformez votre chat ou chien en ~30 secondes. Gratuit, sans compte."
+    "detailDesc": "{blurb} Copiez le prompt exact de {name} et transformez votre chat ou chien en ~30 secondes. Gratuit, sans compte.",
+    "download": "Télécharger l'exemple"
   },
   "gal": {
     "title": "Créé au studio",
@@ -200,7 +201,8 @@
     "storyTitle": "L'histoire de cette image",
     "backTo": "Retour à la galerie",
     "by": "par {nickname}",
-    "detailTitle": "{pet} — portrait d'animal par IA"
+    "detailTitle": "{pet} — portrait d'animal par IA",
+    "download": "Télécharger"
   },
   "faqPage": {
     "title": "Foire aux questions",

@@ -172,7 +172,8 @@
     "more": "Mehr {cat}-Vorlagen",
     "empty": "Noch keine {badge} Vorlagen in dieser Kategorie.",
     "detailTitle": "{name} Haustier-Porträt — kostenlose KI-Vorlage",
-    "detailDesc": "{blurb} Kopiere den exakten {name}-Prompt und verwandle deine Katze oder deinen Hund in ~30 Sekunden. Kostenlos, ohne Konto."
+    "detailDesc": "{blurb} Kopiere den exakten {name}-Prompt und verwandle deine Katze oder deinen Hund in ~30 Sekunden. Kostenlos, ohne Konto.",
+    "download": "Beispiel herunterladen"
   },
   "gal": {
     "title": "Im Studio entstanden",
@@ -200,7 +201,8 @@
     "storyTitle": "Die Geschichte zu diesem Bild",
     "backTo": "Zurück zur Galerie",
     "by": "von {nickname}",
-    "detailTitle": "{pet} — KI-Haustierporträt"
+    "detailTitle": "{pet} — KI-Haustierporträt",
+    "download": "Herunterladen"
   },
   "faqPage": {
     "title": "Häufige Fragen",

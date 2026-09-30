@@ -172,7 +172,8 @@
     "more": "{cat}의 다른 템플릿",
     "empty": "이 카테고리에는 아직 {badge} 템플릿이 없습니다.",
     "detailTitle": "{name} 반려동물 초상 — 무료 AI 템플릿",
-    "detailDesc": "{blurb} {name} 프롬프트를 복사해 약 30초 만에 고양이나 강아지를 변신시키세요. 무료, 계정 불필요."
+    "detailDesc": "{blurb} {name} 프롬프트를 복사해 약 30초 만에 고양이나 강아지를 변신시키세요. 무료, 계정 불필요.",
+    "download": "예시 다운로드"
   },
   "gal": {
     "title": "스튜디오에서 탄생",
@@ -200,7 +201,8 @@
     "storyTitle": "이 그림의 이야기",
     "backTo": "갤러리로 돌아가기",
     "by": "{nickname} 제작",
-    "detailTitle": "{pet} — AI 반려동물 초상"
+    "detailTitle": "{pet} — AI 반려동물 초상",
+    "download": "다운로드"
   },
   "faqPage": {
     "title": "자주 묻는 질문",

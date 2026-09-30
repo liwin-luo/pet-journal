@@ -67,12 +67,19 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={w.image}
+        src={`/api/wm/gallery/${w.id}`}
         alt={`AI ${tpl?.name ?? "studio"} portrait of ${w.petName} the ${w.species}`}
         className="mx-auto mt-6 w-full rounded-big shadow-lift"
       />
 
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={`/api/wm/gallery/${w.id}`}
+          download={`petsdaily-${(w.petName || "pet").replace(/[^\w-]+/g, "-").toLowerCase()}.jpg`}
+          className="btn-ghost !py-2 text-sm"
+        >
+          {t.gal.download} ↓
+        </a>
         <LikeButton id={w.id} count={w.likeCount} liked={w.liked} label={t.gal.likeBtn} />
         <ShareBar
           url={`${SITE_URL}${lp(locale, `/gallery/${w.id}`)}`}

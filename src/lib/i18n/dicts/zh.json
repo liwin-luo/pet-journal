@@ -172,7 +172,8 @@
     "more": "更多{cat}模板",
     "empty": "该分类下还没有{badge}模板。",
     "detailTitle": "{name} 宠物画像 — 免费 AI 模板",
-    "detailDesc": "{blurb} 复制 {name} 的完整提示词，约 30 秒把猫狗变成它。免费，无需账号。"
+    "detailDesc": "{blurb} 复制 {name} 的完整提示词，约 30 秒把猫狗变成它。免费，无需账号。",
+    "download": "下载示例图"
   },
   "gal": {
     "title": "工作室出品",
@@ -200,7 +201,8 @@
     "storyTitle": "这张图背后的故事",
     "backTo": "返回画廊",
     "by": "{nickname} 创作",
-    "detailTitle": "{pet} 的 AI 宠物画像"
+    "detailTitle": "{pet} 的 AI 宠物画像",
+    "download": "下载图片"
   },
   "faqPage": {
     "title": "常见问题",

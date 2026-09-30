@@ -172,7 +172,8 @@
     "more": "Altri modelli {cat}",
     "empty": "Ancora nessun modello {badge} in questa categoria.",
     "detailTitle": "Ritratto di animale {name} — modello IA gratis",
-    "detailDesc": "{blurb} Copia il prompt esatto di {name} e trasforma gatto o cane in ~30 secondi. Gratis, senza account."
+    "detailDesc": "{blurb} Copia il prompt esatto di {name} e trasforma gatto o cane in ~30 secondi. Gratis, senza account.",
+    "download": "Scarica esempio"
   },
   "gal": {
     "title": "Fatto nello studio",
@@ -200,7 +201,8 @@
     "storyTitle": "La storia di questa immagine",
     "backTo": "Torna alla galleria",
     "by": "di {nickname}",
-    "detailTitle": "{pet} — ritratto di animale IA"
+    "detailTitle": "{pet} — ritratto di animale IA",
+    "download": "Scarica"
   },
   "faqPage": {
     "title": "Domande frequenti",

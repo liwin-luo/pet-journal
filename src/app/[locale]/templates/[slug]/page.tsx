@@ -7,7 +7,7 @@ import { PromptBlock } from "@/components/PromptBlock";
 import { TemplateCard } from "@/components/TemplateCard";
 import { getDict, isLocale, LOCALES, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
-import { CATS, TEMPLATES, templateById, tplImg } from "@/lib/templates";
+import { CATS, TEMPLATES, templateById, tplImg, tplImgWm } from "@/lib/templates";
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) => TEMPLATES.map((t) => ({ locale, slug: t.id })));
@@ -57,14 +57,19 @@ export default async function TemplateDetail({ params }: { params: Promise<{ loc
         <figure>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={tplImg(tpl.id)}
+            src={tplImgWm(tpl.id)}
             alt={`${tpl.name} — AI pet portrait template example`}
             width={512}
             height={683}
             fetchPriority="high"
             className="w-full rounded-big object-cover shadow-lift"
           />
-          <figcaption className="mt-3 text-xs text-fog">{t.tpl.exampleCap}</figcaption>
+          <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs text-fog">{t.tpl.exampleCap}</span>
+            <a href={tplImgWm(tpl.id)} download={`petsdaily-${tpl.id}.jpg`} className="text-xs font-semibold text-coral hover:underline">
+              {t.tpl.download} ↓
+            </a>
+          </figcaption>
         </figure>
 
         <div>

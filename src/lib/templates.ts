@@ -559,6 +559,11 @@ export function tplImg(id: string): string {
   return `/tpl/${id}.jpg`;
 }
 
+/** 带域名水印的预览/下载出口。 */
+export function tplImgWm(id: string): string {
+  return `/api/wm/tpl/${id}.jpg`;
+}
+
 if (new Set(TEMPLATES.map((t) => t.id)).size !== TEMPLATES.length || TEMPLATES.length !== 100) {
   throw new Error("template catalog");
 }
