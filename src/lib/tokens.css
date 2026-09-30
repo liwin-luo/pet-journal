@@ -1,0 +1,12 @@
+/* PetPics Design Tokens（与原型/设计文档 §2.1 一致） */
+:root{
+  --bg:#FAF6EF; --surface:#FFFFFF;
+  --primary:#E0715C; --primary-hover:#C95E4A; --primary-soft:#FBEAE5;
+  --ink:#3D2E24; --ink-soft:#8A7A6D;
+  --sage:#8FA98F; --gold:#D4A857; --error:#C0443E;
+  --radius:16px; --radius-lg:24px;
+  --shadow:0 2px 12px rgba(61,46,36,.06); --shadow-hover:0 6px 24px rgba(61,46,36,.12);
+  --fd:"Fraunces","Noto Sans JP","Noto Sans KR",Georgia,serif;
+  --fb:"Inter","Noto Sans JP","Noto Sans KR",-apple-system,"Hiragino Sans","Yu Gothic","Malgun Gothic",sans-serif;
+  --fh:"Caveat",cursive;
+}

@@ -1,8 +1,11 @@
 node_modules
 .next
+out
 .env
-.env.local
+.env.*
+!.env.example
 *.tsbuildinfo
-public/generated/*
-!public/generated/.gitkeep
-.vercel
+next-env.d.ts
+.DS_Store
+.data
+public/generated
