@@ -90,13 +90,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className="mx-auto mt-12 flex max-w-2xl items-center justify-center gap-3 md:gap-6">
           <figure className="flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/land/before.jpg" alt={t.home.beforeCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card object-cover shadow-soft" />
+            <img src="/land/cat.jpg" alt={t.home.beforeCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card object-cover shadow-soft" />
             <figcaption className="mt-2 text-xs text-coffee">{t.home.beforeCap}</figcaption>
           </figure>
           <span aria-hidden="true" className="text-2xl text-coral">→</span>
           <figure className="flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/land/after.jpg" alt={t.home.afterCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card object-cover shadow-soft" />
+            <img src="/land/royal-cat.jpg" alt={t.home.afterCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card object-cover shadow-soft" />
             <figcaption className="mt-2 text-xs text-coffee">{t.home.afterCap}</figcaption>
           </figure>
         </div>
