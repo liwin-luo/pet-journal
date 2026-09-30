@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { Dict } from "@/lib/i18n";
 import type { Tpl } from "@/lib/templates";
 import { CopyButton } from "./CopyButton";
 import { ShareBar } from "./ShareBar";
@@ -27,33 +28,30 @@ type Msg = {
   error?: string;
 };
 
-const PLACEHOLDERS = [
-  "e.g. My cat as a renaissance royal, oil painting",
-  "e.g. My dog in a Santa hat by the fireplace, cozy",
-  "e.g. My bunny reading a book in a library, warm light",
-  "e.g. Funny birthday portrait of my pug with a party hat",
-];
+const LOADING_CYCLE_MS = 2600;
 
-const LOADING_LINES = [
-  "Studying your pet's finest features…",
-  "Mixing the perfect palette…",
-  "Sketching whiskers and paw details…",
-  "Painting the scene you asked for…",
-  "Adding the final brush strokes…",
-];
+type Props = {
+  featured: Tpl[];
+  user: { name?: string; email: string } | null;
+  locale: string;
+  gen: Dict["gen"];
+  labels: {
+    topbar: string;
+    topbarSession: string;
+    freeCount: string;
+    uploadTitle: string;
+    uploadSub: string;
+    uploading: string;
+    ideasLabel: string;
+    ideas: string[];
+    tplLabel: string;
+    browseAll: string;
+    placeholder: string;
+    helper: string;
+  };
+};
 
-const IDEAS = [
-  "Renaissance royal portrait",
-  "Christmas card by the fireplace",
-  "Astronaut floating in space",
-  "Funny movie poster",
-  "Cozy winter sweater",
-  "Birthday party hat",
-];
-
-type Props = { featured: Tpl[]; user: { name?: string; email: string } | null };
-
-export function Generator({ featured, user }: Props) {
+export function Generator({ featured, user, locale, gen, labels }: Props) {
   const params = useSearchParams();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -70,6 +68,7 @@ export function Generator({ featured, user }: Props) {
   const idRef = useRef(0);
   const chatRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const P = (path: string) => (locale === "en" ? path : `/${locale}${path}`);
 
   // /templates/[slug] 点 "Try it" 带 ?tpl= 进来，预选模板
   useEffect(() => {
@@ -82,9 +81,9 @@ export function Generator({ featured, user }: Props) {
 
   useEffect(() => {
     if (!msgs.some((m) => m.status === "loading")) return;
-    const t = setInterval(() => setLoadingLine((n) => (n + 1) % LOADING_LINES.length), 2600);
+    const t = setInterval(() => setLoadingLine((n) => (n + 1) % gen.loading.length), LOADING_CYCLE_MS);
     return () => clearInterval(t);
-  }, [msgs]);
+  }, [msgs, gen.loading.length]);
 
   useEffect(() => {
     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight, behavior: "smooth" });
@@ -149,12 +148,6 @@ export function Generator({ featured, user }: Props) {
     }
   }
 
-  async function download(id: number, result: Msg["result"]) {
-    if (!result) return;
-    const ok = await fetchDownload(result.imagePath || result.image);
-    if (!ok) setSignInFor(id);
-  }
-
   async function fetchDownload(path: string): Promise<boolean> {
     const res = await fetch(path);
     if (res.status === 401) return false;
@@ -168,6 +161,12 @@ export function Generator({ featured, user }: Props) {
     return true;
   }
 
+  async function download(id: number, result: Msg["result"]) {
+    if (!result) return;
+    const ok = await fetchDownload(result.imagePath || result.image);
+    if (!ok) setSignInFor(id);
+  }
+
   const hasHistory = msgs.length > 0;
   const loading = msgs.some((m) => m.status === "loading");
 
@@ -179,15 +178,15 @@ export function Generator({ featured, user }: Props) {
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-coral text-white">
             <PawIcon className="h-4 w-4" />
           </span>
-          {hasHistory ? "Your session" : "Tell the studio what to paint"}
+          {hasHistory ? labels.topbarSession : labels.topbar}
         </p>
-        <span className="text-xs text-fog">3 free pictures a day</span>
+        <span className="text-xs text-fog">{labels.freeCount}</span>
       </div>
 
       {/* 历史区：同一浏览器/账号生成过的图都在这里，登录前后都能找回 */}
       {hist.length > 0 && (
         <div className="border-b border-sand/70 bg-parchment/40 px-5 py-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-fog">Your pictures</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-fog">{gen.histTitle}</p>
           <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
             {hist.map((h) => (
               <button
@@ -199,8 +198,8 @@ export function Generator({ featured, user }: Props) {
                 className={`shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
                   histSel === h.imagePath ? "border-coral" : "border-transparent hover:border-sand"
                 }`}
-                aria-label="Open your picture"
-                title={h.message || "Your picture"}
+                aria-label={gen.histOpen}
+                title={h.message || gen.histOpen}
               >
                 <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="h-16 w-16 object-cover" />
               </button>
@@ -222,23 +221,23 @@ export function Generator({ featured, user }: Props) {
                           if (!ok) setHistSignIn(true);
                         }}
                       >
-                        <DownloadIcon className="h-4 w-4" /> Download
+                        <DownloadIcon className="h-4 w-4" /> {gen.download}
                       </button>
                     ) : (
                       <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => setHistSignIn(!histSignIn)}>
-                        <DownloadIcon className="h-4 w-4" /> Sign in to download
+                        <DownloadIcon className="h-4 w-4" /> {gen.signInTitle}
                       </button>
                     )}
-                    <CopyButton text={h.prompt} label="Copy the prompt" />
-                    <a href={h.shareUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 text-sm">
-                      <ShareIcon className="h-4 w-4" /> Share page
+                    <CopyButton text={h.prompt} label={gen.copyPrompt} />
+                    <a href={P(h.shareUrl)} target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 text-sm">
+                      <ShareIcon className="h-4 w-4" /> {gen.sharePage}
                     </a>
                   </div>
                   {histSignIn && !user && (
                     <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
-                      Downloading needs a free account — it keeps your pictures safe.
-                      <Link href="/login?next=/" className="btn-primary !px-4 !py-2 text-sm">
-                        Sign in
+                      {gen.signInBody}
+                      <Link href={P("/login?next=/")} className="btn-primary !px-4 !py-2 text-sm">
+                        {gen.signInBtn}
                       </Link>
                     </div>
                   )}
@@ -262,10 +261,10 @@ export function Generator({ featured, user }: Props) {
                   ))}
                 </div>
               )}
-              <p className="text-sm">{m.text || <em className="text-coffee">(just the template)</em>}</p>
+              <p className="text-sm">{m.text || <em className="text-coffee">({labels.tplLabel})</em>}</p>
               {m.templateId && (
                 <span className="mt-1 inline-block rounded-full bg-white px-2 py-0.5 text-xs font-medium text-coral">
-                  ✦ {m.templateId} template
+                  ✦ {m.templateId} {labels.tplLabel}
                 </span>
               )}
             </div>
@@ -274,7 +273,7 @@ export function Generator({ featured, user }: Props) {
               {m.status === "loading" && (
                 <div className="flex items-center gap-3 rounded-2xl rounded-tl-md bg-parchment px-4 py-3 text-sm text-coffee">
                   <PawIcon className="h-5 w-5 text-coral bounce-soft" />
-                  {LOADING_LINES[loadingLine]}
+                  {gen.loading[loadingLine]}
                   <span className="ml-auto text-xs text-fog">~30s</span>
                 </div>
               )}
@@ -282,7 +281,7 @@ export function Generator({ featured, user }: Props) {
                 <div className="rounded-2xl rounded-tl-md border border-coral/40 bg-coral-soft/60 px-4 py-3 text-sm text-coral-deep">
                   {m.error}{" "}
                   <button className="font-semibold underline" onClick={() => generate(m.text, m.images, m.templateId)}>
-                    Try again
+                    {gen.regen}
                   </button>
                 </div>
               )}
@@ -297,68 +296,63 @@ export function Generator({ featured, user }: Props) {
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     {user ? (
                       <button className="btn-primary !px-4 !py-2 text-sm" onClick={() => download(m.id, m.result)}>
-                        <DownloadIcon className="h-4 w-4" /> Download
+                        <DownloadIcon className="h-4 w-4" /> {gen.download}
                       </button>
                     ) : (
                       <button
                         className="btn-primary !px-4 !py-2 text-sm"
                         onClick={() => setSignInFor(signInFor === m.id ? null : m.id)}
                       >
-                        <DownloadIcon className="h-4 w-4" /> Sign in to download
+                        <DownloadIcon className="h-4 w-4" /> {gen.signInTitle}
                       </button>
                     )}
                     <button
                       className="btn-ghost !py-2 text-sm"
                       onClick={() => generate(m.text, m.images, m.templateId)}
-                      title="Uses one free picture"
+                      title={gen.regenTip}
                     >
-                      <RefreshIcon className="h-4 w-4" /> Regenerate
+                      <RefreshIcon className="h-4 w-4" /> {gen.regen}
                     </button>
-                    <CopyButton text={m.result.prompt} label="Copy the prompt" />
+                    <CopyButton text={m.result.prompt} label={gen.copyPrompt} />
                     <button
                       className="btn-ghost !py-2 text-sm"
                       onClick={() => setShareOpenFor(shareOpenFor === m.id ? null : m.id)}
                     >
-                      <ShareIcon className="h-4 w-4" /> Share
+                      <ShareIcon className="h-4 w-4" /> {gen.share}
                     </button>
                     <button
                       className="btn-ghost !py-2 text-sm"
                       onClick={() => setShareFor(shareFor === m.id ? null : m.id)}
                     >
-                      <StarIcon className="h-4 w-4 text-gold" /> Post to gallery
+                      <StarIcon className="h-4 w-4 text-gold" /> {gen.postGallery}
                     </button>
                   </div>
+                  {signInFor === m.id && !user && (
+                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
+                      {gen.signInBody}
+                      <Link href={P("/login?next=/")} className="btn-primary !px-4 !py-2 text-sm">
+                        {gen.signInBtn}
+                      </Link>
+                    </div>
+                  )}
                   {shareOpenFor === m.id && m.result && (
                     <div className="mt-3 rounded-xl bg-parchment/60 p-4">
-                      <p className="text-sm font-semibold">Share to social media</p>
-                      <p className="mb-3 mt-1 text-xs text-fog">
-                        Anyone with the link can view this picture.
-                      </p>
+                      <p className="text-sm font-semibold">{gen.shareTitle}</p>
+                      <p className="mb-3 mt-1 text-xs text-fog">{gen.shareNote}</p>
                       <ShareBar
-                        url={`${window.location.origin}${m.result.shareUrl}`}
+                        url={`${window.location.origin}${P(m.result.shareUrl)}`}
                         imageUrl={
                           m.result.imagePath
                             ? `${window.location.origin}${m.result.imagePath}?st=${m.result.shareUrl.split("/").pop()}`
                             : undefined
                         }
                         fileShareSrc={m.result.image}
-                        text="Check out this AI pet portrait I made! 🐾"
+                        text={gen.shareText}
                       />
                     </div>
                   )}
-                  {signInFor === m.id && !user && (
-                    <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl bg-parchment/70 px-4 py-3 text-sm text-coffee">
-                      Downloading needs a free account — it keeps your pictures safe.
-                      <Link href="/login?next=/" className="btn-primary !px-4 !py-2 text-sm">
-                        Sign in
-                      </Link>
-                    </div>
-                  )}
                   {shareFor === m.id && (
-                    <ShareForm
-                      image={m.result.imagePath || m.result.image}
-                      onDone={() => setShareFor(null)}
-                    />
+                    <ShareForm image={m.result.imagePath || m.result.image} gen={gen} onDone={() => setShareFor(null)} />
                   )}
                 </div>
               )}
@@ -371,10 +365,8 @@ export function Generator({ featured, user }: Props) {
           <div className="py-1">
             <label className="group relative flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-sand bg-parchment/40 px-4 py-7 text-center transition-colors hover:border-coral">
               <UploadIcon className="h-7 w-7 text-coral" />
-              <span className="mt-2 text-sm font-semibold">Attach a photo of your pet</span>
-              <span className="mt-1 text-xs text-coffee">
-                1–4 photos · JPG / PNG / WebP · clear face works best
-              </span>
+              <span className="mt-2 text-sm font-semibold">{labels.uploadTitle}</span>
+              <span className="mt-1 text-xs text-coffee">{labels.uploadSub}</span>
               <input
                 ref={fileRef}
                 type="file"
@@ -383,7 +375,7 @@ export function Generator({ featured, user }: Props) {
                 className="sr-only"
                 onChange={(e) => pickFiles(e.target.files)}
               />
-              {busyFiles && <span className="absolute inset-0 rounded-xl bg-cream/70 text-sm font-medium leading-[7rem]">Uploading…</span>}
+              {busyFiles && <span className="absolute inset-0 rounded-xl bg-cream/70 text-sm font-medium leading-[7rem]">{labels.uploading}</span>}
             </label>
             {!!files.length && (
               <div className="mt-3 flex flex-wrap gap-2">
@@ -403,9 +395,9 @@ export function Generator({ featured, user }: Props) {
               </div>
             )}
             <div className="mt-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-fog">Need an idea? Tap one</p>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-fog">{labels.ideasLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {IDEAS.map((idea) => (
+                {labels.ideas.map((idea) => (
                   <button
                     key={idea}
                     onClick={() => setInput(idea)}
@@ -424,7 +416,7 @@ export function Generator({ featured, user }: Props) {
       <div className="border-t border-sand/70 bg-white px-5 py-4">
         {!hasHistory && (
           <div className="mb-3 flex items-center gap-2 overflow-x-auto pb-1">
-            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">Template</span>
+            <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-fog">{labels.tplLabel}</span>
             {tpl ? (
               <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-coral px-3 py-1.5 text-xs font-semibold text-white">
                 {tpl.name}
@@ -441,8 +433,8 @@ export function Generator({ featured, user }: Props) {
                 </button>
               ))
             )}
-            <Link href="/templates" className="shrink-0 text-xs font-semibold text-coral hover:underline">
-              Browse all 100 →
+            <Link href={P("/templates")} className="shrink-0 text-xs font-semibold text-coral hover:underline">
+              {labels.browseAll}
             </Link>
           </div>
         )}
@@ -458,7 +450,7 @@ export function Generator({ featured, user }: Props) {
             }}
             rows={2}
             maxLength={800}
-            placeholder={hasHistory ? "Describe another picture…" : PLACEHOLDERS[0]}
+            placeholder={hasHistory ? gen.placeholders[0] : labels.placeholder}
             className="min-h-[52px] flex-1 resize-none rounded-2xl border border-sand bg-cream px-4 py-3 text-sm outline-none transition-colors placeholder:text-fog focus:border-coral"
           />
           <button
@@ -467,19 +459,17 @@ export function Generator({ featured, user }: Props) {
             onClick={() => generate(input.trim(), files.map((f) => f.url), tpl?.id)}
           >
             <SparkIcon className="h-4 w-4" />
-            {loading ? "Painting…" : "Generate"}
+            {loading ? gen.painting : gen.generate}
           </button>
         </div>
-        <p className="mt-2 text-xs text-fog">
-          Press Enter to send · works best with one clear photo + a short wish · ~30 seconds per picture
-        </p>
+        <p className="mt-2 text-xs text-fog">{labels.helper}</p>
       </div>
     </div>
   );
 }
 
 /** 生成结果投稿表单（评价 + 作品进画廊，先审后显） */
-function ShareForm({ image, onDone }: { image: string; onDone: () => void }) {
+function ShareForm({ image, gen, onDone }: { image: string; gen: Dict["gen"]; onDone: () => void }) {
   const [nickname, setNickname] = useState("");
   const [petName, setPetName] = useState("");
   const [species, setSpecies] = useState("cat");
@@ -499,7 +489,7 @@ function ShareForm({ image, onDone }: { image: string; onDone: () => void }) {
   }
 
   if (state === "sent") {
-    return <p className="mt-3 rounded-xl bg-sage-soft px-4 py-3 text-sm text-sage">Thanks! It will appear in the gallery after a quick check. 🐾</p>;
+    return <p className="mt-3 rounded-xl bg-sage-soft px-4 py-3 text-sm text-sage">{gen.thanks}</p>;
   }
 
   return (
@@ -510,17 +500,17 @@ function ShareForm({ image, onDone }: { image: string; onDone: () => void }) {
         submit();
       }}
     >
-      <p className="text-sm font-semibold">Show it in the gallery (optional)</p>
+      <p className="text-sm font-semibold">{gen.formTitle}</p>
       <div className="mt-3 grid gap-2 sm:grid-cols-3">
-        <input value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder="Your name" maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
-        <input value={petName} onChange={(e) => setPetName(e.target.value)} placeholder="Pet's name" maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
+        <input value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder={gen.yourName} maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
+        <input value={petName} onChange={(e) => setPetName(e.target.value)} placeholder={gen.petName} maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
         <select value={species} onChange={(e) => setSpecies(e.target.value)} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral">
-          <option value="cat">Cat</option>
-          <option value="dog">Dog</option>
-          <option value="bird">Bird</option>
-          <option value="fish">Fish</option>
-          <option value="rabbit">Rabbit</option>
-          <option value="other">Other pet</option>
+          <option value="cat">{gen.species.cat}</option>
+          <option value="dog">{gen.species.dog}</option>
+          <option value="bird">{gen.species.bird}</option>
+          <option value="fish">{gen.species.fish}</option>
+          <option value="rabbit">{gen.species.rabbit}</option>
+          <option value="other">{gen.species.other}</option>
         </select>
       </div>
       <div className="mt-2 flex items-center gap-1" role="radiogroup" aria-label="Rating">
@@ -535,14 +525,14 @@ function ShareForm({ image, onDone }: { image: string; onDone: () => void }) {
         onChange={(e) => setText(e.target.value)}
         rows={2}
         maxLength={600}
-        placeholder="How did it turn out? (optional review)"
+        placeholder={gen.reviewPh}
         className="mt-2 w-full resize-none rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral"
       />
       <div className="mt-2 flex items-center gap-2">
         <button type="submit" disabled={state === "sending"} className="btn-primary !px-4 !py-2 text-sm">
-          {state === "sending" ? "Sending…" : "Submit"}
+          {state === "sending" ? gen.sending : gen.submit}
         </button>
-        {state === "error" && <span className="text-xs text-coral-deep">Something went wrong — try again.</span>}
+        {state === "error" && <span className="text-xs text-coral-deep">{gen.err}</span>}
       </div>
     </form>
   );

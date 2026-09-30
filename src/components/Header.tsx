@@ -1,27 +1,30 @@
 import Link from "next/link";
 import { getSessionUser } from "@/lib/auth";
+import { getDict, lp, type Dict, type Locale } from "@/lib/i18n";
 import { SITE_NAME } from "@/lib/site";
 import { PawIcon, SparkIcon } from "./icons";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 import { SignOutButton } from "./SignOutButton";
 
-export async function Header() {
-  const user = await getSessionUser();
+export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
+  const user = await getSessionUser().catch(() => null);
 
   return (
     <header className="sticky top-0 z-40 border-b border-sand/70 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold font-display">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4">
+        <Link href={lp(locale, "/")} className="flex items-center gap-2 text-lg font-semibold font-display">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-coral text-white">
             <PawIcon className="h-5 w-5" />
           </span>
           {SITE_NAME}
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium text-coffee md:flex" aria-label="Main">
-          <Link href="/templates" className="transition-colors hover:text-coral">Templates</Link>
-          <Link href="/gallery" className="transition-colors hover:text-coral">Gallery</Link>
-          <Link href="/faq" className="transition-colors hover:text-coral">FAQ</Link>
+          <Link href={lp(locale, "/templates")} className="transition-colors hover:text-coral">{t.nav.templates}</Link>
+          <Link href={lp(locale, "/gallery")} className="transition-colors hover:text-coral">{t.nav.gallery}</Link>
+          <Link href={lp(locale, "/faq")} className="transition-colors hover:text-coral">{t.nav.faq}</Link>
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher locale={locale} />
           {user ? (
             <div className="flex items-center gap-3">
               <span className="hidden items-center gap-2 text-sm text-coffee sm:flex" title={user.email}>
@@ -33,26 +36,26 @@ export async function Header() {
                     {(user.name || user.email).slice(0, 1).toUpperCase()}
                   </span>
                 )}
-                <span className="max-w-28 truncate">{user.name || user.email}</span>
+                <span className="hidden max-w-28 truncate lg:inline">{user.name || user.email}</span>
               </span>
-              <SignOutButton />
+              <SignOutButton texts={t.signout} />
             </div>
           ) : (
-            <Link href="/login" className="text-sm font-medium text-coffee transition-colors hover:text-coral">
-              Sign in
+            <Link href={lp(locale, "/login")} className="text-sm font-medium text-coffee transition-colors hover:text-coral">
+              {t.nav.signIn}
             </Link>
           )}
-          <Link href="/#create" className="btn-primary !px-5 !py-2.5 text-sm">
+          <Link href={`${lp(locale, "/")}#create`} className="btn-primary !px-5 !py-2.5 text-sm">
             <SparkIcon className="h-4 w-4" />
-            Create
+            {t.nav.create}
           </Link>
         </div>
       </div>
       {/* 移动端导航 */}
       <nav className="flex justify-center gap-6 border-t border-sand/60 py-2 text-sm font-medium text-coffee md:hidden" aria-label="Mobile">
-        <Link href="/templates">Templates</Link>
-        <Link href="/gallery">Gallery</Link>
-        <Link href="/faq">FAQ</Link>
+        <Link href={lp(locale, "/templates")}>{t.nav.templates}</Link>
+        <Link href={lp(locale, "/gallery")}>{t.nav.gallery}</Link>
+        <Link href={lp(locale, "/faq")}>{t.nav.faq}</Link>
       </nav>
     </header>
   );

@@ -1,0 +1,420 @@
+{
+  "meta": {
+    "homeDesc": "Lade ein Foto deines Haustiers hoch, sage, was du möchtest, und erhalte ein KI-Porträt, das immer noch wie es aussieht. 100 kostenlose Vorlagen — Renaissance, Weihnachtskarten, Filmposter und mehr.",
+    "templatesTitle": "Vorlagen-Center für Haustier-Porträts — 100 kostenlose KI-Stile",
+    "templatesDesc": "Entdecke 100 KI-Vorlagen für Haustier-Porträts: Renaissance-Gemälde, Weihnachtskarten, Filmposter, Anime und mehr. Prompt kostenlos kopieren und in 30 Sekunden erstellen.",
+    "galleryTitle": "Galerie — KI-Haustierporträts und Bewertungen von Tierfreunden",
+    "galleryDesc": "Echte KI-Haustierporträts aus unserem Studio: Katzen, Hunde, Vögel und Fische als Renaissance-Könige, Astronauten, Filmstars und mehr — mit ehrlichen Bewertungen ihrer Menschen.",
+    "faqTitle": "FAQ — Fragen zu unserem KI-Haustierporträt-Generator",
+    "faqDesc": "Funktionsweise, Fototipps, was mit deinen Uploads passiert, kostenlose Limits, KI-Kennzeichnung und mehr — alles zum Verwandeln von Haustierfotos in Kunst.",
+    "privacyTitle": "Datenschutzerklärung",
+    "privacyDesc": "Was wir sammeln, was wir mit deinen Haustierfotos tun (und was nie), wie lange wir sie aufbewahren und deine Rechte nach GDPR und CCPA.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsDesc": "Die Regeln für PetsDaily: was du hochladen darfst, was du mit den KI-Bildern tun darfst und der gesunde Menschenverstand, den wir erwarten.",
+    "aiTitle": "KI-Kennzeichnung",
+    "aiDesc": "Jedes Bild auf dieser Website ist KI-generiert. Hier steht genau, wie unsere Pipeline funktioniert und wie wir kennzeichnen."
+  },
+  "nav": {
+    "templates": "Vorlagen",
+    "gallery": "Galerie",
+    "faq": "FAQ",
+    "create": "Erstellen",
+    "signIn": "Anmelden"
+  },
+  "signout": {
+    "title": "Abmelden?",
+    "body": "Deine Bilder bleiben mit deinem Konto und diesem Browser verknüpft — melde dich jederzeit wieder an, um sie herunterzuladen.",
+    "cancel": "Abbrechen",
+    "confirm": "Abmelden"
+  },
+  "footer": {
+    "blurb": "Lade ein Foto hoch, sage, was du möchtest, und erhalte ein Bild, das immer noch wie dein Haustier aussieht. Jedes Bild ist KI-generiert.",
+    "questions": "Fragen?",
+    "product": "Produkt",
+    "create": "Erstellen",
+    "tplCenter": "Vorlagen-Center",
+    "galleryReviews": "Galerie & Bewertungen",
+    "faq": "FAQ",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "ai": "KI-Kennzeichnung",
+    "copyright": "alle Porträts sind KI-generiert",
+    "updated": "Zuletzt aktualisiert"
+  },
+  "home": {
+    "badge": "KI-Tierstudio · 100 Vorlagen · kostenlos",
+    "heroPre": "Verwandle dein Haustier in ",
+    "heroHl": "jedes Bild",
+    "heroPost": ", das du dir vorstellen kannst",
+    "sub": "Sage, was du möchtest, hänge ein Foto an und erhalte ein Porträt, das immer noch wie es aussieht — zum Teilen, Drucken oder Verschenken. Etwa 30 Sekunden, kein Konto nötig.",
+    "topbar": "Sag dem Studio, was es malen soll",
+    "topbarSession": "Deine Sitzung",
+    "freeCount": "3 kostenlose Bilder pro Tag",
+    "uploadTitle": "Hänge ein Foto deines Haustiers an",
+    "uploadSub": "1–4 Fotos · JPG / PNG / WebP · gut sichtbares Gesicht",
+    "uploading": "Wird hochgeladen…",
+    "ideasLabel": "Keine Idee? Antippen",
+    "ideas": [
+      "Renaissance-Königsporträt",
+      "Weihnachtskarte am Kamin",
+      "Astronaut im Weltraum",
+      "Lustiges Filmposter",
+      "Gemütlicher Winterpullover",
+      "Geburtstagspartyhut"
+    ],
+    "tplLabel": "Vorlage",
+    "browseAll": "Alle 100 ansehen →",
+    "placeholder": "z. B. Meine Katze als Renaissance-König, Ölgemälde",
+    "helper": "Enter zum Senden · funktioniert am besten mit einem klaren Foto + einem kurzen Wunsch · ~30 Sekunden pro Bild",
+    "trust1": "3 kostenlose Bilder pro Tag",
+    "trust2": "Nur zum Herunterladen anmelden",
+    "trust3": "Fotos werden nach 7 Tagen gelöscht",
+    "trust4": "Jedes Bild als KI-generiert gekennzeichnet",
+    "beforeCap": "Ein Handyfoto",
+    "afterCap": "Ein Porträt, das immer noch es ist",
+    "howTitle": "So funktioniert es",
+    "how1t": "Foto hochladen",
+    "how1d": "Ein klares Frontalfoto reicht. Bis zu vier für bessere Fell- und Augendetails.",
+    "how2t": "Sage, was du willst",
+    "how2d": "„Meine Katze als Ritter“, „Geburtstagskarte für meinen Mops“ — oder kopiere einen Vorlagen-Prompt und bearbeite ihn.",
+    "how3t": "Bild erhalten",
+    "how3d": "In ~30 Sekunden hast du ein Porträt zum Herunterladen, Neu-Generieren oder für die Galerie.",
+    "tplTitle": "Mit einer Vorlage starten",
+    "tplDesc": "100 fertige Stile — Prompt kopieren und loslegen oder eigene Note hinzufügen.",
+    "worksTitle": "Von Tierfreunden gemacht",
+    "worksDesc": "Echte Bilder aus dem Studio. ",
+    "worksLink": "Ganze Galerie ansehen →",
+    "reviewsTitle": "Glückliche Menschen, glückliche Schwänze",
+    "faqTitle": "Fragen, beantwortet",
+    "faqLink": "Alle Fragen lesen →",
+    "ctaTitle": "Deins in 30 Sekunden",
+    "ctaSub": "Ein Foto, ein Satz. Das nächste Lieblingsbild deines Haustiers ist nur einen Klick entfernt.",
+    "ctaBtn": "Haustier-Porträt erstellen"
+  },
+  "gen": {
+    "download": "Herunterladen",
+    "regen": "Neu generieren",
+    "regenTip": "Nutzt ein kostenloses Bild",
+    "copyPrompt": "Prompt kopieren",
+    "postGallery": "In der Galerie veröffentlichen",
+    "share": "Teilen",
+    "shareTitle": "In sozialen Medien teilen",
+    "shareNote": "Jeder mit dem Link kann dieses Bild sehen.",
+    "shareImage": "Bild teilen…",
+    "shareText": "Schau dir dieses KI-Haustierporträt an, das ich gemacht habe! 🐾",
+    "signInTitle": "Zum Herunterladen anmelden",
+    "signInBody": "Zum Herunterladen brauchst du ein kostenloses Konto — so bleiben deine Bilder geschützt.",
+    "signInBtn": "Anmelden",
+    "placeholders": [
+      "z. B. Meine Katze als Renaissance-König, Öl",
+      "z. B. Mein Hund mit Weihnachtsmütze am Kamin",
+      "z. B. Mein Kaninchen liest in einer Bibliothek, warmes Licht",
+      "z. B. Lustiges Geburtstagsporträt meines Möpses"
+    ],
+    "loading": [
+      "Wir studieren die feinsten Züge deines Haustiers…",
+      "Wir mischen die perfekte Palette…",
+      "Wir skizzieren Schnurrhaare und Pfotendetails…",
+      "Wir malen die Szene, die du bestellt hast…",
+      "Letzte Pinselstriche…"
+    ],
+    "formTitle": "In der Galerie zeigen (optional)",
+    "yourName": "Dein Name",
+    "petName": "Name des Haustiers",
+    "reviewPh": "Wie ist es geworden? (optionale Bewertung)",
+    "submit": "Senden",
+    "sending": "Wird gesendet…",
+    "thanks": "Danke! Nach einer kurzen Prüfung erscheint es in der Galerie. 🐾",
+    "err": "Etwas ist schiefgelaufen — nochmal versuchen.",
+    "histTitle": "Deine Bilder",
+    "histOpen": "Bild öffnen",
+    "sharePage": "Teilen-Seite",
+    "species": {
+      "cat": "Katze",
+      "dog": "Hund",
+      "bird": "Vogel",
+      "fish": "Fisch",
+      "rabbit": "Kaninchen",
+      "other": "Anderes Haustier"
+    },
+    "painting": "Wird gemalt…",
+    "generate": "Generieren"
+  },
+  "tpl": {
+    "title": "Vorlagen-Center",
+    "desc": "100 fertige Rezepte für das nächste Bild deines Haustiers. Prompt direkt ins Studio kopieren oder Vorlage öffnen und eigene Note hinzufügen — jeder Prompt ist kostenlos.",
+    "hot": "🔥 Beliebt",
+    "new": "✨ Neu",
+    "all": "Alle",
+    "cats": {
+      "reactions": "Reaktionen",
+      "classic": "Klassik & Kunst",
+      "holiday": "Feste",
+      "covers": "Poster & Karten",
+      "story": "Charaktere",
+      "seasons": "Jahreszeiten & Orte"
+    },
+    "crumbRoot": "Vorlagen-Center",
+    "promptLabel": "Der Prompt — kostenlos kopierbar",
+    "showFull": "Vollständigen Prompt zeigen",
+    "showLess": "Weniger zeigen",
+    "useTpl": "Diese Vorlage nutzen",
+    "howTitle": "So verwendest du sie",
+    "how": [
+      "Kopiere den Prompt oben oder tippe auf „Diese Vorlage nutzen“.",
+      "Hänge ein klares Foto deines Haustiers an — Gesicht sichtbar, gutes Licht.",
+      "Optional: füge deinen Twist hinzu, z. B. „mit einem kleinen Schal“ oder „mehr goldenes Licht“.",
+      "Generieren, herunterladen, teilen. Nicht perfekt? Kostenlos neu generieren."
+    ],
+    "tip": "💡 Funktioniert für Katzen, Hunde, Vögel, Fische, Kaninchen — jedes Haustier mit Gesicht. Die Ergebnisse behalten die echten Fellzeichnungen und die Augenfarbe deines Haustiers.",
+    "exampleCap": "Beispiel mit dieser Vorlage erstellt · jedes Ergebnis ist KI-generiert",
+    "more": "Mehr {cat}-Vorlagen",
+    "empty": "Noch keine {badge} Vorlagen in dieser Kategorie.",
+    "detailTitle": "{name} Haustier-Porträt — kostenlose KI-Vorlage",
+    "detailDesc": "{blurb} Kopiere den exakten {name}-Prompt und verwandle deine Katze oder deinen Hund in ~30 Sekunden. Kostenlos, ohne Konto."
+  },
+  "gal": {
+    "title": "Im Studio entstanden",
+    "desc": "Jedes Bild hier begann mit einem Handyfoto und einem Satz. Alle Bilder sind KI-generiert — von Menschen, die ihre Haustiere lieben. Willst du deins hier sehen?",
+    "createPost": "Erstellen & veröffentlichen",
+    "speciesAll": "Alle",
+    "cat": "Katzen",
+    "dog": "Hunde",
+    "bird": "Vögel",
+    "fish": "Fische",
+    "rabbit": "Kaninchen",
+    "other": "Andere",
+    "reviewsTitle": "Was Tierfreunde sagen",
+    "humanSuffix": ", Mensch von",
+    "noReviewsPre": "Noch keine Bewertungen — ",
+    "noReviewsLink": "mach ein Bild",
+    "noReviewsPost": " und erzähl, wie es geworden ist.",
+    "noWorks": "Noch keine {species} in der Galerie — sei der Erste!",
+    "ctaTitle": "Dein Haustier gehört hierher",
+    "ctaSub": "Kostenlos, ohne Konto, ~30 Sekunden pro Bild.",
+    "ctaBtn": "Haustier-Porträt erstellen",
+    "custom": "eigene"
+  },
+  "faqPage": {
+    "title": "Häufige Fragen",
+    "intro": "Kurze Antworten zum Studio. Etwas anderes? Schreib uns an",
+    "cta": "Mein erstes Bild erstellen"
+  },
+  "faq": [
+    {
+      "q": "Wie funktioniert es?",
+      "a": "Schreibe, was du möchtest — ein Renaissance-Gemälde, eine Weihnachtskarte, deine Katze als Astronaut — und hänge ein Foto deines Haustiers an. Unsere KI schreibt den perfekten Prompt aus deinen Worten und malt ein neues Bild, das Gesicht, Fell und Augen deines Haustiers bewahrt. Dauert etwa eine halbe Minute."
+    },
+    {
+      "q": "Sieht es immer noch wie mein Haustier aus?",
+      "a": "Ja — das ist der ganze Punkt. Ein klares Frontalfoto reicht; ein bis zwei zusätzliche Winkel machen Gesicht und Fell noch stimmiger. Wir versprechen keine Pixel-Perfektion, aber dein Haustier ist immer erkennbar."
+    },
+    {
+      "q": "Welche Fotos soll ich hochladen?",
+      "a": "Bis zu 4 Fotos, JPG/PNG/WebP, je unter 5 MB. Am besten: dein Haustier allein im Bild, Gesicht sichtbar, gutes Licht. Keine Personen im Foto — es ist nur für Haustiere."
+    },
+    {
+      "q": "Was kann ich im Chat wünschen?",
+      "a": "Alles: eine Szene, ein Outfit, einen Kunststil, eine Stimmung — oder wähle eine unserer 100 Vorlagen. Bitte nur Wünsche zu deinem Haustier; Anfragen mit Personen oder unsicherem Inhalt werden gefiltert."
+    },
+    {
+      "q": "Ist es kostenlos? Wie viele Bilder?",
+      "a": "3 Bilder pro Tag sind kostenlos — ohne Konto. Die Anmeldung (mit Google) ist nur zum Herunterladen nötig. Das Limit setzt sich jeden Tag zurück."
+    },
+    {
+      "q": "Warum zum Herunterladen anmelden?",
+      "a": "Generieren ist für alle offen, aber das Herunterladen erfordert eine kostenlose Google-Anmeldung. So sind deine Bilder geschützt und das kostenlose Tageslimit bleibt fair. Wir speichern nur Name, E-Mail und Profilbild."
+    },
+    {
+      "q": "Sind die Bilder wirklich KI-generiert?",
+      "a": "Ja, zu 100%. Jedes Bild entsteht aus deinen hochgeladenen Fotos. Wir kennzeichnen es überall ehrlich und bitten dich, KI-Porträts nicht als unbearbeitete Fotos auszugeben. Details auf unserer KI-Kennzeichnungsseite."
+    },
+    {
+      "q": "Was passiert mit meinen Fotos?",
+      "a": "Sie werden nur zur Erzeugung deines Bildes genutzt. Nicht verkauft, nicht zum Trainieren von Modellen verwendet, und Uploads werden innerhalb von 7 Tagen automatisch gelöscht. In der öffentlichen Galerie erscheint nur, was du selbst veröffentlichst."
+    },
+    {
+      "q": "Kommerzielle Nutzung oder Geschenk?",
+      "a": "Ja — drucke sie auf Karten, poste sie in sozialen Medien, verschenke sie. Achte beim Teilen auf die KI-Kennzeichnung und benutze sie nicht, um zu täuschen."
+    },
+    {
+      "q": "Warum scheitert manchmal eine Generierung?",
+      "a": "KI-Malen ist ein Live-Dienst — unter Last kann etwas haken, und schwierige Fotos (unscharf, dunkel, mehrere Tiere) können das Ergebnis verwirren. Versuche es erneut, idealerweise mit einem klareren Foto. Neu generieren ist kostenlos und hilft meist."
+    }
+  ],
+  "login": {
+    "title": "Zum Herunterladen anmelden",
+    "sub": "Erstellen ist gratis — kein Konto nötig. Melde dich nur an, wenn du deine Bilder behalten willst.",
+    "google": "Mit Google fortfahren",
+    "demo": "Demo-Anmeldung (nur Entwicklung)",
+    "errConfig": "Die Anmeldung ist auf diesem Server noch nicht konfiguriert.",
+    "errGoogle": "Die Anmeldung hat nicht geklappt — bitte erneut versuchen.",
+    "agreePre": "Mit dem Fortfahren akzeptierst du unsere ",
+    "terms": "Nutzungsbedingungen",
+    "and": " und ",
+    "privacy": "Datenschutzerklärung",
+    "signedTitle": "Du bist angemeldet 🎉",
+    "signedBody": "Angemeldet als {email}. Deine Downloads sind freigeschaltet.",
+    "back": "Zurück ins Studio",
+    "notConfigured": "Die Google-Anmeldung ist noch nicht konfiguriert."
+  },
+  "nf": {
+    "title": "Diese Seite ist weggelaufen",
+    "body": "Selbst gute Haustiere jagen manchmal das falsche Eichhörnchen.",
+    "btn": "Zurück ins Studio"
+  },
+  "share": {
+    "made": "Entstanden im KI-Tierstudio · KI-generiert",
+    "tplLabel": "Vorlage:",
+    "love": "Gefällt es? Teile die Freude 🐾",
+    "make": "Mach das von DEINEM Haustier",
+    "makeSub": "Ein Foto + ein Satz. Kostenlos, ohne Konto.",
+    "cta": "Meins erstellen"
+  },
+  "admin": {
+    "title": "Galerie-Prüfwarteschlange",
+    "sub": "Freigegebene Bilder erscheinen in der Galerie; entfernte werden gelöscht.",
+    "allClear": "Alles erledigt — nichts in der Warteschlange. 🐾",
+    "approve": "Freigeben",
+    "remove": "Entfernen",
+    "open": "Öffnen",
+    "enterKey": "Admin-Schlüssel eingeben (ADMIN_KEY)."
+  },
+  "legal": {
+    "updatedLabel": "Zuletzt aktualisiert",
+    "questionsPre": "Fragen zu dieser Seite? Schreib an ",
+    "seeAlso": "Siehe auch unsere ",
+    "faq": "FAQ",
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "intro": "PetsDaily verwandelt Haustierfotos in KI-generierte Bilder. Diese Erklärung erklärt klar, was wir sammeln und was damit passiert.",
+      "blocks": [
+        {
+          "h": "Was wir sammeln",
+          "body": [
+            "Fotos, die du hochlädst, der Text, den du in den Generator tippst, und die Bilder, die wir für dich erstellen. Eine zufällige ID in einem Cookie für das kostenlose Tageslimit. Wenn du in die öffentliche Galerie postest: Name, Tiername und Bewertung.",
+            "Wenn du dich anmeldest (nur für Downloads nötig): dein Google-Name, deine E-Mail und dein Profilbild sowie ein signiertes Sitzungs-Cookie für 180 Tage. Wir sehen oder speichern niemals dein Google-Passwort.",
+            "Wir schalten keine Werbung und nutzen keine Tracking-Cookies."
+          ]
+        },
+        {
+          "h": "Wofür wir es nutzen",
+          "body": [
+            "Nur zur Erzeugung deines Bildes und für den Betrieb (Limits, Fehlerbehebung). Wir verkaufen deine Fotos nicht und nutzen sie nicht zum Training von KI-Modellen."
+          ]
+        },
+        {
+          "h": "Wer sonst dein Foto sieht",
+          "body": [
+            "Zur Erstellung senden wir das Foto und einen kurzen Prompt an unsere KI-Anbieter: ein Sprachmodell (Zhipu AI), das den Bildprompt schreibt, und ein Bildmodell (Volcengine / BytePlus Seedream), das das Bild malt. Sie verarbeiten dein Foto nur zur Ergebniserstellung.",
+            "Bilder werden nur öffentlich, wenn du es entscheidest: durch Teilen des Links oder Veröffentlichen in der Galerie (Einsendungen werden geprüft und du kannst die Entfernung jederzeit verlangen)."
+          ]
+        },
+        {
+          "h": "Wie lange wir es aufbewahren",
+          "body": [
+            "Hochgeladene Fotos werden innerhalb von 7 Tagen automatisch gelöscht. Generierte Bilder bleiben etwas länger, damit dein Teilen-Link funktioniert; auf Anfrage löschen wir früher."
+          ]
+        },
+        {
+          "h": "Deine Rechte (GDPR / CCPA)",
+          "body": [
+            "Du kannst eine Kopie der mit deinem Gerät oder Konto verknüpften Daten, Berichtigungen oder die Löschung verlangen. Wir antworten innerhalb von 30 Tagen. Rechtsgrundlage ist deine Einwilligung und unser berechtigtes Interesse. Kalifornier haben das Recht zu wissen und zu löschen."
+          ]
+        },
+        {
+          "h": "Kinder",
+          "body": [
+            "PetsDaily ist für Erwachsene. Lade keine Fotos von Kindern hoch und nutze den Dienst nicht unter 16 (in den USA unter 13)."
+          ]
+        },
+        {
+          "h": "Änderungen",
+          "body": [
+            "Bei wesentlichen Änderungen aktualisieren wir das Datum oben. Die Version auf dieser Seite ist immer die aktuelle."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "intro": "Willkommen! Diese Bedingungen gelten für die Nutzung von PetsDaily. Mit der Nutzung stimmst du ihnen zu.",
+      "blocks": [
+        {
+          "h": "Der Dienst",
+          "body": [
+            "PetsDaily verwandelt ein Haustierfoto in ein KI-generiertes Bild. Du kannst bis zu 3 Bilder pro Tag kostenlos erstellen (wir können das Limit ändern; die aktuellen Regeln stehen im Produkt). Generieren geht ohne Konto; Herunterladen erfordert die Google-Anmeldung."
+          ]
+        },
+        {
+          "h": "Dein Konto",
+          "body": [
+            "Die Anmeldung nutzt Google OAuth — wir erhalten Name, E-Mail und Profilbild und speichern ein signiertes Sitzungs-Cookie für 180 Tage. Du bist für dein Google-Konto verantwortlich. Abmelden ist jederzeit möglich."
+          ]
+        },
+        {
+          "h": "Was du hochladen darfst",
+          "body": [
+            "Nur Fotos von Haustieren, die dir gehören oder die du nutzen darfst. Keine Personen, keine Fotos von Kindern, nichts Illegales, Schädliches, Hassvolles oder Explizites. Wir filtern automatisch und können Verstöße ablehnen oder entfernen."
+          ]
+        },
+        {
+          "h": "Die Bilder, die wir erstellen",
+          "body": [
+            "Ergebnisse werden von KI erzeugt und wie bereitgestellt geliefert: Ähnlichkeit und künstlerisches Ergebnis sind nicht garantiert. Privat darfst du sie frei verwenden — teilen, drucken, verschenken. Gib sie nicht als unbearbeitete Fotos aus und benutze sie nicht, um zu täuschen oder zu verleumden."
+          ]
+        },
+        {
+          "h": "Die Galerie",
+          "body": [
+            "Das Veröffentlichen in der Galerie ist freiwillig. Mit dem Einsenden bestätigst du, dass das Bild aus deinem eigenen Foto stammt, und erlaubst uns die Anzeige. Entfernung ist jederzeit möglich."
+          ]
+        },
+        {
+          "h": "Haftung",
+          "body": [
+            "Der Dienst wird \"wie besehen\" ohne Garantien bereitgestellt. Nach geltendem Recht haften wir nicht für indirekte Schäden. Wartungsbedingte Pausen oder Änderungen sind möglich."
+          ]
+        },
+        {
+          "h": "Kontakt und Recht",
+          "body": [
+            "Fragen: schreib uns eine E-Mail. Es gilt das Recht am Geschäftssitz des Betreibers, unbeschadet zwingender Verbraucherschutzrechte deines Landes."
+          ]
+        }
+      ]
+    },
+    "ai": {
+      "title": "KI-Kennzeichnung",
+      "intro": "Transparenz zählt. PetsDaily erzeugt KI-Bilder — und genau das bedeutet das.",
+      "blocks": [
+        {
+          "h": "Alle Bilder sind KI-generiert",
+          "body": [
+            "Jedes Bild auf dieser Website — Vorlagen, Beispiele, Galerie — wurde von einem KI-Bildmodell erstellt. Keines ist ein unbearbeitetes Foto eines realen Ereignisses."
+          ]
+        },
+        {
+          "h": "Wie die Generierung funktioniert",
+          "body": [
+            "Ein Sprachmodell (GLM von Zhipu AI) formuliert deine Anfrage zu einem detaillierten Bildprompt um. Ein Bildmodell (Seedream von Volcengine/BytePlus) malt das Bild und nutzt dein hochgeladenes Foto nur als Referenz für die Identität deines Haustiers — Gesicht, Fellzeichnung, Augenfarbe.",
+            "Hochgeladene Fotos trainieren kein KI-Modell, weder unseres noch fremdes."
+          ]
+        },
+        {
+          "h": "Wie wir kennzeichnen",
+          "body": [
+            "Fußzeile und KI-Seiten weisen darauf hin, dass alle Porträts KI-generiert sind. Auch die Galerie-Bildunterschriften. Bitte bleib beim Teilen ehrlich: gib kein KI-Porträt als unbearbeitetes Foto aus und nutze es nicht für „echte Foto“-Wettbewerbe."
+          ]
+        },
+        {
+          "h": "Verantwortungsvolle Nutzung",
+          "body": [
+            "Anfragen mit Personen (besonders Minderjährigen), Gewalt, expliziten Inhalten, Marken oder öffentlichen Figuren blockieren wir. Bei auffälligen Bildern: schreib uns, wir handeln."
+          ]
+        }
+      ]
+    }
+  }
+}

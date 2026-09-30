@@ -1,0 +1,420 @@
+{
+  "meta": {
+    "homeDesc": "Téléchargez une photo de votre animal, dites ce que vous voulez et obtenez un portrait IA qui lui ressemble encore. 100 modèles gratuits — renaissance, cartes de Noël, affiches de film et plus.",
+    "templatesTitle": "Centre de modèles de portraits d'animaux — 100 styles IA gratuits",
+    "templatesDesc": "Parcourez 100 modèles de portraits d'animaux par IA : peintures de la Renaissance, cartes de Noël, affiches de cinéma, anime et plus. Copiez n'importe quel prompt gratuitement.",
+    "galleryTitle": "Galerie — portraits d'animaux IA et avis d'amoureux des animaux",
+    "galleryDesc": "Découvrez de vrais portraits d'animaux générés par IA : chats, chiens, oiseaux et poissons en rois de la Renaissance, astronautes, stars de cinéma et plus — avec les avis de leurs humains.",
+    "faqTitle": "FAQ — questions sur notre générateur de portraits d'animaux IA",
+    "faqDesc": "Fonctionnement, conseils photo, sort de vos envois, limites gratuites, étiquetage IA et plus — tout sur la transformation de la photo de votre animal en art.",
+    "privacyTitle": "Politique de confidentialité",
+    "privacyDesc": "Ce que nous collectons, ce que nous faisons des photos de votre animal (et ce que nous ne faisons jamais), leur durée de conservation et vos droits GDPR et CCPA.",
+    "termsTitle": "Conditions d'utilisation",
+    "termsDesc": "Les règles d'utilisation de PetsDaily : ce que vous pouvez envoyer, ce que vous pouvez faire des images IA, et le bon sens attendu.",
+    "aiTitle": "Mention IA",
+    "aiDesc": "Chaque image de ce site est générée par IA. Voici exactement comment fonctionne notre pipeline et comment nous l'étiquetons."
+  },
+  "nav": {
+    "templates": "Modèles",
+    "gallery": "Galerie",
+    "faq": "FAQ",
+    "create": "Créer",
+    "signIn": "Se connecter"
+  },
+  "signout": {
+    "title": "Se déconnecter ?",
+    "body": "Vos images restent liées à votre compte et à ce navigateur — reconnectez-vous à tout moment pour les retélécharger.",
+    "cancel": "Annuler",
+    "confirm": "Se déconnecter"
+  },
+  "footer": {
+    "blurb": "Téléchargez une photo, dites ce que vous voulez, et obtenez une image qui ressemble encore à votre animal. Chaque image est générée par IA.",
+    "questions": "Des questions ?",
+    "product": "Produit",
+    "create": "Créer",
+    "tplCenter": "Centre de modèles",
+    "galleryReviews": "Galerie et avis",
+    "faq": "FAQ",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d'utilisation",
+    "ai": "Mention IA",
+    "copyright": "tous les portraits sont générés par IA",
+    "updated": "Dernière mise à jour"
+  },
+  "home": {
+    "badge": "Studio IA pour animaux · 100 modèles · gratuit",
+    "heroPre": "Transformez votre animal en ",
+    "heroHl": "n'importe quelle image",
+    "heroPost": " que vous imaginez",
+    "sub": "Dites ce que vous voulez, joignez une photo, et recevez un portrait qui lui ressemble encore — prêt à partager, imprimer ou offrir. Environ 30 secondes, sans compte.",
+    "topbar": "Dites au studio quoi peindre",
+    "topbarSession": "Votre session",
+    "freeCount": "3 images gratuites par jour",
+    "uploadTitle": "Joignez une photo de votre animal",
+    "uploadSub": "1–4 photos · JPG / PNG / WebP · visage bien visible",
+    "uploading": "Envoi…",
+    "ideasLabel": "Pas d'idée ? Touchez-en une",
+    "ideas": [
+      "Portrait royal de la Renaissance",
+      "Carte de Noël au coin du feu",
+      "Astronaute flottant dans l'espace",
+      "Affiche de film amusante",
+      "Pull d'hiver douillet",
+      "Chapeau d'anniversaire"
+    ],
+    "tplLabel": "Modèle",
+    "browseAll": "Voir les 100 →",
+    "placeholder": "ex. Mon chat en roi de la Renaissance, huile",
+    "helper": "Entrée pour envoyer · idéal avec une photo nette + un vœu court · ~30 secondes par image",
+    "trust1": "3 images gratuites par jour",
+    "trust2": "Connexion uniquement pour télécharger",
+    "trust3": "Photos supprimées sous 7 jours",
+    "trust4": "Chaque image marquée générée par IA",
+    "beforeCap": "Une photo de téléphone",
+    "afterCap": "Un portrait qui reste lui",
+    "howTitle": "Comment ça marche",
+    "how1t": "Téléchargez une photo",
+    "how1d": "Une photo nette de face suffit. Ajoutez-en jusqu'à quatre pour un meilleur détail du poil et des yeux.",
+    "how2t": "Dites ce que vous voulez",
+    "how2d": "« Mon chat en chevalier », « carte d'anniversaire pour mon carlin » — ou copiez le prompt d'un modèle et modifiez-le.",
+    "how3t": "Recevez votre image",
+    "how3d": "En ~30 secondes, un portrait à télécharger, régénérer ou publier dans la galerie.",
+    "tplTitle": "Partez d'un modèle",
+    "tplDesc": "100 styles prêts à l'emploi — copiez le prompt tel quel ou ajoutez votre touche.",
+    "worksTitle": "Créé par des amoureux des animaux",
+    "worksDesc": "De vraies images du studio. ",
+    "worksLink": "Voir toute la galerie →",
+    "reviewsTitle": "Humains heureux, queues heureuses",
+    "faqTitle": "Questions, réponses",
+    "faqLink": "Lire toutes les questions →",
+    "ctaTitle": "Le vôtre en 30 secondes",
+    "ctaSub": "Une photo, une phrase. La prochaine image préférée de votre animal est à un clic.",
+    "ctaBtn": "Créer le portrait de mon animal"
+  },
+  "gen": {
+    "download": "Télécharger",
+    "regen": "Régénérer",
+    "regenTip": "Utilise une image gratuite",
+    "copyPrompt": "Copier le prompt",
+    "postGallery": "Publier dans la galerie",
+    "share": "Partager",
+    "shareTitle": "Partager sur les réseaux",
+    "shareNote": "Toute personne avec le lien peut voir cette image.",
+    "shareImage": "Partager l'image…",
+    "shareText": "Regardez ce portrait d'animal par IA que j'ai créé ! 🐾",
+    "signInTitle": "Se connecter pour télécharger",
+    "signInBody": "Le téléchargement demande un compte gratuit — cela protège vos images.",
+    "signInBtn": "Se connecter",
+    "placeholders": [
+      "ex. Mon chat en roi de la Renaissance, huile",
+      "ex. Mon chien en bonnet de Noël au coin du feu",
+      "ex. Mon lapin lisant à la bibliothèque, lumière chaude",
+      "ex. Portrait d'anniversaire amusant de mon carlin"
+    ],
+    "loading": [
+      "Nous étudions les plus beaux traits de votre animal…",
+      "Nous mélangeons la palette parfaite…",
+      "Nous croquons moustaches et pattes…",
+      "Nous peignons la scène demandée…",
+      "Dernières touches de pinceau…"
+    ],
+    "formTitle": "Montrez-la dans la galerie (facultatif)",
+    "yourName": "Votre nom",
+    "petName": "Nom de l'animal",
+    "reviewPh": "Alors, le résultat ? (avis facultatif)",
+    "submit": "Envoyer",
+    "sending": "Envoi…",
+    "thanks": "Merci ! Elle apparaîtra dans la galerie après une vérification rapide. 🐾",
+    "err": "Un souci est survenu — réessayez.",
+    "histTitle": "Vos images",
+    "histOpen": "Ouvrir votre image",
+    "sharePage": "Page de partage",
+    "species": {
+      "cat": "Chat",
+      "dog": "Chien",
+      "bird": "Oiseau",
+      "fish": "Poisson",
+      "rabbit": "Lapin",
+      "other": "Autre animal"
+    },
+    "painting": "On peint…",
+    "generate": "Générer"
+  },
+  "tpl": {
+    "title": "Centre de modèles",
+    "desc": "100 recettes prêtes pour la prochaine image de votre animal. Copiez le prompt dans le studio ou ouvrez un modèle et ajoutez votre touche — tous les prompts sont gratuits.",
+    "hot": "🔥 Populaires",
+    "new": "✨ Nouveaux",
+    "all": "Tous",
+    "cats": {
+      "reactions": "Réactions",
+      "classic": "Classique & art",
+      "holiday": "Fêtes",
+      "covers": "Affiches & cartes",
+      "story": "Personnages",
+      "seasons": "Saisons & lieux"
+    },
+    "crumbRoot": "Centre de modèles",
+    "promptLabel": "Le prompt — gratuit à copier",
+    "showFull": "Afficher le prompt complet",
+    "showLess": "Réduire",
+    "useTpl": "Utiliser ce modèle",
+    "howTitle": "Comment l'utiliser",
+    "how": [
+      "Copiez le prompt ci-dessus ou touchez « Utiliser ce modèle ».",
+      "Joignez une photo nette de votre animal — visage visible, bonne lumière.",
+      "Facultatif : ajoutez votre touche, p. ex. « avec une petite écharpe » ou « plus de lumière dorée ».",
+      "Générez, téléchargez, partagez. Pas parfait ? Régénérez gratuitement."
+    ],
+    "tip": "💡 Fonctionne pour chats, chiens, oiseaux, poissons, lapins — tout animal avec un visage. Les résultats gardent le vrai pelage et la couleur des yeux de votre animal.",
+    "exampleCap": "Exemple créé avec ce modèle · chaque résultat est généré par IA",
+    "more": "Plus de modèles {cat}",
+    "empty": "Pas encore de modèles {badge} dans cette catégorie.",
+    "detailTitle": "Portrait d'animal {name} — modèle IA gratuit",
+    "detailDesc": "{blurb} Copiez le prompt exact de {name} et transformez votre chat ou chien en ~30 secondes. Gratuit, sans compte."
+  },
+  "gal": {
+    "title": "Créé au studio",
+    "desc": "Chaque image ici a commencé par une photo de téléphone et une phrase. Toutes sont générées par IA — par des gens qui aiment leurs animaux. La vôtre ici ?",
+    "createPost": "Créer et publier",
+    "speciesAll": "Tous",
+    "cat": "Chats",
+    "dog": "Chiens",
+    "bird": "Oiseaux",
+    "fish": "Poissons",
+    "rabbit": "Lapins",
+    "other": "Autres",
+    "reviewsTitle": "Ce que disent les humains",
+    "humanSuffix": ", humain de",
+    "noReviewsPre": "Pas encore d'avis — ",
+    "noReviewsLink": "créez une image",
+    "noReviewsPost": " et dites-nous ce que ça a donné.",
+    "noWorks": "Pas encore de {species} dans la galerie — soyez le premier !",
+    "ctaTitle": "Votre animal a sa place ici",
+    "ctaSub": "Gratuit, sans compte, ~30 secondes par image.",
+    "ctaBtn": "Créer le portrait de mon animal",
+    "custom": "personnalisé"
+  },
+  "faqPage": {
+    "title": "Foire aux questions",
+    "intro": "Réponses courtes sur le studio. Une autre question ? Écrivez à",
+    "cta": "Créer ma première image"
+  },
+  "faq": [
+    {
+      "q": "Comment ça marche ?",
+      "a": "Écrivez ce que vous voulez — une peinture de la Renaissance, une carte de Noël, votre chat astronaute — et joignez une photo de votre animal. Notre IA rédige le prompt parfait à partir de vos mots, puis peint une nouvelle image qui conserve le visage, le pelage et les yeux de votre animal. Une trentaine de secondes."
+    },
+    {
+      "q": "Ressemblera-t-il à mon animal ?",
+      "a": "Oui — c'est tout l'objectif. Une photo nette de face suffit ; ajouter un ou deux angles rend le visage et le pelage encore plus fidèles. Nous ne promettons pas la perfection, mais votre animal reste toujours reconnaissable."
+    },
+    {
+      "q": "Quelles photos envoyer ?",
+      "a": "Jusqu'à 4 photos, JPG/PNG/WebP, chacune sous 5 Mo. Idéal : votre animal seul dans le cadre, visage visible, bonne lumière. Pas de personnes sur la photo — c'est réservé aux animaux."
+    },
+    {
+      "q": "Que puis-je demander dans le chat ?",
+      "a": "Tout : une scène, une tenue, un style artistique, une ambiance — ou choisissez l'un de nos 100 modèles et ajoutez votre touche. Les demandes doivent concerner votre animal ; celles impliquant des personnes ou un contenu dangereux sont filtrées."
+    },
+    {
+      "q": "C'est gratuit ? Combien d'images ?",
+      "a": "3 images par jour gratuitement — sans compte pour créer. La connexion (Google) n'est requise que pour télécharger et conserver. Le compteur se remet à zéro chaque jour."
+    },
+    {
+      "q": "Pourquoi se connecter pour télécharger ?",
+      "a": "La génération est ouverte à tous, mais le téléchargement demande une connexion Google gratuite. Cela protège vos images et garde le quota journalier équitable. Nous ne conservons que votre nom, e-mail et photo de profil."
+    },
+    {
+      "q": "Ces images sont-elles vraiment de l'IA ?",
+      "a": "Oui, à 100 %. Chaque image est générée par un modèle d'IA à partir de vos photos. Nous l'indiquons honnêtement partout et vous demandons de ne pas présenter ces portraits comme des photographies non retouchées. Voir notre page de mention IA."
+    },
+    {
+      "q": "Que deviennent mes photos ?",
+      "a": "Elles servent uniquement à générer votre image. Elles ne sont ni vendues ni utilisées pour entraîner des modèles, et les envois sont supprimés automatiquement sous 7 jours. La publication en galerie est toujours volontaire."
+    },
+    {
+      "q": "Usage commercial ou cadeau ?",
+      "a": "Oui — imprimez-les en cartes, publiez-les, offrez-les. Elles sont à vous. Conservez simplement la mention « généré par IA » au partage et ne les utilisez pas pour tromper."
+    },
+    {
+      "q": "Pourquoi une génération échoue parfois ?",
+      "a": "La peinture IA est un service en direct — des ralentissements arrivent, et les photos délicates (floues, sombres, plusieurs animaux) peuvent perturber le résultat. Réessayez, idéalement avec une photo plus nette. Régénérer est gratuit et corrige généralement."
+    }
+  ],
+  "login": {
+    "title": "Se connecter pour télécharger",
+    "sub": "Créer est gratuit — sans compte. Connectez-vous seulement pour conserver vos images.",
+    "google": "Continuer avec Google",
+    "demo": "Connexion démo (dev uniquement)",
+    "errConfig": "La connexion n'est pas encore configurée sur ce serveur.",
+    "errGoogle": "La connexion n'a pas abouti — réessayez.",
+    "agreePre": "En continuant, vous acceptez nos ",
+    "terms": "conditions",
+    "and": " et notre ",
+    "privacy": "politique de confidentialité",
+    "signedTitle": "Vous êtes connecté 🎉",
+    "signedBody": "Connecté en tant que {email}. Vos téléchargements sont débloqués.",
+    "back": "Retour au studio",
+    "notConfigured": "La connexion Google n'est pas encore configurée."
+  },
+  "nf": {
+    "title": "Cette page s'est échappée",
+    "body": "Même les meilleurs animaux poursuivent parfois le mauvais écureuil.",
+    "btn": "Retour au studio"
+  },
+  "share": {
+    "made": "Créé au studio IA pour animaux · Généré par IA",
+    "tplLabel": "Modèle :",
+    "love": "Vous adorez ? Partagez la joie 🐾",
+    "make": "Créez celui de VOTRE animal",
+    "makeSub": "Une photo + une phrase. Gratuit, sans compte.",
+    "cta": "Créer le mien"
+  },
+  "admin": {
+    "title": "File de modération de la galerie",
+    "sub": "Les approuvés apparaissent dans la galerie ; les retirés sont supprimés.",
+    "allClear": "Tout est en ordre — rien en attente. 🐾",
+    "approve": "Approuver",
+    "remove": "Retirer",
+    "open": "Ouvrir",
+    "enterKey": "Entrez la clé admin (ADMIN_KEY)."
+  },
+  "legal": {
+    "updatedLabel": "Dernière mise à jour",
+    "questionsPre": "Des questions sur cette page ? Écrivez à ",
+    "seeAlso": "Voir aussi notre ",
+    "faq": "FAQ",
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "intro": "PetsDaily transforme des photos d'animaux en images générées par IA. Cette politique explique simplement ce que nous collectons et ce qu'il en advient.",
+      "blocks": [
+        {
+          "h": "Ce que nous collectons",
+          "body": [
+            "Les photos que vous envoyez, le texte saisi dans le générateur et les images que nous générons. Un identifiant aléatoire dans un cookie pour appliquer la limite quotidienne gratuite. Si vous publiez dans la galerie : le nom, le nom de l'animal et l'avis que vous choisissez d'envoyer.",
+            "Si vous vous connectez (nécessaire uniquement pour télécharger) : votre nom, e-mail et photo Google, plus un cookie de session signé valable 180 jours. Nous ne voyons jamais votre mot de passe Google.",
+            "Pas de publicité, pas de cookies de suivi."
+          ]
+        },
+        {
+          "h": "À quoi cela sert",
+          "body": [
+            "Uniquement à générer votre image et à faire fonctionner le service (limites, corrections). Nous ne vendons ni vos photos ni les images générées, et nous ne les utilisons pas pour entraîner des modèles d'IA."
+          ]
+        },
+        {
+          "h": "Qui d'autre voit votre photo",
+          "body": [
+            "Pour créer votre image, nous envoyons la photo et un prompt court à nos fournisseurs d'IA : un modèle de langage (Zhipu AI) qui rédige le prompt, et un modèle d'image (Volcengine / BytePlus Seedream) qui peint le tableau. Ils ne traitent votre photo que pour nous renvoyer un résultat.",
+            "Les images ne deviennent publiques que par votre choix : en partageant le lien d'une image ou en la publiant dans la galerie (les envois sont vérifiés avant publication, et vous pouvez demander leur retrait à tout moment)."
+          ]
+        },
+        {
+          "h": "Durée de conservation",
+          "body": [
+            "Les photos envoyées sont supprimées automatiquement sous 7 jours. Les images générées peuvent être conservées un peu plus pour que votre lien fonctionne ; demandez-nous une suppression anticipée."
+          ]
+        },
+        {
+          "h": "Vos droits (RGPD / CCPA)",
+          "body": [
+            "Vous pouvez demander une copie des données liées à votre appareil ou compte, leur rectification ou leur suppression. Réponse sous 30 jours. Base légale : votre consentement et notre intérêt légitime. Les résidents californiens ont le droit de savoir et de faire supprimer."
+          ]
+        },
+        {
+          "h": "Enfants",
+          "body": [
+            "PetsDaily s'adresse aux adultes. N'envoyez pas de photos d'enfants et n'utilisez pas le service si vous avez moins de 16 ans (moins de 13 aux États-Unis)."
+          ]
+        },
+        {
+          "h": "Modifications",
+          "body": [
+            "En cas de changement important, nous mettons à jour la date ci-dessus. La version sur cette page fait toujours foi."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Conditions d'utilisation",
+      "intro": "Bienvenue ! Ces conditions régissent l'utilisation de PetsDaily. En utilisant le site, vous les acceptez.",
+      "blocks": [
+        {
+          "h": "Le service",
+          "body": [
+            "PetsDaily transforme la photo de votre animal en image générée par IA. Jusqu'à 3 images par jour gratuitement (nous pouvons modifier cette limite ; les règles en vigueur sont affichées dans le produit). Générer ne demande pas de compte ; télécharger exige une connexion Google."
+          ]
+        },
+        {
+          "h": "Votre compte",
+          "body": [
+            "La connexion utilise Google OAuth — nous recevons votre nom, e-mail et photo et stockons un cookie de session signé 180 jours. Vous êtes responsable de votre compte Google. Déconnexion possible à tout moment."
+          ]
+        },
+        {
+          "h": "Ce que vous pouvez envoyer",
+          "body": [
+            "Uniquement des photos d'animaux qui vous appartiennent ou que vous avez le droit d'utiliser. Pas de personnes, pas de photos d'enfants, rien d'illégal, nuisible, haineux ou explicite. Nous filtrons automatiquement et pouvons refuser ou retirer tout contenu contrevenant."
+          ]
+        },
+        {
+          "h": "Les images que nous créons",
+          "body": [
+            "Les résultats sont générés par IA et fournis tels quels : nous ne garantissons pas une ressemblance précise. Vous pouvez les utiliser à des fins personnelles — partager, imprimer, offrir. Ne les présentez pas comme des photographies non retouchées et ne les utilisez pas pour tromper ou nuire."
+          ]
+        },
+        {
+          "h": "La galerie",
+          "body": [
+            "Publier dans la galerie est volontaire. En envoyant, vous confirmez que l'image provient de votre propre photo et nous autorisez à l'afficher. Retrait possible à tout moment."
+          ]
+        },
+        {
+          "h": "Exclusions et responsabilité",
+          "body": [
+            "Le service est fourni « en l'état », sans garanties. Dans la mesure permise par la loi, nous ne répondons pas des dommages indirects. Nous pouvons suspendre ou modifier le service pour maintenance."
+          ]
+        },
+        {
+          "h": "Contact et droit applicable",
+          "body": [
+            "Questions : écrivez-nous. Ces conditions relèvent du droit du siège de l'opérateur, sans préjudice des protections impératives de votre pays."
+          ]
+        }
+      ]
+    },
+    "ai": {
+      "title": "Mention IA",
+      "intro": "La transparence compte. PetsDaily produit des images générées par IA — voici exactement ce que cela signifie.",
+      "blocks": [
+        {
+          "h": "Toutes les images sont générées par IA",
+          "body": [
+            "Chaque image de ce site — modèles, exemples, galerie — a été créée par un modèle d'IA. Aucune n'est une photographie non retouchée d'un événement réel."
+          ]
+        },
+        {
+          "h": "Comment fonctionne la génération",
+          "body": [
+            "Un modèle de langage (GLM de Zhipu AI) réécrit votre demande en prompt d'image détaillé. Un modèle d'image (Seedream de Volcengine/BytePlus) peint ensuite le tableau, en utilisant votre photo uniquement comme référence d'identité — visage, pelage, couleur des yeux.",
+            "Les photos envoyées ne servent à entraîner aucun modèle d'IA, ni le nôtre ni celui de tiers."
+          ]
+        },
+        {
+          "h": "Notre étiquetage",
+          "body": [
+            "Le pied de page et les pages IA indiquent que tous les portraits sont générés par IA. Les légendes de la galerie aussi. Gardez cette honnêteté en partageant : ne présentez pas un portrait IA comme une photo non retouchée."
+          ]
+        },
+        {
+          "h": "Usage responsable",
+          "body": [
+            "Nous bloquons les demandes impliquant des personnes (surtout des mineurs), la violence, le contenu explicite, les marques ou personnalités publiques. Signalez-nous toute image préoccupante."
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "meta": {
+    "homeDesc": "Upload one photo of your pet, type what you want, and get an AI portrait that still looks like them. 100 free templates — renaissance, holiday cards, movie posters and more.",
+    "templatesTitle": "Pet portrait template center — 100 free AI styles",
+    "templatesDesc": "Browse 100 AI pet portrait templates: renaissance paintings, Christmas cards, movie posters, anime and more. Copy any prompt for free and make yours in 30 seconds.",
+    "galleryTitle": "Gallery — AI pet portraits & reviews from pet people",
+    "galleryDesc": "See real AI pet portraits made with our studio: cats, dogs, birds and fish as renaissance royals, astronauts, movie stars and more — plus honest reviews from the humans behind them.",
+    "faqTitle": "FAQ — questions about our AI pet portrait generator",
+    "faqDesc": "How it works, photo tips, what happens to your uploads, free limits, AI labeling and more — everything about turning your pet's photo into AI art.",
+    "privacyTitle": "Privacy policy",
+    "privacyDesc": "What we collect, what we do with your pet photos (and what we never do), how long we keep them, and your rights under GDPR and CCPA.",
+    "termsTitle": "Terms of service",
+    "termsDesc": "The rules for using PetsDaily: what you may upload, what you may do with the AI pictures, and the common sense we expect.",
+    "aiTitle": "AI disclosure",
+    "aiDesc": "Every image on this site is AI-generated. Here is exactly how our generation pipeline works and how we label it."
+  },
+  "nav": {
+    "templates": "Templates",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "create": "Create",
+    "signIn": "Sign in"
+  },
+  "signout": {
+    "title": "Sign out?",
+    "body": "Your pictures stay tied to your account and this browser — sign back in anytime to download them again.",
+    "cancel": "Cancel",
+    "confirm": "Sign out"
+  },
+  "footer": {
+    "blurb": "Upload a photo, say what you want, and get a picture that still looks like your pet. Every image is AI-generated.",
+    "questions": "Questions?",
+    "product": "Product",
+    "create": "Create",
+    "tplCenter": "Template center",
+    "galleryReviews": "Gallery & reviews",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
+    "ai": "AI disclosure",
+    "copyright": "all portraits are AI-generated",
+    "updated": "Last updated"
+  },
+  "home": {
+    "badge": "AI pet studio · 100 templates · free to try",
+    "heroPre": "Turn your pet into ",
+    "heroHl": "any picture",
+    "heroPost": " you can imagine",
+    "sub": "Say what you want, attach one photo, and get a portrait that still looks like them — ready to share, print or gift. About 30 seconds, no account needed.",
+    "topbar": "Tell the studio what to paint",
+    "topbarSession": "Your session",
+    "freeCount": "3 free pictures a day",
+    "uploadTitle": "Attach a photo of your pet",
+    "uploadSub": "1–4 photos · JPG / PNG / WebP · clear face works best",
+    "uploading": "Uploading…",
+    "ideasLabel": "Need an idea? Tap one",
+    "ideas": [
+      "Renaissance royal portrait",
+      "Christmas card by the fireplace",
+      "Astronaut floating in space",
+      "Funny movie poster",
+      "Cozy winter sweater",
+      "Birthday party hat"
+    ],
+    "tplLabel": "Template",
+    "browseAll": "Browse all 100 →",
+    "placeholder": "e.g. My cat as a renaissance royal, oil painting",
+    "helper": "Press Enter to send · works best with one clear photo + a short wish · ~30 seconds per picture",
+    "trust1": "3 free pictures a day",
+    "trust2": "Sign in only to download",
+    "trust3": "Photos auto-deleted in 7 days",
+    "trust4": "Every image labeled AI-generated",
+    "beforeCap": "One phone photo",
+    "afterCap": "A portrait that's still them",
+    "howTitle": "How it works",
+    "how1t": "Upload a photo",
+    "how1d": "One clear face-on photo is enough. Add up to four for better fur and eye detail.",
+    "how2t": "Say what you want",
+    "how2d": "“My cat as a knight”, “birthday card for my pug” — or copy any template prompt and edit it.",
+    "how3t": "Get your picture",
+    "how3d": "In ~30 seconds you have a portrait to download, regenerate, or post to the gallery.",
+    "tplTitle": "Start from a template",
+    "tplDesc": "100 ready-made styles — copy the prompt as-is or add your twist.",
+    "worksTitle": "Made by pet people",
+    "worksDesc": "Real pictures from the studio. ",
+    "worksLink": "See the full gallery →",
+    "reviewsTitle": "Happy humans, happy tails",
+    "faqTitle": "Questions, answered",
+    "faqLink": "Read all questions →",
+    "ctaTitle": "Make yours in 30 seconds",
+    "ctaSub": "One photo, one sentence. Your pet's next favorite picture is a click away.",
+    "ctaBtn": "Create my pet portrait"
+  },
+  "gen": {
+    "download": "Download",
+    "regen": "Regenerate",
+    "regenTip": "Uses one free picture",
+    "copyPrompt": "Copy the prompt",
+    "postGallery": "Post to gallery",
+    "share": "Share",
+    "shareTitle": "Share to social media",
+    "shareNote": "Anyone with the link can view this picture.",
+    "shareImage": "Share image…",
+    "shareText": "Check out this AI pet portrait I made! 🐾",
+    "signInTitle": "Sign in to download",
+    "signInBody": "Downloading needs a free account — it keeps your pictures safe.",
+    "signInBtn": "Sign in",
+    "placeholders": [
+      "e.g. My cat as a renaissance royal, oil painting",
+      "e.g. My dog in a Santa hat by the fireplace, cozy",
+      "e.g. My bunny reading a book in a library, warm light",
+      "e.g. Funny birthday portrait of my pug with a party hat"
+    ],
+    "loading": [
+      "Studying your pet's finest features…",
+      "Mixing the perfect palette…",
+      "Sketching whiskers and paw details…",
+      "Painting the scene you asked for…",
+      "Adding the final brush strokes…"
+    ],
+    "formTitle": "Show it in the gallery (optional)",
+    "yourName": "Your name",
+    "petName": "Pet's name",
+    "reviewPh": "How did it turn out? (optional review)",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "thanks": "Thanks! It will appear in the gallery after a quick check. 🐾",
+    "err": "Something went wrong — try again.",
+    "histTitle": "Your pictures",
+    "histOpen": "Open your picture",
+    "sharePage": "Share page",
+    "species": {
+      "cat": "Cat",
+      "dog": "Dog",
+      "bird": "Bird",
+      "fish": "Fish",
+      "rabbit": "Rabbit",
+      "other": "Other pet"
+    },
+    "painting": "Painting…",
+    "generate": "Generate"
+  },
+  "tpl": {
+    "title": "Template center",
+    "desc": "100 ready-made recipes for your pet's next picture. Copy the prompt straight into the studio, or open a template and add your own twist — every prompt is free to copy.",
+    "hot": "🔥 Hot",
+    "new": "✨ New",
+    "all": "All",
+    "cats": {
+      "reactions": "Reactions",
+      "classic": "Classic & Art",
+      "holiday": "Holiday",
+      "covers": "Posters & Cards",
+      "story": "Characters",
+      "seasons": "Seasons & Places"
+    },
+    "crumbRoot": "Template center",
+    "promptLabel": "The prompt — free to copy",
+    "showFull": "Show full prompt",
+    "showLess": "Show less",
+    "useTpl": "Use this template",
+    "howTitle": "How to use it",
+    "how": [
+      "Copy the prompt above, or just tap “Use this template”.",
+      "Attach one clear photo of your pet — face visible, good light.",
+      "Optional: add your twist in the message, e.g. “with a tiny scarf” or “more golden light”.",
+      "Generate, download, and share. Not perfect? Regenerate for free."
+    ],
+    "tip": "💡 Tip: works for cats, dogs, birds, fish, rabbits — any pet with a face. Results keep your pet's real fur markings and eye color.",
+    "exampleCap": "Example made with this template · every result is AI-generated",
+    "more": "More {cat} templates",
+    "empty": "No {badge} templates in this category yet.",
+    "detailTitle": "{name} pet portrait — free AI template",
+    "detailDesc": "{blurb} Copy the exact {name} prompt and turn your cat or dog into it in ~30 seconds. Free, no account needed."
+  },
+  "gal": {
+    "title": "Made in the studio",
+    "desc": "Every picture here started as one phone photo and one sentence. All images are AI-generated — and made by people who love their pets. Want yours here?",
+    "createPost": "Create & post it",
+    "speciesAll": "All pets",
+    "cat": "Cats",
+    "dog": "Dogs",
+    "bird": "Birds",
+    "fish": "Fishes",
+    "rabbit": "Rabbits",
+    "other": "Others",
+    "reviewsTitle": "What pet people say",
+    "humanSuffix": "'s human",
+    "noReviewsPre": "No reviews yet — ",
+    "noReviewsLink": "make a picture",
+    "noReviewsPost": " and tell us how it went.",
+    "noWorks": "No {species} in the gallery yet — be the first!",
+    "ctaTitle": "Your pet belongs here",
+    "ctaSub": "Free to try, no account, ~30 seconds per picture.",
+    "ctaBtn": "Create my pet portrait",
+    "custom": "custom"
+  },
+  "faqPage": {
+    "title": "Frequently asked questions",
+    "intro": "Short answers about the studio. Anything else? Mail us at",
+    "cta": "Make my first picture"
+  },
+  "faq": [
+    {
+      "q": "How does it work?",
+      "a": "Type what you want — a renaissance painting, a Christmas card, your cat as an astronaut — and attach a photo of your pet. Our AI writes the perfect prompt from your words, then paints a new picture that keeps your pet's face, fur and eyes. It takes about half a minute."
+    },
+    {
+      "q": "Will it still look like my pet?",
+      "a": "Yes — that's the whole point. One clear, face-on photo is enough to start; adding one or two extra angles (a side view, a sitting pose) makes the face and fur even more consistent. We don't promise every portrait is pixel-perfect, but it should always read as your pet."
+    },
+    {
+      "q": "What kind of photos should I upload?",
+      "a": "Up to 4 photos, JPG/PNG/WebP, each under 5 MB. Best results: your pet alone in the frame, face visible, in good light. No people in the photo, please — the picture is for pets only."
+    },
+    {
+      "q": "What can I ask for in the chat box?",
+      "a": "Anything: a scene, an outfit, an art style, a mood — or pick one of our 100 ready-made templates and just add your twist. Keep requests about your pet; requests involving people or unsafe content are filtered out."
+    },
+    {
+      "q": "Is it free? How many pictures can I make?",
+      "a": "You can make 3 pictures a day for free — no account needed to create. Signing in (with Google) is only required when you want to download and keep them. The counter resets every day."
+    },
+    {
+      "q": "Why do I need to sign in to download?",
+      "a": "Generating is open to everyone, but downloading requires a free Google sign-in. It protects your pictures and keeps the free daily quota fair. We only store your Google name, email and profile picture."
+    },
+    {
+      "q": "Are these images really AI-generated?",
+      "a": "Yes, 100%. Every picture is generated by an AI image model from the photos you upload. We label it honestly everywhere, and we ask you not to present AI portraits as unedited photographs. See our AI disclosure page for details."
+    },
+    {
+      "q": "What happens to my photos?",
+      "a": "Your photos are used only to generate your picture. They're not sold, not used to train models, and uploads are automatically deleted within 7 days. You can publish a result to the public gallery yourself — that's always opt-in."
+    },
+    {
+      "q": "Can I use the pictures commercially or as a gift?",
+      "a": "Yes — print them on cards, post them on social media, gift them to family. The pictures are yours to enjoy. Just keep the AI-generated labeling when you share, and don't use them to mislead."
+    },
+    {
+      "q": "Why does a generation sometimes fail or look off?",
+      "a": "AI painting is a live service — the studio can hiccup under load, and tricky photos (blurry, dark, multiple pets) can confuse the result. Just try again, ideally with a clearer photo. Regenerating is free and usually fixes it."
+    }
+  ],
+  "login": {
+    "title": "Sign in to download",
+    "sub": "Creating is free — no account needed. Sign in only when you want to keep your pictures.",
+    "google": "Continue with Google",
+    "demo": "Demo sign-in (dev only)",
+    "errConfig": "Sign-in isn't configured on this server yet.",
+    "errGoogle": "Sign-in didn't go through — please try again.",
+    "agreePre": "By continuing you agree to our ",
+    "terms": "terms",
+    "and": " and ",
+    "privacy": "privacy policy",
+    "signedTitle": "You're signed in 🎉",
+    "signedBody": "Signed in as {email}. Your downloads are unlocked.",
+    "back": "Back to the studio",
+    "notConfigured": "Google sign-in isn't configured yet."
+  },
+  "nf": {
+    "title": "This page wandered off",
+    "body": "Even good pets chase the wrong squirrel sometimes.",
+    "btn": "Back to the studio"
+  },
+  "share": {
+    "made": "Made in the AI pet studio · AI-generated",
+    "tplLabel": "Template:",
+    "love": "Love it? Share the joy 🐾",
+    "make": "Make one of YOUR pet",
+    "makeSub": "One photo + one sentence. Free to try, no account.",
+    "cta": "Create mine"
+  },
+  "admin": {
+    "title": "Gallery review queue",
+    "sub": "Approved items appear on the gallery; removed items are deleted.",
+    "allClear": "All clear — nothing waiting. 🐾",
+    "approve": "Approve",
+    "remove": "Remove",
+    "open": "Open",
+    "enterKey": "Enter the admin key (ADMIN_KEY env)."
+  },
+  "legal": {
+    "updatedLabel": "Last updated",
+    "questionsPre": "Questions about this page? Write to ",
+    "seeAlso": "See also our ",
+    "faq": "FAQ",
+    "privacy": {
+      "title": "Privacy policy",
+      "intro": "PetsDaily is a website that turns pet photos into AI-generated pictures. This policy explains, in plain words, what we collect and what happens to it.",
+      "blocks": [
+        {
+          "h": "What we collect",
+          "body": [
+            "Photos you upload, the text you type into the generator, and the pictures we generate for you. A random ID stored in a cookie so we can apply the free daily limit. If you post to the public gallery: the name, pet name and review you choose to submit.",
+            "If you sign in (required only for downloading pictures): your Google name, email and profile picture, plus a signed session cookie that keeps you signed in for 180 days. We never see or store your Google password.",
+            "We don't show ads and don't use tracking cookies."
+          ]
+        },
+        {
+          "h": "What we use it for",
+          "body": [
+            "Only to generate your picture and keep the product working (rate limits, error fixing). We do not sell your photos or generated images. We do not use your photos to train AI models."
+          ]
+        },
+        {
+          "h": "Who else sees your photo",
+          "body": [
+            "To create your picture we send the uploaded photo and a short text prompt to our AI service providers: a language model (Zhipu AI) that writes the image prompt, and an image model (Volcengine / BytePlus Seedream) that paints the picture. They process your photo only to return a result to us, under their own privacy and security terms.",
+            "Pictures become public only when you choose to: by sharing a picture's link yourself, or by posting it to the public gallery (submissions are reviewed before publishing, and you can ask us to remove one at any time)."
+          ]
+        },
+        {
+          "h": "How long we keep it",
+          "body": [
+            "Uploaded photos are deleted automatically within 7 days. Generated pictures may be kept a little longer so your share link keeps working; ask us and we'll delete yours sooner."
+          ]
+        },
+        {
+          "h": "Your rights (GDPR / CCPA)",
+          "body": [
+            "You can ask us for a copy of the data linked to your device or account, ask for corrections, or ask for deletion. Email us and we'll respond within 30 days. Our lawful basis is your consent and our legitimate interest in operating the service. California residents have the right to know and delete — we do not discriminate for exercising these rights."
+          ]
+        },
+        {
+          "h": "Children",
+          "body": [
+            "PetsDaily is for adults. Please don't upload photos of children or use the service if you are under 16 (under 13 in the US)."
+          ]
+        },
+        {
+          "h": "Changes",
+          "body": [
+            "If this policy changes materially we'll update the date above. The version on this page is always the current one."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of service",
+      "intro": "Welcome! These terms govern your use of PetsDaily. By using the site you agree to them.",
+      "blocks": [
+        {
+          "h": "The service",
+          "body": [
+            "PetsDaily turns a photo of your pet into an AI-generated picture. You can make up to 3 pictures per day for free (we may change this limit; the current rules are always shown in the product). Generating needs no account; downloading pictures requires signing in with Google."
+          ]
+        },
+        {
+          "h": "Your account",
+          "body": [
+            "Sign-in uses Google OAuth — we receive your name, email and profile picture and store a signed session cookie for 180 days. You are responsible for your Google account. You can sign out anytime."
+          ]
+        },
+        {
+          "h": "What you may upload",
+          "body": [
+            "Only photos of pets you own or have permission to use. No people, no photos of children, nothing illegal, harmful, hateful or explicit. We filter requests automatically and can refuse or remove anything that breaks these terms."
+          ]
+        },
+        {
+          "h": "The pictures we make",
+          "body": [
+            "Results are generated by AI and are provided as-is: we can't promise a specific likeness or artistic result. You may use your generated pictures for personal purposes — share them, print them, gift them. Don't present an AI image as an unedited photograph, and don't use generated pictures to mislead, defame, or impersonate."
+          ]
+        },
+        {
+          "h": "The gallery",
+          "body": [
+            "Posting to the public gallery is voluntary. When you submit, you confirm the picture is your creation from your own photo, and you give us permission to display it on the site. You can ask us to remove it anytime."
+          ]
+        },
+        {
+          "h": "Disclaimers & liability",
+          "body": [
+            "The service is provided \"as is\" without warranties. To the maximum extent permitted by law, we are not liable for indirect or consequential damages. We may pause or change the service for maintenance or improvement."
+          ]
+        },
+        {
+          "h": "Contact & governing law",
+          "body": [
+            "Questions: email us. These terms are governed by the laws of the operator's place of business, without prejudice to mandatory consumer protections in your country of residence."
+          ]
+        }
+      ]
+    },
+    "ai": {
+      "title": "AI disclosure",
+      "intro": "Transparency matters. PetsDaily produces AI-generated images, and here's exactly what that means.",
+      "blocks": [
+        {
+          "h": "All pictures are AI-generated",
+          "body": [
+            "Every image on this site — templates, examples and gallery — was created by an AI image model. No image is an unedited photograph of a real animal event."
+          ]
+        },
+        {
+          "h": "How generation works",
+          "body": [
+            "When you use the studio, a language model (GLM by Zhipu AI) rewrites your request into a detailed image prompt. An image model (Seedream by Volcengine/BytePlus) then paints the picture, using your uploaded photo only as a reference for your pet's identity — face, fur markings and eye color.",
+            "Uploaded photos are not used to train any AI model, ours or theirs."
+          ]
+        },
+        {
+          "h": "How we label",
+          "body": [
+            "The site footer and the AI pages state that all portraits are AI-generated. Gallery captions say so too. We ask you to keep this honesty when sharing: don't present an AI portrait as an unedited photo or use it to enter \"real photo\" contests."
+          ]
+        },
+        {
+          "h": "Responsible use",
+          "body": [
+            "We block requests that involve people (especially minors), violence, explicit content, trademarks or public figures. If you spot a generated image that concerns you, email us and we'll act on it."
+          ]
+        }
+      ]
+    }
+  }
+}
