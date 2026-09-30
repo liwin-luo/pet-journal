@@ -5,6 +5,15 @@ import path from "node:path";
 export async function loadRef(src: string): Promise<string | null> {
   if (src.startsWith("data:image/")) return src;
   if (src.startsWith("https://")) return src;
+  const tpl = src.startsWith("/tpl/") ? src.slice("/tpl/".length).split(/[?#]/)[0] : "";
+  if (/^[\w.-]+$/.test(tpl)) {
+    try {
+      const buf = await readFile(path.join(process.cwd(), "public", "tpl", tpl));
+      return `data:image/jpeg;base64,${buf.toString("base64")}`;
+    } catch {
+      return null;
+    }
+  }
   const mediaId = src.startsWith("/api/media/") ? src.slice("/api/media/".length).split(/[?#]/)[0] : "";
   if (/^[0-9a-f-]{36}$/i.test(mediaId)) {
     const { getMedia } = await import("@/lib/pgdb");

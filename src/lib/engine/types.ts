@@ -11,6 +11,8 @@ export interface AnchorInput {
   templatePrompt?: string;
   /** 用户在创作框里写的话，含没点选菜单时留下的 @ 内容 */
   note?: string;
+  /** 语言模型写好的整段提示。有它就不再拼模板。 */
+  prompt?: string;
   pet: PetPromptContext;
 }
 
@@ -27,6 +29,8 @@ export interface BatchInput {
   note?: string;
   /** 其余被 @ 的宠物的锚点图 */
   refImages?: string[];
+  /** 语言模型写好的整段提示。有它就只用这里列出的参考图。 */
+  prompt?: string;
   pet: PetPromptContext;
 }
 

@@ -4,9 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useI18n } from "@/components/I18n";
 import { Header, Stepper } from "@/components/ui";
-import { loadState, updateState, curPet } from "@/lib/store";
-import { petCtx } from "@/lib/flow";
-import { templatePrompt } from "@/lib/catalog";
+import { loadState, updateState } from "@/lib/store";
+import { planRequest } from "@/lib/flow";
 import { getRefs } from "@/lib/refs";
 import { isPortrait } from "@/lib/guards";
 
@@ -31,15 +30,9 @@ export default function AnchorPage() {
     (async () => {
       try {
         const s = loadState();
-        const petNow = curPet(s);
         const res = await fetch("/api/generate/anchor", {
           method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            refImages: getRefs(),
-            pet: petCtx(petNow, petNow?.tags.map((i) => tArr("tags8")[i]).filter(Boolean) as string[] ?? []),
-            note: s.customDesc,
-            templatePrompt: templatePrompt(s.selectedTemplate),
-          }),
+          body: JSON.stringify(planRequest(s, getRefs(), (i) => tArr("tags8")[i] || "")),
         });
         if (res.status === 401) {
           window.location.href = "/login?next=/anchor";

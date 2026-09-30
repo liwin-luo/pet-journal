@@ -8,12 +8,14 @@ export function getEngine(): ImageEngine & TextEngine {
   return {
     name: `${still.name}+${chat.name}`,
     async generateAnchor(input: AnchorInput) {
-      return { image: await still.still(picturePrompt(input), input.refImages ?? []) };
+      const prompt = input.prompt || picturePrompt(input);
+      return { image: await still.still(prompt, input.refImages ?? []) };
     },
     async generateBatch(input: BatchInput) {
-      const prompt = picturePrompt(input);
+      const prompt = input.prompt || picturePrompt(input);
+      const pool = input.prompt ? (input.refImages ?? []) : [input.anchorImage, ...(input.refImages ?? [])];
       const refs: string[] = [];
-      for (const src of [input.anchorImage, ...(input.refImages ?? [])]) {
+      for (const src of pool) {
         if (src && !refs.includes(src)) refs.push(src);
         if (refs.length === 4) break;
       }

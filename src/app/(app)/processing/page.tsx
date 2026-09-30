@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { useI18n } from "@/components/I18n";
 import { Header } from "@/components/ui";
 import { loadState, updateState } from "@/lib/store";
-import { citedPets, groupCtx } from "@/lib/flow";
-import { STYLE_PROMPTS, templatePrompt } from "@/lib/catalog";
+import { planRequest } from "@/lib/flow";
+import { getRefs } from "@/lib/refs";
 import { isPortrait } from "@/lib/guards";
 import { creditsLeft, walletFields } from "@/lib/plan";
 
@@ -27,7 +27,6 @@ export default function ProcessingPage() {
     const asked = Number(new URLSearchParams(location.search).get("n") || 1);
     const count = Math.min(8, creditsLeft(s), Math.max(1, asked || 1));
     if (count < 1) { router.replace("/preview"); return; }
-    const group = citedPets(s);
     const tagNames = tArr("tags8");
     let cancel = false;
     (async () => {
@@ -35,15 +34,7 @@ export default function ProcessingPage() {
         const res = await fetch("/api/generate/batch", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            count,
-            anchorImage: group[0]?.anchorImage,
-            refImages: group.slice(1).map((p) => p.anchorImage).filter((src): src is string => isPortrait(src)),
-            templatePrompt: templatePrompt(s.selectedTemplate),
-            stylePrompt: s.selectedTemplate ? undefined : (s.selectedStyle != null ? STYLE_PROMPTS[s.selectedStyle] : undefined),
-            note: s.customDesc,
-            pet: groupCtx(group, (p) => p.tags.map((i) => tagNames[i]).filter(Boolean)),
-          }),
+          body: JSON.stringify({ count, ...planRequest(s, getRefs(), (i) => tagNames[i] || "") }),
         });
         if (res.status === 401) {
           window.location.href = "/login?next=" + encodeURIComponent(location.pathname + location.search);
@@ -72,7 +63,7 @@ export default function ProcessingPage() {
             id,
             tier: "studio" as const,
             amount: 0,
-            petId: group[0]?.id ?? st.curPetId ?? "",
+            petId: st.curPetId ?? "",
             createdAt: Date.now(),
             status: "done" as const,
             images: kept,
