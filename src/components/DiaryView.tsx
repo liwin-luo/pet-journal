@@ -48,10 +48,18 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
     return (days ?? []).filter((x) => x.date.startsWith(prefix));
   }, [days, ym]);
 
-  // 当月缺文案的日子批量补写（asked 防重发；服务端有永久缓存，重复请求免费）
+  // 文案补写目标 = 当前查看的月份 + 日记本当前翻开的那天（翻页会跨月，monthDays 覆盖不到）
+  const captionTargets = useMemo(() => {
+    const list = [...monthDays];
+    const cur = days?.find((x) => x.date === bookDay);
+    if (cur && !list.some((x) => x.date === cur.date)) list.push(cur);
+    return list;
+  }, [monthDays, days, bookDay]);
+
+  // 缺文案的日子批量补写（asked 防重发；服务端有永久缓存，重复请求免费）
   useEffect(() => {
-    if (!monthDays.length) return;
-    const missing = monthDays.filter((x) => !asked.current.has(x.date));
+    if (!captionTargets.length) return;
+    const missing = captionTargets.filter((x) => !asked.current.has(x.date));
     if (!missing.length) return;
     missing.forEach((x) => asked.current.add(x.date));
     fetch("/api/diary/caption", {
@@ -72,7 +80,7 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
         });
       })
       .catch(() => {});
-  }, [monthDays, locale]);
+  }, [captionTargets, locale]);
 
   if (!days) return <div className="card mt-8 h-72 animate-pulse bg-parchment/60" />;
 
