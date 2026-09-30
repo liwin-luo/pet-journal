@@ -441,7 +441,8 @@
     "plans": "プラン",
     "plansSoon": "準備中",
     "signOut": "ログアウト",
-    "back": "スタジオに戻る"
+    "back": "スタジオに戻る",
+    "resetsAt": "{time} にリセット"
   },
   "lib": {
     "title": "私の作品",

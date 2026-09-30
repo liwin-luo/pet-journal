@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getSessionUser } from "@/lib/auth";
 import { getDict, lp, type Dict, type Locale } from "@/lib/i18n";
-import { getQuota, getSubjectId } from "@/lib/ratelimit";
+import { getQuota, getSubjectId, nextResetIso } from "@/lib/ratelimit";
 import { SITE_NAME } from "@/lib/site";
 import { PawIcon, SparkIcon } from "./icons";
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -32,10 +32,11 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
             <UserMenu
               user={{ name: user.name, email: user.email, picture: user.picture }}
               quota={quota}
+              resetIso={nextResetIso()}
               homePath={lp(locale, "/")}
               accountPath={lp(locale, "/account")}
               libPath={lp(locale, "/library")}
-              texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, myPictures: t.acct.myPictures, plans: t.acct.plans, signout: t.signout }}
+              texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, resetsAt: t.acct.resetsAt, myPictures: t.acct.myPictures, plans: t.acct.plans, signout: t.signout }}
             />
           ) : (
             <Link href={lp(locale, "/login")} className="text-sm font-medium text-coffee transition-colors hover:text-coral">

@@ -441,7 +441,8 @@
     "plans": "套餐与升级",
     "plansSoon": "即将上线",
     "signOut": "退出登录",
-    "back": "回到工作室"
+    "back": "回到工作室",
+    "resetsAt": "{time} 重置"
   },
   "lib": {
     "title": "我的作品",

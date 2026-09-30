@@ -64,6 +64,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
           <div className="h-full rounded-full bg-coral transition-all" style={{ width: `${pct}%` }} />
         </div>
         <p className="mt-2 text-sm text-coffee">{t.acct.quotaLeft.replace("{left}", String(quota.left))}</p>
+        <p className="mt-1 text-xs text-fog">{t.acct.resetsAt.replace("{time}", "00:00 UTC")}</p>
       </section>
 
       {/* 我的作品 */}

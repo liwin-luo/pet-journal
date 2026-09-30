@@ -441,7 +441,8 @@
     "plans": "Planes y mejoras",
     "plansSoon": "Próximamente",
     "signOut": "Cerrar sesión",
-    "back": "Volver al estudio"
+    "back": "Volver al estudio",
+    "resetsAt": "Se renueva a las {time}"
   },
   "lib": {
     "title": "Mis imágenes",

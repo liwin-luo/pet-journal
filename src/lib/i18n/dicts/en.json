@@ -441,7 +441,8 @@
     "plans": "Plans & upgrades",
     "plansSoon": "Coming soon",
     "signOut": "Sign out",
-    "back": "Back to studio"
+    "back": "Back to studio",
+    "resetsAt": "Resets at {time}"
   },
   "lib": {
     "title": "My pictures",

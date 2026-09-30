@@ -9,6 +9,7 @@ type Texts = {
   quotaTitle: string;
   quotaOf: string;
   quotaLeft: string;
+  resetsAt: string;
   myPictures: string;
   plans: string;
   signout: { title: string; body: string; cancel: string; confirm: string };
@@ -17,6 +18,7 @@ type Texts = {
 type Props = {
   user: { name?: string; email: string; picture?: string };
   quota: { used: number; limit: number; left: number };
+  resetIso: string;
   homePath: string;
   accountPath: string;
   libPath: string;
@@ -24,7 +26,7 @@ type Props = {
 };
 
 /** 顶栏个人中心：头像下拉（资料 / 今日额度 / 入口 / 登出确认）。 */
-export function UserMenu({ user, quota, homePath, accountPath, libPath, texts }: Props) {
+export function UserMenu({ user, quota, resetIso, homePath, accountPath, libPath, texts }: Props) {
   const [open, setOpen] = useState(false);
   const [modal, setModal] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -97,6 +99,12 @@ export function UserMenu({ user, quota, homePath, accountPath, libPath, texts }:
             <p className="mt-1.5 text-xs text-coffee">
               {texts.quotaOf.replace("{used}", String(quota.used)).replace("{limit}", String(quota.limit))} ·{" "}
               {texts.quotaLeft.replace("{left}", String(quota.left))}
+            </p>
+            <p className="mt-0.5 text-[11px] text-fog">
+              {texts.resetsAt.replace(
+                "{time}",
+                new Date(resetIso).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+              )}
             </p>
           </div>
 

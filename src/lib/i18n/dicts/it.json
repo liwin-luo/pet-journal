@@ -441,7 +441,8 @@
     "plans": "Piani e upgrade",
     "plansSoon": "In arrivo",
     "signOut": "Esci",
-    "back": "Torna allo studio"
+    "back": "Torna allo studio",
+    "resetsAt": "Si azzera alle {time}"
   },
   "lib": {
     "title": "Le mie immagini",

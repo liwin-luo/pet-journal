@@ -42,6 +42,13 @@ export async function recordUse(subject: string): Promise<void> {
   await bumpUsage(subject, today());
 }
 
+/** 下一次额度重置时间（UTC 零点）的 ISO 串。 */
+export function nextResetIso(): string {
+  const d = new Date();
+  d.setUTCHours(24, 0, 0, 0);
+  return d.toISOString();
+}
+
 /** 个人中心额度信息：已用 / 上限 / 剩余。 */
 export async function getQuota(subject: string): Promise<{ used: number; limit: number; left: number }> {
   const used = await peekUsage(subject, today());

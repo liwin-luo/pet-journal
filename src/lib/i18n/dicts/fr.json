@@ -441,7 +441,8 @@
     "plans": "Abonnements",
     "plansSoon": "Bientôt",
     "signOut": "Se déconnecter",
-    "back": "Retour au studio"
+    "back": "Retour au studio",
+    "resetsAt": "Se réinitialise à {time}"
   },
   "lib": {
     "title": "Mes images",

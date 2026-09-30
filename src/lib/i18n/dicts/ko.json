@@ -441,7 +441,8 @@
     "plans": "요금제",
     "plansSoon": "곧 출시",
     "signOut": "로그아웃",
-    "back": "스튜디오로 돌아가기"
+    "back": "스튜디오로 돌아가기",
+    "resetsAt": "{time} 초기화"
   },
   "lib": {
     "title": "내 작품",

@@ -441,7 +441,8 @@
     "plans": "Planos e upgrades",
     "plansSoon": "Em breve",
     "signOut": "Sair",
-    "back": "Voltar ao estúdio"
+    "back": "Voltar ao estúdio",
+    "resetsAt": "Renova às {time}"
   },
   "lib": {
     "title": "Minhas imagens",

@@ -441,7 +441,8 @@
     "plans": "Tarife & Upgrades",
     "plansSoon": "Demnächst",
     "signOut": "Abmelden",
-    "back": "Zurück ins Studio"
+    "back": "Zurück ins Studio",
+    "resetsAt": "Setzt sich um {time} zurück"
   },
   "lib": {
     "title": "Meine Bilder",
