@@ -3,7 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { TemplateCard } from "@/components/TemplateCard";
 import { pageMeta } from "@/lib/seo";
-import { CATS, TEMPLATES, type CatId } from "@/lib/templates";
+import { BADGES, CATS, TEMPLATES, type Badge, type CatId } from "@/lib/templates";
 
 export const metadata: Metadata = pageMeta({
   title: "Pet portrait template center — 100 free AI styles",
@@ -16,11 +16,18 @@ export const metadata: Metadata = pageMeta({
 export default async function TemplatesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ cat?: string }>;
+  searchParams: Promise<{ cat?: string; badge?: string }>;
 }) {
-  const { cat } = await searchParams;
+  const { cat, badge } = await searchParams;
   const active = CATS.some((c) => c.id === cat) ? (cat as CatId) : "all";
-  const list = active === "all" ? TEMPLATES : TEMPLATES.filter((t) => t.cat === active);
+  const activeBadge = badge === "hot" || badge === "new" ? (badge as Badge) : undefined;
+  const list = TEMPLATES.filter((t) => (active === "all" || t.cat === active) && (!activeBadge || t.badge === activeBadge));
+
+  const chipCls = (on: boolean) =>
+    `rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+      on ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
+    }`;
+  const catHref = (c: CatId) => (activeBadge ? `/templates?badge=${activeBadge}&cat=${c}` : `/templates?cat=${c}`);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -32,26 +39,28 @@ export default async function TemplatesPage({
         </p>
       </header>
 
+      {/* 徽章快捷筛选 */}
+      <nav className="mt-6 flex justify-center gap-2" aria-label="Badge filters">
+        {BADGES.map((b) => (
+          <Link
+            key={b.id}
+            href={activeBadge === b.id ? (active === "all" ? "/templates" : `/templates?cat=${active}`) : `/templates?badge=${b.id}`}
+            className={chipCls(activeBadge === b.id)}
+          >
+            {b.label}
+          </Link>
+        ))}
+      </nav>
+
       {/* 分类筛选 */}
-      <nav className="mt-8 flex flex-wrap justify-center gap-2" aria-label="Template categories">
-        <Link
-          href="/templates"
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-            active === "all" ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
-          }`}
-        >
+      <nav className="mt-3 flex flex-wrap justify-center gap-2" aria-label="Template categories">
+        <Link href={activeBadge ? `/templates?badge=${activeBadge}` : "/templates"} className={chipCls(active === "all")}>
           All ({TEMPLATES.length})
         </Link>
         {CATS.map((c) => {
           const n = TEMPLATES.filter((t) => t.cat === c.id).length;
           return (
-            <Link
-              key={c.id}
-              href={`/templates?cat=${c.id}`}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                active === c.id ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
-              }`}
-            >
+            <Link key={c.id} href={catHref(c.id)} className={chipCls(active === c.id)}>
               {c.name} ({n})
             </Link>
           );
@@ -63,6 +72,7 @@ export default async function TemplatesPage({
           <TemplateCard key={t.id} tpl={t} priority={i < 8} />
         ))}
       </div>
+      {!list.length && <p className="mt-10 text-center text-coffee">No {activeBadge} templates in this category yet.</p>}
 
       <JsonLd
         data={{

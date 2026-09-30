@@ -3,6 +3,8 @@
 // 新增模板：在 TEMPLATES 末尾加一条即可（id 唯一，图片放 public/tpl/{id}.jpg）。
 export type CatId = "reactions" | "classic" | "holiday" | "covers" | "story" | "seasons";
 
+export type Badge = "hot" | "new";
+
 export interface Tpl {
   id: string;
   cat: CatId;
@@ -11,6 +13,7 @@ export interface Tpl {
   prompt: string;
   bg: string;
   fg: string;
+  badge?: Badge;
 }
 
 export const CATS: { id: CatId; name: string }[] = [
@@ -528,6 +531,20 @@ export const TEMPLATES: Tpl[] = [
     prompt: "Florist-shop portrait of the same pet from the reference photo among buckets and buckets of fresh flowers, chest-up centered and surrounded by stems, morning shop light from the front. Soft natural light with dew-fresh colors. Palette of coral, lavender and butter-yellow blooms against leafy green. Abundant, fragrant, cheerful mood. No text.",
     bg: "#F4E4EA", fg: "#5C6B4A",
   },
+];
+
+// 徽章：在此维护名单即可（新模板建议先挂 "new"，转热门改 "hot"）。
+const HOT_IDS = new Set(["royal", "oil", "pixar", "poster", "xmas", "astronaut", "sticker", "desk", "glance", "neon"]);
+const NEW_IDS = new Set(["doorbell", "botanic", "deco", "crochet", "pin", "hanbok", "sunbeam", "boxsit", "librarian", "yoga"]);
+
+for (const t of TEMPLATES) {
+  if (HOT_IDS.has(t.id)) t.badge = "hot";
+  else if (NEW_IDS.has(t.id)) t.badge = "new";
+}
+
+export const BADGES: { id: Badge; label: string }[] = [
+  { id: "hot", label: "🔥 Hot" },
+  { id: "new", label: "✨ New" },
 ];
 
 export function templateById(id: string | null | undefined): Tpl | undefined {

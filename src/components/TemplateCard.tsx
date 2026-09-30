@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Tpl } from "@/lib/templates";
 import { tplImg } from "@/lib/templates";
+import { BadgeChip } from "./BadgeChip";
 import { CopyButton } from "./CopyButton";
 
 export function TemplateCard({ tpl, priority = false }: { tpl: Tpl; priority?: boolean }) {
   return (
     <article className="group card overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lift">
-      <Link href={`/templates/${tpl.id}`} className="block" aria-label={`${tpl.name} template`}>
+      <Link href={`/templates/${tpl.id}`} className="relative block" aria-label={`${tpl.name} template`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={tplImg(tpl.id)}
@@ -16,6 +17,11 @@ export function TemplateCard({ tpl, priority = false }: { tpl: Tpl; priority?: b
           loading={priority ? "eager" : "lazy"}
           className="aspect-[3/4] w-full object-cover"
         />
+        {tpl.badge && (
+          <span className="absolute left-2 top-2">
+            <BadgeChip badge={tpl.badge} />
+          </span>
+        )}
       </Link>
       <div className="p-4">
         <div className="flex items-center justify-between gap-2">

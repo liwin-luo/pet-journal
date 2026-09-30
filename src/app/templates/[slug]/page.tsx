@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BadgeChip } from "@/components/BadgeChip";
 import { CopyButton } from "@/components/CopyButton";
 import { PromptBlock } from "@/components/PromptBlock";
 import { TemplateCard } from "@/components/TemplateCard";
@@ -57,7 +58,10 @@ export default async function TemplateDetail({ params }: { params: Promise<{ slu
         </figure>
 
         <div>
-          <h1 className="h-display text-3xl md:text-4xl">{tpl.name} pet portrait</h1>
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="h-display text-3xl md:text-4xl">{tpl.name} pet portrait</h1>
+            {tpl.badge && <BadgeChip badge={tpl.badge} />}
+          </div>
           <p className="mt-3 text-coffee">{tpl.blurb}</p>
 
           <div className="mt-6 card p-5">
