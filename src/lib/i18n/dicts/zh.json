@@ -422,5 +422,17 @@
         }
       ]
     }
+  },
+  "acct": {
+    "title": "账号",
+    "profile": "个人资料",
+    "quotaTitle": "今日免费额度",
+    "quotaOf": "已用 {used} / {limit} 张",
+    "quotaLeft": "今天还剩 {left} 张",
+    "myPictures": "我的作品",
+    "plans": "套餐与升级",
+    "plansSoon": "即将上线",
+    "signOut": "退出登录",
+    "back": "回到工作室"
   }
 }

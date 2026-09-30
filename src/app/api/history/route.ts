@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth";
+import { listHistory } from "@/lib/history";
 import { getDeviceId } from "@/lib/ratelimit";
-import { readDb } from "@/lib/store";
 
 export const runtime = "nodejs";
 
@@ -9,20 +9,6 @@ export const runtime = "nodejs";
 export async function GET() {
   const deviceId = await getDeviceId();
   const user = await getSessionUser().catch(() => null);
-  const db = await readDb();
-
-  const items = Object.values(db.shares)
-    .filter((s) => (user?.email ? s.email === user.email : false) || (s.deviceId && s.deviceId === deviceId))
-    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-    .slice(0, 24)
-    .map((s) => ({
-      imagePath: s.image,
-      shareUrl: `/share/${s.token}`,
-      prompt: s.prompt,
-      message: s.message,
-      templateId: s.templateId,
-      createdAt: s.createdAt,
-    }));
-
+  const items = await listHistory({ email: user?.email ?? null, deviceId });
   return NextResponse.json({ items });
 }

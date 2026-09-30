@@ -422,5 +422,17 @@
         }
       ]
     }
+  },
+  "acct": {
+    "title": "계정",
+    "profile": "프로필",
+    "quotaTitle": "오늘의 무료 이미지",
+    "quotaOf": "{used} / {limit} 사용",
+    "quotaLeft": "오늘 {left}장 남음",
+    "myPictures": "내 작품",
+    "plans": "요금제",
+    "plansSoon": "곧 출시",
+    "signOut": "로그아웃",
+    "back": "스튜디오로 돌아가기"
   }
 }

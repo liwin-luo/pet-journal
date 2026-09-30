@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { getSessionUser } from "@/lib/auth";
 import { getDict, lp, type Dict, type Locale } from "@/lib/i18n";
+import { getQuota, getSubjectId } from "@/lib/ratelimit";
 import { SITE_NAME } from "@/lib/site";
 import { PawIcon, SparkIcon } from "./icons";
 import { LocaleSwitcher } from "./LocaleSwitcher";
-import { SignOutButton } from "./SignOutButton";
+import { UserMenu } from "./UserMenu";
 
 export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
   const user = await getSessionUser().catch(() => null);
+  const quota = user ? await getQuota(await getSubjectId()) : null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-sand/70 bg-cream/90 backdrop-blur">
@@ -25,21 +27,14 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
         </nav>
         <div className="flex items-center gap-2">
           <LocaleSwitcher locale={locale} />
-          {user ? (
-            <div className="flex items-center gap-3">
-              <span className="hidden items-center gap-2 text-sm text-coffee sm:flex" title={user.email}>
-                {user.picture ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={user.picture} alt="" className="h-8 w-8 rounded-full border border-sand" referrerPolicy="no-referrer" />
-                ) : (
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sage-soft text-xs font-bold text-sage">
-                    {(user.name || user.email).slice(0, 1).toUpperCase()}
-                  </span>
-                )}
-                <span className="hidden max-w-28 truncate lg:inline">{user.name || user.email}</span>
-              </span>
-              <SignOutButton texts={t.signout} />
-            </div>
+          {user && quota ? (
+            <UserMenu
+              user={{ name: user.name, email: user.email, picture: user.picture }}
+              quota={quota}
+              homePath={lp(locale, "/")}
+              accountPath={lp(locale, "/account")}
+              texts={{ quotaTitle: t.acct.quotaTitle, quotaOf: t.acct.quotaOf, quotaLeft: t.acct.quotaLeft, myPictures: t.acct.myPictures, plans: t.acct.plans, plansSoon: t.acct.plansSoon, signout: t.signout }}
+            />
           ) : (
             <Link href={lp(locale, "/login")} className="text-sm font-medium text-coffee transition-colors hover:text-coral">
               {t.nav.signIn}

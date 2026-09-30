@@ -422,5 +422,17 @@
         }
       ]
     }
+  },
+  "acct": {
+    "title": "アカウント",
+    "profile": "プロフィール",
+    "quotaTitle": "今日の無料枚数",
+    "quotaOf": "{used} / {limit} 枚使用",
+    "quotaLeft": "残り {left} 枚",
+    "myPictures": "私の作品",
+    "plans": "プラン",
+    "plansSoon": "準備中",
+    "signOut": "ログアウト",
+    "back": "スタジオに戻る"
   }
 }

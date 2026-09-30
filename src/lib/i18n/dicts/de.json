@@ -422,5 +422,17 @@
         }
       ]
     }
+  },
+  "acct": {
+    "title": "Konto",
+    "profile": "Profil",
+    "quotaTitle": "Kostenlose Bilder heute",
+    "quotaOf": "{used} / {limit} genutzt",
+    "quotaLeft": "Noch {left} heute",
+    "myPictures": "Meine Bilder",
+    "plans": "Tarife & Upgrades",
+    "plansSoon": "Demnächst",
+    "signOut": "Abmelden",
+    "back": "Zurück ins Studio"
   }
 }

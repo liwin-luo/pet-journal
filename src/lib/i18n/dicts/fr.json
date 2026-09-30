@@ -422,5 +422,17 @@
         }
       ]
     }
+  },
+  "acct": {
+    "title": "Compte",
+    "profile": "Profil",
+    "quotaTitle": "Images gratuites du jour",
+    "quotaOf": "{used} / {limit} utilisées",
+    "quotaLeft": "Encore {left} aujourd'hui",
+    "myPictures": "Mes images",
+    "plans": "Abonnements",
+    "plansSoon": "Bientôt",
+    "signOut": "Se déconnecter",
+    "back": "Retour au studio"
   }
 }

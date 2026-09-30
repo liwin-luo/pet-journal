@@ -28,6 +28,12 @@ export async function getSubjectId(): Promise<string> {
   return `d:${await getDeviceId()}`;
 }
 
+/** 个人中心额度信息：已用 / 上限 / 剩余。 */
+export async function getQuota(subject: string): Promise<{ used: number; limit: number; left: number }> {
+  const { used } = await checkLimit(subject);
+  return { used, limit: FREE_DAILY_LIMIT, left: Math.max(0, FREE_DAILY_LIMIT - used) };
+}
+
 function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
