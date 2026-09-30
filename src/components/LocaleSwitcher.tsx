@@ -9,6 +9,8 @@ export function LocaleSwitcher({ locale }: { locale: Locale }) {
   const router = useRouter();
 
   function switchTo(next: Locale) {
+    // 本地记住语言：middleware 读此 cookie，将无前缀请求送到用户选的语言
+    document.cookie = `paw_locale=${next}; path=/; max-age=31536000; samesite=lax`;
     const segs = pathname.split("/");
     if ((LOCALES as readonly string[]).includes(segs[1])) segs.splice(1, 1);
     const rest = segs.join("/") || "/";
