@@ -21,7 +21,9 @@
     "faq": "FAQ",
     "create": "Crea",
     "signIn": "Accedi",
-    "home": "Home"
+    "home": "Home",
+    "tools": "Strumenti gratuiti",
+    "pricing": "Prezzi"
   },
   "signout": {
     "title": "Uscire?",
@@ -42,7 +44,14 @@
     "terms": "Termini di servizio",
     "ai": "Dichiarazione IA",
     "copyright": "tutti i ritratti sono generati da IA",
-    "updated": "Ultimo aggiornamento"
+    "updated": "Ultimo aggiornamento",
+    "tools": "Strumenti gratuiti",
+    "toolsHub": "Tutti gli strumenti",
+    "toolsMeme": "Creatore di meme",
+    "toolsAvatar": "Avatar per animali",
+    "toolsNames": "Generatori di nomi",
+    "toolsAge": "Calcolatore di età",
+    "pricing": "Prezzi"
   },
   "home": {
     "badge": "Studio IA per animali · 100 modelli · gratis",
@@ -92,7 +101,15 @@
     "faqLink": "Leggi tutte le domande →",
     "ctaTitle": "Crea il tuo in 30 secondi",
     "ctaSub": "Una foto, una frase. La prossima immagine preferita del tuo animale è a un clic.",
-    "ctaBtn": "Crea il ritratto del mio animale"
+    "ctaBtn": "Crea il ritratto del mio animale",
+    "toolsEyebrow": "Gratis · senza account",
+    "toolsTitle": "Ancora strumenti gratuiti per chi ama gli animali",
+    "toolsDesc": "Meme, avatar, nomi e altro — gratis per sempre, quasi tutti direttamente nel browser.",
+    "toolsAll": "Tutti gli strumenti →",
+    "priceT": "Ti piace? Passa a Pro",
+    "priceD": "Ritratti illimitati, download senza watermark e stili premium. Da $9.99/mese — o ricarica con i crediti.",
+    "priceBtn": "Vedi i prezzi",
+    "marqueeCap": "100 stili · una foto · ~30 secondi"
   },
   "gen": {
     "download": "Scarica",
@@ -470,5 +487,281 @@
     "picCount": "1 foto",
     "prev": "Precedente",
     "next": "Successivo"
+  },
+  "announce": {
+    "pro": "PRO",
+    "text": "Ritratti illimitati, niente watermark, stili premium — da $9.99/mese.",
+    "cta": "Vedi i piani",
+    "close": "Chiudi"
+  },
+  "tools": {
+    "title": "Strumenti gratuiti per animali",
+    "desc": "Sei strumenti gratuiti per chi ama gli animali — meme, avatar, ritratti e nomi. Senza account.",
+    "hubMetaT": "Strumenti gratuiti per animali — meme, avatar, nomi e altro",
+    "hubMetaD": "Sei strumenti gratuiti: crea meme nel browser, genera un avatar AI adorabile, trova il nome perfetto e converti l'età in anni umani.",
+    "openTool": "Apri lo strumento",
+    "freeBadge": "Gratis",
+    "newBadge": "Nuovo",
+    "hotBadge": "Popolare",
+    "portraitT": "Ritratti AI per animali",
+    "portraitD": "Trasforma il tuo animale in qualsiasi immagine — reali, astronauti, poster di film. 3 gratis al giorno.",
+    "memeT": "Creatore di meme",
+    "memeD": "Aggiungi la classica didascalia sopra e sotto, tutto nel browser.",
+    "avatarT": "Avatar per animali",
+    "avatarD": "Avatar cartoon adorabili per la foto profilo. 3 gratis al giorno.",
+    "dogNamesT": "Generatore di nomi per cani",
+    "dogNamesD": "100+ idee con significati e filtri per stile — trova quello giusto.",
+    "catNamesT": "Generatore di nomi per gatti",
+    "catNamesD": "100+ idee con significati e filtri per stile — trova quello giusto.",
+    "ageT": "Calcolatore di età",
+    "ageD": "Anni di cani e gatti in anni umani — con la fase della vita.",
+    "moreT": "Molto più di un meme",
+    "moreD": "I meme sono solo l'inizio. Con la stessa foto crea un ritratto AI in qualsiasi stile.",
+    "moreBtn": "Apri lo studio AI",
+    "ctaT": "Tutti gli strumenti, sempre gratuiti",
+    "ctaD": "Ritratti e avatar includono 3 immagini gratuite al giorno. Senza account per iniziare."
+  },
+  "meme": {
+    "title": "Creatore di meme per animali",
+    "sub": "Carica una foto, aggiungi la didascalia classica, scarica un meme pronto da condividere. Tutto accade nel tuo browser — la foto non lascia mai il dispositivo.",
+    "upload": "Scegli una foto",
+    "uploadHint": "JPG / PNG / WebP · resta sul dispositivo",
+    "changePhoto": "Cambia foto",
+    "topText": "Testo in alto",
+    "bottomText": "Testo in basso",
+    "download": "Scarica il meme",
+    "share": "Condividi",
+    "errType": "Scegli una foto JPG, PNG o WebP",
+    "ideaLabel": "Idee per la didascalia — tocca per usare",
+    "ideas": [
+      "Quando scricchiola la busta dei croccantini",
+      "Io fingendo di lavorare",
+      "Io faccio quello che voglio",
+      "Soccorso (e croccantini)",
+      "Pensatore professionista",
+      "Oggi no"
+    ],
+    "howTitle": "Un meme in 3 passi",
+    "how1t": "Scegli una foto",
+    "how1d": "Va bene qualsiasi foto — più la faccia è buffa, migliore è il meme.",
+    "how2t": "Aggiungi la didascalia",
+    "how2d": "Scrivi i testi sopra e sotto, o tocca un'idea pronta.",
+    "how3t": "Scarica e pubblica",
+    "how3d": "Salva il meme e pubblicalo ovunque. Due tocchi e fatto.",
+    "tryStudio": "Vuoi più di un meme? Trasforma la stessa foto in un ritratto AI →",
+    "faq": [
+      {
+        "q": "È davvero gratuito?",
+        "a": "Sì — 100% gratuito, senza registrazione e senza limiti giornalieri. Funziona nel browser, quindi non ci costa nulla."
+      },
+      {
+        "q": "La foto viene caricata da qualche parte?",
+        "a": "No. Il meme è generato sul tuo dispositivo con canvas — la foto non lascia mai il browser. Chiudi la scheda e scompare tutto."
+      },
+      {
+        "q": "Che dimensione ha il meme?",
+        "a": "Quadrato 1080×1080 — pensato per Instagram, X, WhatsApp e ogni feed. I file scaricati portano un piccolo marchio petsdaily.live nell'angolo."
+      },
+      {
+        "q": "Posso usarlo commercialmente?",
+        "a": "Per uso personale e commerciale leggero (i tuoi profili, meme del tuo animale), sì. Non usare foto senza diritti."
+      }
+    ],
+    "metaT": "Creatore di meme per animali — gratuito, privato, senza registrazione",
+    "metaD": "Crea meme per animali gratis nel browser: carica una foto, aggiungi il testo classico sopra e sotto, scarica e condividi. Niente viene caricato — le foto restano sul dispositivo.",
+    "stickers": "Adesivi"
+  },
+  "avatar": {
+    "title": "Creatore di avatar per animali",
+    "sub": "Trasforma il tuo animale in un avatar cartoon adorabile per la foto profilo. Scegli lo stile, aggiungi una foto, pronto in ~30 secondi.",
+    "styleLabel": "Scegli uno stile",
+    "photoLabel": "Aggiungi una foto del tuo animale",
+    "photoHint": "Una foto nitida, volto visibile",
+    "generate": "Crea il mio avatar",
+    "generating": "Sto dipingendo il tuo avatar…",
+    "again": "Prova un altro stile",
+    "dl": "Scarica",
+    "dlSignIn": "Accedi per scaricare",
+    "errPhoto": "Prima aggiungi una foto del tuo animale",
+    "err": "Lo studio ha inciampato — riprova.",
+    "free": "3 immagini gratuite al giorno",
+    "left": "Te ne restano {n} oggi",
+    "tryMeme": "Preferisci ridere? Fai un meme del tuo animale →",
+    "how1t": "Scegli lo stile",
+    "how1d": "Cartoon 3D, chibi kawaii o acquerello — tutti e tre mantengono i colori reali.",
+    "how2t": "Aggiungi una foto",
+    "how2d": "Una foto chiara di fronte basta allo studio.",
+    "how3t": "Ricevi l'avatar",
+    "how3d": "In ~30 secondi hai un avatar quadrato da scaricare.",
+    "faq": [
+      {
+        "q": "Cos'è un avatar per animali?",
+        "a": "Un ritratto stilizzato a cartoon del tuo animale, formato quadrato per foto profilo su Instagram, WhatsApp, Discord e altro. L'AI mantiene colori e macchie reali."
+      },
+      {
+        "q": "Quanto costa?",
+        "a": "3 immagini gratuite al giorno, avatar inclusi. Pro sblocca generazioni illimitate e download senza watermark."
+      },
+      {
+        "q": "Quale foto funziona meglio?",
+        "a": "Una foto chiara e luminosa dove il volto riempie l'inquadratura. Una basta — niente persone, per favore."
+      }
+    ],
+    "metaT": "Avatar per animali — avatar AI gratuito da una foto",
+    "metaD": "Trasforma il tuo animale in un avatar AI adorabile: cartoon 3D, chibi kawaii o acquerello. 3 gratis al giorno, pronto in ~30 secondi, quadrato per il profilo."
+  },
+  "names": {
+    "pickGender": "Sesso",
+    "gAll": "Tutti",
+    "gM": "Maschio",
+    "gF": "Femmina",
+    "gU": "Indifferente",
+    "pickStyle": "Stile",
+    "sAll": "Tutti gli stili",
+    "sCute": "Carino",
+    "sCool": "Figo",
+    "sClassic": "Classico",
+    "sFunny": "Divertente",
+    "sFood": "Cibo",
+    "shuffle": "Mescola i nomi",
+    "save": "Salva",
+    "savedTitle": "La tua rosa dei nomi",
+    "savedEmpty": "Niente salvato — tocca il ♡ di un nome che ti piace.",
+    "clear": "Cancella tutto",
+    "count": "{n} nomi"
+  },
+  "dogPage": {
+    "title": "Generatore di nomi per cani",
+    "sub": "100+ idee con significati — filtra per stile e sesso, salva i preferiti e trova quello giusto.",
+    "faq": [
+      {
+        "q": "Quali sono i nomi per cani più popolari?",
+        "a": "Anno dopo anno, Max, Bella, Charlie e Luna dominano le classifiche. I nomi umani restano in voga perché facili da chiamare al parco e che invecchiano bene."
+      },
+      {
+        "q": "Come scelgo un buon nome?",
+        "a": "I nomi corti di una o due sillabe sono quelli che i cani riconoscono meglio. Evita i nomi che suonano come comandi comuni e scegline uno che non ti imbarazzi urlare al parco."
+      },
+      {
+        "q": "Devono essere nomi umani?",
+        "a": "Entrambi funzionano! I nomi umani (Charlie, Daisy) danno un'aria di famiglia; quelli sul cibo e buffi (Waffles, Pickles) traboccano personalità. Il generatore mescola tutti gli stili."
+      }
+    ],
+    "metaT": "Generatore di nomi per cani — 100+ idee con significati",
+    "metaD": "Trova il nome perfetto gratis: 100+ idee con significati, filtrate per stile carino, figo, classico, divertente o cibo. Salva i preferiti — senza registrazione."
+  },
+  "catPage": {
+    "title": "Generatore di nomi per gatti",
+    "sub": "100+ idee con significati — filtra per stile e sesso, salva i preferiti e trova quello giusto.",
+    "faq": [
+      {
+        "q": "Quali sono i nomi per gatti più popolari?",
+        "a": "Luna, Oliver, Bella e Milo sono i favoriti eterni. I nomi lunari e spaziali (Luna, Nova, Cosmo) piacciono particolarmente ai gatti — creature della notte."
+      },
+      {
+        "q": "Come scelgo un buon nome?",
+        "a": "I gatti rispondono meglio ai nomi corti che terminano con un suono \"i\" brillante (Kiki, Mochi, Rosie). Osserva il tuo gatto per un giorno — un nome che si abbina alle abitudini vince sempre."
+      },
+      {
+        "q": "Posso rinominare un gatto adottato?",
+        "a": "Sì — i gatti si adattano al nuovo nome in giorni o settimane. Usalo con costanza, con croccantini e giochi, e scegli suoni diversi da quelli di altri animali e parole comuni come \"no\"."
+      }
+    ],
+    "metaT": "Generatore di nomi per gatti — 100+ idee con significati",
+    "metaD": "Trova il nome perfetto gratis: 100+ idee con significati, filtrate per stile. Salva i preferiti — senza registrazione."
+  },
+  "age": {
+    "title": "Calcolatore di età per animali",
+    "sub": "Inserisci l'età del tuo gatto o cane e scopri gli anni umani — con la fase della vita.",
+    "kind": "Animale",
+    "cat": "Gatto",
+    "dog": "Cane",
+    "ageLabel": "Età",
+    "years": "anni",
+    "size": "Taglia del cane",
+    "small": "Piccola (≤ 10 kg)",
+    "medium": "Media (11–25 kg)",
+    "large": "Grande (> 25 kg)",
+    "result": "≈ {n} anni umani",
+    "stage": {
+      "baby": "Cucciolo",
+      "young": "Giovane",
+      "adult": "Adulto",
+      "senior": "Senior"
+    },
+    "chartTitle": "Anni animali in anni umani",
+    "petYears": "Età dell'animale",
+    "humanYears": "Anni umani",
+    "faq": [
+      {
+        "q": "Come funzionano gli anni dei gatti?",
+        "a": "I gatti maturano in fretta poi rallentano: il primo anno vale circa 15 anni umani, il secondo ne aggiunge 9 e ogni anno successivo circa 4. Il secondo decennio di un gatto domestico vale più o meno i 70-80 umani."
+      },
+      {
+        "q": "Un anno da cane vale davvero 7 anni umani?",
+        "a": "No — è un mito. I cani maturano molto più in fretta all'inizio: il primo anno vale ~15. Dopo, i cani grandi invecchiano più in fretta dei piccoli — per questo chiediamo la taglia."
+      },
+      {
+        "q": "Quando il mio animale è senior?",
+        "a": "I gatti verso gli 11 anni. Per i cani dipende dalla taglia: piccoli verso 11, medi verso 9, le razze grandi già dai 7. A queste età le visite veterinarie contano ancora di più."
+      }
+    ],
+    "metaT": "Calcolatore di età — anni di cani e gatti in anni umani",
+    "metaD": "Converti gratis gli anni di cani e gatti in anni umani. Calcolo per taglia, fasi della vita e tabella completa — e cosa significa essere senior."
+  },
+  "pricing": {
+    "title": "Prezzi semplici e onesti",
+    "sub": "Inizia gratis — passa a Pro quando vuoi ritratti illimitati e uno studio senza watermark.",
+    "freeName": "Gratis",
+    "freePrice": "$0",
+    "freePer": "per sempre",
+    "freeFeat": [
+      "3 immagini al giorno",
+      "Tutti i 100 template",
+      "Tutti gli strumenti gratuiti",
+      "Accesso solo per scaricare"
+    ],
+    "freeCta": "Inizia gratis",
+    "proBadge": "Il più popolare",
+    "proName": "Pro",
+    "proFeat": [
+      "Immagini illimitate",
+      "Niente watermark",
+      "Stili premium e accesso anticipato",
+      "Download 4K",
+      "Coda prioritaria",
+      "Disdici quando vuoi"
+    ],
+    "monthly": "Mensile",
+    "yearly": "Annuale",
+    "perMonth": "/mese",
+    "perYear": "/anno",
+    "yearlySave": "Risparmia il 34%",
+    "creditsName": "Pacchetti di crediti",
+    "creditsSub": "Ricariche una tantum, senza scadenza",
+    "creditUnit": "crediti",
+    "packsFeat": [
+      "Download Pro, senza abbonamento",
+      "I crediti non scadono mai",
+      "Usali quando arriva l'ispirazione"
+    ],
+    "buy": "Acquista",
+    "soon": "Il pagamento arriva presto — il gratuito resta gratuito.",
+    "faq": [
+      {
+        "q": "Qual è la differenza tra Pro e i crediti?",
+        "a": "Pro è un abbonamento: immagini illimitate e studio senza watermark finché è attivo. I pacchetti di crediti sono acquisti una tantum che aggiungono generazioni premium senza abbonamento. Entrambi tolgono il watermark dai download."
+      },
+      {
+        "q": "I crediti scadono?",
+        "a": "No. Compra un pacchetto quando ti servono ritratti — carte festive, compleanni, un nuovo cucciolo — e i crediti ti aspettano."
+      },
+      {
+        "q": "Posso disdire Pro quando voglio?",
+        "a": "Sì, dal tuo account in due clic. Mantieni Pro fino alla fine del periodo pagato; le tue immagini restano tue per sempre."
+      }
+    ],
+    "metaT": "Prezzi — ritratti AI gratuiti, Pro e pacchetti di crediti",
+    "metaD": "3 immagini AI per animali gratis al giorno, per sempre. Passa a Pro per ritratti illimitati senza watermark, o ricarica con pacchetti una tantum."
   }
 }

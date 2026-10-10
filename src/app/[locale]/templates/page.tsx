@@ -43,7 +43,7 @@ export default async function TemplatesPage({
 
   const chipCls = (on: boolean) =>
     `rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-      on ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
+      on ? "bg-coral text-white" : "border border-sand bg-surface text-coffee hover:border-coral hover:text-coral"
     }`;
   const catHref = (c: CatId) => (activeBadge ? `/templates?badge=${activeBadge}&cat=${c}` : `/templates?cat=${c}`);
 

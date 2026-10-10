@@ -15,7 +15,7 @@ type Props = {
 };
 
 const iconBtn =
-  "flex h-10 w-10 items-center justify-center rounded-full border border-sand bg-white text-coffee transition-all hover:-translate-y-0.5 hover:border-coral hover:text-coral";
+  "flex h-10 w-10 items-center justify-center rounded-full border border-sand bg-surface text-coffee transition-all hover:-translate-y-0.5 hover:border-coral hover:text-coral";
 
 export function ShareBar({ url, text, imageUrl, fileShareSrc }: Props) {
   const [copied, setCopied] = useState(false);

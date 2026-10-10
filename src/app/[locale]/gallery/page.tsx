@@ -67,7 +67,7 @@ export default async function GalleryPage({
             key={s}
             href={s === "all" ? lp(locale, "/gallery") : `${lp(locale, "/gallery")}?species=${s}`}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              filter === s ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
+              filter === s ? "bg-coral text-white" : "border border-sand bg-surface text-coffee hover:border-coral hover:text-coral"
             }`}
           >
             {speciesLabel(s)}

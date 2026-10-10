@@ -1,27 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* 暖奶油 + 陶土珊瑚品牌体系（对齐参考项目设计规范） */
-  --color-cream: #faf6ef;
-  --color-parchment: #f3ecdf;
-  --color-sand: #e9dfcd;
-  --color-ink: #3d2e24;
-  --color-coffee: #6b5a4e;
-  --color-fog: #b8a894;
-  --color-coral: #e0715c;
-  --color-coral-deep: #c85a46;
-  --color-coral-soft: #fbeae5;
-  --color-sage: #6e7a62;
-  --color-sage-soft: #e8ede2;
-  --color-gold: #d4a857;
+  /* Skillry 式深色复古体系：暖黑底 + 奶油文字 + 陶土珊瑚主色 + 柠檬黄点缀。
+     token 名保持不变（换肤只需换值，旧内页自动继承深色）。 */
+  --color-cream: #191310;
+  --color-parchment: #211a15;
+  --color-sand: #3b2f26;
+  --color-ink: #f5eee2;
+  --color-coffee: #c9b8a6;
+  --color-fog: #8f7b67;
+  --color-coral: #e8765f;
+  --color-coral-deep: #d4593f;
+  --color-coral-soft: #38221b;
+  --color-sage: #a3b591;
+  --color-sage-soft: #252d1f;
+  --color-gold: #e6b767;
+  --color-lemon: #f4ee6e;
+  --color-lemon-ink: #1c1712;
+  --color-surface: #231b15;
+  --color-surface-2: #2c221b;
 
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-card: 1rem;
   --radius-big: 1.5rem;
-  --shadow-soft: 0 2px 12px rgba(61, 46, 36, 0.06);
-  --shadow-lift: 0 6px 24px rgba(61, 46, 36, 0.1);
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
 
 body {
@@ -39,15 +44,79 @@ body {
 }
 
 .btn-ghost {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand bg-white/60 px-5 py-2.5 font-semibold text-ink transition-colors hover:border-coral hover:text-coral;
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand bg-surface px-5 py-2.5 font-semibold text-ink transition-colors hover:border-coral hover:text-coral;
+}
+
+.btn-lemon {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-lemon px-6 py-3 font-semibold text-lemon-ink transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lift active:translate-y-0;
 }
 
 .card {
-  @apply rounded-card border border-sand/70 bg-white shadow-soft;
+  @apply rounded-card border border-sand/70 bg-surface shadow-soft;
 }
 
 .h-display {
-  @apply font-display font-semibold tracking-tight;
+  @apply font-display font-black tracking-tight;
+}
+
+/* Skillry 式复古大标题：奶油字 + 陶土错位硬阴影 */
+.headline-retro {
+  color: var(--color-ink);
+  text-shadow:
+    0.028em 0.028em 0 var(--color-coral-deep),
+    0.056em 0.056em 0 rgba(212, 89, 63, 0.45);
+}
+
+/* 柠檬黄公告条 */
+.annbar {
+  @apply bg-lemon text-lemon-ink;
+}
+
+/* 无限横向滚动（首屏图墙）：hover 暂停，reduced-motion 停用 */
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: marquee var(--marquee-duration, 60s) linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-hover:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+}
+
+/* 横向滚动行（模板行等） */
+.hscroll {
+  @apply flex gap-4 overflow-x-auto pb-2;
+  scroll-snap-type: x proximity;
+}
+.hscroll > * {
+  scroll-snap-align: start;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 徽章 pill（FREE / NEW / HOT） */
+.pill-badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide;
 }
 
 /* 聊天流 出现动画 */

@@ -217,7 +217,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 )}
                 <p className="text-sm">{m.text || <em className="text-coffee">({gen.styles})</em>}</p>
                 {m.templateId && (
-                  <span className="mt-1 inline-block rounded-full bg-white px-2 py-0.5 text-xs font-medium text-coral">
+                  <span className="mt-1 inline-block rounded-full bg-surface px-2 py-0.5 text-xs font-medium text-coral">
                     ✦ {m.templateId} {labels.tplLabel}
                   </span>
                 )}
@@ -240,7 +240,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                   </div>
                 )}
                 {m.status === "done" && m.result && (
-                  <div className="rounded-2xl rounded-tl-md border border-sand/70 bg-white p-3 shadow-soft">
+                  <div className="rounded-2xl rounded-tl-md border border-sand/70 bg-surface p-3 shadow-soft">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={m.result.image}
@@ -314,7 +314,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
       )}
 
       {/* 输入区（始终显示） */}
-      <div className="border-t border-sand/70 bg-white px-5 py-4">
+      <div className="border-t border-sand/70 bg-surface px-5 py-4">
         {/* 附件缩略图 */}
         {!!files.length && (
           <div className="mb-2 flex flex-wrap gap-2">
@@ -354,7 +354,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                     setInput(idea);
                     setIdeasOpen(false);
                   }}
-                  className="rounded-full border border-sand bg-white px-3 py-1.5 text-xs font-medium text-coffee transition-colors hover:border-coral hover:text-coral"
+                  className="rounded-full border border-sand bg-surface px-3 py-1.5 text-xs font-medium text-coffee transition-colors hover:border-coral hover:text-coral"
                 >
                   {idea}
                 </button>
@@ -374,7 +374,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                     setTplOpen(false);
                   }}
                   className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                    tpl?.id === t.id ? "bg-coral text-white" : "border border-sand bg-white text-coffee hover:border-coral hover:text-coral"
+                    tpl?.id === t.id ? "bg-coral text-white" : "border border-sand bg-surface text-coffee hover:border-coral hover:text-coral"
                   }`}
                 >
                   {t.name}
@@ -461,7 +461,7 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
               const h = hist.find((x) => x.imagePath === histSel);
               if (!h) return null;
               return (
-                <div className="mt-3 rounded-xl border border-sand/70 bg-white p-3">
+                <div className="mt-3 rounded-xl border border-sand/70 bg-surface p-3">
                   <img src={h.imagePath} alt={h.message || "Generated pet picture"} className="mx-auto max-h-72 rounded-lg" />
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     {user ? (
@@ -535,9 +535,9 @@ function ShareForm({ image, gen, onDone }: { image: string; gen: Dict["gen"]; on
     >
       <p className="text-sm font-semibold">{gen.formTitle}</p>
       <div className="mt-3 grid gap-2 sm:grid-cols-3">
-        <input value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder={gen.yourName} maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
-        <input value={petName} onChange={(e) => setPetName(e.target.value)} placeholder={gen.petName} maxLength={40} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral" />
-        <select value={species} onChange={(e) => setSpecies(e.target.value)} className="rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral">
+        <input value={nickname} onChange={(e) => setNickname(e.target.value)} placeholder={gen.yourName} maxLength={40} className="rounded-lg border border-sand bg-surface px-3 py-2 text-sm outline-none focus:border-coral" />
+        <input value={petName} onChange={(e) => setPetName(e.target.value)} placeholder={gen.petName} maxLength={40} className="rounded-lg border border-sand bg-surface px-3 py-2 text-sm outline-none focus:border-coral" />
+        <select value={species} onChange={(e) => setSpecies(e.target.value)} className="rounded-lg border border-sand bg-surface px-3 py-2 text-sm outline-none focus:border-coral">
           <option value="cat">{gen.species.cat}</option>
           <option value="dog">{gen.species.dog}</option>
           <option value="bird">{gen.species.bird}</option>
@@ -559,7 +559,7 @@ function ShareForm({ image, gen, onDone }: { image: string; gen: Dict["gen"]; on
         rows={2}
         maxLength={600}
         placeholder={gen.reviewPh}
-        className="mt-2 w-full resize-none rounded-lg border border-sand bg-white px-3 py-2 text-sm outline-none focus:border-coral"
+        className="mt-2 w-full resize-none rounded-lg border border-sand bg-surface px-3 py-2 text-sm outline-none focus:border-coral"
       />
       <div className="mt-2 flex items-center gap-2">
         <button type="submit" disabled={state === "sending"} className="btn-primary !px-4 !py-2 text-sm">

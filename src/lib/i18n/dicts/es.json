@@ -21,7 +21,9 @@
     "faq": "FAQ",
     "create": "Crear",
     "signIn": "Iniciar sesión",
-    "home": "Inicio"
+    "home": "Inicio",
+    "tools": "Herramientas gratis",
+    "pricing": "Precios"
   },
   "signout": {
     "title": "¿Cerrar sesión?",
@@ -42,7 +44,14 @@
     "terms": "Términos del servicio",
     "ai": "Divulgación de IA",
     "copyright": "todos los retratos son generados por IA",
-    "updated": "Última actualización"
+    "updated": "Última actualización",
+    "tools": "Herramientas gratis",
+    "toolsHub": "Todas las herramientas",
+    "toolsMeme": "Creador de memes",
+    "toolsAvatar": "Avatar de mascota",
+    "toolsNames": "Generadores de nombres",
+    "toolsAge": "Calculadora de edad",
+    "pricing": "Precios"
   },
   "home": {
     "badge": "Estudio de IA para mascotas · 100 plantillas · gratis",
@@ -92,7 +101,15 @@
     "faqLink": "Leer todas las preguntas →",
     "ctaTitle": "Crea la tuya en 30 segundos",
     "ctaSub": "Una foto, una frase. La próxima imagen favorita de tu mascota está a un clic.",
-    "ctaBtn": "Crear retrato de mi mascota"
+    "ctaBtn": "Crear retrato de mi mascota",
+    "toolsEyebrow": "Gratis · sin cuenta",
+    "toolsTitle": "Más herramientas gratis para pet lovers",
+    "toolsDesc": "Memes, avatares, nombres y más — gratis para siempre, la mayoría en tu navegador.",
+    "toolsAll": "Todas las herramientas →",
+    "priceT": "¿Te encanta? Hazte Pro",
+    "priceD": "Retratos ilimitados, descargas sin marca de agua y estilos premium. Desde $9.99/mes — o recarga con créditos.",
+    "priceBtn": "Ver precios",
+    "marqueeCap": "100 estilos · una foto · ~30 segundos"
   },
   "gen": {
     "download": "Descargar",
@@ -470,5 +487,281 @@
     "picCount": "1 foto",
     "prev": "Anterior",
     "next": "Siguiente"
+  },
+  "announce": {
+    "pro": "PRO",
+    "text": "Retratos ilimitados, sin marca de agua, estilos premium — desde $9.99/mes.",
+    "cta": "Ver planes",
+    "close": "Cerrar"
+  },
+  "tools": {
+    "title": "Herramientas gratis para mascotas",
+    "desc": "Seis herramientas gratis para pet lovers — memes, avatares, retratos y nombres. Sin cuenta.",
+    "hubMetaT": "Herramientas gratis para mascotas — memes, avatares, nombres y más",
+    "hubMetaD": "Seis herramientas gratis: crea memes de tu mascota en el navegador, genera un avatar IA adorable, encuentra el nombre perfecto y convierte años mascota en años humanos.",
+    "openTool": "Abrir herramienta",
+    "freeBadge": "Gratis",
+    "newBadge": "Nuevo",
+    "hotBadge": "Popular",
+    "portraitT": "Retratos IA de mascotas",
+    "portraitD": "Convierte a tu mascota en cualquier imagen — realeza, astronauta, póster de cine. 3 gratis al día.",
+    "memeT": "Creador de memes",
+    "memeD": "Añade el clásico texto superior e inferior a una foto, todo en tu navegador.",
+    "avatarT": "Avatar de mascota",
+    "avatarD": "Avatares de dibujo adorables para tu foto de perfil. 3 gratis al día.",
+    "dogNamesT": "Generador de nombres de perro",
+    "dogNamesD": "100+ ideas con significados y filtros por estilo — encuentra el tuyo.",
+    "catNamesT": "Generador de nombres de gato",
+    "catNamesD": "100+ ideas con significados y filtros por estilo — encuentra el tuyo.",
+    "ageT": "Calculadora de edad",
+    "ageD": "Años de gatos y perros en años humanos — con su etapa de vida.",
+    "moreT": "Mucho más que un meme",
+    "moreD": "Los memes son solo el inicio. Con la misma foto crea un retrato IA en cualquier estilo.",
+    "moreBtn": "Abrir el estudio IA",
+    "ctaT": "Todas las herramientas, siempre gratis",
+    "ctaD": "Retratos y avatares incluyen 3 fotos gratis al día. Sin cuenta para empezar."
+  },
+  "meme": {
+    "title": "Creador de memes de mascotas",
+    "sub": "Sube una foto, añade el clásico texto y descarga un meme listo para compartir. Todo pasa en tu navegador — la foto nunca sale de tu dispositivo.",
+    "upload": "Elegir foto",
+    "uploadHint": "JPG / PNG / WebP · no se sube",
+    "changePhoto": "Cambiar foto",
+    "topText": "Texto superior",
+    "bottomText": "Texto inferior",
+    "download": "Descargar meme",
+    "share": "Compartir",
+    "errType": "Elige una foto JPG, PNG o WebP",
+    "ideaLabel": "Ideas de texto — toca para usar",
+    "ideas": [
+      "Cuando suena la bolsa de premios",
+      "Yo fingiendo trabajar",
+      "Yo hago lo que quiero",
+      "SOS (y premios)",
+      "Sobrepensador profesional",
+      "Hoy tampoco"
+    ],
+    "howTitle": "Haz un meme en 3 pasos",
+    "how1t": "Elige una foto",
+    "how1d": "Sirve cualquier foto de tu mascota — cuanto más tonta la cara, mejor el meme.",
+    "how2t": "Añade el texto",
+    "how2d": "Escribe arriba y abajo, o toca una idea lista.",
+    "how3t": "Descarga y publica",
+    "how3d": "Guarda el meme y publícalo donde quieras. Dos toques.",
+    "tryStudio": "¿Quieres más que un meme? Convierte la misma foto en un retrato IA →",
+    "faq": [
+      {
+        "q": "¿De verdad es gratis?",
+        "a": "Sí — 100% gratis, sin registro y sin límite diario. Funciona en tu navegador, así que no nos cuesta nada."
+      },
+      {
+        "q": "¿Subís mi foto a algún sitio?",
+        "a": "No. El meme se genera en tu dispositivo con canvas — la foto nunca sale del navegador. Cierras la pestaña y desaparece."
+      },
+      {
+        "q": "¿Qué tamaño tiene el meme?",
+        "a": "Cuadrado 1080×1080 — pensado para Instagram, X, WhatsApp y cualquier feed. Los archivos descargados llevan una pequeña marca de petsdaily.live."
+      },
+      {
+        "q": "¿Puedo usarlo comercialmente?",
+        "a": "Para uso personal y comercial ligero (tus redes, memes de tu propia mascota), sí. Solo no uses fotos sin derecho."
+      }
+    ],
+    "metaT": "Creador de memes de mascotas — gratis, privado, sin registro",
+    "metaD": "Haz memes de mascotas gratis en tu navegador: sube una foto, añade texto arriba y abajo, descarga y comparte. Nada se sube — tus fotos se quedan en tu dispositivo.",
+    "stickers": "Pegatinas"
+  },
+  "avatar": {
+    "title": "Avatar de mascota",
+    "sub": "Convierte a tu mascota en un avatar de dibujo adorable para tu foto de perfil. Elige estilo, sube foto y listo en ~30 segundos.",
+    "styleLabel": "Elige un estilo",
+    "photoLabel": "Añade una foto de tu mascota",
+    "photoHint": "Una foto clara con la cara visible",
+    "generate": "Crear mi avatar",
+    "generating": "Pintando tu avatar…",
+    "again": "Probar otro estilo",
+    "dl": "Descargar",
+    "dlSignIn": "Inicia sesión para descargar",
+    "errPhoto": "Primero añade una foto de tu mascota",
+    "err": "El estudio tropezó — inténtalo de nuevo.",
+    "free": "3 fotos gratis al día",
+    "left": "Te quedan {n} hoy",
+    "tryMeme": "¿Prefieres reír? Haz un meme de tu mascota →",
+    "how1t": "Elige estilo",
+    "how1d": "Dibujo 3D, chibi kawaii o acuarela — los tres conservan los colores reales.",
+    "how2t": "Añade foto",
+    "how2d": "Una foto clara de frente es todo lo que necesita el estudio.",
+    "how3t": "Recibe tu avatar",
+    "how3d": "En ~30 segundos tienes un avatar cuadrado para descargar.",
+    "faq": [
+      {
+        "q": "¿Qué es un avatar de mascota?",
+        "a": "Un retrato de dibujo estilizado de tu mascota, en cuadrado para foto de perfil en Instagram, WhatsApp, Discord y más. La IA conserva su color y marcas reales."
+      },
+      {
+        "q": "¿Cuánto cuesta?",
+        "a": "Tienes 3 fotos gratis al día, avatares incluidos. Pro desbloquea generaciones ilimitadas y descargas sin marca."
+      },
+      {
+        "q": "¿Qué foto funciona mejor?",
+        "a": "Una foto clara y luminosa donde la cara llene el encuadre. Una basta — sin personas, por favor."
+      }
+    ],
+    "metaT": "Avatar de mascota — avatar IA gratis desde una foto",
+    "metaD": "Convierte a tu mascota en un avatar IA adorable: dibujo 3D, chibi kawaii o acuarela. 3 gratis al día, listo en ~30 segundos, cuadrado para perfil."
+  },
+  "names": {
+    "pickGender": "Sexo",
+    "gAll": "Todos",
+    "gM": "Macho",
+    "gF": "Hembra",
+    "gU": "Indistinto",
+    "pickStyle": "Estilo",
+    "sAll": "Todos los estilos",
+    "sCute": "Tierno",
+    "sCool": "Guay",
+    "sClassic": "Clásico",
+    "sFunny": "Gracioso",
+    "sFood": "Comida",
+    "shuffle": "Mezclar nombres",
+    "save": "Guardar",
+    "savedTitle": "Tu lista",
+    "savedEmpty": "Aún no guardas ninguno — toca el ♡ de un nombre que te guste.",
+    "clear": "Borrar todo",
+    "count": "{n} nombres"
+  },
+  "dogPage": {
+    "title": "Generador de nombres de perro",
+    "sub": "100+ ideas con significados — filtra por estilo y sexo, guarda tus favoritos y encuentra el perfecto.",
+    "faq": [
+      {
+        "q": "¿Cuáles son los nombres de perro más populares?",
+        "a": "Año tras año, Max, Bella, Charlie y Luna encabezan las listas. Los nombres humanos siguen de moda porque son fáciles de gritar en el parque y envejecen bien."
+      },
+      {
+        "q": "¿Cómo elijo un buen nombre?",
+        "a": "Los nombres cortos de una o dos sílabas son los que mejor reconocen los perros. Evita los que suenen a órdenes comunes y elige uno que no te dé vergüenza gritar en un parque."
+      },
+      {
+        "q": "¿Deben ser nombres de persona?",
+        "a": "¡Ambos funcionan! Los nombres humanos (Charlie, Daisy) dan sensación de familia; los de comida y graciosos (Waffles, Pickles) destilan personalidad. Nuestro generador mezcla todos los estilos."
+      }
+    ],
+    "metaT": "Generador de nombres de perro — 100+ ideas con significado",
+    "metaD": "Encuentra el nombre perfecto gratis: 100+ ideas con significados, filtradas por estilo tierno, guay, clásico, gracioso o comida. Guarda tu lista — sin registro."
+  },
+  "catPage": {
+    "title": "Generador de nombres de gato",
+    "sub": "100+ ideas con significados — filtra por estilo y sexo, guarda tus favoritos y encuentra el perfecto.",
+    "faq": [
+      {
+        "q": "¿Cuáles son los nombres de gato más populares?",
+        "a": "Luna, Oliver, Bella y Milo son los eternos favoritos. Los nombres lunares y espaciales (Luna, Nova, Cosmo) encantan especialmente en gatos — criaturas de la noche."
+      },
+      {
+        "q": "¿Cómo elijo un buen nombre?",
+        "a": "A los gatos responden mejor los nombres cortos con terminación brillante en \"i\" (Kiki, Mochi, Rosie). Observa un día a tu gato — un nombre que encaje con sus costumbres siempre gana."
+      },
+      {
+        "q": "¿Puedo renombrar a un gato adoptado?",
+        "a": "Sí — los gatos se adaptan en días o semanas. Usa el nombre nuevo con constancia, con premios y juego, y elige sonidos distintos a los de otras mascotas y palabras como \"no\"."
+      }
+    ],
+    "metaT": "Generador de nombres de gato — 100+ ideas con significado",
+    "metaD": "Encuentra el nombre perfecto gratis: 100+ ideas con significados, filtradas por estilo. Guarda tu lista — sin registro."
+  },
+  "age": {
+    "title": "Calculadora de edad de mascotas",
+    "sub": "Introduce la edad de tu gato o perro y a cuántos años humanos equivale — con su etapa de vida.",
+    "kind": "Mascota",
+    "cat": "Gato",
+    "dog": "Perro",
+    "ageLabel": "Edad",
+    "years": "años",
+    "size": "Tamaño del perro",
+    "small": "Pequeño (≤ 10 kg)",
+    "medium": "Mediano (11–25 kg)",
+    "large": "Grande (> 25 kg)",
+    "result": "≈ {n} años humanos",
+    "stage": {
+      "baby": "Cachorro",
+      "young": "Joven",
+      "adult": "Adulto",
+      "senior": "Mayor"
+    },
+    "chartTitle": "Años de mascota a años humanos",
+    "petYears": "Edad de mascota",
+    "humanYears": "Años humanos",
+    "faq": [
+      {
+        "q": "¿Cómo funcionan los años gatunos?",
+        "a": "Los gatos maduran rápido y luego se calman: el primer año cuenta como 15 humanos, el segundo suma 9 y cada año posterior unos 4. La segunda década de un gato casero ronda los 70-80 humanos."
+      },
+      {
+        "q": "¿Un año canino son de verdad 7 humanos?",
+        "a": "No — es un mito. Los perros maduran muchísimo antes: el primer año cuenta ~15. Después los perros grandes envejecen más rápido que los pequeños, por eso pedimos el tamaño."
+      },
+      {
+        "q": "¿Cuándo es mayor mi mascota?",
+        "a": "Los gatos se consideran mayores sobre los 11. En perros depende del tamaño: pequeños sobre 11, medianos sobre 9 y las razas grandes desde los 7. Con esas edades, más revisiones veterinarias."
+      }
+    ],
+    "metaT": "Calculadora de edad — años de gatos y perros a humanos",
+    "metaD": "Convierte años de gatos y perros a humanos gratis. Cálculo por tamaño, etapas de vida y tabla completa — y qué significa ser senior."
+  },
+  "pricing": {
+    "title": "Precios simples y honestos",
+    "sub": "Empieza gratis — mejora cuando quieras retratos ilimitados y un estudio sin marcas.",
+    "freeName": "Gratis",
+    "freePrice": "$0",
+    "freePer": "para siempre",
+    "freeFeat": [
+      "3 fotos al día",
+      "Las 100 plantillas",
+      "Todas las herramientas gratis",
+      "Solo iniciar sesión para descargar"
+    ],
+    "freeCta": "Empezar gratis",
+    "proBadge": "El más popular",
+    "proName": "Pro",
+    "proFeat": [
+      "Fotos ilimitadas",
+      "Sin marca de agua",
+      "Estilos premium y acceso anticipado",
+      "Descargas 4K",
+      "Cola prioritaria",
+      "Cancela cuando quieras"
+    ],
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "yearlySave": "Ahorra 34%",
+    "creditsName": "Packs de créditos",
+    "creditsSub": "Recargas únicas, sin caducidad",
+    "creditUnit": "créditos",
+    "packsFeat": [
+      "Descargas Pro sin suscripción",
+      "Los créditos nunca caducan",
+      "Úsalos cuando llegue la inspiración"
+    ],
+    "buy": "Comprar",
+    "soon": "El pago llega pronto — lo gratis sigue siendo gratis.",
+    "faq": [
+      {
+        "q": "¿Qué diferencia hay entre Pro y los créditos?",
+        "a": "Pro es una suscripción: fotos ilimitadas y sin marca de agua mientras esté activa. Los packs de créditos son compras únicas que añaden generaciones premium sin suscripción. Ambos quitan la marca de las descargas."
+      },
+      {
+        "q": "¿Caducan los créditos?",
+        "a": "No. Compra un pack cuando lo necesites — las tarjetas navideñas, un cumpleaños, un cachorro nuevo — y los créditos te esperan."
+      },
+      {
+        "q": "¿Puedo cancelar Pro cuando quiera?",
+        "a": "Sí, desde tu cuenta en dos clics. Conservas Pro hasta el final del periodo pagado; tus fotos son tuyas para siempre."
+      }
+    ],
+    "metaT": "Precios — retratos IA gratis, Pro y packs de créditos",
+    "metaD": "3 fotos IA de mascotas gratis cada día, para siempre. Pásate a Pro para retratos ilimitados sin marca, o recarga con packs únicos."
   }
 }

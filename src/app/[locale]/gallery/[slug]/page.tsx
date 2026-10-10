@@ -54,7 +54,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
       </nav>
 
       <header className="mt-6 text-center">
-        <p className="inline-flex items-center gap-2 rounded-full border border-sand bg-white px-4 py-1.5 text-xs font-semibold text-coffee shadow-soft">
+        <p className="inline-flex items-center gap-2 rounded-full border border-sand bg-surface px-4 py-1.5 text-xs font-semibold text-coffee shadow-soft">
           <PawIcon className="h-3.5 w-3.5 text-coral" />
           {t.share.made}
         </p>

@@ -6,7 +6,7 @@ import { PawIcon } from "./icons";
 export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
   return (
     <footer className="mt-20 border-t border-sand/70 bg-parchment/60">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
           <p className="flex items-center gap-2 text-lg font-semibold font-display">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-coral text-white">
@@ -28,7 +28,19 @@ export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
             <li><Link href={lp(locale, "/#create")} className="hover:text-coral">{t.footer.create}</Link></li>
             <li><Link href={lp(locale, "/templates")} className="hover:text-coral">{t.footer.tplCenter}</Link></li>
             <li><Link href={lp(locale, "/gallery")} className="hover:text-coral">{t.footer.galleryReviews}</Link></li>
+            <li><Link href={lp(locale, "/pricing")} className="hover:text-coral">{t.footer.pricing}</Link></li>
             <li><Link href={lp(locale, "/faq")} className="hover:text-coral">{t.footer.faq}</Link></li>
+          </ul>
+        </nav>
+        <nav aria-label="Free tools">
+          <p className="text-sm font-semibold uppercase tracking-wide text-fog">{t.footer.tools}</p>
+          <ul className="mt-3 space-y-2 text-sm text-coffee">
+            <li><Link href={lp(locale, "/tools")} className="font-medium hover:text-coral">{t.footer.toolsHub}</Link></li>
+            <li><Link href={lp(locale, "/tools/meme-maker")} className="hover:text-coral">{t.footer.toolsMeme}</Link></li>
+            <li><Link href={lp(locale, "/tools/pet-avatar")} className="hover:text-coral">{t.footer.toolsAvatar}</Link></li>
+            <li><Link href={lp(locale, "/tools/dog-names")} className="hover:text-coral">{t.tools.dogNamesT}</Link></li>
+            <li><Link href={lp(locale, "/tools/cat-names")} className="hover:text-coral">{t.tools.catNamesT}</Link></li>
+            <li><Link href={lp(locale, "/tools/pet-age")} className="hover:text-coral">{t.footer.toolsAge}</Link></li>
           </ul>
         </nav>
         <nav aria-label="Legal">

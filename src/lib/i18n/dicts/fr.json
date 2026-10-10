@@ -21,7 +21,9 @@
     "faq": "FAQ",
     "create": "Créer",
     "signIn": "Se connecter",
-    "home": "Accueil"
+    "home": "Accueil",
+    "tools": "Outils gratuits",
+    "pricing": "Tarifs"
   },
   "signout": {
     "title": "Se déconnecter ?",
@@ -42,7 +44,14 @@
     "terms": "Conditions d'utilisation",
     "ai": "Mention IA",
     "copyright": "tous les portraits sont générés par IA",
-    "updated": "Dernière mise à jour"
+    "updated": "Dernière mise à jour",
+    "tools": "Outils gratuits",
+    "toolsHub": "Tous les outils",
+    "toolsMeme": "Créateur de mèmes",
+    "toolsAvatar": "Avatar de animal",
+    "toolsNames": "Générateurs de prénoms",
+    "toolsAge": "Calculateur d'âge",
+    "pricing": "Tarifs"
   },
   "home": {
     "badge": "Studio IA pour animaux · 100 modèles · gratuit",
@@ -92,7 +101,15 @@
     "faqLink": "Lire toutes les questions →",
     "ctaTitle": "Le vôtre en 30 secondes",
     "ctaSub": "Une photo, une phrase. La prochaine image préférée de votre animal est à un clic.",
-    "ctaBtn": "Créer le portrait de mon animal"
+    "ctaBtn": "Créer le portrait de mon animal",
+    "toolsEyebrow": "Gratuit · sans compte",
+    "toolsTitle": "Encore plus d'outils gratuits pour les amoureux des animaux",
+    "toolsDesc": "Mèmes, avatars, prénoms et plus — gratuits pour toujours, la plupart directement dans votre navigateur.",
+    "toolsAll": "Tous les outils →",
+    "priceT": "Vous adorez ? Passez Pro",
+    "priceD": "Portraits illimités, téléchargements sans filigrane et styles premium. Dès $9.99/mois — ou rechargez en crédits.",
+    "priceBtn": "Voir les tarifs",
+    "marqueeCap": "100 styles · une photo · ~30 secondes"
   },
   "gen": {
     "download": "Télécharger",
@@ -470,5 +487,281 @@
     "picCount": "1 photo",
     "prev": "Précédent",
     "next": "Suivant"
+  },
+  "announce": {
+    "pro": "PRO",
+    "text": "Portraits illimités, sans filigrane, styles premium — dès $9.99/mois.",
+    "cta": "Voir les offres",
+    "close": "Fermer"
+  },
+  "tools": {
+    "title": "Outils gratuits pour animaux",
+    "desc": "Six outils gratuits pour les amoureux des animaux — mèmes, avatars, portraits et prénoms. Sans compte.",
+    "hubMetaT": "Outils gratuits pour animaux — mèmes, avatars, prénoms et plus",
+    "hubMetaD": "Six outils gratuits : créez un mème dans votre navigateur, générez un avatar IA adorable, trouvez le prénom parfait et convertissez l'âge animal en âge humain.",
+    "openTool": "Ouvrir l'outil",
+    "freeBadge": "Gratuit",
+    "newBadge": "Nouveau",
+    "hotBadge": "Populaire",
+    "portraitT": "Portraits IA d'animaux",
+    "portraitD": "Transformez votre animal en n'importe quelle image — royauté, astronaute, affiche de film. 3 gratuits par jour.",
+    "memeT": "Créateur de mèmes",
+    "memeD": "Ajoutez le texte classique haut et bas sur une photo, directement dans le navigateur.",
+    "avatarT": "Avatar d'animal",
+    "avatarD": "Avatars de dessin adorables pour photo de profil. 3 gratuits par jour.",
+    "dogNamesT": "Générateur de prénoms de chien",
+    "dogNamesD": "100+ idées avec significations et filtres par style — trouvez le bon.",
+    "catNamesT": "Générateur de prénoms de chat",
+    "catNamesD": "100+ idées avec significations et filtres par style — trouvez le bon.",
+    "ageT": "Calculateur d'âge",
+    "ageD": "L'âge des chats et chiens en années humaines — avec leur étape de vie.",
+    "moreT": "Bien plus qu'un mème",
+    "moreD": "Les mèmes ne sont qu'un début. Avec la même photo, créez un portrait IA dans tous les styles.",
+    "moreBtn": "Ouvrir le studio IA",
+    "ctaT": "Tous les outils, toujours gratuits",
+    "ctaD": "Portraits et avatars incluent 3 images gratuites par jour. Sans compte pour commencer."
+  },
+  "meme": {
+    "title": "Créateur de mèmes d'animaux",
+    "sub": "Envoyez une photo, ajoutez la légende classique, téléchargez un mème prêt à partager. Tout se passe dans votre navigateur — la photo ne quitte jamais votre appareil.",
+    "upload": "Choisir une photo",
+    "uploadHint": "JPG / PNG / WebP · rien n'est envoyé",
+    "changePhoto": "Changer de photo",
+    "topText": "Texte du haut",
+    "bottomText": "Texte du bas",
+    "download": "Télécharger le mème",
+    "share": "Partager",
+    "errType": "Choisissez une photo JPG, PNG ou WebP",
+    "ideaLabel": "Idées de légendes — touchez pour utiliser",
+    "ideas": [
+      "Quand le paquet de friandises craque",
+      "Moi, faisant semblant de travailler",
+      "Moi, je fais ce que je veux",
+      "Au secours (et des friandises)",
+      "Surrealiste professionnel",
+      "Pas aujourd'hui"
+    ],
+    "howTitle": "Un mème en 3 étapes",
+    "how1t": "Choisissez une photo",
+    "how1d": "N'importe quelle photo fait l'affaire — plus la tête est drôle, meilleur est le mème.",
+    "how2t": "Ajoutez la légende",
+    "how2d": "Tapez vos textes haut et bas, ou touchez une idée prête.",
+    "how3t": "Téléchargez et publiez",
+    "how3d": "Enregistrez le mème et publiez-le partout. Deux touches, c'est fait.",
+    "tryStudio": "Plus qu'un mème ? Transformez la même photo en portrait IA →",
+    "faq": [
+      {
+        "q": "C'est vraiment gratuit ?",
+        "a": "Oui — 100% gratuit, sans inscription et sans limite quotidienne. Tout tourne dans votre navigateur, ça ne nous coûte rien."
+      },
+      {
+        "q": "Ma photo est-elle envoyée quelque part ?",
+        "a": "Non. Le mème est rendu sur votre appareil avec canvas — la photo ne quitte jamais le navigateur. Fermez l'onglet, tout disparaît."
+      },
+      {
+        "q": "Quelle est la taille du mème ?",
+        "a": "Carré 1080×1080 — pensé pour Instagram, X, WhatsApp et tous les fils. Les fichiers téléchargés portent un petit marquage petsdaily.live."
+      },
+      {
+        "q": "Puis-je l'utiliser commercialement ?",
+        "a": "Pour un usage personnel et commercial léger (vos réseaux, mèmes de votre propre animal), oui. N'utilisez pas de photos sans droits."
+      }
+    ],
+    "metaT": "Créateur de mèmes d'animaux — gratuit, privé, sans inscription",
+    "metaD": "Créez un mème d'animal gratuitement dans votre navigateur : envoyez une photo, ajoutez les textes classiques, téléchargez et partagez. Rien n'est envoyé — vos photos restent sur votre appareil.",
+    "stickers": "Stickers"
+  },
+  "avatar": {
+    "title": "Avatar d'animal",
+    "sub": "Transformez votre animal en avatar de dessin adorable pour photo de profil. Choisissez un style, ajoutez une photo, prêt en ~30 secondes.",
+    "styleLabel": "Choisissez un style",
+    "photoLabel": "Ajoutez une photo de votre animal",
+    "photoHint": "Une photo nette, face visible",
+    "generate": "Créer mon avatar",
+    "generating": "Peinture de votre avatar…",
+    "again": "Essayer un autre style",
+    "dl": "Télécharger",
+    "dlSignIn": "Connectez-vous pour télécharger",
+    "errPhoto": "Ajoutez d'abord une photo de votre animal",
+    "err": "Le studio a trébuché — réessayez.",
+    "free": "3 images gratuites par jour",
+    "left": "{n} restantes aujourd'hui",
+    "tryMeme": "Plutôt d'humeur rigolote ? Faites un mème de votre animal →",
+    "how1t": "Choisissez un style",
+    "how1d": "Dessin 3D, chibi kawaii ou aquarelle — les trois gardent les vraies couleurs.",
+    "how2t": "Ajoutez une photo",
+    "how2d": "Une photo nette de face suffit au studio.",
+    "how3t": "Recevez votre avatar",
+    "how3d": "En ~30 secondes, un avatar carré à télécharger.",
+    "faq": [
+      {
+        "q": "Qu'est-ce qu'un avatar d'animal ?",
+        "a": "Un portrait stylisé en dessin de votre animal, au format carré pour photo de profil sur Instagram, WhatsApp, Discord et plus. L'IA conserve les vraies couleurs et marques."
+      },
+      {
+        "q": "Combien ça coûte ?",
+        "a": "3 images gratuites par jour, avatars inclus. Pro débloque les générations illimitées et les téléchargements sans filigrane."
+      },
+      {
+        "q": "Quelle photo fonctionne le mieux ?",
+        "a": "Une photo nette et lumineuse où le visage remplit le cadre. Une seule suffit — sans personnes, s'il vous plaît."
+      }
+    ],
+    "metaT": "Avatar d'animal — avatar IA gratuit à partir d'une photo",
+    "metaD": "Transformez votre animal en avatar IA adorable : dessin 3D, chibi kawaii ou aquarelle. 3 gratuits par jour, prêt en ~30 secondes, carré pour profil."
+  },
+  "names": {
+    "pickGender": "Sexe",
+    "gAll": "Tous",
+    "gM": "Mâle",
+    "gF": "Femelle",
+    "gU": "Peu importe",
+    "pickStyle": "Style",
+    "sAll": "Tous les styles",
+    "sCute": "Mignon",
+    "sCool": "Stylish",
+    "sClassic": "Classique",
+    "sFunny": "Drôle",
+    "sFood": "Nourriture",
+    "shuffle": "Mélanger les prénoms",
+    "save": "Enregistrer",
+    "savedTitle": "Votre sélection",
+    "savedEmpty": "Rien d'enregistré — touchez le ♡ d'un prénom qui vous plaît.",
+    "clear": "Tout effacer",
+    "count": "{n} prénoms"
+  },
+  "dogPage": {
+    "title": "Générateur de prénoms de chien",
+    "sub": "100+ idées avec significations — filtrez par style et sexe, enregistrez vos favoris et trouvez le bon.",
+    "faq": [
+      {
+        "q": "Quels sont les prénoms de chien les plus populaires ?",
+        "a": "Chaque année, Max, Bella, Charlie et Luna dominent les classements. Les prénoms humains restent populaires car faciles à crier au parc et qui vieillissent bien."
+      },
+      {
+        "q": "Comment choisir un bon prénom ?",
+        "a": "Les prénoms courts d'une ou deux syllabes sont les plus facilement reconnus par les chiens. Évitez ceux qui ressemblent à des ordres courants et choisissez un prénom pas gênant à crier en pleine rue."
+      },
+      {
+        "q": "Faut-il un prénom humain ?",
+        "a": "Les deux marchent ! Les prénoms humains (Charlie, Daisy) donnent un air de famille ; les prénoms food et drôles (Waffles, Pickles) débordent de personnalité. Notre générateur mélange tous les styles."
+      }
+    ],
+    "metaT": "Générateur de prénoms de chien — 100+ idées avec significations",
+    "metaD": "Trouvez le prénom parfait gratuitement : 100+ idées avec significations, filtrées par style mignon, stylish, classique, drôle ou food. Enregistrez vos favoris — sans inscription."
+  },
+  "catPage": {
+    "title": "Générateur de prénoms de chat",
+    "sub": "100+ idées avec significations — filtrez par style et sexe, enregistrez vos favoris et trouvez le bon.",
+    "faq": [
+      {
+        "q": "Quels sont les prénoms de chat les plus populaires ?",
+        "a": "Luna, Oliver, Bella et Milo restent les grands favoris. Les prénoms lunaires et spatiaux (Luna, Nova, Cosmo) plaisent particulièrement pour les chats — créatures de la nuit."
+      },
+      {
+        "q": "Comment choisir un bon prénom ?",
+        "a": "Les chats réagissent mieux aux prénoms courts terminés par un son \"i\" clair (Kiki, Mochi, Rosie). Observez votre chat une journée — un prénom calqué sur ses habitudes colle toujours mieux."
+      },
+      {
+        "q": "Puis-je renommer un chat adopté ?",
+        "a": "Oui — les chats s'adaptent en quelques jours à semaines. Utilisez le nouveau prénom avec constance, avec friandises et jeux, et choisissez des sons différents des autres animaux et des mots courants comme \"non\"."
+      }
+    ],
+    "metaT": "Générateur de prénoms de chat — 100+ idées avec significations",
+    "metaD": "Trouvez le prénom parfait gratuitement : 100+ idées avec significations, filtrées par style. Enregistrez vos favoris — sans inscription."
+  },
+  "age": {
+    "title": "Calculateur d'âge d'animal",
+    "sub": "Entrez l'âge de votre chat ou chien et voyez-le en années humaines — avec son étape de vie.",
+    "kind": "Animal",
+    "cat": "Chat",
+    "dog": "Chien",
+    "ageLabel": "Âge",
+    "years": "ans",
+    "size": "Taille du chien",
+    "small": "Petit (≤ 10 kg)",
+    "medium": "Moyen (11–25 kg)",
+    "large": "Grand (> 25 kg)",
+    "result": "≈ {n} années humaines",
+    "stage": {
+      "baby": "Bébé",
+      "young": "Jeune",
+      "adult": "Adulte",
+      "senior": "Sénior"
+    },
+    "chartTitle": "Années animales en années humaines",
+    "petYears": "Âge de l'animal",
+    "humanYears": "Années humaines",
+    "faq": [
+      {
+        "q": "Comment fonctionnent les années de chat ?",
+        "a": "Les chats mûrissent vite puis ralentissent : la première année compte environ 15 années humaines, la deuxième en ajoute 9, puis environ 4 par an. La deuxième décennie d'un chat d'intérieur vaut à peu près les 70-80 ans humains."
+      },
+      {
+        "q": "Une année canine vaut-elle vraiment 7 années humaines ?",
+        "a": "Non — c'est un mythe. Les chiens mûrissent bien plus vite au début : la première année compte ~15 ans. Ensuite, les gros chiens vieillissent plus vite que les petits — c'est pourquoi nous demandons la taille."
+      },
+      {
+        "q": "Quand mon animal devient-il sénior ?",
+        "a": "Les chats vers 11 ans. Pour les chiens, cela dépend de la taille : petits vers 11, moyens vers 9, grandes races dès 7. À ces âges, les visites vétérinaires régulières comptent encore plus."
+      }
+    ],
+    "metaT": "Calculateur d'âge — années de chats et chiens en années humaines",
+    "metaD": "Convertissez gratuitement l'âge des chats et chiens en années humaines. Calcul par taille, étapes de vie et table complète — et ce que sénior signifie."
+  },
+  "pricing": {
+    "title": "Des tarifs simples et honnêtes",
+    "sub": "Commencez gratuitement — passez Pro quand vous voulez des portraits illimités et un studio sans filigrane.",
+    "freeName": "Gratuit",
+    "freePrice": "$0",
+    "freePer": "pour toujours",
+    "freeFeat": [
+      "3 images par jour",
+      "Les 100 templates",
+      "Tous les outils gratuits",
+      "Connexion seulement pour télécharger"
+    ],
+    "freeCta": "Commencer gratuitement",
+    "proBadge": "Le plus populaire",
+    "proName": "Pro",
+    "proFeat": [
+      "Images illimitées",
+      "Sans filigrane",
+      "Styles premium et accès anticipé",
+      "Téléchargements 4K",
+      "File prioritaire",
+      "Annulable à tout moment"
+    ],
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "perMonth": "/mois",
+    "perYear": "/an",
+    "yearlySave": "Économisez 34%",
+    "creditsName": "Packs de crédits",
+    "creditsSub": "Recharges uniques, sans expiration",
+    "creditUnit": "crédits",
+    "packsFeat": [
+      "Téléchargements Pro, sans abonnement",
+      "Crédits sans expiration",
+      "À utiliser quand l'inspiration frappe"
+    ],
+    "buy": "Acheter",
+    "soon": "Le paiement arrive bientôt — le gratuit reste gratuit.",
+    "faq": [
+      {
+        "q": "Quelle différence entre Pro et les crédits ?",
+        "a": "Pro est un abonnement : images illimitées et studio sans filigrane tant qu'il est actif. Les packs de crédits sont des achats uniques qui ajoutent des générations premium sans abonnement. Les deux retirent le filigrane."
+      },
+      {
+        "q": "Les crédits expirent-ils ?",
+        "a": "Non. Achetez un pack quand vous en avez besoin — cartes de fêtes, anniversaire, un nouveau chiot — et les crédits vous attendent."
+      },
+      {
+        "q": "Puis-je annuler Pro à tout moment ?",
+        "a": "Oui, depuis votre compte en deux clics. Vous gardez Pro jusqu'à la fin de la période payée ; vos images restent à vous pour toujours."
+      }
+    ],
+    "metaT": "Tarifs — portraits IA gratuits, Pro et packs de crédits",
+    "metaD": "3 images IA d'animaux gratuites par jour, pour toujours. Passez Pro pour des portraits illimités sans filigrane, ou rechargez avec des packs uniques."
   }
 }

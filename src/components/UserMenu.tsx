@@ -74,7 +74,7 @@ export function UserMenu({ user, quota, resetIso, homePath, accountPath, libPath
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-card border border-sand/70 bg-white p-3 shadow-lift"
+          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-card border border-sand/70 bg-surface p-3 shadow-lift"
         >
           {/* 资料 */}
           <div className="flex items-center gap-2.5 border-b border-sand/70 pb-3">

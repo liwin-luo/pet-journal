@@ -21,7 +21,9 @@
     "faq": "FAQ",
     "create": "Create",
     "signIn": "Sign in",
-    "home": "Home"
+    "home": "Home",
+    "tools": "Free tools",
+    "pricing": "Pricing"
   },
   "signout": {
     "title": "Sign out?",
@@ -42,7 +44,14 @@
     "terms": "Terms of service",
     "ai": "AI disclosure",
     "copyright": "all portraits are AI-generated",
-    "updated": "Last updated"
+    "updated": "Last updated",
+    "tools": "Free tools",
+    "toolsHub": "All free tools",
+    "toolsMeme": "Meme maker",
+    "toolsAvatar": "Pet avatar maker",
+    "toolsNames": "Name generators",
+    "toolsAge": "Age calculator",
+    "pricing": "Pricing"
   },
   "home": {
     "badge": "AI pet studio · 100 templates · free to try",
@@ -92,7 +101,15 @@
     "faqLink": "Read all questions →",
     "ctaTitle": "Make yours in 30 seconds",
     "ctaSub": "One photo, one sentence. Your pet's next favorite picture is a click away.",
-    "ctaBtn": "Create my pet portrait"
+    "ctaBtn": "Create my pet portrait",
+    "toolsEyebrow": "Free · no account needed",
+    "toolsTitle": "More free tools for pet people",
+    "toolsDesc": "Memes, avatars, names and more — free forever, most of them right in your browser.",
+    "toolsAll": "All free tools →",
+    "priceT": "Love it? Go Pro",
+    "priceD": "Unlimited portraits, watermark-free downloads and premium styles. From $9.99/month — or top up with credits.",
+    "priceBtn": "See pricing",
+    "marqueeCap": "100 styles · one photo · ~30 seconds"
   },
   "gen": {
     "download": "Download",
@@ -470,5 +487,281 @@
     "picCount": "1 picture",
     "prev": "Previous",
     "next": "Next"
+  },
+  "announce": {
+    "pro": "PRO",
+    "text": "Unlimited portraits, no watermark, premium styles — from $9.99/mo.",
+    "cta": "See plans",
+    "close": "Dismiss"
+  },
+  "tools": {
+    "title": "Free pet tools",
+    "desc": "Six free tools for pet people — memes, avatars, portraits and names. No account needed.",
+    "hubMetaT": "Free pet tools — meme maker, avatar maker, name generators & more",
+    "hubMetaD": "Six free tools for pet people: make a pet meme in your browser, generate a cute AI avatar, find the perfect dog or cat name, and convert pet years to human years.",
+    "openTool": "Open tool",
+    "freeBadge": "Free",
+    "newBadge": "New",
+    "hotBadge": "Hot",
+    "portraitT": "AI pet portraits",
+    "portraitD": "Turn your pet into any picture — royal, astronaut, movie poster. 3 free a day.",
+    "memeT": "Pet meme maker",
+    "memeD": "Add the classic top & bottom caption to a pet photo, right in your browser.",
+    "avatarT": "Pet avatar maker",
+    "avatarD": "Cute cartoon avatars of your pet for profile pictures. 3 free a day.",
+    "dogNamesT": "Dog name generator",
+    "dogNamesD": "100+ ideas with meanings and style filters — find the one.",
+    "catNamesT": "Cat name generator",
+    "catNamesD": "100+ ideas with meanings and style filters — find the one.",
+    "ageT": "Pet age calculator",
+    "ageD": "Cat and dog years in human years — with their life stage.",
+    "moreT": "More than a meme",
+    "moreD": "Memes are just the start. Turn the same photo into a full AI portrait in any style.",
+    "moreBtn": "Open the AI studio",
+    "ctaT": "All tools, always free",
+    "ctaD": "Portraits and avatars include 3 free pictures a day. No account to start."
+  },
+  "meme": {
+    "title": "Pet meme maker",
+    "sub": "Upload a pet photo, add the classic caption, download a share-ready meme. Everything happens in your browser — your photo never leaves your device.",
+    "upload": "Choose a photo",
+    "uploadHint": "JPG / PNG / WebP · stays on your device",
+    "changePhoto": "Change photo",
+    "topText": "Top text",
+    "bottomText": "Bottom text",
+    "download": "Download meme",
+    "share": "Share",
+    "errType": "Please choose a JPG, PNG or WebP photo",
+    "ideaLabel": "Caption ideas — tap to use",
+    "ideas": [
+      "When the treat bag rustles",
+      "Me pretending to work",
+      "I do what I want",
+      "Send help (and treats)",
+      "Professional overthinker",
+      "Not today"
+    ],
+    "howTitle": "Make a meme in 3 steps",
+    "how1t": "Pick a photo",
+    "how1d": "Any photo of your pet works — the sillier the face, the better the meme.",
+    "how2t": "Add the caption",
+    "how2d": "Type your top and bottom text, or tap a ready-made idea.",
+    "how3t": "Download & post",
+    "how3d": "Save the meme and post it anywhere. Two taps, done.",
+    "tryStudio": "Want more than a meme? Turn the same photo into a full AI portrait →",
+    "faq": [
+      {
+        "q": "Is the meme maker really free?",
+        "a": "Yes — 100% free, with no sign-up and no daily limit. It runs entirely in your browser, so it costs us nothing to run for you."
+      },
+      {
+        "q": "Do you upload my photo anywhere?",
+        "a": "No. The meme is rendered on your device with canvas — your photo never leaves your browser. Close the tab and it's gone."
+      },
+      {
+        "q": "What size is the meme?",
+        "a": "Square 1080×1080 — sized for Instagram, X, WhatsApp and every feed. Downloaded files carry a small petsdaily.live corner mark."
+      },
+      {
+        "q": "Can I use memes commercially?",
+        "a": "For personal and fun commercial use (your own social accounts, memes of your own pet), yes. Just don't use photos you have no right to use."
+      }
+    ],
+    "metaT": "Pet meme maker — free, private, no sign-up",
+    "metaD": "Make a pet meme free in your browser: upload a photo, add classic top & bottom text, download and share. Nothing is uploaded — your photos stay on your device.",
+    "stickers": "Stickers"
+  },
+  "avatar": {
+    "title": "Pet avatar maker",
+    "sub": "Turn your pet into a cute cartoon avatar for your profile picture. Pick a style, add a photo, get it in ~30 seconds.",
+    "styleLabel": "Pick a style",
+    "photoLabel": "Add a photo of your pet",
+    "photoHint": "One clear photo, face visible",
+    "generate": "Make my avatar",
+    "generating": "Painting your avatar…",
+    "again": "Try another style",
+    "dl": "Download",
+    "dlSignIn": "Sign in to download",
+    "errPhoto": "Add one photo of your pet first",
+    "err": "The studio hiccupped — please try again.",
+    "free": "3 free pictures a day",
+    "left": "{n} left today",
+    "tryMeme": "Prefer something funny? Make a meme of your pet →",
+    "how1t": "Pick a style",
+    "how1d": "3D cartoon, kawaii chibi or soft watercolor — all three keep your pet's real colors.",
+    "how2t": "Add a photo",
+    "how2d": "One clear, face-on photo is all the studio needs.",
+    "how3t": "Get your avatar",
+    "how3d": "In ~30 seconds you have a square profile-picture avatar to download.",
+    "faq": [
+      {
+        "q": "What is a pet avatar?",
+        "a": "A stylized cartoon portrait of your pet, sized square for profile pictures on Instagram, WhatsApp, Discord and more. The AI keeps your pet's real fur color and markings."
+      },
+      {
+        "q": "How much does it cost?",
+        "a": "You get 3 free pictures a day, avatars included. Pro unlocks unlimited generations and watermark-free downloads."
+      },
+      {
+        "q": "Which photo works best?",
+        "a": "A clear, well-lit photo where your pet's face fills the frame. One photo is enough — no people in the picture, please."
+      }
+    ],
+    "metaT": "Pet avatar maker — free AI cartoon avatar from a photo",
+    "metaD": "Turn your pet into a cute AI avatar: 3D cartoon, kawaii chibi or watercolor. Free 3 pictures a day, ready in ~30 seconds, square for profile pictures."
+  },
+  "names": {
+    "pickGender": "Gender",
+    "gAll": "All",
+    "gM": "Male",
+    "gF": "Female",
+    "gU": "Any",
+    "pickStyle": "Style",
+    "sAll": "All styles",
+    "sCute": "Cute",
+    "sCool": "Cool",
+    "sClassic": "Classic",
+    "sFunny": "Funny",
+    "sFood": "Food",
+    "shuffle": "Shuffle names",
+    "save": "Save",
+    "savedTitle": "Your shortlist",
+    "savedEmpty": "No saved names yet — tap the ♡ on a name you like.",
+    "clear": "Clear all",
+    "count": "{n} names"
+  },
+  "dogPage": {
+    "title": "Dog name generator",
+    "sub": "100+ dog name ideas with meanings — filter by style and gender, save your favorites, and find the one that fits.",
+    "faq": [
+      {
+        "q": "What are the most popular dog names?",
+        "a": "Year after year, Max, Bella, Charlie and Luna top the lists. Classic human names stay popular because they're easy to call out at the park — and they age well with your dog."
+      },
+      {
+        "q": "How do I choose a good dog name?",
+        "a": "Short names with one or two syllables are easiest for dogs to recognize. Avoid names that sound like common commands (like \"Kit\" for \"sit\"), and pick something you won't be embarrassed to shout across a field."
+      },
+      {
+        "q": "Should dog names be human names?",
+        "a": "Both work! Human names (Charlie, Daisy) feel like a family member; food and funny names (Waffles, Pickles) show personality. Our generator mixes all styles — filter to the vibe you want."
+      }
+    ],
+    "metaT": "Dog name generator — 100+ ideas with meanings",
+    "metaD": "Find the perfect dog name free: 100+ ideas with meanings, filtered by cute, cool, classic, funny or food style. Save your shortlist — no sign-up."
+  },
+  "catPage": {
+    "title": "Cat name generator",
+    "sub": "100+ cat name ideas with meanings — filter by style and gender, save your favorites, and find the one that fits.",
+    "faq": [
+      {
+        "q": "What are the most popular cat names?",
+        "a": "Luna, Oliver, Bella and Milo are perennial favorites. Moon-and-space names (Luna, Nova, Cosmo) are especially loved for cats — fitting for creatures of the night."
+      },
+      {
+        "q": "How do I choose a good cat name?",
+        "a": "Cats respond best to short names ending in a bright \"ee\" sound (Kiki, Mochi, Rosie). Watch your cat for a day — a name that matches their habits (Noodle, Shadow, Zoomies) always fits better than a trendy one."
+      },
+      {
+        "q": "Can I rename an adopted cat?",
+        "a": "Yes — cats adapt to new names within days to weeks. Use the new name consistently with treats and play, and keep sounds distinct from other pets' names and common words like \"no\"."
+      }
+    ],
+    "metaT": "Cat name generator — 100+ ideas with meanings",
+    "metaD": "Find the perfect cat name free: 100+ ideas with meanings, filtered by cute, cool, classic, funny or food style. Save your shortlist — no sign-up."
+  },
+  "age": {
+    "title": "Pet age calculator",
+    "sub": "Enter your cat or dog's age and see it in human years — plus their life stage.",
+    "kind": "Pet",
+    "cat": "Cat",
+    "dog": "Dog",
+    "ageLabel": "Age",
+    "years": "years",
+    "size": "Dog size",
+    "small": "Small (≤ 10 kg)",
+    "medium": "Medium (11–25 kg)",
+    "large": "Large (> 25 kg)",
+    "result": "≈ {n} human years",
+    "stage": {
+      "baby": "Baby",
+      "young": "Young",
+      "adult": "Adult",
+      "senior": "Senior"
+    },
+    "chartTitle": "Pet years to human years",
+    "petYears": "Pet age",
+    "humanYears": "Human years",
+    "faq": [
+      {
+        "q": "How do cat years work?",
+        "a": "Cats mature fast, then slow down: the first cat year counts as about 15 human years, the second adds 9, and every year after adds about 4. An indoor cat's second decade is roughly a human's 70s and 80s."
+      },
+      {
+        "q": "Is one dog year really seven human years?",
+        "a": "No — that's a myth. Dogs mature much faster early on: the first year counts ~15 human years. After that, bigger dogs age faster than small ones, which is why our calculator asks for your dog's size."
+      },
+      {
+        "q": "When is my pet a senior?",
+        "a": "Cats are usually considered senior around 11. For dogs it depends on size: small dogs around 11, medium around 9, and large breeds as early as 7. Regular vet checks matter more as they reach these ages."
+      }
+    ],
+    "metaT": "Pet age calculator — cat & dog years to human years",
+    "metaD": "Convert cat and dog years to human years free. Size-aware dog calculation, life stages, and a full conversion chart — plus what senior means for your pet."
+  },
+  "pricing": {
+    "title": "Simple, honest pricing",
+    "sub": "Start free — upgrade when you want unlimited portraits and a watermark-free studio.",
+    "freeName": "Free",
+    "freePrice": "$0",
+    "freePer": "forever",
+    "freeFeat": [
+      "3 pictures a day",
+      "All 100 templates",
+      "Every free tool included",
+      "Sign in only to download"
+    ],
+    "freeCta": "Start free",
+    "proBadge": "Most popular",
+    "proName": "Pro",
+    "proFeat": [
+      "Unlimited pictures",
+      "No watermark on downloads",
+      "Premium styles & early access",
+      "4K downloads",
+      "Priority generation queue",
+      "Cancel anytime"
+    ],
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "yearlySave": "Save 34%",
+    "creditsName": "Credit packs",
+    "creditsSub": "One-time top-ups, never expire",
+    "creditUnit": "credits",
+    "packsFeat": [
+      "Pro-quality downloads, no subscription",
+      "Credits never expire",
+      "Use them whenever inspiration strikes"
+    ],
+    "buy": "Get pack",
+    "soon": "Checkout is coming soon — free tools stay free.",
+    "faq": [
+      {
+        "q": "What's the difference between Pro and credits?",
+        "a": "Pro is a subscription: unlimited pictures and a watermark-free studio for as long as it's active. Credit packs are one-time purchases that add high-quality generations without any subscription. Both remove the watermark on downloads."
+      },
+      {
+        "q": "Do credits expire?",
+        "a": "No. Buy a pack whenever you need portraits — a holiday card season, a birthday, a new puppy — and the credits wait for you."
+      },
+      {
+        "q": "Can I cancel Pro anytime?",
+        "a": "Yes, from your account page in two clicks. You keep Pro features until the end of the period you paid for; your pictures stay yours forever."
+      }
+    ],
+    "metaT": "Pricing — free AI pet portraits, Pro & credit packs",
+    "metaD": "3 free AI pet pictures every day, forever. Go Pro for unlimited portraits and watermark-free downloads, or top up with one-time credit packs."
   }
 }

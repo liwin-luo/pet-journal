@@ -1,6 +1,6 @@
 # PetsDaily — 宠物 AI 图片生成站（petsdaily.live）
 
-Next.js 15 (App Router) + TypeScript + Tailwind CSS v4。聊天框输入诉求 + 上传宠物照片 → AI 出图；100 个可复制提示词的模板中心；用户作品与评价页（SEO）；FAQ；隐私政策等合规页。大模型与生图接口沿用 `~/petpics` 参考项目验证过的密钥与调用方式。
+Next.js 15 (App Router) + TypeScript + Tailwind CSS v4。聊天框输入诉求 + 上传宠物照片 → AI 出图；100 个可复制提示词的模板中心；免费工具矩阵（梗图 / 头像 / 起名 / 年龄换算）负责 SEO 获客与社媒裂变；订阅 Pro + Credits 加油包负责增值变现（支付待接）。设计体系为 Skillry 式深色复古风（暖黑底 + 奶油复古大标题 + 柠檬黄公告条 + 马卡龙工具卡）。大模型与生图接口沿用 `~/petpics` 参考项目验证过的密钥与调用方式。
 
 ## 快速开始
 
@@ -28,6 +28,9 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
 - 无数据库依赖：JSON 文件库 `.data/db.json`，图片 `.data/{uploads,generated}/`
 - 生成历史：`GET /api/history` 按设备/账号返回最近 24 张；生成器面板顶部 "Your pictures" 区可随时找回（登录前后都有效）
 - 宠物日记：`/diary` 日历/时间线/日记本三视图回看作品，AI 以宠物口吻写每日日记
+- 免费工具矩阵（获客）：`/tools` 中心；`/tools/meme-maker` 梗图生成器（**纯前端 canvas**，照片不出浏览器、零成本，下载带域名小水印）；`/tools/pet-avatar` 头像生成（复用上传/生成/限流链路，3 种风格预设）；`/tools/dog-names`、`/tools/cat-names` 起名器（前端词库+收藏，SEO 长文）；`/tools/pet-age` 年龄换算器（纯前端计算+换算表）；全部页面带 FAQPage/WebApplication JSON-LD 并入 sitemap
+- 变现（UI 先行，支付待接）：`/pricing` 三档——Free / Pro（$9.99 月 · $79 年）/ Credits 加油包（30/80/200）；档位数据在 `src/lib/plans.ts`，checkout 按钮为禁用占位，接 Paddle 时只改 plans.ts + 按钮
+- 设计体系：`src/app/globals.css` token 重映射实现全站深色（cream=暖黑底、ink=奶油文字、coral 主色、lemon 公告黄、surface 卡面）；`.headline-retro` 复古错位阴影大标题、`.marquee` 无限图墙、`.hscroll` 横滚行
 - 审核后台：`/admin?key=ADMIN_KEY` 审批/拒绝画廊投稿（`ADMIN_KEY` 在 .env.local，上线换长随机串）
 
 ## 上线清单（按顺序）
@@ -44,13 +47,16 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
 
 ```
 src/
-  app/            页面：/ 模板中心 /gallery /faq /privacy /terms /ai-disclosure /share/[token]
-  app/api/        upload · media/[id] · generate · gallery
-  components/     Generator(聊天生成器) · TemplateCard · Header/Footer · CopyButton …
+  app/            页面：/ · /tools(中心) /tools/{meme-maker,pet-avatar,dog-names,cat-names,pet-age} /pricing
+                  /templates /gallery /diary /faq /privacy /terms /ai-disclosure /share/[token]
+  app/api/        upload · media/[id] · generate · gallery · diary · auth
+  components/     Generator(聊天生成器) · MemeMaker(纯前端梗图) · AvatarStudio · NameGenerator ·
+                  AgeCalculator · PricingPlans · ToolCard · AnnounceBar · Header/Footer …
   lib/engine/     glm.ts(文本) · seedream.ts(生图) · openrouter.ts(备选) · plan.ts(提示词规划) · mock.ts
-  lib/            templates.ts(100模板) · store.ts(JSON库) · ratelimit.ts · moderation.ts · seed.ts
+  lib/            templates.ts(100模板) · tools.ts(工具注册表) · plans.ts(定价) · names.ts(起名词库) ·
+                  age.ts(年龄换算) · store.ts(JSON库) · ratelimit.ts · moderation.ts · seed.ts
 public/tpl/       100 张模板示例图
-docs/plans/       产品设计与开发计划
+docs/plans/       产品设计与开发计划（含 2026-10-10 skillry 重构设计）
 ```
 
 ## 加模板

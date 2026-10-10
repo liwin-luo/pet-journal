@@ -21,7 +21,9 @@
     "faq": "FAQ",
     "create": "Erstellen",
     "signIn": "Anmelden",
-    "home": "Start"
+    "home": "Start",
+    "tools": "Gratis-Tools",
+    "pricing": "Preise"
   },
   "signout": {
     "title": "Abmelden?",
@@ -42,7 +44,14 @@
     "terms": "Nutzungsbedingungen",
     "ai": "KI-Kennzeichnung",
     "copyright": "alle Porträts sind KI-generiert",
-    "updated": "Zuletzt aktualisiert"
+    "updated": "Zuletzt aktualisiert",
+    "tools": "Gratis-Tools",
+    "toolsHub": "Alle Gratis-Tools",
+    "toolsMeme": "Meme-Maker",
+    "toolsAvatar": "Haustier-Avatar",
+    "toolsNames": "Namensgeneratoren",
+    "toolsAge": "Altersrechner",
+    "pricing": "Preise"
   },
   "home": {
     "badge": "KI-Tierstudio · 100 Vorlagen · kostenlos",
@@ -92,7 +101,15 @@
     "faqLink": "Alle Fragen lesen →",
     "ctaTitle": "Deins in 30 Sekunden",
     "ctaSub": "Ein Foto, ein Satz. Das nächste Lieblingsbild deines Haustiers ist nur einen Klick entfernt.",
-    "ctaBtn": "Haustier-Porträt erstellen"
+    "ctaBtn": "Haustier-Porträt erstellen",
+    "toolsEyebrow": "Gratis · ohne Konto",
+    "toolsTitle": "Mehr Gratis-Tools für Haustierfans",
+    "toolsDesc": "Memes, Avatare, Namen und mehr — für immer gratis, die meisten direkt im Browser.",
+    "toolsAll": "Alle Gratis-Tools →",
+    "priceT": "Begeistert? Hol dir Pro",
+    "priceD": "Unbegrenzte Porträts, Downloads ohne Wasserzeichen und Premium-Stile. Ab $9.99/Monat — oder mit Credits aufladen.",
+    "priceBtn": "Preise ansehen",
+    "marqueeCap": "100 Stile · ein Foto · ca. 30 Sekunden"
   },
   "gen": {
     "download": "Herunterladen",
@@ -470,5 +487,281 @@
     "picCount": "1 Bild",
     "prev": "Zurück",
     "next": "Weiter"
+  },
+  "announce": {
+    "pro": "PRO",
+    "text": "Unbegrenzte Porträts, ohne Wasserzeichen, Premium-Stile — ab $9.99/Monat.",
+    "cta": "Tarife ansehen",
+    "close": "Schließen"
+  },
+  "tools": {
+    "title": "Gratis-Tools für Haustiere",
+    "desc": "Sechs Gratis-Tools für Haustierfans — Memes, Avatare, Porträts und Namen. Ohne Konto.",
+    "hubMetaT": "Gratis-Tools für Haustiere — Meme-Maker, Avatar-Maker, Namensgeneratoren",
+    "hubMetaD": "Sechs Gratis-Tools: Haustier-Memes direkt im Browser, süße KI-Avatare, den perfekten Namen finden und Tierjahre in Menschenjahre umrechnen.",
+    "openTool": "Tool öffnen",
+    "freeBadge": "Gratis",
+    "newBadge": "Neu",
+    "hotBadge": "Beliebt",
+    "portraitT": "KI-Haustierporträts",
+    "portraitD": "Verwandle dein Haustier in jedes Bild — Königshaus, Astronaut, Filmposter. 3 gratis pro Tag.",
+    "memeT": "Meme-Maker",
+    "memeD": "Der klassische Text oben und unten — direkt im Browser.",
+    "avatarT": "Haustier-Avatar",
+    "avatarD": "Süße Cartoon-Avatare als Profilbild. 3 gratis pro Tag.",
+    "dogNamesT": "Hundenamen-Generator",
+    "dogNamesD": "100+ Ideen mit Bedeutung und Stilfilter — find das Richtige.",
+    "catNamesT": "Katznamen-Generator",
+    "catNamesD": "100+ Ideen mit Bedeutung und Stilfilter — find das Richtige.",
+    "ageT": "Altersrechner",
+    "ageD": "Katzen- und Hundejahre in Menschenjahre — inklusive Lebensphase.",
+    "moreT": "Mehr als ein Meme",
+    "moreD": "Memes sind erst der Anfang. Aus demselben Foto wird ein KI-Porträt in jedem Stil.",
+    "moreBtn": "KI-Studio öffnen",
+    "ctaT": "Alle Tools, für immer gratis",
+    "ctaD": "Porträts und Avatare enthalten 3 Gratis-Bilder pro Tag. Start ohne Konto."
+  },
+  "meme": {
+    "title": "Haustier-Meme-Maker",
+    "sub": "Lade ein Foto hoch, füge die klassische Beschriftung hinzu und lade ein teilfertiges Meme herunter. Alles passiert in deinem Browser — das Foto verlässt dein Gerät nie.",
+    "upload": "Foto wählen",
+    "uploadHint": "JPG / PNG / WebP · bleibt auf dem Gerät",
+    "changePhoto": "Foto wechseln",
+    "topText": "Text oben",
+    "bottomText": "Text unten",
+    "download": "Meme herunterladen",
+    "share": "Teilen",
+    "errType": "Bitte ein JPG-, PNG- oder WebP-Foto wählen",
+    "ideaLabel": "Beschriftungsideen — antippen zum Nutzen",
+    "ideas": [
+      "Wenn die Leckerli-Tüte knistert",
+      "Ich, beim Arbeiten-So-Tun",
+      "Ich mache, was ich will",
+      "Hilfe (und Leckerli)",
+      "Professioneller Grübler",
+      "Heute auch nicht"
+    ],
+    "howTitle": "Ein Meme in 3 Schritten",
+    "how1t": "Foto aussuchen",
+    "how1d": "Jedes Haustierfoto funktioniert — je doofer die Fratze, desto besser das Meme.",
+    "how2t": "Beschriftung hinzufügen",
+    "how2d": "Text oben und unten eintippen oder eine fertige Idee antippen.",
+    "how3t": "Herunterladen & posten",
+    "how3d": "Meme speichern und überall posten. Zwei Tipps, fertig.",
+    "tryStudio": "Mehr als ein Meme? Mach aus demselben Foto ein KI-Porträt →",
+    "faq": [
+      {
+        "q": "Ist der Meme-Maker wirklich gratis?",
+        "a": "Ja — 100% gratis, ohne Anmeldung und ohne Tageslimit. Läuft komplett im Browser, kostet uns also nichts."
+      },
+      {
+        "q": "Wird mein Foto hochgeladen?",
+        "a": "Nein. Das Meme wird mit Canvas auf deinem Gerät gerendert — das Foto verlässt den Browser nie. Tab zu, alles weg."
+      },
+      {
+        "q": "Welche Größe hat das Meme?",
+        "a": "Quadratisch 1080×1080 — passend für Instagram, X, WhatsApp und jeden Feed. Downloads tragen ein kleines petsdaily.live-Zeichen in der Ecke."
+      },
+      {
+        "q": "Kommerzielle Nutzung?",
+        "a": "Für private und leichte kommerzielle Nutzung (eigene Kanäle, Memes vom eigenen Haustier) ja. Nutze keine Fotos ohne Rechte."
+      }
+    ],
+    "metaT": "Haustier-Meme-Maker — gratis, privat, ohne Anmeldung",
+    "metaD": "Gratis Haustier-Memes im Browser: Foto hochladen, klassischen Text oben und unten hinzufügen, herunterladen und teilen. Nichts wird hochgeladen — Fotos bleiben auf dem Gerät.",
+    "stickers": "Sticker"
+  },
+  "avatar": {
+    "title": "Haustier-Avatar-Maker",
+    "sub": "Verwandle dein Haustier in einen süßen Cartoon-Avatar als Profilbild. Stil wählen, Foto hinzufügen, fertig in ca. 30 Sekunden.",
+    "styleLabel": "Stil wählen",
+    "photoLabel": "Foto deines Haustiers hinzufügen",
+    "photoHint": "Ein klares Foto, Gesicht sichtbar",
+    "generate": "Meinen Avatar erstellen",
+    "generating": "Dein Avatar wird gemalt…",
+    "again": "Andersen Stil testen",
+    "dl": "Herunterladen",
+    "dlSignIn": "Zum Herunterladen anmelden",
+    "errPhoto": "Füge zuerst ein Foto deines Haustiers hinzu",
+    "err": "Das Studio ist gestolpert — bitte nochmal versuchen.",
+    "free": "3 Gratis-Bilder pro Tag",
+    "left": "Heute noch {n} übrig",
+    "tryMeme": "Lieber witzig? Mach ein Meme von deinem Haustier →",
+    "how1t": "Stil wählen",
+    "how1d": "3D-Cartoon, Kawaii-Chibi oder Aquarell — alle behalten die echten Farben.",
+    "how2t": "Foto hinzufügen",
+    "how2d": "Ein klares Frontalfoto genügt dem Studio.",
+    "how3t": "Avatar erhalten",
+    "how3d": "Nach ca. 30 Sekunden ein quadratisches Profilbild herunterladen.",
+    "faq": [
+      {
+        "q": "Was ist ein Haustier-Avatar?",
+        "a": "Ein stilisierter Cartoon-Porträt deines Haustiers, quadratisch als Profilbild für Instagram, WhatsApp, Discord und mehr. Die KI behält echte Fellfarbe und Abzeichen."
+      },
+      {
+        "q": "Was kostet es?",
+        "a": "3 Gratis-Bilder pro Tag, Avatare inklusive. Pro schaltet unbegrenzte Generierungen und Downloads ohne Wasserzeichen frei."
+      },
+      {
+        "q": "Welches Foto passt am besten?",
+        "a": "Ein klares, helles Foto, auf dem das Gesicht den Rahmen füllt. Eines genügt — bitte ohne Personen."
+      }
+    ],
+    "metaT": "Haustier-Avatar-Maker — gratis KI-Cartoon-Avatar",
+    "metaD": "Verwandle dein Haustier in einen süßen KI-Avatar: 3D-Cartoon, Kawaii-Chibi oder Aquarell. 3 gratis pro Tag, fertig in ca. 30 Sekunden, quadratisch als Profilbild."
+  },
+  "names": {
+    "pickGender": "Geschlecht",
+    "gAll": "Alle",
+    "gM": "Rüde",
+    "gF": "Hündin",
+    "gU": "Egal",
+    "pickStyle": "Stil",
+    "sAll": "Alle Stile",
+    "sCute": "Niedlich",
+    "sCool": "Cool",
+    "sClassic": "Klassisch",
+    "sFunny": " Lustig",
+    "sFood": "Essen",
+    "shuffle": "Namen neu mischen",
+    "save": "Speichern",
+    "savedTitle": "Deine Shortlist",
+    "savedEmpty": "Noch nichts gespeichert — tipp auf das ♡ eines Namens, der dir gefällt.",
+    "clear": "Alles löschen",
+    "count": "{n} Namen"
+  },
+  "dogPage": {
+    "title": "Hundenamen-Generator",
+    "sub": "100+ Hundenamen mit Bedeutung — nach Stil und Geschlecht filtern, Favoriten speichern und das Richtige finden.",
+    "faq": [
+      {
+        "q": "Welche Hundenamen sind am beliebtesten?",
+        "a": "Jahr für Jahr führen Max, Bella, Charlie und Luna die Listen an. Menschliche Namen bleiben populär, weil man sie im Park leicht ruft und sie mit dem Hund mitwachsen."
+      },
+      {
+        "q": "Wie wähle ich einen guten Namen?",
+        "a": "Kurze Namen mit ein bis zwei Silben erkennen Hunde am besten. Vermeide Namen, die wie übliche Kommandos klingen, und wähle einen, den du ohne Bauchgrinsen über den Park rufen kannst."
+      },
+      {
+        "q": "Müssen es Menschennamen sein?",
+        "a": "Beides geht! Menschennamen (Charlie, Daisy) wirken familiär; Food- und witzige Namen (Waffles, Pickles) zeigen Persönlichkeit. Unser Generator mischt alle Stile."
+      }
+    ],
+    "metaT": "Hundenamen-Generator — 100+ Ideen mit Bedeutung",
+    "metaD": "Gratis den perfekten Hundenamen finden: 100+ Ideen mit Bedeutung, gefiltert nach niedlich, cool, klassisch, lustig oder Essen. Shortlist speichern — ohne Anmeldung."
+  },
+  "catPage": {
+    "title": "Katznamen-Generator",
+    "sub": "100+ Katznamen mit Bedeutung — nach Stil und Geschlecht filtern, Favoriten speichern und das Richtige finden.",
+    "faq": [
+      {
+        "q": "Welche Katznamen sind am beliebtesten?",
+        "a": "Luna, Oliver, Bella und Milo sind Dauerbrenner. Mond- und Weltraumnamen (Luna, Nova, Cosmo) sind bei Katzen besonders beliebt — passend für nachtaktive Wesen."
+      },
+      {
+        "q": "Wie wähle ich einen guten Namen?",
+        "a": "Katzen reagieren am besten auf kurze Namen mit hellem \"i\"-Laut am Ende (Kiki, Mochi, Rosie). Beobachte deine Katze einen Tag — ein Name passend zu den Gewohnheiten sitzt am besten."
+      },
+      {
+        "q": "Kann ich eine adoptierte Katze umbenennen?",
+        "a": "Ja — Katzen gewöhnen sich in Tagen bis Wochen an den neuen Namen. Nutze ihn konsequent mit Leckerlis und Spiel und wähle Laute, die sich von anderen Tier- und Alltagswörtern wie \"nein\" unterscheiden."
+      }
+    ],
+    "metaT": "Katznamen-Generator — 100+ Ideen mit Bedeutung",
+    "metaD": "Gratis den perfekten Katznamen finden: 100+ Ideen mit Bedeutung, nach Stil gefiltert. Shortlist speichern — ohne Anmeldung."
+  },
+  "age": {
+    "title": "Haustier-Altersrechner",
+    "sub": "Gib das Alter deiner Katze oder deines Hundes ein und sieh es in Menschenjahren — inklusive Lebensphase.",
+    "kind": "Haustier",
+    "cat": "Katze",
+    "dog": "Hund",
+    "ageLabel": "Alter",
+    "years": "Jahre",
+    "size": "Hundegröße",
+    "small": "Klein (≤ 10 kg)",
+    "medium": "Mittel (11–25 kg)",
+    "large": "Groß (> 25 kg)",
+    "result": "≈ {n} Menschenjahre",
+    "stage": {
+      "baby": "Baby",
+      "young": "Jung",
+      "adult": "Erwachsen",
+      "senior": "Senior"
+    },
+    "chartTitle": "Tierjahre in Menschenjahre",
+    "petYears": "Tieralter",
+    "humanYears": "Menschenjahre",
+    "faq": [
+      {
+        "q": "Wie funktionieren Katzenjahre?",
+        "a": "Katzen reifen schnell und werden dann langsamer: das erste Jahr zählt etwa 15 Menschenjahre, das zweite adds 9, jedes weitere etwa 4. Das zweite Jahrzehnt einer Wohnungskatze entspricht etwa den menschlichen 70ern und 80ern."
+      },
+      {
+        "q": "Ist ein Hundejahr wirklich sieben Menschenjahre?",
+        "a": "Nein — das ist ein Mythos. Hunde reifen anfangs viel schneller: das erste Jahr zählt ~15. Danach altern große Hunde schneller als kleine — deshalb fragen wir nach der Größe."
+      },
+      {
+        "q": "Ab wann ist mein Haustier senior?",
+        "a": "Katzen ab etwa 11. Bei Hunden kommt es auf die Größe an: kleine ab 11, mittlere ab 9, große Rassen schon ab 7. Ab diesen Altern sind regelmäßige Vet-Checks wichtiger."
+      }
+    ],
+    "metaT": "Haustier-Altersrechner — Katzen- & Hundejahre in Menschenjahre",
+    "metaD": "Katzen- und Hundejahre gratis in Menschenjahre umrechnen. Größenabhängige Hundeberechnung, Lebensphasen und komplette Tabelle — und was senior bedeutet."
+  },
+  "pricing": {
+    "title": "Einfache, ehrliche Preise",
+    "sub": "Starte gratis — upgrade, wenn du unbegrenzte Porträts und ein wasserzeichenfreies Studio willst.",
+    "freeName": "Gratis",
+    "freePrice": "$0",
+    "freePer": "für immer",
+    "freeFeat": [
+      "3 Bilder pro Tag",
+      "Alle 100 Templates",
+      "Alle Gratis-Tools inklusive",
+      "Anmelden nur zum Herunterladen"
+    ],
+    "freeCta": "Gratis starten",
+    "proBadge": "Am beliebtesten",
+    "proName": "Pro",
+    "proFeat": [
+      "Unbegrenzte Bilder",
+      "Kein Wasserzeichen",
+      "Premium-Stile & frühe Zugang",
+      "4K-Downloads",
+      "Prioritäts-Warteschlange",
+      "Jederzeit kündbar"
+    ],
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "perMonth": "/Monat",
+    "perYear": "/Jahr",
+    "yearlySave": "34% sparen",
+    "creditsName": "Credit-Pakete",
+    "creditsSub": "Einmalige Aufladung, läuft nie ab",
+    "creditUnit": "Credits",
+    "packsFeat": [
+      "Pro-Downloads ohne Abo",
+      "Credits laufen nie ab",
+      "Nutze sie, wenn die Idee kommt"
+    ],
+    "buy": "Kaufen",
+    "soon": "Der Checkout kommt bald — Gratis bleibt gratis.",
+    "faq": [
+      {
+        "q": "Was ist der Unterschied zwischen Pro und Credits?",
+        "a": "Pro ist ein Abo: unbegrenzte Bilder und ein Studio ohne Wasserzeichen, solange es aktiv ist. Credit-Pakete sind Einmalkäufe, die hochwertige Generierungen ohne Abo hinzufügen. Beide entfernen das Download-Wasserzeichen."
+      },
+      {
+        "q": "Laufen Credits ab?",
+        "a": "Nein. Kauf ein Paket, wenn du Porträts brauchst — Feiertagskarten, Geburtstag, ein neues Welpenmitglied — und die Credits warten auf dich."
+      },
+      {
+        "q": "Kann ich Pro jederzeit kündigen?",
+        "a": "Ja, in deinem Konto mit zwei Klicks. Du behältst Pro bis zum Ende der bezahlten Laufzeit; deine Bilder bleiben für immer deine."
+      }
+    ],
+    "metaT": "Preise — gratis KI-Haustierporträts, Pro & Credits",
+    "metaD": "3 gratis KI-Haustierbilder pro Tag, für immer. Mit Pro unbegrenzte Porträts und Downloads ohne Wasserzeichen — oder mit Einmal-Credit-Paketen aufladen."
   }
 }

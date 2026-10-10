@@ -40,7 +40,7 @@ export function LikeButton({ id, count, liked, label }: { id: string; count: num
       aria-label={label}
       title={label}
       className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold transition-all ${
-        state.liked ? "border-coral bg-coral-soft text-coral" : "border-sand bg-white text-coffee hover:border-coral hover:text-coral"
+        state.liked ? "border-coral bg-coral-soft text-coral" : "border-sand bg-surface text-coffee hover:border-coral hover:text-coral"
       }`}
     >
       <HeartIcon className={`h-3.5 w-3.5 transition-transform ${state.liked ? "scale-110" : ""}`} />

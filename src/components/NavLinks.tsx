@@ -4,12 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n";
 
-type Labels = { home: string; templates: string; gallery: string; faq: string };
+type Labels = { home: string; templates: string; gallery: string; faq: string; tools: string; pricing: string };
 
 const ITEMS: { path: string; key: keyof Labels }[] = [
   { path: "/", key: "home" },
   { path: "/templates", key: "templates" },
   { path: "/gallery", key: "gallery" },
+  { path: "/tools", key: "tools" },
+  { path: "/pricing", key: "pricing" },
   { path: "/faq", key: "faq" },
 ];
 

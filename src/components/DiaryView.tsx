@@ -172,7 +172,7 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
               placeholder={d.petNamePh}
               aria-label={d.setupTitle}
               maxLength={40}
-              className="w-full rounded-xl border border-sand bg-white px-3.5 py-2.5 text-sm outline-none focus:border-coral"
+              className="w-full rounded-xl border border-sand bg-surface px-3.5 py-2.5 text-sm outline-none focus:border-coral"
             />
             <input
               value={form.species}
@@ -180,7 +180,7 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
               placeholder={d.petSpeciesPh}
               aria-label={d.petSpeciesPh}
               maxLength={30}
-              className="w-full rounded-xl border border-sand bg-white px-3.5 py-2.5 text-sm outline-none focus:border-coral"
+              className="w-full rounded-xl border border-sand bg-surface px-3.5 py-2.5 text-sm outline-none focus:border-coral"
             />
           </div>
           <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-fog">{d.petAvatar}</p>

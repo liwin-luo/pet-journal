@@ -31,7 +31,7 @@ export function WorkShareButton({ path, title, label }: Props) {
       onClick={share}
       aria-label={label}
       title={label}
-      className="inline-flex items-center gap-1 rounded-full border border-sand bg-white px-2.5 py-1 text-xs font-semibold text-coffee transition-all hover:border-coral hover:text-coral"
+      className="inline-flex items-center gap-1 rounded-full border border-sand bg-surface px-2.5 py-1 text-xs font-semibold text-coffee transition-all hover:border-coral hover:text-coral"
     >
       {done ? <CheckIcon className="h-3.5 w-3.5 text-sage" /> : <ShareIcon className="h-3.5 w-3.5" />}
     </button>
