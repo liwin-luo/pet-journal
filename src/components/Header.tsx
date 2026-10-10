@@ -29,10 +29,10 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
           </span>
           <span className="hidden min-[480px]:inline">{SITE_NAME}</span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium text-coffee lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-5 text-sm font-medium text-coffee xl:flex" aria-label="Main">
           <NavLinks
             locale={locale}
-            labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq, tools: t.nav.tools, pricing: t.nav.pricing }}
+            labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq, tools: t.nav.tools, pricing: t.nav.pricing, blog: t.nav.blog }}
             variant="desktop"
           />
         </nav>
@@ -61,10 +61,10 @@ export async function Header({ locale, t }: { locale: Locale; t: Dict }) {
         </div>
       </div>
       {/* 移动端导航 */}
-      <nav className="flex justify-center gap-5 border-t border-sand/60 py-2 text-sm font-medium text-coffee md:hidden" aria-label="Mobile">
+      <nav className="flex flex-wrap justify-center gap-x-5 gap-y-1 border-t border-sand/60 py-2 text-sm font-medium text-coffee xl:hidden" aria-label="Mobile">
         <NavLinks
           locale={locale}
-          labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq, tools: t.nav.tools, pricing: t.nav.pricing }}
+          labels={{ home: t.nav.home, templates: t.nav.templates, gallery: t.nav.gallery, faq: t.nav.faq, tools: t.nav.tools, pricing: t.nav.pricing, blog: t.nav.blog }}
           variant="mobile"
         />
       </nav>

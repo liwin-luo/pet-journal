@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LOCALES, DEFAULT_LOCALE } from "@/lib/i18n";
 
-type Labels = { home: string; templates: string; gallery: string; faq: string; tools: string; pricing: string };
+type Labels = { home: string; templates: string; gallery: string; faq: string; tools: string; pricing: string; blog: string };
 
 const ITEMS: { path: string; key: keyof Labels }[] = [
   { path: "/", key: "home" },
@@ -12,6 +12,7 @@ const ITEMS: { path: string; key: keyof Labels }[] = [
   { path: "/gallery", key: "gallery" },
   { path: "/tools", key: "tools" },
   { path: "/pricing", key: "pricing" },
+  { path: "/blog", key: "blog" },
   { path: "/faq", key: "faq" },
 ];
 

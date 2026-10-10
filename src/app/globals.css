@@ -119,6 +119,45 @@ body {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide;
 }
 
+/* 博客正文排版 */
+.post-body {
+  @apply text-base leading-relaxed text-ink;
+}
+.post-body h2 {
+  @apply mt-12 font-display text-2xl font-bold tracking-tight text-ink;
+}
+.post-body h3 {
+  @apply mt-8 font-display text-lg font-bold text-ink;
+}
+.post-body p {
+  @apply mt-4 text-coffee;
+}
+.post-body a {
+  @apply font-medium text-coral underline decoration-coral/40 underline-offset-2 transition-colors hover:decoration-coral;
+}
+.post-body ul,
+.post-body ol {
+  @apply mt-4 space-y-2 text-coffee;
+}
+.post-body ul {
+  @apply list-disc pl-6;
+}
+.post-body ol {
+  @apply list-decimal pl-6;
+}
+.post-body li::marker {
+  color: var(--color-coral);
+}
+.post-body strong {
+  @apply font-semibold text-ink;
+}
+.post-body img {
+  @apply mt-6 rounded-card border border-sand/60;
+}
+.post-body blockquote {
+  @apply mt-6 border-l-4 border-coral/60 bg-coral-soft/40 px-5 py-3 text-coffee;
+}
+
 /* 聊天流 出现动画 */
 @keyframes rise {
   from {

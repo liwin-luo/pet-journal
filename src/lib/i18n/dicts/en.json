@@ -23,7 +23,8 @@
     "signIn": "Sign in",
     "home": "Home",
     "tools": "Free tools",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "blog": "Blog"
   },
   "signout": {
     "title": "Sign out?",
@@ -51,7 +52,8 @@
     "toolsAvatar": "Pet avatar maker",
     "toolsNames": "Name generators",
     "toolsAge": "Age calculator",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "blog": "Blog"
   },
   "home": {
     "badge": "AI pet studio · 100 templates · free to try",
@@ -763,5 +765,11 @@
     ],
     "metaT": "Pricing — free AI pet portraits, Pro & credit packs",
     "metaD": "3 free AI pet pictures every day, forever. Go Pro for unlimited portraits and watermark-free downloads, or top up with one-time credit packs."
+  },
+  "blog": {
+    "title": "The PetsDaily Blog",
+    "sub": "Guides, ideas and honest tips for turning your pet's photos into art — and memes.",
+    "readTime": "{n} min read",
+    "back": "All posts"
   }
 }

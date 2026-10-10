@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { LOCALES, lp } from "@/lib/i18n";
 import { getAllGallery, workPath } from "@/lib/gallery";
+import { getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 import { TEMPLATES } from "@/lib/templates";
 
@@ -17,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/tools/cat-names", priority: 0.8, freq: "monthly" },
     { path: "/tools/pet-age", priority: 0.8, freq: "monthly" },
     { path: "/pricing", priority: 0.7, freq: "monthly" },
+    { path: "/blog", priority: 0.7, freq: "weekly" },
     { path: "/faq", priority: 0.6, freq: "monthly" },
     { path: "/privacy", priority: 0.2, freq: "yearly" },
     { path: "/terms", priority: 0.2, freq: "yearly" },
@@ -33,6 +35,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
     for (const t of TEMPLATES) {
       out.push({ url: `${SITE_URL}${lp(locale, `/templates/${t.id}`)}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 });
+    }
+    for (const p of getAllPosts()) {
+      out.push({ url: `${SITE_URL}${lp(locale, `/blog/${p.slug}`)}`, lastModified: new Date(p.date), changeFrequency: "monthly", priority: 0.6 });
     }
     for (const w of works) {
       out.push({ url: `${SITE_URL}${lp(locale, workPath(w))}`, lastModified: new Date(w.createdAt), changeFrequency: "monthly", priority: 0.5 });
