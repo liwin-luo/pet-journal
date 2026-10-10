@@ -53,7 +53,8 @@
     "toolsNames": "Name generators",
     "toolsAge": "Age calculator",
     "pricing": "Pricing",
-    "blog": "Blog"
+    "blog": "Blog",
+    "help": "Help & guides"
   },
   "home": {
     "badge": "AI pet studio · 100 templates · free to try",
@@ -771,5 +772,12 @@
     "sub": "Guides, ideas and honest tips for turning your pet's photos into art — and memes.",
     "readTime": "{n} min read",
     "back": "All posts"
+  },
+  "help": {
+    "title": "Help & guides",
+    "sub": "Step-by-step manuals for every free tool — how to use them, what the settings do, and how to fix anything that looks off.",
+    "back": "All guides",
+    "openTool": "Open the tool",
+    "steps": "In this guide"
   }
 }

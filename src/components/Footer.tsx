@@ -30,6 +30,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Dict }) {
             <li><Link href={lp(locale, "/gallery")} className="hover:text-coral">{t.footer.galleryReviews}</Link></li>
             <li><Link href={lp(locale, "/pricing")} className="hover:text-coral">{t.footer.pricing}</Link></li>
             <li><Link href={lp(locale, "/blog")} className="hover:text-coral">{t.footer.blog}</Link></li>
+            <li><Link href={lp(locale, "/help")} className="hover:text-coral">{t.footer.help}</Link></li>
             <li><Link href={lp(locale, "/faq")} className="hover:text-coral">{t.footer.faq}</Link></li>
           </ul>
         </nav>

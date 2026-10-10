@@ -83,6 +83,15 @@ export default async function PetAvatarPage({ params }: { params: Promise<{ loca
         <Link href={lp(locale, "/tools/meme-maker")} className="font-semibold text-coral hover:underline">{t.avatar.tryMeme}</Link>
       </p>
 
+      {/* 帮助文档交叉内链 */}
+      <p className="mt-4 text-center text-sm text-coffee">
+        Need the full manual? Read{" "}
+        <Link href={lp(locale, "/help/how-to-create-a-pet-avatar")} className="font-semibold text-coral hover:underline">
+          How to Create an AI Pet Avatar
+        </Link>
+        .
+      </p>
+
       {/* FAQ */}
       <section className="mx-auto mt-14 max-w-3xl" aria-labelledby="avatar-faq">
         <h2 id="avatar-faq" className="h-display text-center text-3xl">{t.home.faqTitle}</h2>

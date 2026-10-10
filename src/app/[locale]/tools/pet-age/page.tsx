@@ -59,6 +59,15 @@ export default async function PetAgePage({ params }: { params: Promise<{ locale:
         <Link href={lp(locale, "/tools/pet-avatar")} className="font-semibold text-coral hover:underline">{t.avatar.tryMeme}</Link>
       </p>
 
+      {/* 帮助文档交叉内链 */}
+      <p className="mt-4 text-center text-sm text-coffee">
+        Need the full manual? Read{" "}
+        <Link href={lp(locale, "/help/how-to-use-pet-age-calculator")} className="font-semibold text-coral hover:underline">
+          How to Use the Pet Age Calculator
+        </Link>
+        .
+      </p>
+
       {/* FAQ */}
       <section className="mx-auto mt-12 max-w-3xl" aria-labelledby="pet-age-faq">
         <h2 id="pet-age-faq" className="h-display text-center text-3xl">{t.home.faqTitle}</h2>

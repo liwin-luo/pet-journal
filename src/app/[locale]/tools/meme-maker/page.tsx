@@ -76,6 +76,15 @@ export default async function MemeMakerPage({ params }: { params: Promise<{ loca
         <Link href={`${lp(locale, "/")}#create`} className="font-semibold text-coral hover:underline">{t.meme.tryStudio}</Link>
       </p>
 
+      {/* 帮助文档交叉内链 */}
+      <p className="mt-4 text-center text-sm text-coffee">
+        Need the full manual? Read{" "}
+        <Link href={lp(locale, "/help/how-to-make-a-pet-meme")} className="font-semibold text-coral hover:underline">
+          How to Make a Pet Meme
+        </Link>
+        .
+      </p>
+
       {/* FAQ */}
       <section className="mx-auto mt-14 max-w-3xl" aria-labelledby="meme-faq">
         <h2 id="meme-faq" className="h-display text-center text-3xl">{t.home.faqTitle}</h2>

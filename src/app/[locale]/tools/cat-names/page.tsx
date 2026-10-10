@@ -65,6 +65,15 @@ export default async function CatNamesPage({ params }: { params: Promise<{ local
         <Link href={lp(locale, "/tools/pet-avatar")} className="font-semibold text-coral hover:underline">{t.avatar.tryMeme}</Link>
       </p>
 
+      {/* 帮助文档交叉内链 */}
+      <p className="mt-4 text-center text-sm text-coffee">
+        Need the full manual? Read{" "}
+        <Link href={lp(locale, "/help/how-to-use-pet-name-generators")} className="font-semibold text-coral hover:underline">
+          How to Use the Pet Name Generators
+        </Link>
+        .
+      </p>
+
       {/* FAQ */}
       <section className="mx-auto mt-12 max-w-3xl" aria-labelledby="cat-names-faq">
         <h2 id="cat-names-faq" className="h-display text-center text-3xl">{t.home.faqTitle}</h2>

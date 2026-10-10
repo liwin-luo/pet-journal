@@ -30,6 +30,7 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
 - 宠物日记：`/diary` 日历/时间线/日记本三视图回看作品，AI 以宠物口吻写每日日记
 - 免费工具矩阵（获客）：`/tools` 中心；`/tools/meme-maker` 梗图生成器（**纯前端 canvas**，照片不出浏览器、零成本，下载带域名小水印）；`/tools/pet-avatar` 头像生成（复用上传/生成/限流链路，3 种风格预设）；`/tools/dog-names`、`/tools/cat-names` 起名器（前端词库+收藏，SEO 长文）；`/tools/pet-age` 年龄换算器（纯前端计算+换算表）；全部页面带 FAQPage/WebApplication JSON-LD 并入 sitemap
 - 博客（内容获客）：`/blog` 索引 + `/blog/[slug]`，文章为 `src/content/blog/*.md`（frontmatter：title/description/date/cover/tags/ctaLabel/ctaHref），marked 渲染，Article JSON-LD，文末工具 CTA + 相关文章；**发新文章 = 丢一个 .md 进目录**。内容策略见 docs/plans
+- 帮助中心（SEO 实施型长尾）：`/help` 索引 + `/help/[slug]`，文档为 `src/content/help/*.md`（frontmatter：title/description/tool/date/order），每篇自动抽取第一个有序列表生成 HowTo JSON-LD + BreadcrumbList；工具页交叉内链回对应文档
 - 变现（UI 先行，支付待接）：`/pricing` 三档——Free / Pro（$9.99 月 · $79 年）/ Credits 加油包（30/80/200）；档位数据在 `src/lib/plans.ts`，checkout 按钮为禁用占位，接 Paddle 时只改 plans.ts + 按钮
 - 设计体系：`src/app/globals.css` token 重映射实现全站深色（cream=暖黑底、ink=奶油文字、coral 主色、lemon 公告黄、surface 卡面）；`.headline-retro` 复古错位阴影大标题、`.marquee` 无限图墙、`.hscroll` 横滚行
 - **开发约定（i18n）**：新功能先只在 `en.json` 写英文占位即可——`getDict` 对其他 9 语言缺失的 key 深层回退英文（数组整组回退），构建不要求字典同步；等功能确认完毕再统一补齐翻译
