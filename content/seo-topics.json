@@ -221,6 +221,404 @@
       "status": "idea",
       "post": "",
       "notes": ""
+    },
+    {
+      "id": "2026-10-10-unique-cat-names",
+      "seedKeyword": "unique cat names",
+      "source": {
+        "type": "social",
+        "ref": "r/cats 'help me name my kitten' 高频帖 + Google Trends 常青量",
+        "evidence": "常青高量词，r/cats 起名帖周周有；站内 cat-names 工具无内容页喂流量"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "unique cat names",
+      "longtails": [
+        {
+          "kw": "unique male cat names",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 1
+        },
+        {
+          "kw": "unique female cat names",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 2
+        },
+        {
+          "kw": "black cat names",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 3
+        },
+        {
+          "kw": "orange cat names",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 4
+        }
+      ],
+      "persona": "prospective-owner",
+      "contentType": "listicle",
+      "title": "300+ Unique Cat Names With Meanings (by Theme & Coat Color)",
+      "outline": [
+        "How we picked these names",
+        "Classic-with-a-twist names",
+        "Food & drink names",
+        "Mythology, stars & witches",
+        "Names by coat color",
+        "Japanese & world names",
+        "Shortlist and save with the filter tool"
+      ],
+      "internalLinks": [
+        {
+          "href": "/tools/cat-names",
+          "anchor": "filter and save cat names by style"
+        },
+        {
+          "href": "/tools/dog-names",
+          "anchor": "naming a dog too"
+        },
+        {
+          "href": "/blog/ai-pet-portraits-complete-guide",
+          "anchor": "first portrait of your new cat"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": ""
+    },
+    {
+      "id": "2026-10-10-dog-years-to-human-years",
+      "seedKeyword": "dog years to human years",
+      "source": {
+        "type": "trends",
+        "ref": "Google Trends 'dog years to human years' US——十年稳定高量",
+        "evidence": "常青大词；pet-age 工具已上线但没有内容页承接这个查询"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "dog years to human years",
+      "longtails": [
+        {
+          "kw": "how old is my dog in human years",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 1
+        },
+        {
+          "kw": "cat years to human years",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 2
+        },
+        {
+          "kw": "why do dogs age faster than humans",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 3
+        },
+        {
+          "kw": "senior dog age by breed size",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 4
+        }
+      ],
+      "persona": "prospective-owner",
+      "contentType": "data",
+      "title": "Dog Years to Human Years: The Real Math (Charts by Size)",
+      "outline": [
+        "Where the 7-year myth came from",
+        "The formula vets actually use",
+        "Chart: small, medium and large dogs",
+        "Cats have their own curve",
+        "Why body size changes aging speed",
+        "Health milestones at each life stage",
+        "Calculate your pet's age instantly"
+      ],
+      "internalLinks": [
+        {
+          "href": "/tools/pet-age",
+          "anchor": "calculate your pet's age in human years"
+        },
+        {
+          "href": "/tools/cat-names",
+          "anchor": "naming a new pet"
+        },
+        {
+          "href": "/blog/ai-pet-portraits-complete-guide",
+          "anchor": "mark a milestone with a portrait"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": "健康话题：换算数据必须引用 AVMA/VCA/Cornell 并留链接，标 'Updated October 2026'"
+    },
+    {
+      "id": "2026-10-10-gifts-for-dog-moms",
+      "seedKeyword": "gifts for dog moms",
+      "source": {
+        "type": "calendar",
+        "ref": "Q4 礼物季 + 母亲节双峰；Etsy/TikTok 'dog mom gift' 热度",
+        "evidence": "10-12 月与 5 月双搜索峰，客单价高、决策快"
+      },
+      "seasonality": {
+        "peak": "November & May",
+        "publishBy": "2026-11-15（赶 Q4 礼物季）"
+      },
+      "primaryKeyword": "gifts for dog moms",
+      "longtails": [
+        {
+          "kw": "personalized dog mom gifts",
+          "intent": "commercial",
+          "stage": "decision",
+          "priority": 1
+        },
+        {
+          "kw": "dog mom gift basket ideas",
+          "intent": "commercial",
+          "stage": "decision",
+          "priority": 2
+        },
+        {
+          "kw": "custom dog portrait gift",
+          "intent": "transactional",
+          "stage": "decision",
+          "priority": 3
+        },
+        {
+          "kw": "last minute gifts for dog lovers",
+          "intent": "commercial",
+          "stage": "decision",
+          "priority": 4
+        }
+      ],
+      "persona": "gift-buyer",
+      "contentType": "listicle",
+      "title": "Gifts for Dog Moms She'll Actually Want (2026, by Budget)",
+      "outline": [
+        "How to pick a dog mom gift",
+        "Under $25",
+        "$25 to $75",
+        "$75 and up",
+        "Last-minute saves",
+        "Make it personal with AI"
+      ],
+      "internalLinks": [
+        {
+          "href": "/pricing",
+          "anchor": "Pro download for printing"
+        },
+        {
+          "href": "/templates?cat=holiday",
+          "anchor": "holiday card templates"
+        },
+        {
+          "href": "/blog/ai-vs-traditional-pet-portrait",
+          "anchor": "AI portrait vs hand-painted comparison"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": "12 月初回访：补圣诞礼物段并 refresh 一次"
+    },
+    {
+      "id": "2026-10-10-funny-cat-meme-captions",
+      "seedKeyword": "funny cat meme captions",
+      "source": {
+        "type": "competitor",
+        "ref": "狗版 captions 文已发布并验证格式；猫版为站内缺口",
+        "evidence": "猫梗图社媒体量大于狗（TikTok #catmemes），站内只有狗版"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "funny cat meme captions",
+      "longtails": [
+        {
+          "kw": "cat captions for instagram",
+          "intent": "informational",
+          "stage": "implementation",
+          "priority": 1
+        },
+        {
+          "kw": "funny cat captions",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 2
+        },
+        {
+          "kw": "sassy cat quotes",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 3
+        }
+      ],
+      "persona": "entertainment",
+      "contentType": "listicle",
+      "title": "101 Funny Cat Meme Captions (Copy, Paste, Post)",
+      "outline": [
+        "How to caption a cat photo",
+        "Judging you",
+        "Midnight zoomies",
+        "Food drama",
+        "Box logic",
+        "Existential cats"
+      ],
+      "internalLinks": [
+        {
+          "href": "/tools/meme-maker",
+          "anchor": "add the caption to your photo free"
+        },
+        {
+          "href": "/blog/funny-dog-meme-captions",
+          "anchor": "dog person? 101 dog captions"
+        },
+        {
+          "href": "/templates",
+          "anchor": "browse 100 portrait styles"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": "与狗版互链；语气红线：全程玩梗，禁止推销段落"
+    },
+    {
+      "id": "2026-10-10-dog-birthday-ideas",
+      "seedKeyword": "dog birthday ideas",
+      "source": {
+        "type": "social",
+        "ref": "TikTok #dogbirthday + r/dogs 生日策划帖",
+        "evidence": "常青需求，social 晒图热（自带 UGC 传播）"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "dog birthday ideas",
+      "longtails": [
+        {
+          "kw": "dog birthday party ideas",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 1
+        },
+        {
+          "kw": "dog safe birthday cake",
+          "intent": "informational",
+          "stage": "implementation",
+          "priority": 2
+        },
+        {
+          "kw": "puppy first birthday ideas",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 3
+        },
+        {
+          "kw": "gotcha day ideas",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 4
+        }
+      ],
+      "persona": "current-owner",
+      "contentType": "how-to",
+      "title": "Dog Birthday Ideas: Party Plan, Safe Cake & Photo Checklist",
+      "outline": [
+        "One week before",
+        "The day-of timeline",
+        "A dog-safe birthday cake (AKC rules)",
+        "The photo checklist",
+        "Gifts, guests and gotcha days",
+        "Keep the memory forever"
+      ],
+      "internalLinks": [
+        {
+          "href": "/templates/birthday",
+          "anchor": "birthday card template"
+        },
+        {
+          "href": "/#create",
+          "anchor": "generate a birthday portrait"
+        },
+        {
+          "href": "/tools/meme-maker",
+          "anchor": "make a party meme"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": "蛋糕食材安全断言引用 AKC；cover 用 /tpl/birthday.jpg"
+    },
+    {
+      "id": "2026-10-10-valentine-cards-with-your-pet",
+      "seedKeyword": "valentine cards with your pet",
+      "source": {
+        "type": "calendar",
+        "ref": "Valentine's Day 2-14；圣诞卡文已验证'节日卡+宠物照'格式",
+        "evidence": "1 月中-2 月中搜索峰值；站内已有 holiday 模板线"
+      },
+      "seasonality": {
+        "peak": "February",
+        "publishBy": "2026-12-31（提前 6-8 周收录）"
+      },
+      "primaryKeyword": "valentine cards with your pet",
+      "longtails": [
+        {
+          "kw": "pet valentine photo ideas",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 1
+        },
+        {
+          "kw": "dog valentine card",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 2
+        },
+        {
+          "kw": "my valentine has paws",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 3
+        }
+      ],
+      "persona": "current-owner",
+      "contentType": "listicle",
+      "title": "Valentine Cards With Your Pet: 10 Ideas to Make in Minutes",
+      "outline": [
+        "Pick the right photo",
+        "Solo pet valentines",
+        "Couples (and their pets)",
+        "'Paws my valentine' puns",
+        "Cards that give back",
+        "Turn any idea into a card"
+      ],
+      "internalLinks": [
+        {
+          "href": "/templates?cat=holiday",
+          "anchor": "holiday templates"
+        },
+        {
+          "href": "/#create",
+          "anchor": "make your valentine card free"
+        },
+        {
+          "href": "/blog/christmas-card-ideas-with-your-pet",
+          "anchor": "25 Christmas card ideas"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": "发布前检查站内是否有情人节模板；没有则先加 2-3 个 rose/pink 系模板，文章与模板互导流"
     }
   ]
 }
