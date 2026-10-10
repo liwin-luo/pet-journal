@@ -26,14 +26,34 @@ export const LOCALE_META: Record<Locale, { label: string; flag: string; hreflang
   ko: { label: "한국어", flag: "🇰🇷", hreflang: "ko", og: "ko_KR" },
 };
 
-const DICTS: Record<Locale, Dict> = { en, es, pt, de, fr, it, ja, zh, ru, ko };
+const RAW_DICTS: Record<Locale, unknown> = { en, es, pt, de, fr, it, ja, zh, ru, ko };
 
 export function isLocale(x: string): x is Locale {
   return (LOCALES as readonly string[]).includes(x);
 }
 
+// 开发约定：新功能先只在 en.json 写英文占位，其他语言在功能确认后统一补齐。
+// 缺失 key 运行时深层回退英文（数组整组回退），构建不再要求 10 份字典同步。
+const MERGED = new Map<Locale, Dict>();
+
+function deepMerge(base: unknown, override: unknown): unknown {
+  if (Array.isArray(base) || typeof base !== "object" || base === null) {
+    return override === undefined ? base : override;
+  }
+  const b = base as Record<string, unknown>;
+  const o = (override ?? {}) as Record<string, unknown>;
+  const out: Record<string, unknown> = {};
+  for (const k of Object.keys(b)) out[k] = deepMerge(b[k], o[k]);
+  return out;
+}
+
 export function getDict(locale: Locale): Dict {
-  return DICTS[locale];
+  let d = MERGED.get(locale);
+  if (!d) {
+    d = locale === DEFAULT_LOCALE ? (RAW_DICTS[locale] as Dict) : (deepMerge(RAW_DICTS[DEFAULT_LOCALE], RAW_DICTS[locale]) as Dict);
+    MERGED.set(locale, d);
+  }
+  return d;
 }
 
 /** 站内链接：en 用根路径，其他语言加前缀。 */

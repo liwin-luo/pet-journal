@@ -31,6 +31,7 @@ POST /api/generate  审核 → GLM 把"原话+模板提示词"合成英文出图
 - 免费工具矩阵（获客）：`/tools` 中心；`/tools/meme-maker` 梗图生成器（**纯前端 canvas**，照片不出浏览器、零成本，下载带域名小水印）；`/tools/pet-avatar` 头像生成（复用上传/生成/限流链路，3 种风格预设）；`/tools/dog-names`、`/tools/cat-names` 起名器（前端词库+收藏，SEO 长文）；`/tools/pet-age` 年龄换算器（纯前端计算+换算表）；全部页面带 FAQPage/WebApplication JSON-LD 并入 sitemap
 - 变现（UI 先行，支付待接）：`/pricing` 三档——Free / Pro（$9.99 月 · $79 年）/ Credits 加油包（30/80/200）；档位数据在 `src/lib/plans.ts`，checkout 按钮为禁用占位，接 Paddle 时只改 plans.ts + 按钮
 - 设计体系：`src/app/globals.css` token 重映射实现全站深色（cream=暖黑底、ink=奶油文字、coral 主色、lemon 公告黄、surface 卡面）；`.headline-retro` 复古错位阴影大标题、`.marquee` 无限图墙、`.hscroll` 横滚行
+- **开发约定（i18n）**：新功能先只在 `en.json` 写英文占位即可——`getDict` 对其他 9 语言缺失的 key 深层回退英文（数组整组回退），构建不要求字典同步；等功能确认完毕再统一补齐翻译
 - 审核后台：`/admin?key=ADMIN_KEY` 审批/拒绝画廊投稿（`ADMIN_KEY` 在 .env.local，上线换长随机串）
 
 ## 上线清单（按顺序）
