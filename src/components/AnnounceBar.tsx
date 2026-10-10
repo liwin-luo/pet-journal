@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowIcon, ZapIcon } from "./icons";
 
 // 柠檬黄公告条（Skillry 式顶部 Pro 推销），可关闭，会话内不再显示。
 export function AnnounceBar({
@@ -21,12 +22,12 @@ export function AnnounceBar({
   if (!show) return null;
   return (
     <div className="annbar relative px-10 py-1.5 text-center text-[13px] font-semibold">
-      <span className="mr-2 inline-block -translate-y-px rounded-full bg-lemon-ink px-2 py-0.5 text-[10px] font-bold tracking-wide text-lemon">
-        ⚡ {pro}
+      <span className="mr-2 inline-flex -translate-y-px items-center gap-1 rounded-full bg-lemon-ink px-2 py-0.5 text-[10px] font-bold tracking-wide text-lemon">
+        <ZapIcon className="h-3 w-3" /> {pro}
       </span>
       {text}{" "}
       <Link href={href} className="ml-1 inline-flex items-center gap-1 rounded-full bg-lemon-ink px-3 py-1 text-[12px] font-bold text-lemon transition-transform hover:-translate-y-px">
-        {cta} →
+        {cta} <ArrowIcon className="h-3.5 w-3.5" />
       </Link>
       <button
         type="button"

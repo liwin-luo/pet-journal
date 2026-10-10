@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { DownloadIcon, ImageIcon } from "./icons";
 
 // 纯前端梗图生成器：照片全程不出浏览器，canvas 渲染 + 本地下载。
 // 输出 1080×1080（社交平台通用方图），右下角带域名小水印（获客钩子）。
@@ -228,7 +229,7 @@ export function MemeMaker({ texts }: { texts: Texts }) {
           />
           {!hasPhoto && (
             <label className="absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl bg-surface-2/95 text-center">
-              <span className="text-5xl" aria-hidden="true">🖼️</span>
+              <ImageIcon className="h-14 w-14 text-fog" />
               <span className="font-display text-lg font-bold">{texts.upload}</span>
               <span className="text-xs text-fog">{texts.uploadHint}</span>
               <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={onFile} />
@@ -269,7 +270,7 @@ export function MemeMaker({ texts }: { texts: Texts }) {
 
         <div className="flex gap-2">
           <button type="button" onClick={download} disabled={!hasPhoto} className="btn-primary flex-1 text-sm">
-            ⬇ {texts.download}
+            <DownloadIcon className="h-4 w-4" /> {texts.download}
           </button>
           {canShare && (
             <button type="button" onClick={share} disabled={!hasPhoto} className="btn-ghost text-sm">

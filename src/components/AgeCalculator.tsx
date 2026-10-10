@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { catToHuman, chartFor, dogToHuman, type DogSize } from "@/lib/age";
+import { CatIcon, DogIcon } from "./icons";
 
 // 年龄换算器：纯前端计算 + 实时换算表。
 
@@ -52,8 +53,8 @@ export function AgeCalculator({ texts }: { texts: Texts }) {
         <div>
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-fog">{texts.kind}</p>
           <div className="flex gap-2">
-            <button type="button" onClick={() => setKind("cat")} className={chip(kind === "cat")} aria-pressed={kind === "cat"}>🐱 {texts.cat}</button>
-            <button type="button" onClick={() => setKind("dog")} className={chip(kind === "dog")} aria-pressed={kind === "dog"}>🐶 {texts.dog}</button>
+            <button type="button" onClick={() => setKind("cat")} className={`${chip(kind === "cat")} inline-flex items-center gap-2`} aria-pressed={kind === "cat"}><CatIcon className="h-4 w-4" /> {texts.cat}</button>
+            <button type="button" onClick={() => setKind("dog")} className={`${chip(kind === "dog")} inline-flex items-center gap-2`} aria-pressed={kind === "dog"}><DogIcon className="h-4 w-4" /> {texts.dog}</button>
           </div>
         </div>
         <div>

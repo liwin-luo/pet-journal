@@ -2,6 +2,17 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import {
+  BrushIcon,
+  CameraIcon,
+  DownloadIcon,
+  FlowerIcon,
+  PawIcon,
+  PaletteIcon,
+  ShapesIcon,
+  SparkIcon,
+  ArrowUpRightIcon,
+} from "./icons";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
 
 // 头像生成器：复用主站上传/生成/限流/审核链路，头像风格作为预设提示词。
@@ -10,19 +21,19 @@ import { DEFAULT_LOCALE } from "@/lib/i18n";
 const STYLES = [
   {
     id: "cartoon3d",
-    emoji: "🧸",
+    icon: ShapesIcon,
     prompt:
       "Cute 3D cartoon avatar of the same pet from the reference photo, big glossy eyes, rounded stylized shapes, Pixar-style character render, head and shoulders centered, soft studio lighting, plain warm pastel background, detailed stylized fur keeping the pet's real colors, adorable friendly mood. Square 1:1 profile-picture crop. No text.",
   },
   {
     id: "chibi",
-    emoji: "🌸",
+    icon: FlowerIcon,
     prompt:
       "Kawaii chibi sticker-style avatar of the same pet from the reference photo, oversized head, tiny body, simple flat cel shading with bold clean outlines, pastel color palette keeping the pet's real fur colors, plain solid pastel background, head and chest centered, irresistible cute mood. Square 1:1 profile-picture crop. No text.",
   },
   {
     id: "watercolor",
-    emoji: "🎨",
+    icon: BrushIcon,
     prompt:
       "Soft watercolor illustration avatar of the same pet from the reference photo, loose painterly brush strokes, gentle pastel washes, big kind eyes, head and shoulders centered, plain cream paper background keeping the pet's real colors, warm gentle mood. Square 1:1 profile-picture crop. No text.",
   },
@@ -120,13 +131,13 @@ export function AvatarStudio({
                 type="button"
                 onClick={() => setStyleId(s.id)}
                 aria-pressed={styleId === s.id}
-                className={`flex flex-col items-center gap-1 rounded-2xl border px-2 py-3 text-2xl transition-all ${
+                className={`flex flex-col items-center gap-1 rounded-2xl border px-2 py-3 transition-all ${
                   styleId === s.id
-                    ? "border-coral bg-coral-soft shadow-soft"
-                    : "border-sand bg-surface-2 hover:border-coral/60"
+                    ? "border-coral bg-coral-soft text-coral shadow-soft"
+                    : "border-sand bg-surface-2 text-coffee hover:border-coral/60"
                 }`}
               >
-                <span aria-hidden="true">{s.emoji}</span>
+                <s.icon className="h-6 w-6" />
                 <span className="text-[10px] font-bold uppercase tracking-wide text-coffee">{s.id}</span>
               </button>
             ))}
@@ -140,7 +151,7 @@ export function AvatarStudio({
               // eslint-disable-next-line @next/next/no-img-element
               <img src={previewUrl} alt="" className="h-28 w-28 rounded-xl object-cover" />
             ) : (
-              <span className="text-4xl" aria-hidden="true">📸</span>
+              <CameraIcon className="h-10 w-10 text-fog" />
             )}
             <span className="text-xs text-fog">{texts.photoHint}</span>
             <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={pick} />
@@ -152,10 +163,12 @@ export function AvatarStudio({
         <button type="button" onClick={generate} disabled={busy} className="btn-primary w-full">
           {busy ? (
             <>
-              <span className="bounce-soft inline-block" aria-hidden="true">🎨</span> {texts.generating}
+              <PaletteIcon className="bounce-soft h-5 w-5" /> {texts.generating}
             </>
           ) : (
-            <>✨ {texts.generate}</>
+            <>
+              <SparkIcon className="h-5 w-5" /> {texts.generate}
+            </>
           )}
         </button>
         <p className="text-center text-xs text-fog">{texts.free}</p>
@@ -166,7 +179,7 @@ export function AvatarStudio({
         {busy && <div className="h-64 w-64 animate-pulse rounded-2xl bg-surface-2" />}
         {!busy && !result && (
           <div className="text-center text-fog">
-            <span className="block text-5xl" aria-hidden="true">🐾</span>
+            <PawIcon className="h-12 w-12 text-fog" />
             <p className="mt-3 text-sm">{texts.styleLabel} → {texts.photoLabel}</p>
           </div>
         )}
@@ -177,12 +190,14 @@ export function AvatarStudio({
             <p className="text-xs text-fog">AI-generated · {result.left !== null ? texts.left.replace("{n}", String(result.left)) : ""}</p>
             <div className="flex w-full flex-col gap-2">
               {signedIn ? (
-                <a href={result.imagePath} download className="btn-primary w-full text-sm">⬇ {texts.dl}</a>
+                <a href={result.imagePath} download className="btn-primary w-full text-sm">
+                  <DownloadIcon className="h-4 w-4" /> {texts.dl}
+                </a>
               ) : (
                 <Link href={loginPath} className="btn-primary w-full text-sm">{texts.dlSignIn}</Link>
               )}
               <Link href={langPath(result.shareUrl)} className="btn-ghost w-full !justify-center text-sm">
-                {texts.share} ↗
+                {texts.share} <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
             </div>
             <button type="button" onClick={() => setResult(null)} className="text-sm font-semibold text-coral hover:underline">

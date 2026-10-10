@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { groupByLocalDay, monthMatrix, type DiaryWork } from "@/lib/diary-shared";
 import type { PetProfile } from "@/lib/store";
 import { type Dict, type Locale } from "@/lib/i18n";
+import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
 
 type Caption = { title: string; text: string };
 type View = "calendar" | "timeline" | "book";
@@ -251,9 +252,9 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
       {view === "calendar" && (
         <div className="card mt-4 p-4 sm:p-6">
           <div className="flex items-center justify-between">
-            <button type="button" onClick={() => shiftMonth(-1)} aria-label={d.prev} className="btn-ghost !px-3 !py-1.5">←</button>
+            <button type="button" onClick={() => shiftMonth(-1)} aria-label={d.prev} className="btn-ghost !px-3 !py-1.5"><ChevronLeftIcon className="h-4 w-4" /></button>
             <p className="font-display text-lg font-semibold">{monthLabel}</p>
-            <button type="button" onClick={() => shiftMonth(1)} aria-label={d.next} className="btn-ghost !px-3 !py-1.5">→</button>
+            <button type="button" onClick={() => shiftMonth(1)} aria-label={d.next} className="btn-ghost !px-3 !py-1.5"><ChevronRightIcon className="h-4 w-4" /></button>
           </div>
           <div className="mt-4 grid grid-cols-7 gap-1 text-center text-[11px] font-semibold uppercase text-fog">
             {Array.from({ length: 7 }, (_, i) => (
@@ -316,11 +317,11 @@ export function DiaryView({ locale, t, createPath, works, pet0 }: Props) {
         <div className="mt-4">
           <div className="flex items-center justify-between">
             <button type="button" disabled={bookIdx >= days.length - 1} onClick={() => bookAt(1)} className="btn-ghost !px-4 !py-2 text-sm">
-              ← {d.prev}
+              <ChevronLeftIcon className="h-4 w-4" /> {d.prev}
             </button>
             <p className="font-display font-semibold">{dayLabel(bookCur.date, locale)}</p>
             <button type="button" disabled={bookIdx <= 0} onClick={() => bookAt(-1)} className="btn-ghost !px-4 !py-2 text-sm">
-              {d.next} →
+              {d.next} <ChevronRightIcon className="h-4 w-4" />
             </button>
           </div>
           <div className="card mt-3 grid overflow-hidden sm:min-h-[420px] sm:grid-cols-2">

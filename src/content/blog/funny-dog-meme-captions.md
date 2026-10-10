@@ -143,6 +143,6 @@ A great dog meme is 10% photo and 90% caption. You already have the photo — he
 
 ## Turn one into an actual meme
 
-Pick the caption that matches a photo in your camera roll, open the [free meme maker](/tools/meme-maker), and add classic top-and-bottom text in your browser — your photo never leaves your device. Want the fancy version instead? The same photo becomes a full [AI portrait](/#create) in about 30 seconds.
+Pick the caption that matches a photo in your camera roll, open the [free meme maker](/tools/meme-maker), and add classic top-and-bottom text in your browser — your photo never leaves your device. Want the fancy version instead? The same photo becomes a full [AI portrait](/#create) in about 30 seconds (honestly labeled as AI, like everything on this site: [/ai-disclosure](/ai-disclosure)).
 
 For more caption material, the [side-eye template](/templates/glance) was born for lines like #21 and #31.

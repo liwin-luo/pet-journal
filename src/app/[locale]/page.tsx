@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { Generator } from "@/components/Generator";
 import { JsonLd } from "@/components/JsonLd";
-import { ArrowIcon, CheckCircleIcon, PawIcon, SparkIcon, StarIcon, UploadIcon } from "@/components/icons";
+import { ArrowIcon, CheckCircleIcon, CheckIcon, PawIcon, SparkIcon, StarIcon, UploadIcon } from "@/components/icons";
 import { TemplateCard } from "@/components/TemplateCard";
 import { ToolCard } from "@/components/ToolCard";
 import { getSessionUser } from "@/lib/auth";
@@ -109,10 +109,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             />
           </Suspense>
           <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-fog">
-            <li>✓ {t.home.trust1}</li>
-            <li>✓ {t.home.trust2}</li>
-            <li>✓ {t.home.trust3}</li>
-            <li>✓ {t.home.trust4}</li>
+            {[t.home.trust1, t.home.trust2, t.home.trust3, t.home.trust4].map((item) => (
+              <li key={item} className="inline-flex items-center gap-1.5">
+                <CheckIcon className="h-3.5 w-3.5 text-sage" />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </section>
@@ -134,7 +136,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <img src="/land/cat.jpg" alt={t.home.beforeCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card border border-sand/60 object-cover shadow-soft" />
             <figcaption className="mt-2 text-xs text-coffee">{t.home.beforeCap}</figcaption>
           </figure>
-          <span aria-hidden="true" className="text-2xl text-coral">→</span>
+          <span aria-hidden="true" className="shrink-0 rounded-full border border-sand bg-surface p-2 text-coral shadow-soft">
+            <ArrowIcon className="h-5 w-5 md:h-7 md:w-7" />
+          </span>
           <figure className="flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/land/royal-cat.jpg" alt={t.home.afterCap} width={400} height={300} className="aspect-[4/3] w-full rounded-card border border-sand/60 object-cover shadow-soft" />
@@ -156,7 +160,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               key={tool.id}
               href={lp(locale, tool.href)}
               color={tool.color}
-              emoji={tool.emoji}
+              icon={tool.icon}
               title={t.tools[`${tool.id}T` as keyof typeof t.tools] as string}
               desc={t.tools[`${tool.id}D` as keyof typeof t.tools] as string}
               badge={tool.badge}
@@ -196,18 +200,21 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Link>
       </section>
 
-      {/* 三步走 */}
+      {/* 三步走（编辑感序号布局，避免三张同款卡） */}
       <section className="mx-auto max-w-6xl px-4 py-14" aria-labelledby="how">
         <h2 id="how" className="h-display text-center text-3xl">{t.home.howTitle}</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6">
           {[
             { icon: <UploadIcon className="h-6 w-6" />, t: t.home.how1t, d: t.home.how1d },
             { icon: <PawIcon className="h-6 w-6" />, t: t.home.how2t, d: t.home.how2d },
             { icon: <SparkIcon className="h-6 w-6" />, t: t.home.how3t, d: t.home.how3d },
           ].map((s, i) => (
-            <div key={i} className="card p-6 text-center">
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-coral-soft text-coral">{s.icon}</span>
-              <h3 className="mt-4 font-display text-lg font-semibold">{s.t}</h3>
+            <div key={i} className="border-t-2 border-sand pt-5 text-center md:text-left">
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <span className="font-display text-5xl font-black leading-none text-coral/35">0{i + 1}</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-coral-soft text-coral">{s.icon}</span>
+              </div>
+              <h3 className="mt-3 font-display text-lg font-semibold">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-coffee">{s.d}</p>
             </div>
           ))}
@@ -239,8 +246,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <section className="mx-auto max-w-6xl px-4 py-14" aria-labelledby="reviews">
           <h2 id="reviews" className="h-display text-3xl">{t.home.reviewsTitle}</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {reviews.slice(0, 3).map((r) => (
-              <blockquote key={r.id} className="card p-6">
+            {reviews.slice(0, 3).map((r, i) => (
+              <blockquote
+                key={r.id}
+                className={`card p-6 transition-transform duration-200 hover:-translate-y-1 ${
+                  i === 0 ? "md:-rotate-1" : i === 2 ? "md:rotate-1 md:mt-6" : "md:mt-3"
+                }`}
+              >
                 <div className="flex gap-0.5 text-gold" aria-label={`${r.rating ?? 5} / 5`}>
                   {Array.from({ length: r.rating ?? 5 }, (_, i) => (
                     <StarIcon key={i} className="h-4 w-4" />

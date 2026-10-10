@@ -51,7 +51,7 @@ Two models exist, and most services mix them:
 - **Free tier.** Typically a few pictures per day, no account needed to try. On PetsDaily you get 3 free pictures a day, every day — [try it here](/#create), signing in is only needed to download.
 - **Paid.** Either a subscription for unlimited generations (useful around the holidays) or one-time credit packs. Expect roughly $10 per month for unlimited use; traditional hand-painted portraits, by comparison, start around $100 and take weeks.
 
-A reasonable rule: start free, and only pay once you've made something you actually wanted to keep.
+A reasonable rule: start free, and only pay once you've made something you actually wanted to keep. Every style example across this guide was generated in our own studio in October 2026 — the same pipeline, templates and models you get when you [try it free](/#create).
 
 ## Are AI pet portraits safe and private?
 

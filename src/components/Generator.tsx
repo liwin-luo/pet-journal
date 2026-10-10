@@ -217,8 +217,8 @@ export function Generator({ featured, user, locale, gen, labels }: Props) {
                 )}
                 <p className="text-sm">{m.text || <em className="text-coffee">({gen.styles})</em>}</p>
                 {m.templateId && (
-                  <span className="mt-1 inline-block rounded-full bg-surface px-2 py-0.5 text-xs font-medium text-coral">
-                    ✦ {m.templateId} {labels.tplLabel}
+                  <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-surface px-2 py-0.5 text-xs font-medium text-coral">
+                    <SparkIcon className="h-3 w-3" /> {m.templateId} {labels.tplLabel}
                   </span>
                 )}
               </div>

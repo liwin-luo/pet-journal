@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { NameEntry, NameStyle, PetGender } from "@/lib/names";
 import { NAME_STYLES } from "@/lib/names";
+import { DiceIcon, HeartIcon, HeartOutlineIcon } from "./icons";
 
 // 起名生成器：前端词库随机 + 性别/风格筛选 + 收藏（localStorage 按物种隔离）。
 
@@ -114,14 +115,18 @@ export function NameGenerator({
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-fog">{texts.count.replace("{n}", String(filtered.length))}</p>
-          <button type="button" onClick={shuffle} className="btn-ghost !px-4 !py-2 text-sm">🎲 {texts.shuffle}</button>
+          <button type="button" onClick={shuffle} className="btn-ghost !px-4 !py-2 text-sm">
+            <DiceIcon className="h-4 w-4" /> {texts.shuffle}
+          </button>
         </div>
       </div>
 
       {/* 收藏 */}
       <section aria-label={texts.savedTitle}>
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-xl font-bold">♥ {texts.savedTitle} <span className="text-sm font-normal text-fog">({savedEntries.length})</span></h2>
+          <h2 className="inline-flex items-center gap-2 font-display text-xl font-bold">
+            <HeartIcon className="h-5 w-5 text-coral" /> {texts.savedTitle} <span className="text-sm font-normal text-fog">({savedEntries.length})</span>
+          </h2>
           {savedEntries.length > 0 && (
             <button type="button" onClick={() => { setSaved([]); localStorage.removeItem(storeKey); }} className="text-sm font-medium text-fog hover:text-coral">
               {texts.clear}
@@ -155,10 +160,10 @@ export function NameGenerator({
                 type="button"
                 onClick={() => toggleSave(n.n)}
                 aria-pressed={isSaved}
-                aria-label={`${isSaved ? "♥" : "♡"} ${n.n}`}
-                className={`shrink-0 text-xl transition-transform hover:scale-110 ${isSaved ? "text-coral" : "text-fog"}`}
+                aria-label={n.n}
+                className={`shrink-0 transition-transform hover:scale-110 ${isSaved ? "text-coral" : "text-fog"}`}
               >
-                {isSaved ? "♥" : "♡"}
+                {isSaved ? <HeartIcon className="h-5 w-5" /> : <HeartOutlineIcon className="h-5 w-5" />}
               </button>
             </div>
           );

@@ -1,6 +1,24 @@
 // 内联图标：统一 20px 视口，currentColor 描边。
+// 线性图标 path 数据取自 lucide（ISC License）。
 type P = { className?: string };
 const base = "inline-block h-5 w-5 shrink-0";
+
+function Stroke({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`${base} ${className ?? ""}`}
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  );
+}
 
 export function PawIcon({ className }: P) {
   return (
@@ -186,5 +204,193 @@ export function CheckCircleIcon({ className }: P) {
       <circle cx="12" cy="12" r="9" />
       <path d="M8.5 12.5l2.5 2.5 4.5-5" />
     </svg>
+  );
+}
+
+export function CameraIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" />
+      <circle cx="12" cy="13" r="3" />
+    </Stroke>
+  );
+}
+
+export function ImageIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+      <circle cx="9" cy="9" r="2" />
+      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+    </Stroke>
+  );
+}
+
+export function CatIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z" />
+      <path d="M8 14v.5" />
+      <path d="M16 14v.5" />
+      <path d="M11.25 16.25h1.5L12 17l-.75-.75Z" />
+    </Stroke>
+  );
+}
+
+export function DogIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M11.25 16.25h1.5L12 17z" />
+      <path d="M16 14v.5" />
+      <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309" />
+      <path d="M8 14v.5" />
+      <path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" />
+    </Stroke>
+  );
+}
+
+export function MoonIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+    </Stroke>
+  );
+}
+
+export function BoneIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z" />
+    </Stroke>
+  );
+}
+
+export function CakeIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
+      <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1" />
+      <path d="M2 21h20" />
+      <path d="M7 8v3" />
+      <path d="M12 8v3" />
+      <path d="M17 8v3" />
+      <path d="M7 4h.01" />
+      <path d="M12 4h.01" />
+      <path d="M17 4h.01" />
+    </Stroke>
+  );
+}
+
+export function LaughIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M15 10V9" />
+      <path d="M7.084 14.302a5.12 5.12 0 009.833 0 .24.24 0 00-.235-.302H7.32a.24.24 0 00-.235.302" />
+      <path d="M9 10V9" />
+      <circle cx="12" cy="12" r="10" />
+    </Stroke>
+  );
+}
+
+export function ZapIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" />
+    </Stroke>
+  );
+}
+
+export function FlameIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+    </Stroke>
+  );
+}
+
+export function ShapesIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <circle cx="17.5" cy="17.5" r="3.5" />
+    </Stroke>
+  );
+}
+
+export function FlowerIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M9 8a3 3 0 1 0 3 3M9 8h1m5 0a3 3 0 1 1-3 3m3-3h-1m-2 3v-1" />
+      <circle cx="12" cy="8" r="2" />
+      <path d="M12 10v12" />
+      <path d="M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z" />
+      <path d="M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z" />
+    </Stroke>
+  );
+}
+
+export function BrushIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="m11 10 3 3" />
+      <path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z" />
+      <path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031" />
+    </Stroke>
+  );
+}
+
+export function DiceIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+      <path d="M16 8h.01" />
+      <path d="M8 8h.01" />
+      <path d="M8 16h.01" />
+      <path d="M16 16h.01" />
+      <path d="M12 12h.01" />
+    </Stroke>
+  );
+}
+
+export function ArrowLeftIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="m12 19-7-7 7-7" />
+      <path d="M19 12H5" />
+    </Stroke>
+  );
+}
+
+export function ArrowUpRightIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </Stroke>
+  );
+}
+
+export function ChevronLeftIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="m15 18-6-6 6-6" />
+    </Stroke>
+  );
+}
+
+export function ChevronRightIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="m9 18 6-6-6-6" />
+    </Stroke>
+  );
+}
+
+export function HeartOutlineIcon({ className }: P) {
+  return (
+    <Stroke className={className}>
+      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+    </Stroke>
   );
 }

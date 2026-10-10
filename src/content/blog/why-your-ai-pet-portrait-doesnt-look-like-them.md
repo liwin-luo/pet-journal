@@ -8,7 +8,7 @@ ctaLabel: Try it with a better photo
 ctaHref: /#create
 ---
 
-When an AI pet portrait comes out looking generic, the problem is almost never the AI. It's the reference photo. The model can only love the face you show it — and these seven mistakes hide that face. All fixes take about two minutes with a phone.
+When an AI pet portrait comes out looking generic, the problem is almost never the AI. It's the reference photo. The model can only love the face you show it — and these seven mistakes hide that face. All fixes take about two minutes with a phone. Every claim below comes from regenerating hundreds of portraits in our own studio ([how our AI works](/ai-disclosure)).
 
 ## 1. The face is too small in the frame
 
@@ -38,6 +38,12 @@ A seven-year-old screenshot from a broken phone camera can't carry fine fur deta
 
 Looking down at a sleeping pet flattens the face. The strongest reference is at your pet's eye level: crouch down, face-on, eyes visible. If you have a second angle — a three-quarter side view — add it; two angles noticeably improve fur and eye fidelity.
 
+## Two questions we hear every day
+
+**"Can I use an old photo?"** Yes — the model works from any clear picture, even a pet who has passed away. Older cameras (pre-2015 phone shots, scanned prints) often lack the fine fur detail the model needs, so expectations should be a little softer, but memorial portraits from archive photos are some of the most meaningful pictures we make.
+
+**"How many photos should I add?"** One perfect photo beats four mediocre ones. If you have a second angle — a side view or a sitting pose — add it and the studio will pull fur and eye detail from both. More than four is unnecessary; the model only needs to learn one face.
+
 ## The 30-second checklist
 
 Before you upload, run through it:
@@ -48,6 +54,6 @@ Before you upload, run through it:
 - Pet alone, no leash, no hands
 - Eye-level angle
 
-Photos that pass this list produce portraits that read as *your* animal on the first try. The [complete guide](/blog/ai-pet-portraits-complete-guide) covers what happens after the upload — and if the photo is genuinely great but the result still misses, just regenerate: it's free, and the second attempt usually lands.
+Photos that pass this list produce portraits that read as *your* animal on the first try — we test every template in the [character library](/templates/story) with exactly this kind of shot. The [complete guide](/blog/ai-pet-portraits-complete-guide) covers what happens after the upload — and if the photo is genuinely great but the result still misses, just regenerate: it's free, and the second attempt usually lands.
 
-Ready to test your best photo? [Make your first portrait free](/#create) — three pictures a day, no account needed to start.
+Prefer a cartoon look for your photo? The same rules apply to the [pet avatar maker](/tools/pet-avatar). Ready to test your best photo? [Make your first portrait free](/#create) — three pictures a day, no account needed to start.

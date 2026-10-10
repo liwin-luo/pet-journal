@@ -21,12 +21,16 @@
   --color-surface-2: #2c221b;
 
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-card: 1rem;
   --radius-big: 1.5rem;
-  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.35);
-  --shadow-lift: 0 8px 28px rgba(0, 0, 0, 0.45);
+  /* 阴影染暖棕而非纯黑，融入暖黑底色 */
+  --shadow-soft: 0 2px 12px rgba(20, 12, 8, 0.4);
+  --shadow-lift: 0 8px 28px rgba(20, 12, 8, 0.5);
+  /* 全局缓动：expo-out，所有 transition 工具类默认继承 */
+  --ease-retro: cubic-bezier(0.16, 1, 0.3, 1);
+  --default-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
@@ -170,7 +174,7 @@ body {
   }
 }
 .rise {
-  animation: rise 0.35s ease-out both;
+  animation: rise 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes bounce-soft {

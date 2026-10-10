@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BadgeChip } from "@/components/BadgeChip";
 import { CopyButton } from "@/components/CopyButton";
+import { DownloadIcon } from "@/components/icons";
 import { PromptBlock } from "@/components/PromptBlock";
 import { TemplateCard } from "@/components/TemplateCard";
 import { getDict, isLocale, LOCALES, lp, type Locale } from "@/lib/i18n";
@@ -66,8 +67,8 @@ export default async function TemplateDetail({ params }: { params: Promise<{ loc
           />
           <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs text-fog">{t.tpl.exampleCap}</span>
-            <a href={tplImgWm(tpl.id)} download={`petsdaily-${tpl.id}.jpg`} className="text-xs font-semibold text-coral hover:underline">
-              {t.tpl.download} ↓
+            <a href={tplImgWm(tpl.id)} download={`petsdaily-${tpl.id}.jpg`} className="inline-flex items-center gap-1 text-xs font-semibold text-coral hover:underline">
+              <DownloadIcon className="h-3.5 w-3.5" /> {t.tpl.download}
             </a>
           </figcaption>
         </figure>

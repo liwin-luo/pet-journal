@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
+import { SparkIcon } from "@/components/icons";
 import { ToolCard } from "@/components/ToolCard";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
@@ -41,7 +42,7 @@ export default async function ToolsHub({ params }: { params: Promise<{ locale: s
             key={tool.id}
             href={lp(locale, tool.href)}
             color={tool.color}
-            emoji={tool.emoji}
+            icon={tool.icon}
             title={t.tools[`${tool.id}T` as keyof typeof t.tools] as string}
             desc={t.tools[`${tool.id}D` as keyof typeof t.tools] as string}
             badge={tool.badge}
@@ -56,7 +57,7 @@ export default async function ToolsHub({ params }: { params: Promise<{ locale: s
         <h2 id="tools-more" className="h-display text-2xl md:text-3xl">{t.tools.moreT}</h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-coffee">{t.tools.moreD}</p>
         <Link href={`${lp(locale, "/")}#create`} className="btn-primary mt-6">
-          <SparkEmoji /> {t.tools.moreBtn}
+          <SparkIcon className="h-4 w-4" /> {t.tools.moreBtn}
         </Link>
       </section>
 
@@ -75,8 +76,4 @@ export default async function ToolsHub({ params }: { params: Promise<{ locale: s
       />
     </div>
   );
-}
-
-function SparkEmoji() {
-  return <span aria-hidden="true">✨</span>;
 }

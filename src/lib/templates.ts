@@ -543,8 +543,8 @@ for (const t of TEMPLATES) {
 }
 
 export const BADGES: { id: Badge; label: string }[] = [
-  { id: "hot", label: "🔥 Hot" },
-  { id: "new", label: "✨ New" },
+  { id: "hot", label: "Hot" },
+  { id: "new", label: "New" },
 ];
 
 export function templateById(id: string | null | undefined): Tpl | undefined {

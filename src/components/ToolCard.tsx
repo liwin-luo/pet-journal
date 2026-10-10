@@ -1,11 +1,22 @@
 import Link from "next/link";
-import { ArrowIcon } from "./icons";
+import type { ComponentType } from "react";
+import type { ToolIconId } from "@/lib/tools";
+import { ArrowIcon, BoneIcon, CakeIcon, LaughIcon, MoonIcon, PaletteIcon, PawIcon } from "./icons";
 
-// Skillry 式马卡龙工具卡：彩色 emoji 卡面 + FREE/NEW 徽章 + 标题描述。
+const ICONS: Record<ToolIconId, ComponentType<{ className?: string }>> = {
+  palette: PaletteIcon,
+  laugh: LaughIcon,
+  moon: MoonIcon,
+  bone: BoneIcon,
+  paw: PawIcon,
+  cake: CakeIcon,
+};
+
+// Skillry 式马卡龙工具卡：彩色卡面 + 内联 SVG 图标 + FREE/NEW 徽章 + 标题描述。
 export function ToolCard({
   href,
   color,
-  emoji,
+  icon,
   title,
   desc,
   badge,
@@ -14,13 +25,14 @@ export function ToolCard({
 }: {
   href: string;
   color: string;
-  emoji: string;
+  icon: ToolIconId;
   title: string;
   desc: string;
   badge?: "free" | "new" | "hot";
   badgeText: string;
   openLabel: string;
 }) {
+  const Icon = ICONS[icon];
   const badgeCls =
     badge === "new"
       ? "bg-lemon text-lemon-ink"
@@ -38,11 +50,11 @@ export function ToolCard({
         </span>
       )}
       <span
-        className="flex h-16 w-16 items-center justify-center rounded-2xl text-3xl shadow-soft transition-transform duration-200 group-hover:scale-105 group-hover:rotate-3"
+        className="flex h-16 w-16 items-center justify-center rounded-2xl text-lemon-ink shadow-soft transition-transform duration-200 group-hover:scale-105 group-hover:rotate-3"
         style={{ backgroundColor: color }}
         aria-hidden="true"
       >
-        {emoji}
+        <Icon className="h-8 w-8" />
       </span>
       <h3 className="mt-4 font-display text-lg font-bold leading-snug">{title}</h3>
       <p className="mt-1.5 flex-1 text-sm leading-relaxed text-coffee">{desc}</p>

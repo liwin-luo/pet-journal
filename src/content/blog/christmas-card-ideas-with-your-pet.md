@@ -8,7 +8,7 @@ ctaLabel: Browse the holiday templates
 ctaHref: /templates?cat=holiday
 ---
 
-A Christmas card with your actual pet on it beats a stock card every single time — and with AI you can shoot it tonight from photos you already have. Below are 25 ideas, grouped by mood, that you can make free with [PetsDaily's holiday templates](/templates?cat=holiday). One clear photo of your pet's face is all each one needs.
+A Christmas card with your actual pet on it beats a stock card every single time — and with [AI](/ai-disclosure) you can shoot it tonight from photos you already have. Below are 25 ideas, grouped by mood, that you can make free with [PetsDaily's holiday templates](/templates?cat=holiday). One clear photo of your pet's face is all each one needs.
 
 ## Classic & cozy
 
@@ -57,5 +57,7 @@ A Christmas card with your actual pet on it beats a stock card every single time
 3. Add one twist if you like ("with a tiny scarf"), generate, and download. The [AI pet portrait guide](/blog/ai-pet-portraits-complete-guide) explains the whole process if it's your first time.
 
 Print the result at your local photo shop as a 5×7 card, or post it straight to the family group chat — either way, it's the only card this year with your actual animal on it.
+
+A few printing tips from our studio: export at the highest quality your tool offers, ask the shop for matte paper (glossy kills the oil-painting styles), and order two extra copies — the portrait always outlives the season. Every example image in this post was generated in our own studio with the templates linked above, so what you see is what the templates actually produce.
 
 Want the funny version instead? Turn any photo into a share-ready [pet meme in your browser](/tools/meme-maker) — free, no sign-up, nothing uploaded.

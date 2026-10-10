@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CheckCircleIcon } from "./icons";
+import { CheckCircleIcon, StarIcon } from "./icons";
 import { CREDIT_PACKS, PRO_MONTHLY, PRO_YEARLY, formatPrice, yearlyMonthlyEquiv } from "@/lib/plans";
 
 // 定价面板：Free / Pro（月·年切换）/ Credits 加油包。
@@ -97,7 +97,11 @@ export function PricingPlans({ texts }: { texts: Texts }) {
           <div className="mt-5 space-y-2">
             {CREDIT_PACKS.map((p) => (
               <div key={p.id} className={`relative flex items-center justify-between rounded-2xl border px-4 py-3 ${p.best ? "border-coral/60 bg-coral-soft/50" : "border-sand bg-surface-2"}`}>
-                {p.best && <span className="pill-badge absolute -top-2.5 right-4 bg-lemon text-lemon-ink">★</span>}
+                {p.best && (
+                  <span className="pill-badge absolute -top-2.5 right-4 bg-lemon text-lemon-ink">
+                    <StarIcon className="h-3 w-3" />
+                  </span>
+                )}
                 <span className="font-display text-lg font-black">{p.credits} <span className="text-xs font-semibold text-fog">{texts.creditUnit}</span></span>
                 <button type="button" disabled className="rounded-full bg-coral px-4 py-1.5 text-sm font-semibold text-white opacity-50 cursor-not-allowed" title={texts.soon}>
                   {formatPrice(p.price)}

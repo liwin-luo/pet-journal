@@ -1,0 +1,226 @@
+{
+  "$schema": "选题队列——流水线 ①②③ 阶段的结构化产出；scaffold/lint 脚本读写此文件",
+  "fields": {
+    "id": "日期-短横线slug，唯一",
+    "seedKeyword": "来自 Trends/社媒/GSC 的原始种子词",
+    "source": {
+      "type": "trends|social|gsc|calendar|competitor",
+      "ref": "链接或描述",
+      "evidence": "趋势/热度证据一句话"
+    },
+    "seasonality": {
+      "peak": "流量峰值月份，常青填 evergreen",
+      "publishBy": "最晚发布日期（季节题强制）"
+    },
+    "primaryKeyword": "主关键词（五点落位：title/H2/首段/slug/description）",
+    "longtails": [
+      {
+        "kw": "长尾词",
+        "intent": "informational|commercial|transactional",
+        "stage": "awareness|consideration|decision|implementation",
+        "priority": 1
+      }
+    ],
+    "persona": "current-owner|prospective-owner|gift-buyer|memorial|entertainment",
+    "contentType": "how-to|listicle|hub|comparison|data|story",
+    "title": "拟定标题（≤70字符，含主关键词）",
+    "outline": [
+      "H2 标题数组"
+    ],
+    "internalLinks": [
+      {
+        "href": "/tools/... 或 /templates/... 或文章",
+        "anchor": "锚文本"
+      }
+    ],
+    "status": "idea|outlined|drafted|reviewed|published|refreshed",
+    "post": "发布后的 slug",
+    "notes": "28天复盘数据回填"
+  },
+  "topics": [
+    {
+      "id": "2026-10-10-dog-halloween-costumes",
+      "seedKeyword": "dog halloween costume",
+      "source": {
+        "type": "calendar",
+        "ref": "Halloween 10-31",
+        "evidence": "每年 9-10 月搜索峰值，社媒晒装热期"
+      },
+      "seasonality": {
+        "peak": "October",
+        "publishBy": "2026-09-15（今年已过窗口，转 evergreen 改造或明年排期）"
+      },
+      "primaryKeyword": "dog halloween costume ideas",
+      "longtails": [
+        {
+          "kw": "funny dog halloween costumes",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 1
+        },
+        {
+          "kw": "easy diy dog halloween costume",
+          "intent": "informational",
+          "stage": "implementation",
+          "priority": 2
+        },
+        {
+          "kw": "cat halloween costume ideas",
+          "intent": "informational",
+          "stage": "awareness",
+          "priority": 3
+        }
+      ],
+      "persona": "entertainment",
+      "contentType": "listicle",
+      "title": "30 Dog Halloween Costume Ideas (No-Sew & Last-Minute)",
+      "outline": [
+        "Costume rules: comfort first",
+        "Funny & food costumes",
+        "Classic spooks",
+        "Pop culture pups",
+        "No-sew DIY in 10 minutes",
+        "Turn costume photos into memes"
+      ],
+      "internalLinks": [
+        {
+          "href": "/tools/meme-maker",
+          "anchor": "make a costume meme free"
+        },
+        {
+          "href": "/templates/story",
+          "anchor": "character templates"
+        },
+        {
+          "href": "/blog/funny-dog-meme-captions",
+          "anchor": "101 dog meme captions"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": ""
+    },
+    {
+      "id": "2026-10-10-pet-memorial-gifts",
+      "seedKeyword": "pet memorial gift",
+      "source": {
+        "type": "trends",
+        "ref": "trends.google.com 'pet memorial gift' US",
+        "evidence": "稳定需求、低竞争、高 LTV（角色 memorial）"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "pet memorial gifts",
+      "longtails": [
+        {
+          "kw": "pet loss gifts for a friend",
+          "intent": "commercial",
+          "stage": "decision",
+          "priority": 1
+        },
+        {
+          "kw": "dog memorial portrait ideas",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 2
+        },
+        {
+          "kw": "what to put on a pet memorial stone",
+          "intent": "informational",
+          "stage": "implementation",
+          "priority": 3
+        }
+      ],
+      "persona": "memorial",
+      "contentType": "hub",
+      "title": "Pet Memorial Gifts: A Gentle Guide (2026)",
+      "outline": [
+        "What makes a good memorial gift",
+        "Portrait keepsakes",
+        "Practical keepsakes",
+        "What to write",
+        "Supporting a grieving friend"
+      ],
+      "internalLinks": [
+        {
+          "href": "/templates/classic",
+          "anchor": "classic portrait styles"
+        },
+        {
+          "href": "/#create",
+          "anchor": "create a memorial portrait"
+        },
+        {
+          "href": "/ai-disclosure",
+          "anchor": "how our AI portraits are made"
+        }
+      ],
+      "status": "outlined",
+      "post": "",
+      "notes": ""
+    },
+    {
+      "id": "2026-10-10-ai-vs-traditional-pet-portrait",
+      "seedKeyword": "pet portrait price",
+      "source": {
+        "type": "social",
+        "ref": "r/dogs 'custom portrait worth it?' 帖",
+        "evidence": "反复出现的价格/价值讨论，决策期疑问"
+      },
+      "seasonality": {
+        "peak": "evergreen",
+        "publishBy": ""
+      },
+      "primaryKeyword": "ai pet portrait vs traditional",
+      "longtails": [
+        {
+          "kw": "how much does a custom pet portrait cost",
+          "intent": "commercial",
+          "stage": "consideration",
+          "priority": 1
+        },
+        {
+          "kw": "are ai pet portraits worth it",
+          "intent": "commercial",
+          "stage": "consideration",
+          "priority": 2
+        },
+        {
+          "kw": "hand painted vs digital pet portrait",
+          "intent": "informational",
+          "stage": "consideration",
+          "priority": 3
+        }
+      ],
+      "persona": "gift-buyer",
+      "contentType": "comparison",
+      "title": "AI Pet Portrait vs Hand-Painted: Cost, Time & Quality",
+      "outline": [
+        "The three ways to get a pet portrait",
+        "Cost compared",
+        "Time to delivery",
+        "Likeness & quality",
+        "Which one fits your situation"
+      ],
+      "internalLinks": [
+        {
+          "href": "/pricing",
+          "anchor": "PetsDaily pricing"
+        },
+        {
+          "href": "/#create",
+          "anchor": "try an AI portrait free"
+        },
+        {
+          "href": "/gallery",
+          "anchor": "real examples from our gallery"
+        }
+      ],
+      "status": "idea",
+      "post": "",
+      "notes": ""
+    }
+  ]
+}

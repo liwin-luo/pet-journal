@@ -4,7 +4,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { LikeButton } from "@/components/LikeButton";
 import { ShareBar } from "@/components/ShareBar";
-import { PawIcon, StarIcon } from "@/components/icons";
+import { ArrowLeftIcon, DownloadIcon, PawIcon, StarIcon } from "@/components/icons";
 import { getGalleryWithLikes, resolveWork, workPath } from "@/lib/gallery";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
@@ -50,7 +50,9 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       <nav className="text-sm text-coffee" aria-label="Breadcrumb">
-        <Link href={lp(locale, "/gallery")} className="hover:text-coral">← {t.gal.backTo}</Link>
+        <Link href={lp(locale, "/gallery")} className="inline-flex items-center gap-1.5 hover:text-coral">
+          <ArrowLeftIcon className="h-3.5 w-3.5" /> {t.gal.backTo}
+        </Link>
       </nav>
 
       <header className="mt-6 text-center">
@@ -81,7 +83,7 @@ export default async function WorkDetailPage({ params }: { params: Promise<{ loc
           download={`petsdaily-${(w.petName || "pet").replace(/[^\w-]+/g, "-").toLowerCase()}.jpg`}
           className="btn-ghost !py-2 text-sm"
         >
-          {t.gal.download} ↓
+          <DownloadIcon className="h-4 w-4" /> {t.gal.download}
         </a>
         <LikeButton id={w.id} count={w.likeCount} liked={w.liked} label={t.gal.likeBtn} />
         <ShareBar

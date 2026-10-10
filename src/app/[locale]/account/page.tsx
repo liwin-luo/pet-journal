@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { SignOutButton } from "@/components/SignOutButton";
+import { ArrowLeftIcon } from "@/components/icons";
 import { getSessionUser } from "@/lib/auth";
 import { listHistory } from "@/lib/history";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
@@ -111,7 +112,9 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
       </section>
 
       <p className="mt-8 text-sm text-coffee">
-        <Link href={`${lp(locale, "/")}#create`} className="font-semibold text-coral hover:underline">← {t.acct.back}</Link>
+        <Link href={`${lp(locale, "/")}#create`} className="inline-flex items-center gap-1.5 font-semibold text-coral hover:underline">
+          <ArrowLeftIcon className="h-3.5 w-3.5" /> {t.acct.back}
+        </Link>
       </p>
     </div>
   );
