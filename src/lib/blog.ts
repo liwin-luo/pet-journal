@@ -78,8 +78,12 @@ export function getPost(slug: string): Post | undefined {
   return { ...found.meta, html };
 }
 
-/** 站内链接按语言加前缀（Markdown 内写的是根路径）。 */
+/** 站内链接按语言加前缀（Markdown 内写的是根路径）。public 静态资产（/tpl、/land）不路由，不加前缀。 */
 export function localizePostHtml(html: string, localePrefix: string): string {
   if (!localePrefix) return html;
-  return html.replace(/(href|src)="\/((?!\/)[^"]*)"/g, (_m, attr, rest) => `${attr}="${localePrefix}/${rest}"`);
+  return html.replace(/(href|src)="\/((?!\/)[^"]*)"/g, (_m, attr, rest) =>
+    STATIC_PREFIXES.test(rest) ? _m : `${attr}="${localePrefix}/${rest}"`
+  );
 }
+
+const STATIC_PREFIXES = /^(?:tpl|land)\//;

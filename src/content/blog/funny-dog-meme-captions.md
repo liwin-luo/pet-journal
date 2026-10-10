@@ -23,6 +23,8 @@ A great dog meme is 10% photo and 90% caption. You already have the photo — he
 9. Table scraps are just loyalty rewards.
 10. Dinner was 45 minutes ago. I have wasted away.
 
+![AI-generated example of the Cookout template: a dog in a tiny apron by the backyard grill, made for food-drama captions](/tpl/grill.jpg)
+
 ## Work & Monday energy
 
 11. Me, pretending to work.
@@ -61,6 +63,8 @@ A great dog meme is 10% photo and 90% caption. You already have the photo — he
 38. It wasn't me. It was the wind. Inside the house.
 39. I regret nothing and also everything.
 40. The sofa exploded. Tragic. Anyway.
+
+![AI-generated example of the Doorbell template: the fisheye doorbell-camera stare, born for guilty captions](/tpl/doorbell.jpg)
 
 ## Zoomies & chaos
 
@@ -144,5 +148,7 @@ A great dog meme is 10% photo and 90% caption. You already have the photo — he
 ## Turn one into an actual meme
 
 Pick the caption that matches a photo in your camera roll, open the [free meme maker](/tools/meme-maker), and add classic top-and-bottom text in your browser — your photo never leaves your device. Want the fancy version instead? The same photo becomes a full [AI portrait](/#create) in about 30 seconds (honestly labeled as AI, like everything on this site: [/ai-disclosure](/ai-disclosure)).
+
+![AI-generated example of the Sticker template: a pet portrait as a die-cut sticker with a thick white outline](/tpl/sticker.jpg)
 
 For more caption material, the [side-eye template](/templates/glance) was born for lines like #21 and #31.

@@ -18,6 +18,8 @@ A Christmas card with your actual pet on it beats a stock card every single time
 4. **Cocoa by the window** — snow falling outside, paws on the windowsill.
 5. **The family photo stand-in** — your pet posed like the official family portrait, everyone else cropped out.
 
+![AI-generated example of the Santa paws template: a pet in a Santa-inspired costume by a cozy fireplace](/tpl/santa.jpg)
+
 ## Elegant & artsy
 
 6. **Renaissance royalty in a wreath** — oil-painting style with a holly crown. Combines two crowd favorites: [royal portrait](/templates/royal) + Christmas.
@@ -25,6 +27,8 @@ A Christmas card with your actual pet on it beats a stock card every single time
 8. **Golden hour snow portrait** — backlight, drifting snowflakes, cinematic mood.
 9. **Vintage postcard** — your pet on a 1900s-style Christmas postcard, faded edges.
 10. **Stained glass window** — your pet rendered as a cathedral window panel.
+
+![AI-generated example of a wintry noble portrait: velvet cloak, snowy forest backdrop, painterly light](/tpl/winter.jpg)
 
 ## Funny & meme-worthy
 
@@ -35,6 +39,8 @@ A Christmas card with your actual pet on it beats a stock card every single time
 15. **Sleigh security officer** — sunglasses, clipboard, guarding the presents.
 16. **Reindeer interview** — your pet as the reindeer who didn't make the team.
 
+![AI-generated example of the Caught template: wide guilty eyes, caught eating the Christmas dinner](/tpl/guilty.jpg)
+
 ## Cards built for printing
 
 17. **The front-page news** — a vintage newspaper: "LOCAL HERO SAVES CHRISTMAS".
@@ -42,6 +48,8 @@ A Christmas card with your actual pet on it beats a stock card every single time
 19. **Storybook illustration** — a children's-book page: "Twas the night before Christmas…"
 20. **The advent calendar reveal** — 24 tiny doors, your pet behind door 25.
 21. **Concert poster** — "WOOFSTOCK — Live on Christmas Eve", your pet as the headliner.
+
+![AI-generated example of the Front page template: a vintage newspaper card headlining a pet hero](/tpl/news.jpg)
 
 ## For the whole family
 

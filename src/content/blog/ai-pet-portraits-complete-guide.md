@@ -32,6 +32,10 @@ Almost anything you can describe. In practice, styles fall into a few families:
 - **Stickers and avatars.** Die-cut sticker looks and square [profile-picture avatars](/tools/pet-avatar) for social media.
 - **Pure comedy.** The unimpressed side-eye, the tiny business suit, the delivery courier. Built for group chats — our [meme maker](/tools/meme-maker) turns any photo into a finished meme in your browser.
 
+![AI-generated example of the Animated film template: a pet painted as a big-eyed 3D cartoon character](/tpl/pixar.jpg)
+
+![AI-generated example of the Astronaut template: a pet in a full spacesuit, cinematic studio light](/tpl/astronaut.jpg)
+
 ## Do I need to be good at writing prompts?
 
 No. This is the part most people overestimate. A good studio does the prompt engineering for you: you write a plain sentence ("my dog in a Santa hat, cozy"), and the language model expands it into the full artistic brief. Templates exist so you can skip even that — copy a proven prompt, maybe add one twist like "with a tiny scarf".

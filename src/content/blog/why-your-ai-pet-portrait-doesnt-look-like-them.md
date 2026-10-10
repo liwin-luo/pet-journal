@@ -14,6 +14,8 @@ When an AI pet portrait comes out looking generic, the problem is almost never t
 
 The number one mistake. A beautiful shot of your dog bounding across a meadow gives the model a face the size of a postage stamp. Crop closer: the face should fill a good third of the frame. If your only photo is a wide shot, crop it before uploading.
 
+![AI-generated example of a strong reference photo: face-on, even light, the face filling the frame — our Pet ID card template](/tpl/idcard.jpg)
+
 ## 2. The light is behind your pet
 
 Backlit photos turn faces into silhouettes, and the model guesses fur color in shadow — usually wrong. Stand with your back to the window or shoot outdoors in open shade. If you can see the sparkle in their eyes, the light is right.
@@ -55,5 +57,11 @@ Before you upload, run through it:
 - Eye-level angle
 
 Photos that pass this list produce portraits that read as *your* animal on the first try — we test every template in the [character library](/templates/story) with exactly this kind of shot. The [complete guide](/blog/ai-pet-portraits-complete-guide) covers what happens after the upload — and if the photo is genuinely great but the result still misses, just regenerate: it's free, and the second attempt usually lands.
+
+Here's the whole idea in one before-and-after, made in our studio: an ordinary snapshot in, a portrait that is unmistakably the same cat out.
+
+![An ordinary snapshot of an orange tabby cat — the kind of photo that works as a reference](/land/cat.jpg)
+
+![The renaissance royal portrait generated from that snapshot — same face, same markings, unmistakably the same cat](/land/royal-cat.jpg)
 
 Prefer a cartoon look for your photo? The same rules apply to the [pet avatar maker](/tools/pet-avatar). Ready to test your best photo? [Make your first portrait free](/#create) — three pictures a day, no account needed to start.
