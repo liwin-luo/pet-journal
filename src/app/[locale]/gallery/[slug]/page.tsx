@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { templateById } from "@/lib/templates";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale: raw, slug } = await params;

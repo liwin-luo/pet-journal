@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { getLikeSnapshot, readDb, type GalleryEntry, type LikeRec } from "./store";
 import { SEED_GALLERY } from "./seed";
 
@@ -17,18 +16,16 @@ export function splitWorksReviews(entries: GalleryEntry[]): { works: GalleryEntr
 
 export type WorkWithLikes = GalleryEntry & { likeCount: number; liked: boolean };
 
-/** 画廊数据附带点赞状态（按设备 cookie 判断当前访客是否已赞）。 */
+/** 点赞数给缓存用。不在这里读 cookie，否则公开页每次请求都得跑函数。已赞状态由按钮自己记。 */
 export async function getGalleryWithLikes(): Promise<WorkWithLikes[]> {
-  const [entries, likes, jar] = await Promise.all([
+  const [entries, likes] = await Promise.all([
     getAllGallery(),
     getLikeSnapshot() as Promise<Record<string, LikeRec>>,
-    cookies().catch(() => null),
   ]);
-  const device = jar?.get("paw_device")?.value ?? null;
   return entries.map((e) => ({
     ...e,
     likeCount: likes[e.id]?.count ?? 0,
-    liked: device ? (likes[e.id]?.devices ?? []).includes(device) : false,
+    liked: false,
   }));
 }
 

@@ -28,15 +28,25 @@ export const seedream: StillProvider = {
         size: process.env.SEEDREAM_SIZE?.trim() || "1728x2304",
         seed: Math.floor(Math.random() * 1_000_000_000),
         ...(/seedream-5/i.test(model) ? { output_format: "jpeg" } : {}),
-        response_format: "b64_json",
+        response_format: "url",
         watermark: false,
       }),
     });
     const text = await res.text();
     if (!res.ok) throw new Error(`Seedream HTTP ${res.status}: ${text.slice(0, 240)}`);
-    const b64 = (JSON.parse(text) as { data?: Array<{ b64_json?: string }> }).data?.[0]?.b64_json;
-    if (!b64) throw new Error("Seedream returned no image");
-    const id = await storeImage(Buffer.from(b64, "base64"), "generated");
+    const first = (JSON.parse(text) as { data?: Array<{ url?: string; b64_json?: string }> }).data?.[0];
+    const bytes = await seedreamBytes(first);
+    const id = await storeImage(bytes, "generated");
     return `/api/media/${id}`;
   },
 };
+
+async function seedreamBytes(first: { url?: string; b64_json?: string } | undefined): Promise<Buffer> {
+  if (first?.url) {
+    const img = await fetch(first.url, { signal: AbortSignal.timeout(60_000) });
+    if (!img.ok) throw new Error(`Seedream HTTP ${img.status}`);
+    return Buffer.from(await img.arrayBuffer());
+  }
+  if (first?.b64_json) return Buffer.from(first.b64_json, "base64");
+  throw new Error("Seedream returned no image");
+}

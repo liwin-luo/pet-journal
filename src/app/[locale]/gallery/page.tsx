@@ -5,13 +5,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { LikeButton } from "@/components/LikeButton";
 import { PawIcon, StarIcon } from "@/components/icons";
 import { WorkShareButton } from "@/components/WorkShareButton";
+import { GalleryFilter } from "@/components/public-filter";
 import { getGalleryWithLikes, workPath } from "@/lib/gallery";
 import { getDict, isLocale, lp, type Locale } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { templateById } from "@/lib/templates";
 
-// 物种筛选走 searchParams，且点赞数随请求变化
-export const dynamic = "force-dynamic";
+// ponytail: 公开画廊按小时进 CDN。点赞数最多晚一小时。要更及时就把数字改小。
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -29,21 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const SPECIES_KEYS = ["all", "cat", "dog", "bird", "fish", "rabbit", "other"] as const;
 
-export default async function GalleryPage({
-  searchParams,
-  params,
-}: {
-  searchParams: Promise<{ species?: string }>;
-  params: Promise<{ locale: string }>;
-}) {
+export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getDict(locale);
-  const { species } = await searchParams;
   const all = await getGalleryWithLikes();
-  const filter = species && SPECIES_KEYS.includes(species as never) ? species : "all";
-  const works = (filter === "all" ? all : all.filter((g) => g.species === filter)).filter((g) => !g.text);
+  const works = all.filter((g) => !g.text);
   const reviews = all.filter((g) => g.text);
   const speciesLabel = (key: string) => (key === "all" ? t.gal.speciesAll : (t.gal[key as keyof typeof t.gal] as string));
 
@@ -60,27 +53,17 @@ export default async function GalleryPage({
         </p>
       </header>
 
-      {/* 物种筛选 */}
-      <nav className="mt-8 flex flex-wrap justify-center gap-2" aria-label="Filter by pet type">
-        {SPECIES_KEYS.map((s) => (
-          <Link
-            key={s}
-            href={s === "all" ? lp(locale, "/gallery") : `${lp(locale, "/gallery")}?species=${s}`}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              filter === s ? "bg-coral text-white" : "border border-sand bg-surface text-coffee hover:border-coral hover:text-coral"
-            }`}
-          >
-            {speciesLabel(s)}
-          </Link>
-        ))}
-      </nav>
+      <GalleryFilter
+        chips={SPECIES_KEYS.map((s) => ({ id: s, label: speciesLabel(s) }))}
+        empty={t.gal.noWorks.replace("{species}", "")}
+      />
 
       {/* 作品墙 */}
       <div className="mt-10 columns-2 gap-4 sm:columns-3 lg:columns-4 [&>figure]:mb-4">
         {works.map((w) => {
           const tpl = templateById(w.templateId);
           return (
-            <figure key={w.id} className="group relative break-inside-avoid">
+            <figure key={w.id} data-species={w.species} className="group relative break-inside-avoid">
               <Link href={lp(locale, workPath(w))} aria-label={`${w.petName} — ${tpl?.name ?? ""}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -111,7 +94,7 @@ export default async function GalleryPage({
         })}
       </div>
       {!works.length && (
-        <p className="mt-10 text-center text-coffee">{t.gal.noWorks.replace("{species}", speciesLabel(filter))}</p>
+        <p className="mt-10 text-center text-coffee">{t.gal.noWorks.replace("{species}", speciesLabel("all"))}</p>
       )}
 
       {/* 评价 */}
