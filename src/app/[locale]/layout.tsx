@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -54,6 +55,7 @@ export default async function LocaleLayout({
         <Header locale={locale} t={t} />
         <main>{children}</main>
         <Footer locale={locale} t={t} />
+        <Analytics />
       </body>
     </html>
   );
